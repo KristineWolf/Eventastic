@@ -48,7 +48,7 @@ public class OwnEventDatabase {
         db.close();
     }
 
-    // zunächst überprüfen ob bereits vorhanden ..
+    // zunächst überprüfen ob bereits vorhanden
     public boolean insertEvent(Event event){
         if(eventIsNotInDB(event)) {
             ContentValues values = new ContentValues();
