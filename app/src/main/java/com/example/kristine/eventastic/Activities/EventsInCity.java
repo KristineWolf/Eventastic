@@ -8,16 +8,31 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
+import com.example.kristine.eventastic.Database.OwnEventDatabase;
 import com.example.kristine.eventastic.R;
 
 public class EventsInCity extends AppCompatActivity {
+
+    private TextView listView;
+
+    private OwnEventDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_in_city);
         setActionBarInActivity();
+
+    }
+
+    private void initDB() {
+        db=new OwnEventDatabase(this);
+    }
+
+    private void initUI() {
+        listView=(TextView)findViewById(R.id.textView);
     }
 
     private void setActionBarInActivity() {

@@ -9,4 +9,101 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.kristine.eventastic.Activities.AddEvent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add new Event"
+        android:id="@+id/addEventText"
+        android:textStyle="bold"
+        android:textSize="26dp"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editCity"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/addEventText"
+        android:layout_marginTop="40dp"
+        android:hint="Edit the city"
+        android:textStyle="italic"
+        android:textSize="16dp" />
+
+    //dies sollte eig eine Auswahl von verschiedenen Optionen werden, aber das später
+    <EditText
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editType"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/editCity"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/addEventText"
+        android:layout_marginTop="40dp"
+        android:hint="Edit event type"
+        android:textStyle="italic"
+        android:textSize="16dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTitel"
+        android:layout_below="@+id/editCity"
+        android:layout_marginTop="15dp"
+        android:hint="Edit the event titel"
+        android:textStyle="italic"
+        android:textSize="16dp" />
+
+    //diese sollten auch eine Auswahl sein
+    <EditText
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/editDate"
+        android:layout_below="@+id/editTitel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:hint="Edit the date"
+        android:textStyle="italic"
+        android:textSize="16dp" />
+
+    //dies sollte auch eine Auswahl sein
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:ems="10"
+        android:id="@+id/editTime"
+        android:layout_alignTop="@+id/editDate"
+        android:layout_toRightOf="@+id/editDate"
+        android:layout_toEndOf="@+id/editDate"
+        android:hint="Edit the time"
+        android:textStyle="italic"
+        android:textSize="16dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/editDefinition"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/editDate"
+        android:hint="Edit important Information to the event"
+        android:textStyle="italic"
+        android:textSize="16dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter"
+        android:id="@+id/button"
+        android:layout_below="@+id/editDefinition"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="62dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/white"/>
 </RelativeLayout>

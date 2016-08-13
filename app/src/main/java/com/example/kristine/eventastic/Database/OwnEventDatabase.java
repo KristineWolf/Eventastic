@@ -36,7 +36,7 @@ public class OwnEventDatabase {
         helper=new DBOpenHelper(context, DATABASE_NAME,null,DATABASE_VERSION);
     }
 
-    public void open() throws SQLException{
+    private void open() throws SQLException{
         try {
             db=helper.getWritableDatabase();
         }catch (SQLException e){
@@ -44,10 +44,55 @@ public class OwnEventDatabase {
         }
     }
 
-    public void close(){
+    private void close(){
         db.close();
     }
 
+    //folgendes gilt nur für die online DB --> hier nur als notlösung wird später noch entfernt
+
+    public void enterEventInOnlineDB(Event event){
+        open();
+        ContentValues values=new ContentValues();
+        values.put(KEY_CITY, event.getCity());
+        values.put(KEY_DAY, event.getDay());
+        values.put(KEY_MONTH, event.getMonth());
+        values.put(KEY_YEAR, event.getYear());
+        values.put(KEY_HOUR, event.getYear());
+        values.put(KEY_MINUTES, event.getMinutes());
+        values.put(KEY_TITEL, event.getTitel());
+        values.put(KEY_DEFINITION, event.getDefintion());
+        values.put(KEY_TYPE, event.getType());
+        db.insert(DATABASE_TABLE, null, values);
+        close();
+    }
+
+    public ArrayList<Event> getAllEvents(){
+        ArrayList<Event> events = new ArrayList<>();
+        Cursor cursor=db.query(DATABASE_TABLE, new String[]{
+                        KEY_CITY, KEY_DAY, KEY_MONTH, KEY_YEAR, KEY_HOUR, KEY_MINUTES, KEY_TITEL, KEY_DEFINITION, KEY_TYPE},
+                null, null, null, null, null);
+        if(cursor.moveToFirst()){
+            do{
+                String city = cursor.getString(0);
+                int day=cursor.getInt(1);
+                int month=cursor.getInt(2);
+                int year=cursor.getInt(3);
+                int hour=cursor.getInt(4);
+                int minutes=cursor.getInt(5);
+                String titel =cursor.getString(6);
+                String definition=cursor.getString(7);
+                String type =cursor.getString(8);
+
+                events.add(new Event(city,day,month,year,hour,minutes,titel,definition,type));
+            }while (cursor.moveToNext());
+
+        }
+        cursor.close();
+
+        return events;
+    }
+
+    /**
     // zunächst überprüfen ob bereits vorhanden
     public boolean insertEvent(Event event){
         if(eventIsNotInDB(event)) {
@@ -144,6 +189,7 @@ public class OwnEventDatabase {
         return events;
     }
 
+     **/
 
 
     private class DBOpenHelper extends SQLiteOpenHelper{
