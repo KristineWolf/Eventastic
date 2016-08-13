@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="Add Event"
+        android:id="@+id/event_in_city_add_event"
+        android:icon="@drawable/add"
+        app:showAsAction="always">
+    </item>
+
+    <item
+        android:title="Your participating events"
+        android:id="@+id/event_in_city_your_events"
+        android:icon="@drawable/to_particpating_events"
+        app:showAsAction="always"
+        >
+    </item>
+
+    <item
+        android:id="@+id/event_in_city_settings"
+        android:icon="@drawable/settings"
+        android:title="Settings"
+        app:showAsAction="always">
+    </item>
+
+</menu>

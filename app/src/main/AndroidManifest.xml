@@ -15,9 +15,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.EventsInCity" />
-        <activity android:name=".Activities.ParticipatingEvents" />
-        <activity android:name=".Activities.Explanation"></activity>
+        <activity
+            android:name=".Activities.EventsInCity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.ParticipatingEvents"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.Explanation"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".Activities.AddEvent"
+            android:parentActivityName=".Activities.EventsInCity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.EventsInCity"/>
+        </activity>
     </application>
 
 </manifest>
