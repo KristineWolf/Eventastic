@@ -15,6 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activities.EventsInCity" />
+        <activity android:name=".Activities.ParticipatingEvents" />
+        <activity android:name=".Activities.Explanation"></activity>
     </application>
 
 </manifest>
