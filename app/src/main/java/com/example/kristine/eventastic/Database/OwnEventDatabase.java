@@ -16,7 +16,7 @@ public class OwnEventDatabase {
 
     private static final String DATABASE_NAME ="ownevents";
     private static final int DATABASE_VERSION= 1;
-    private static final String DATABASE_TABLE ="events";
+    private static final String DATABASE_TABLE_ONLINE ="events";
 
     public static final String KEY_CITY ="city";
     public static final String KEY_DAY="day";
@@ -50,25 +50,26 @@ public class OwnEventDatabase {
 
     //folgendes gilt nur für die online DB --> hier nur als notlösung wird später noch entfernt
 
-    public void enterEventInOnlineDB(Event event){
+    public void enterEventInOnlineDB(String city, String day, String month, String year, String hour, String min,
+                                     String titel, String definition, String type){
         open();
         ContentValues values=new ContentValues();
-        values.put(KEY_CITY, event.getCity());
-        values.put(KEY_DAY, event.getDay());
-        values.put(KEY_MONTH, event.getMonth());
-        values.put(KEY_YEAR, event.getYear());
-        values.put(KEY_HOUR, event.getYear());
-        values.put(KEY_MINUTES, event.getMinutes());
-        values.put(KEY_TITEL, event.getTitel());
-        values.put(KEY_DEFINITION, event.getDefintion());
-        values.put(KEY_TYPE, event.getType());
-        db.insert(DATABASE_TABLE, null, values);
+        values.put(KEY_CITY, city);
+        values.put(KEY_DAY, day);
+        values.put(KEY_MONTH, month);
+        values.put(KEY_YEAR, year);
+        values.put(KEY_HOUR, hour);
+        values.put(KEY_MINUTES, min);
+        values.put(KEY_TITEL, titel);
+        values.put(KEY_DEFINITION, definition);
+        values.put(KEY_TYPE, type);
+        db.insert(DATABASE_TABLE_ONLINE, null, values);
         close();
     }
 
     public ArrayList<Event> getAllEvents(){
         ArrayList<Event> events = new ArrayList<>();
-        Cursor cursor=db.query(DATABASE_TABLE, new String[]{
+        Cursor cursor=db.query(DATABASE_TABLE_ONLINE, new String[]{
                         KEY_CITY, KEY_DAY, KEY_MONTH, KEY_YEAR, KEY_HOUR, KEY_MINUTES, KEY_TITEL, KEY_DEFINITION, KEY_TYPE},
                 null, null, null, null, null);
         if(cursor.moveToFirst()){
@@ -193,16 +194,16 @@ public class OwnEventDatabase {
 
 
     private class DBOpenHelper extends SQLiteOpenHelper{
-        private static final String DATABASE_CREATE ="create table "+DATABASE_TABLE+
-                " ("+KEY_CITY+" varchar(100), "
+        private static final String DATABASE_CREATE_ONLINE ="create table "+DATABASE_TABLE_ONLINE+
+                " ("+KEY_CITY+" string, "
                 +KEY_DAY+" integer, "
                 +KEY_MONTH+" integer, "
                 +KEY_YEAR+" integer, "
                 +KEY_HOUR+" integer, "
                 +KEY_MINUTES+" integer, "
-                +KEY_TITEL+" varchar(100), "
-                +KEY_DEFINITION+ " varchar(255), "
-                +KEY_TYPE+" varchar(100);";
+                +KEY_TITEL+" string, "
+                +KEY_DEFINITION+ " string, "
+                +KEY_TYPE+" string);";
 
         public DBOpenHelper(Context context, String dbName, SQLiteDatabase.CursorFactory factory, int version){
             super(context,dbName,factory,version);
@@ -210,7 +211,7 @@ public class OwnEventDatabase {
 
         @Override
         public void onCreate(SQLiteDatabase db){
-            db.execSQL(DATABASE_CREATE);
+            db.execSQL(DATABASE_CREATE_ONLINE);
         }
 
         @Override
