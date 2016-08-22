@@ -92,7 +92,7 @@ public class AddEvent extends AppCompatActivity {
         db = new OwnEventDatabase(this);
     }
 
-    //hier muss noch überprüft werden, ob auch alle Daten eingegeben wurden..
+
     private void initClickListener() {
         enter.setOnClickListener(new OnClickListener() {
             @Override
@@ -126,7 +126,8 @@ public class AddEvent extends AppCompatActivity {
         cal.setTime(dueDate);
         int hour = Integer.parseInt(""+time.charAt(0)+time.charAt(1));
         int min =Integer.parseInt(""+time.charAt(3)+time.charAt(4));
-        db.enterEventInOnlineDB(city,""+cal.get(Calendar.DAY_OF_MONTH),""+cal.get(Calendar.MONTH),""+cal.get(Calendar.YEAR),""+hour,""+min,titel,definition,type );
+        //hier eigentlich die Verbindung zur Online DB
+        db.enterEventInOnlineDB(city,cal.get(Calendar.DAY_OF_MONTH),cal.get(Calendar.MONTH),cal.get(Calendar.YEAR),hour,min,titel,definition,type );
 
     }
 
@@ -136,7 +137,7 @@ public class AddEvent extends AppCompatActivity {
         try {
             return df.parse(dateString);
         } catch (ParseException e) {
-            // return current date as fallback
+
             return new Date();
         }
     }
@@ -159,7 +160,6 @@ public class AddEvent extends AppCompatActivity {
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the current date as the default date in the picker
             final Calendar c = Calendar.getInstance();
             int year = c.get(Calendar.YEAR);
             int month = c.get(Calendar.MONTH);

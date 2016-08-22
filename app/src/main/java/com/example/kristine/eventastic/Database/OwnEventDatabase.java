@@ -50,7 +50,7 @@ public class OwnEventDatabase {
 
     //folgendes gilt nur für die online DB --> hier nur als notlösung wird später noch entfernt
 
-    public void enterEventInOnlineDB(String city, String day, String month, String year, String hour, String min,
+    public void enterEventInOnlineDB(String city, int day, int month, int year, int hour, int min,
                                      String titel, String definition, String type){
         open();
         ContentValues values=new ContentValues();
@@ -68,6 +68,7 @@ public class OwnEventDatabase {
     }
 
     public ArrayList<Event> getAllEvents(){
+        open();
         ArrayList<Event> events = new ArrayList<>();
         Cursor cursor=db.query(DATABASE_TABLE_ONLINE, new String[]{
                         KEY_CITY, KEY_DAY, KEY_MONTH, KEY_YEAR, KEY_HOUR, KEY_MINUTES, KEY_TITEL, KEY_DEFINITION, KEY_TYPE},
@@ -88,7 +89,7 @@ public class OwnEventDatabase {
             }while (cursor.moveToNext());
 
         }
-        cursor.close();
+        close();
 
         return events;
     }

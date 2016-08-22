@@ -9,11 +9,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.kristine.eventastic.Activities.EventsInCity">
 
-    <TextView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textView"
+        android:id="@+id/allEventsInACity"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="62dp" />

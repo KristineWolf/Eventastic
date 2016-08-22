@@ -8,22 +8,42 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
+import com.example.kristine.eventastic.Adapter.CityAdapter;
 import com.example.kristine.eventastic.Database.OwnEventDatabase;
+import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
+
+import java.util.ArrayList;
+
 
 public class EventsInCity extends AppCompatActivity {
 
-    private TextView listView;
+    private ListView listView;
 
     private OwnEventDatabase db;
+
+    private CityAdapter adapter;
+    private ArrayList<Event> arraylist=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_in_city);
         setActionBarInActivity();
+        initDB();
+        initUI();
+        updateList();
+
+    }
+
+    private void updateList() {
+        arraylist.clear();
+        arraylist.addAll(db.getAllEvents());
+        listView.setAdapter(adapter);
 
     }
 
@@ -32,7 +52,32 @@ public class EventsInCity extends AppCompatActivity {
     }
 
     private void initUI() {
-        listView=(TextView)findViewById(R.id.textView);
+        initListView();
+        initListAdapter();
+    }
+
+    private void initListAdapter() {
+        adapter=new CityAdapter(this, arraylist);
+    }
+
+    private void initListView() {
+        listView=(ListView) findViewById(R.id.allEventsInACity);
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view,
+                                           int position, long id) {
+                Intent intent=new Intent(EventsInCity.this, EventAlone.class);
+                Event event = arraylist.get(position);
+                intent.putExtra(event.getCity(),"city");
+                intent.putExtra(event.getDefintion(),"definition");
+                intent.putExtra(event.getTitel(),"titel");
+                intent.putExtra(event.getType(),"type");
+                intent.putExtra(""+event.getDay()+"."+event.getMonth()+"."+event.getYear(),"date");
+                intent.putExtra(""+event.getHour()+":"+event.getMinutes(),"time");
+                startActivity(intent);
+                return false;
+            }
+        });
     }
 
     private void setActionBarInActivity() {
