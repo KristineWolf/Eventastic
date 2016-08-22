@@ -213,6 +213,7 @@ public class AddEvent extends AppCompatActivity {
             }
             t.setText(hour+":"+min);
         }
+
     }
 
 
