@@ -30,7 +30,7 @@ public class EventAlone extends AppCompatActivity {
         Intent intent=getIntent();
         Bundle extras =intent.getExtras();
         initUI();
-        setUI(extras.getString("city"));
+        setUI(extras);
         initOnClickListener();
     }
 
@@ -44,8 +44,13 @@ public class EventAlone extends AppCompatActivity {
     }
 
 
-    private void setUI(String jcity) {
-        city.setText(jcity);
+    private void setUI(Bundle extras) {
+        city.setText(extras.getString("city"));
+        titel.setText(extras.getString("titel"));
+        definition.setText(extras.getString("definition"));
+        type.setText(extras.getString("type"));
+        date.setText(extras.getString("date"));
+        time.setText(extras.getString("time"));
     }
 
 

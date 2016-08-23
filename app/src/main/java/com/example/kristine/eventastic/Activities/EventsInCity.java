@@ -68,12 +68,12 @@ public class EventsInCity extends AppCompatActivity {
                                            int position, long id) {
                 Intent intent=new Intent(EventsInCity.this, EventAlone.class);
                 Event event = arraylist.get(position);
-                intent.putExtra(event.getCity(),"city");
-                intent.putExtra(event.getDefintion(),"definition");
-                intent.putExtra(event.getTitel(),"titel");
-                intent.putExtra(event.getType(),"type");
-                intent.putExtra(""+event.getDay()+"."+event.getMonth()+"."+event.getYear(),"date");
-                intent.putExtra(""+event.getHour()+":"+event.getMinutes(),"time");
+                intent.putExtra("city",event.getCity());
+                intent.putExtra("definition",event.getDefintion());
+                intent.putExtra("titel",event.getTitel());
+                intent.putExtra("type",event.getType());
+                intent.putExtra("date",""+event.getDay()+"."+event.getMonth()+"."+event.getYear());
+                intent.putExtra("time",""+event.getHour()+":"+event.getMinutes());
                 startActivity(intent);
                 return false;
             }
