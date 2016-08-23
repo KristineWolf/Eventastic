@@ -32,6 +32,7 @@ public class CityAdapter extends ArrayAdapter<Event> {
             LayoutInflater inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v=inflater.inflate(R.layout.event,null);
         }
+
         else {
             v=convertView;
         }
