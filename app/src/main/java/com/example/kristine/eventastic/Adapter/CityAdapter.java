@@ -46,6 +46,7 @@ public class CityAdapter extends ArrayAdapter<Event> {
             date.setText(currentdate);
             String currentTime =""+arrayList.get(position).getHour()+":"+arrayList.get(position).getMinutes();
             time.setText(currentTime);
+
             type.setText(arrayList.get(position).getType());
         }
         return v;
