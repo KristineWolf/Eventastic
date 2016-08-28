@@ -12,10 +12,10 @@ public class Event {
     private int hour;
     private int minutes;
     private String titel;
-    private String defintion;
+    private String definition;
     private String type;
 
-    public Event(String city, int day, int month, int year, int hour, int minutes, String titel, String defintion, String type){
+    public Event(String city, int day, int month, int year, int hour, int minutes, String titel, String definition, String type){
         this.city=city;
         this.day=day;
         this.month=month;
@@ -23,7 +23,7 @@ public class Event {
         this.hour=hour;
         this.minutes=minutes;
         this.titel=titel;
-        this.defintion=defintion;
+        this.definition=definition;
         this.type=type;
     }
 
@@ -41,7 +41,7 @@ public class Event {
 
     public String getTitel(){return titel;}
 
-    public String getDefintion(){return defintion;}
+    public String getDefinition(){return definition;}
 
     public String getType(){return type;}
 }

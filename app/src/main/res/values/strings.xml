@@ -1,3 +1,13 @@
 <resources>
+
+    <!-- Main-Strings -->
     <string name="app_name">Eventastic</string>
+    <string name="events_city">Events in a city</string>
+    <string name="participating_events">Participating events</string>
+
+
+
+    <!-- Strings für SettingsActivity -->
+    <string name="about_this_app_title">Hi there!</string>
+    <string name="about_this_app_text">This app is called EVENTASTIC. Once used it, you will never want to do without it again.</string>
 </resources>

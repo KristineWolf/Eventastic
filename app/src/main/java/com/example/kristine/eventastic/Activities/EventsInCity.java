@@ -69,7 +69,7 @@ public class EventsInCity extends AppCompatActivity {
                 Intent intent=new Intent(EventsInCity.this, EventAlone.class);
                 Event event = arraylist.get(position);
                 intent.putExtra("city",event.getCity());
-                intent.putExtra("definition",event.getDefintion());
+                intent.putExtra("definition",event.getDefinition());
                 intent.putExtra("titel",event.getTitel());
                 intent.putExtra("type",event.getType());
                 intent.putExtra("date",""+event.getDay()+"."+event.getMonth()+"."+event.getYear());
