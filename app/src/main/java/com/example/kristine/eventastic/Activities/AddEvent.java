@@ -18,8 +18,11 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.example.kristine.eventastic.Database.OwnEventDatabase;
+import com.example.kristine.eventastic.Databases.ExternDatabase;
+import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -28,21 +31,18 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
-public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class AddEvent extends AppCompatActivity {
 
-    //um ein Event hinzuzufügen, müssen die folgenden 6 Felder ausgefüllt werden
     private EditText editCity;
     private EditText editTitle;
     private EditText editDate;
     private EditText editTime;
     private EditText editDefinition;
-    private Spinner spinner;
+    private EditText editType;
 
-    //Bestätigungs-Button, um Event hinzuzufügen
     private Button enter;
 
-    private OwnEventDatabase db;
-
+    private ExternDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +55,13 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         initClickListener();
     }
 
-    //WANN-Picker: Uhrzeit
     private void initTimeField() {
-        editTime.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showTimePickerDialog(v);
-            }
-        }
+        editTime.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            showTimePickerDialog(v);
+                                        }
+                                    }
         );
     }
 
@@ -72,9 +71,9 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
 
-    //WANN-Picker: Datum
+
     private void initDateField() {
-        editDate.setOnClickListener(new OnClickListener() {
+        editDate.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -89,12 +88,13 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
     private void initDB() {
-        db = new OwnEventDatabase(this);
+        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
+        db=new ExternDatabase(databaseReference);
     }
 
 
     private void initClickListener() {
-        enter.setOnClickListener(new OnClickListener() {
+        enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String city = editCity.getText().toString();
@@ -102,9 +102,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
                 String time = editTime.getText().toString();
                 String titel = editTitle.getText().toString();
                 String definition = editDefinition.getText().toString();
-
-                TextView selectedItem = (TextView) v;
-                String type = selectedItem.getText().toString();
+                String type = editType.getText().toString();
 
                 if(city.equals("")||date.equals("")||time.equals("")||titel.equals("")||definition.equals("")||type.equals("")){
                     return;
@@ -113,6 +111,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
                     editTime.setText("");
                     editTitle.setText("");
                     editDate.setText("");
+                    editType.setText("");
                     editDefinition.setText("");
 
                     addEvent(city, date, time, titel, definition, type);
@@ -121,16 +120,26 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         });
     }
 
-
-    //Hinzufügen eines vollständigen Events zur Datenbank
     private void addEvent(String city, String date, String time, String titel, String definition, String type) {
         Date dueDate = getDateFromString(date);
         GregorianCalendar cal = new GregorianCalendar();
         cal.setTime(dueDate);
-        int hour = Integer.parseInt(""+time.charAt(0)+time.charAt(1));
-        int min =Integer.parseInt(""+time.charAt(3)+time.charAt(4));
-        //hier eigentlich die Verbindung zur Online DB
-        db.enterEventInOnlineDB(city,cal.get(Calendar.DAY_OF_MONTH),cal.get(Calendar.MONTH),cal.get(Calendar.YEAR),hour,min,titel,definition,type );
+        String month;
+        String day;
+        if(cal.get(Calendar.MONTH)+1<10){
+            month=""+0+(cal.get(Calendar.MONTH)+1);
+        }else {
+            month=""+(cal.get(Calendar.MONTH)+1);
+        }
+        if(cal.get(Calendar.DAY_OF_MONTH)<10){
+            day=""+0+cal.get(Calendar.DAY_OF_MONTH);
+        }else {
+            day=""+cal.get(Calendar.DAY_OF_MONTH);
+        }
+        int realDate = Integer.parseInt(""+cal.get(Calendar.YEAR)+month+day);
+        Event event = new Event(city,realDate,time,titel,definition,type);
+        boolean saved= db.insertItem(event);
+
 
     }
 
@@ -151,26 +160,11 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         editTitle = (EditText) findViewById(R.id.editTitel);
         editDefinition = (EditText) findViewById(R.id.editDefinition);
         editTime = (EditText) findViewById(R.id.editTime);
+        editType = (EditText) findViewById(R.id.editType);
 
-        //Spinner, um Veranstaltungskategorie auszuwählen
-        spinner = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter adapter2 = ArrayAdapter.createFromResource(this, R.array.categories, android.R.layout.simple_spinner_item);
-        spinner.setAdapter(adapter2);
-        spinner.setOnItemSelectedListener(this);
-
-        enter = (Button) findViewById(R.id.button);
+        enter = (Button) findViewById(R.id.button_add);
     }
 
-    //zu überschreibende Methoden des OnItemSelectedListener
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        TextView selectedItem = (TextView) view;
-        Toast.makeText(this, "You selected "+selectedItem.getText(), Toast.LENGTH_SHORT).show();
-    }
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 
 
     public static class DatePickerFragment extends DialogFragment implements
@@ -199,7 +193,6 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         }
     }
 
-    //Fragments für Time und Date
     public static class TimePickerFragment extends DialogFragment
             implements TimePickerDialog.OnTimeSetListener {
 
@@ -233,7 +226,8 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
             t.setText(hour+":"+min);
         }
 
-    }
 
+
+    }
 
 }

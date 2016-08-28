@@ -13,18 +13,21 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.kristine.eventastic.Adapter.CityAdapter;
-import com.example.kristine.eventastic.Database.OwnEventDatabase;
+import com.example.kristine.eventastic.Databases.ExternDatabase;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class EventsInCity extends AppCompatActivity {
 
     private ListView listView;
 
-    private OwnEventDatabase db;
+    private ExternDatabase helper;
 
     private CityAdapter adapter;
     private ArrayList<Event> arraylist=new ArrayList<>();
@@ -33,22 +36,25 @@ public class EventsInCity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_in_city);
-        setActionBarInActivity();
         initDB();
         initUI();
         updateList();
 
     }
 
+
+
     private void updateList() {
         arraylist.clear();
-        arraylist.addAll(db.getAllEvents());
+
+
         listView.setAdapter(adapter);
 
     }
 
     private void initDB() {
-        db=new OwnEventDatabase(this);
+        DatabaseReference db= FirebaseDatabase.getInstance().getReference();
+        helper=new ExternDatabase(db);
     }
 
     private void initUI() {
@@ -56,33 +62,29 @@ public class EventsInCity extends AppCompatActivity {
         initListAdapter();
     }
 
-    private void initListAdapter() {
-        adapter=new CityAdapter(this, arraylist);
-    }
-
     private void initListView() {
         listView=(ListView) findViewById(R.id.allEventsInACity);
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view,
-                                           int position, long id) {
-                Intent intent=new Intent(EventsInCity.this, EventAlone.class);
-                Event event = arraylist.get(position);
-                intent.putExtra("city",event.getCity());
-                intent.putExtra("definition",event.getDefinition());
-                intent.putExtra("titel",event.getTitel());
-                intent.putExtra("type",event.getType());
-                intent.putExtra("date",""+event.getDay()+"."+event.getMonth()+"."+event.getYear());
-                intent.putExtra("time",""+event.getHour()+":"+event.getMinutes());
-                startActivity(intent);
-                return false;
-            }
-        });
+
     }
 
-    private void setActionBarInActivity() {
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+    private void initListAdapter() {
+
+        Calendar cal=Calendar.getInstance();
+        String month;
+        String day;
+        if(cal.get(Calendar.MONTH)+1<10){
+            month=""+0+(cal.get(Calendar.MONTH)+1);
+        }else {
+            month=""+(cal.get(Calendar.MONTH)+1);
+        }
+        if(cal.get(Calendar.DAY_OF_MONTH)<10){
+            day=""+0+cal.get(Calendar.DAY_OF_MONTH);
+        }else {
+            day=""+cal.get(Calendar.DAY_OF_MONTH);
+        }
+        int realDate = Integer.parseInt(""+cal.get(Calendar.YEAR)+month+day);
+
+        adapter=new CityAdapter(this,helper.getAllEvents(realDate));
     }
 
     @Override
@@ -97,31 +99,25 @@ public class EventsInCity extends AppCompatActivity {
         int id= item.getItemId();
         switch (id){
 
-            //dadurch kann ein Nutzer eine Veranstaltung hinzufügen
             case R.id.event_in_city_add_event:
                 Intent intent=new Intent(EventsInCity.this,AddEvent.class);
                 startActivity(intent);
-                break;
+                return true;
 
-            //hier wird eine Einstellungsactivity geöffnet
-            case R.id.main_activity_settings:
-                Intent intent2= new Intent(EventsInCity.this, SettingsActivity.class);
-                startActivity(intent2);
-                break;
+            case R.id.event_in_city_settings:
+                //hier wird eine Einstellungsactivity geöffnet
+                //bin mir aber nicht sicher ob des auch eine Activity ist
+                //sollte eig etwas anderes sein --> SharedPreferences -->VL 04 bei Einstellungen
+                return true;
 
             //dadurch kommt der Nutzer zu seinen Veranstaltungen, an denen er teilnehmen will
-            case R.id.event_in_city_your_events:
-                Intent i=new Intent(EventsInCity.this,ParticipatingEvents.class);
-                startActivity(i);
-                break;
 
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
-            default:
-                super.onOptionsItemSelected(item);
+
         }
 
-        return true;
+        return false;
     }
 }

@@ -43,16 +43,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.EventsInCity" />
         </activity>
-
-
-
-        <activity android:name=".Activities.EventAlone"
+        <activity
+            android:name=".Activities.EventAlone"
             android:parentActivityName=".Activities.EventsInCity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.EventsInCity"/>
+                android:value=".Activities.EventsInCity" />
         </activity>
-
         <activity
             android:name=".Activities.SettingsActivity"
             android:parentActivityName=".MainActivity">
@@ -60,7 +57,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
+        <activity android:name=".Activities.AllInformationsOfAParticipatingEvent"
+            android:parentActivityName=".Activities.ParticipatingEvents">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Activities.ParticipatingEvents" />
+        </activity>
+        <activity android:name=".Activities.AllInformationsOfAnEvent"
+            android:parentActivityName=".Activities.EventsInCity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.EventsInCity" />></activity>
     </application>
 
 </manifest>

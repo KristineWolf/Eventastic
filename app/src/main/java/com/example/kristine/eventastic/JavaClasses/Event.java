@@ -6,42 +6,52 @@ package com.example.kristine.eventastic.JavaClasses;
 public class Event {
 
     private String city;
-    private int day;
-    private int month;
-    private int year;
-    private int hour;
-    private int minutes;
+    private int date;
+    private String time;
     private String titel;
-    private String definition;
+    private String defintion;
     private String type;
 
-    public Event(String city, int day, int month, int year, int hour, int minutes, String titel, String definition, String type){
+    public Event(){}
+
+    public Event(String city, int date, String time, String titel, String defintion, String type){
         this.city=city;
-        this.day=day;
-        this.month=month;
-        this.year=year;
-        this.hour=hour;
-        this.minutes=minutes;
+        this.date=date;
+        this.time=time;
         this.titel=titel;
-        this.definition=definition;
+        this.defintion=defintion;
         this.type=type;
     }
 
     public String getCity(){return city;}
 
-    public int getDay(){return day;}
+    public void setCity(String city){this.city=city;}
 
-    public int getMonth(){return month;}
+    public int getDate(){return date;}
 
-    public int getYear(){return year;}
+    public void setDate(int date){this.date=date;}
 
-    public int getHour(){return hour;}
+    public String getTime(){return time;}
 
-    public int getMinutes(){return minutes;}
+    public void setTime(String time){this.time=time;}
 
     public String getTitel(){return titel;}
 
-    public String getDefinition(){return definition;}
+    public void setTitel(String titel){this.titel=titel;}
+
+    public String getDefintion(){return defintion;}
+
+    public void setDefintion(String defintion){this.defintion=defintion;}
 
     public String getType(){return type;}
+
+    public void setType(String type){this.type=type;}
+
+    public String changeIntIntoStringDate(){
+        String iDate=""+date;
+        String day= ""+iDate.charAt(6)+iDate.charAt(7);
+        String month=""+iDate.charAt(4)+iDate.charAt(5);
+        String year =""+iDate.charAt(0)+iDate.charAt(1)+iDate.charAt(2)+iDate.charAt(3);
+        return ""+day+"."+month+"."+year;
+    }
 }

@@ -8,21 +8,53 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ListView;
 
+import com.example.kristine.eventastic.Adapter.EventAdapter;
+import com.example.kristine.eventastic.Databases.InternDatabase;
+import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
 
+import java.util.ArrayList;
+
 public class ParticipatingEvents extends AppCompatActivity {
+
+    private ListView listView;
+    private ArrayList<Event> arrayList = new ArrayList<>();
+    private InternDatabase db;
+    private EventAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_participating_events);
-        setActionBarInActivity();
+        initDB();
+        initUI();
+        updateList();
     }
 
-    private void setActionBarInActivity() {
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+    private void updateList() {
+        arrayList.clear();
+        arrayList.addAll(db.getAllEvents());
+        listView.setAdapter(adapter);
+
+    }
+
+    private void initUI() {
+        initListView();
+        initListAdapter();
+    }
+
+    private void initListAdapter() {
+        adapter = new EventAdapter(this, arrayList);
+    }
+
+    private void initListView() {
+        listView = (ListView) findViewById(R.id.listView_of_participating_events);
+    }
+
+    private void initDB() {
+        db = new InternDatabase(this);
     }
 
     @Override
@@ -37,19 +69,17 @@ public class ParticipatingEvents extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
 
-            //hier wird eine Einstellungsactivity geöffnet
-            case R.id.main_activity_settings:
-                Intent intent= new Intent(ParticipatingEvents.this, SettingsActivity.class);
+            case R.id.participating_events_to_all_events:
+                Intent intent = new Intent(ParticipatingEvents.this, EventsInCity.class);
                 startActivity(intent);
-                break;
+                return true;
 
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
-            default:
-                super.onOptionsItemSelected(item);
+
         }
 
-        return true;
+        return false;
     }
 }
