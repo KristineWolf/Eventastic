@@ -7,7 +7,7 @@ import android.preference.PreferenceActivity;
 import com.example.kristine.eventastic.R;
 
 /**
- * Created by Teresa on 28.08.2016.
+ * Created by Teresa on 27.08.2016.
  */
 public class SettingsActivity extends PreferenceActivity implements Preference.OnPreferenceChangeListener{
     @Override

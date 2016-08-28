@@ -96,21 +96,25 @@ public class EventsInCity extends AppCompatActivity {
     public boolean onOptionsItemSelected (MenuItem item) {
         int id= item.getItemId();
         switch (id){
+
             //dadurch kann ein Nutzer eine Veranstaltung hinzufügen
             case R.id.event_in_city_add_event:
                 Intent intent=new Intent(EventsInCity.this,AddEvent.class);
                 startActivity(intent);
                 break;
+
+            //hier wird eine Einstellungsactivity geöffnet
             case R.id.main_activity_settings:
-                //hier wird eine Einstellungsactivity geöffnet
-                //bin mir aber nicht sicher ob des auch eine Activity ist
-                //sollte eig etwas anderes sein --> SharedPreferences -->VL 04 bei Einstellungen
+                Intent intent2= new Intent(EventsInCity.this, SettingsActivity.class);
+                startActivity(intent2);
                 break;
+
             //dadurch kommt der Nutzer zu seinen Veranstaltungen, an denen er teilnehmen will
             case R.id.event_in_city_your_events:
                 Intent i=new Intent(EventsInCity.this,ParticipatingEvents.class);
                 startActivity(i);
                 break;
+
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;

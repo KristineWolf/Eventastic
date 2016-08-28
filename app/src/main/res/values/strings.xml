@@ -6,6 +6,13 @@
     <string name="participating_events">Participating events</string>
 
 
+    
+    <!-- Strings für Spinner AddEvent -->
+    <string-array name="categories">
+        <item>concert</item>
+        <item>festival</item>
+        <item>theater</item>
+    </string-array>
 
     <!-- Strings für SettingsActivity -->
     <string name="about_this_app_title">Hi there!</string>

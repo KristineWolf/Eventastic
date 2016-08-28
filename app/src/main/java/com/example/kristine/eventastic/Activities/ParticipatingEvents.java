@@ -37,11 +37,12 @@ public class ParticipatingEvents extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
 
+            //hier wird eine Einstellungsactivity geöffnet
             case R.id.main_activity_settings:
-                //hier wird eine Einstellungsactivity geöffnet
-                //bin mir aber nicht sicher ob des auch eine Activity ist
-                //sollte eig etwas anderes sein --> SharedPreferences -->VL 04 bei Einstellungen
+                Intent intent= new Intent(ParticipatingEvents.this, SettingsActivity.class);
+                startActivity(intent);
                 break;
+
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;

@@ -8,11 +8,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.kristine.eventastic.Database.OwnEventDatabase;
 import com.example.kristine.eventastic.R;
@@ -24,15 +28,17 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
-public class AddEvent extends AppCompatActivity {
+public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
+    //um ein Event hinzuzufügen, müssen die folgenden 6 Felder ausgefüllt werden
     private EditText editCity;
     private EditText editTitle;
     private EditText editDate;
     private EditText editTime;
     private EditText editDefinition;
-    private EditText editType;
+    private Spinner spinner;
 
+    //Bestätigungs-Button, um Event hinzuzufügen
     private Button enter;
 
     private OwnEventDatabase db;
@@ -49,6 +55,7 @@ public class AddEvent extends AppCompatActivity {
         initClickListener();
     }
 
+    //WANN-Picker: Uhrzeit
     private void initTimeField() {
         editTime.setOnClickListener(new OnClickListener() {
             @Override
@@ -65,7 +72,7 @@ public class AddEvent extends AppCompatActivity {
     }
 
 
-
+    //WANN-Picker: Datum
     private void initDateField() {
         editDate.setOnClickListener(new OnClickListener() {
 
@@ -95,7 +102,9 @@ public class AddEvent extends AppCompatActivity {
                 String time = editTime.getText().toString();
                 String titel = editTitle.getText().toString();
                 String definition = editDefinition.getText().toString();
-                String type = editType.getText().toString();
+
+                TextView selectedItem = (TextView) v;
+                String type = selectedItem.getText().toString();
 
                 if(city.equals("")||date.equals("")||time.equals("")||titel.equals("")||definition.equals("")||type.equals("")){
                     return;
@@ -104,7 +113,6 @@ public class AddEvent extends AppCompatActivity {
                     editTime.setText("");
                     editTitle.setText("");
                     editDate.setText("");
-                    editType.setText("");
                     editDefinition.setText("");
 
                     addEvent(city, date, time, titel, definition, type);
@@ -113,6 +121,8 @@ public class AddEvent extends AppCompatActivity {
         });
     }
 
+
+    //Hinzufügen eines vollständigen Events zur Datenbank
     private void addEvent(String city, String date, String time, String titel, String definition, String type) {
         Date dueDate = getDateFromString(date);
         GregorianCalendar cal = new GregorianCalendar();
@@ -141,11 +151,26 @@ public class AddEvent extends AppCompatActivity {
         editTitle = (EditText) findViewById(R.id.editTitel);
         editDefinition = (EditText) findViewById(R.id.editDefinition);
         editTime = (EditText) findViewById(R.id.editTime);
-        editType = (EditText) findViewById(R.id.editType);
+
+        //Spinner, um Veranstaltungskategorie auszuwählen
+        spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter adapter2 = ArrayAdapter.createFromResource(this, R.array.categories, android.R.layout.simple_spinner_item);
+        spinner.setAdapter(adapter2);
+        spinner.setOnItemSelectedListener(this);
 
         enter = (Button) findViewById(R.id.button);
     }
 
+    //zu überschreibende Methoden des OnItemSelectedListener
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        TextView selectedItem = (TextView) view;
+        Toast.makeText(this, "You selected "+selectedItem.getText(), Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 
 
     public static class DatePickerFragment extends DialogFragment implements
@@ -174,6 +199,7 @@ public class AddEvent extends AppCompatActivity {
         }
     }
 
+    //Fragments für Time und Date
     public static class TimePickerFragment extends DialogFragment
             implements TimePickerDialog.OnTimeSetListener {
 

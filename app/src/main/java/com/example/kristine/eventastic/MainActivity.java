@@ -1,19 +1,18 @@
 package com.example.kristine.eventastic;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.kristine.eventastic.Activities.EventsInCity;
 import com.example.kristine.eventastic.Activities.Explanation;
 import com.example.kristine.eventastic.Activities.ParticipatingEvents;
+import com.example.kristine.eventastic.Activities.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         initClickListener();
     }
 
+    //Registirierung der On-Click-Listener auf die beiden Button der Home-Activity
     private void initClickListener() {
         eventsInSpecifiedCity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,10 +67,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent= new Intent(MainActivity.this, Explanation.class);
                 startActivity(intent);
                 break;
+
             case R.id.main_activity_settings:
                 //hier wird eine Einstellungsactivity geöffnet
-                //bin mir aber nicht sicher ob des auch eine Activity ist
-                //sollte eig etwas anderes sein --> SharedPreferences -->VL 04 bei Einstellungen
+                Intent intent2= new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent2);
                 break;
             default:
                 super.onOptionsItemSelected(item);

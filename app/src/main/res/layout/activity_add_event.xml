@@ -34,18 +34,15 @@
             android:hint="Edit the city"
             android:inputType="text"
             android:textStyle="italic"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
-        <EditText
-
+        <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editType"
-            android:layout_weight="0.5"
-            android:hint="Edit event type"
-            android:inputType="text"
-            android:textStyle="italic"
-            android:textSize="16dp" />
+            android:id="@+id/spinner"
+            android:layout_weight="0.5">
+        </Spinner>
+
     </LinearLayout>
 
 
@@ -128,5 +125,7 @@
         android:layout_marginTop="62dp"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/white"/>
+
+
 </RelativeLayout>
 

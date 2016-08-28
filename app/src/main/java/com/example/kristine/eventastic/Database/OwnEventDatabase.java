@@ -14,10 +14,12 @@ import java.util.ArrayList;
 
 public class OwnEventDatabase {
 
+    //Konstanten für Datenbankname/-version
     private static final String DATABASE_NAME ="ownevents";
     private static final int DATABASE_VERSION= 1;
     private static final String DATABASE_TABLE_ONLINE ="events";
 
+    //Konstanten für Spaltenbezeichner
     public static final String KEY_CITY ="city";
     public static final String KEY_DAY="day";
     public static final String KEY_MONTH="month";
@@ -28,14 +30,16 @@ public class OwnEventDatabase {
     public static final String KEY_DEFINITION="definition";
     public static final String KEY_TYPE="type";
 
+    //Instanzen
     private DBOpenHelper helper;
-
     private SQLiteDatabase db;
 
+    //Konstruktor
     public OwnEventDatabase(Context context){
         helper=new DBOpenHelper(context, DATABASE_NAME,null,DATABASE_VERSION);
     }
 
+    //Aufbau der Verbindung
     private void open() throws SQLException{
         try {
             db=helper.getWritableDatabase();
@@ -44,12 +48,15 @@ public class OwnEventDatabase {
         }
     }
 
+    //Trennen der Verbindung
     private void close(){
         db.close();
     }
 
     //folgendes gilt nur für die online DB --> hier nur als notlösung wird später noch entfernt
 
+
+    //SQL-Operationen
     public void enterEventInOnlineDB(String city, int day, int month, int year, int hour, int min,
                                      String titel, String definition, String type){
         open();
@@ -194,6 +201,7 @@ public class OwnEventDatabase {
      **/
 
 
+    //innere Hilfsklasse
     private class DBOpenHelper extends SQLiteOpenHelper{
         private static final String DATABASE_CREATE_ONLINE ="create table "+DATABASE_TABLE_ONLINE+
                 " ("+KEY_CITY+" string, "
