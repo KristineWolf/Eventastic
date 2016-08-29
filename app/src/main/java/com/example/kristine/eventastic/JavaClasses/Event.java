@@ -47,11 +47,4 @@ public class Event {
 
     public void setType(String type){this.type=type;}
 
-    public String changeIntIntoStringDate(){
-        String iDate=""+date;
-        String day= ""+iDate.charAt(6)+iDate.charAt(7);
-        String month=""+iDate.charAt(4)+iDate.charAt(5);
-        String year =""+iDate.charAt(0)+iDate.charAt(1)+iDate.charAt(2)+iDate.charAt(3);
-        return ""+day+"."+month+"."+year;
-    }
 }

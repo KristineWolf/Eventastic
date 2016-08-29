@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.example.kristine.eventastic.Adapter.CityAdapter;
 import com.example.kristine.eventastic.Databases.ExternDatabase;
+import com.example.kristine.eventastic.JavaClasses.ContemporaryDate;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
 import com.google.firebase.database.DatabaseReference;
@@ -36,17 +37,13 @@ public class EventsInCity extends AppCompatActivity {
         initDB();
         initUI();
         updateList();
-
     }
 
 
 
     private void updateList() {
         arraylist.clear();
-
-
         listView.setAdapter(adapter);
-
     }
 
     private void initDB() {
@@ -61,27 +58,10 @@ public class EventsInCity extends AppCompatActivity {
 
     private void initListView() {
         listView=(ListView) findViewById(R.id.allEventsInACity);
-
     }
 
     private void initListAdapter() {
-
-        Calendar cal=Calendar.getInstance();
-        String month;
-        String day;
-        if(cal.get(Calendar.MONTH)+1<10){
-            month=""+0+(cal.get(Calendar.MONTH)+1);
-        }else {
-            month=""+(cal.get(Calendar.MONTH)+1);
-        }
-        if(cal.get(Calendar.DAY_OF_MONTH)<10){
-            day=""+0+cal.get(Calendar.DAY_OF_MONTH);
-        }else {
-            day=""+cal.get(Calendar.DAY_OF_MONTH);
-        }
-        int realDate = Integer.parseInt(""+cal.get(Calendar.YEAR)+month+day);
-
-        adapter=new CityAdapter(this,helper.getAllEvents(realDate));
+        adapter=new CityAdapter(this,helper.getAllEvents(ContemporaryDate.getContemporaryDate()));
     }
 
     @Override

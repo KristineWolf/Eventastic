@@ -79,11 +79,6 @@ public class ParticipatingEvents extends AppCompatActivity {
                 startActivity(intent3);
                 return true;
 
-            //hier wird eine Einstellungsactivity geöffnet
-            case R.id.event_in_city_settings:
-                Intent intent2= new Intent(ParticipatingEvents.this, SettingsActivity.class);
-                startActivity(intent2);
-                return true;
 
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);

@@ -22,8 +22,10 @@ import android.widget.Toast;
 import com.example.kristine.eventastic.Databases.ExternDatabase;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
+/**
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
+ **/
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -37,7 +39,7 @@ import java.util.Locale;
 
 public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private AutoCompleteTextView editCity;
+    private EditText editCity;
     private Spinner editType;
     private EditText editTitle;
     private EditText editDate;
@@ -65,9 +67,11 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         initDateField();
         initTimeField();
         initClickListener();
+        /**
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+         **/
     }
 
     private void initTimeField() {
@@ -134,6 +138,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
     private void addEvent(String city, String date, String time, String titel, String definition, String type) {
+
         Date dueDate = getDateFromString(date);
         GregorianCalendar cal = new GregorianCalendar();
         cal.setTime(dueDate);
@@ -168,19 +173,17 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
     private void initUI() {
+        initTypeSpinner();
 
         // Get a reference to the AutoCompleteTextView in the layout
-        editCity = (AutoCompleteTextView) findViewById(R.id.editCity);
+        editCity = (EditText) findViewById(R.id.editCity);
         // Get the string array
-        String[] cities = getResources().getStringArray(R.array.cities_array);
+        /*String[] cities = getResources().getStringArray(R.array.cities_array);
         // Create the adapter and set it to the AutoCompleteTextView
         ArrayAdapter<String> adapterCities = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, cities);
         editCity.setAdapter(adapterCities);
+        */
 
-        editType = (Spinner) findViewById(R.id.editType);
-        ArrayAdapter adapterType = ArrayAdapter.createFromResource(this, R.array.eventtype_array, R.layout.support_simple_spinner_dropdown_item);
-        editType.setAdapter(adapterType);
-        editType.setOnItemSelectedListener(this);
 
         editTitle = (EditText) findViewById(R.id.editTitel);
         editDate = (EditText) findViewById(R.id.editDate);
@@ -188,6 +191,13 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         editDefinition = (EditText) findViewById(R.id.editDefinition);
 
         enter = (Button) findViewById(R.id.button_add);
+    }
+
+    private void initTypeSpinner() {
+        editType = (Spinner) findViewById(R.id.editType);
+        ArrayAdapter adapterType = ArrayAdapter.createFromResource(this, R.array.eventtype_array, R.layout.support_simple_spinner_dropdown_item);
+        editType.setAdapter(adapterType);
+        editType.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -199,6 +209,8 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
+
+    /**
     @Override
     public void onStart() {
         super.onStart();
@@ -239,6 +251,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         client.disconnect();
     }
 
+    */
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
@@ -264,6 +277,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
             textView.setText(dateString);
         }
     }
+
 
     public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 

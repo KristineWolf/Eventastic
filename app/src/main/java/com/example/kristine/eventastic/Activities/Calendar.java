@@ -21,30 +21,6 @@ public class Calendar extends AppCompatActivity{
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater =getMenuInflater();
-        inflater.inflate(R.menu.calender_menu,menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected (MenuItem item) {
-        int id= item.getItemId();
-        switch (id){
-
-            //hier wird die Einstellungsactivity geöffnet
-            case R.id.event_in_city_settings:
-                Intent intent2= new Intent(Calendar.this, SettingsActivity.class);
-                startActivity(intent2);
-                break;
-
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                break;
-        }
-
-        return true;
-    }
 
 }
