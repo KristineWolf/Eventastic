@@ -1,19 +1,58 @@
 <resources>
 
-    <!-- Main-Strings -->
+    <!-- general strings -->
+    <string name="settings">Settings</string>
     <string name="app_name">Eventastic</string>
-    <string name="events_city">Events in a city</string>
-    <string name="participating_events">Participating events</string>
+    <string name="events_city">Events in this city</string>
+    <string name="participating_events">Participating Events</string>
+
+    <!-- Strings Information about an Event-->
+    <string name="button_add">Want to Participate</string>
+    <string name="button_added">Have fun!</string>
+    <string name="button_delete">Don´t want to participate</string>
+    <string name="button_deleted">You will not participate.</string>
+    
+    <!-- Strings für AddEvent -->
+    <string name="edit_city">Edit the city</string>
+    <string name="edit_eventType">Edit event type</string>
+
+    <string-array name="cities_array">
+        <item>Augsburg</item>
+        <item>Berlin</item>
+        <item>Bonn</item>
+        <item>Bremen</item>
+        <item>Dortmund</item>
+        <item>Düsseldorf</item>
+        <item>Frankfurt</item>
+        <item>Hamburg</item>
+        <item>Hannover</item>
+        <item>Ingolstadt</item>
+        <item>Köln</item>
+        <item>Leipzig</item>
+        <item>München</item>
+        <item>Nürnberg</item>
+        <item>Regensburg</item>
+        <item>Stuttgart</item>
+        <item>Würzburg</item>
+    </string-array>
 
 
-    <!-- Strings für Spinner AddEvent -->
-    <string-array name="categories">
-        <item>concert</item>
-        <item>festival</item>
-        <item>theater</item>
+    <string-array name="eventtype_array">
+        <item>Konzert</item>
+        <item>Party</item>
+        <item>Festival</item>
+        <item>Theater</item>
+        <item>Comedy</item>
+        <item>Sportevent</item>
+        <item>Sonstiges</item>
     </string-array>
 
     <!-- Strings für SettingsActivity -->
+    <string name="about_this_App">About this App</string>
     <string name="about_this_app_title">Hi there!</string>
     <string name="about_this_app_text">This app is called EVENTASTIC. Once used it, you will never want to do without it again.</string>
+
+    <!-- Strings für CalenderActivity -->
+    <string name="calendar">Kalender</string>
+
 </resources>

@@ -81,7 +81,7 @@
         android:layout_marginTop="25dp"
         android:textColor="@color/white"
         android:background="@color/colorPrimaryDark"
-        android:text="Want to Participate"
+        android:text="@string/button_add"
         android:id="@+id/add_event_button"
         android:layout_below="@+id/clicked_event_definition"
         android:layout_centerHorizontal="true" />

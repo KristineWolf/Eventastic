@@ -48,6 +48,7 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 db.insertEventItem(city.getText().toString(),date.getText().toString(),time.getText().toString(),definition.getText().toString(),type.getText().toString(),titel.getText().toString());
+                add.setText(R.string.button_added);
             }
         });
     }

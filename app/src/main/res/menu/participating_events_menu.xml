@@ -2,10 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <item
-        android:title="Events"
+        android:title="@string/calendar"
+        android:id="@+id/participating_events_to_calendar"
+        android:icon="@drawable/calendar"
+        app:showAsAction="always">
+    </item>
+    <item
+        android:title="@string/participating_events"
         android:id="@+id/participating_events_to_all_events"
         android:icon="@drawable/to_all_events"
         app:showAsAction="always">
     </item>
+
+    <item
+        android:id="@+id/event_in_city_settings"
+        android:icon="@drawable/settings"
+        android:title="@string/settings"
+        app:showAsAction="always">
+    </item>
+
 </menu>

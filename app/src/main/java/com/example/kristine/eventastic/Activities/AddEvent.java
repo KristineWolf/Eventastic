@@ -4,12 +4,13 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -21,6 +22,9 @@ import android.widget.Toast;
 import com.example.kristine.eventastic.Databases.ExternDatabase;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -31,18 +35,26 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
-public class AddEvent extends AppCompatActivity {
+public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private EditText editCity;
+    private AutoCompleteTextView editCity;
+    private Spinner editType;
     private EditText editTitle;
     private EditText editDate;
     private EditText editTime;
     private EditText editDefinition;
-    private EditText editType;
+
+    private TextView typeEvent;
 
     private Button enter;
 
     private ExternDatabase db;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +65,18 @@ public class AddEvent extends AppCompatActivity {
         initDateField();
         initTimeField();
         initClickListener();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     private void initTimeField() {
         editTime.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            showTimePickerDialog(v);
-                                        }
-                                    }
+            @Override
+            public void onClick(View v) {
+                showTimePickerDialog(v);
+            }
+        }
         );
     }
 
@@ -71,10 +86,8 @@ public class AddEvent extends AppCompatActivity {
     }
 
 
-
     private void initDateField() {
         editDate.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 showDatePickerDialog(v);
@@ -88,8 +101,8 @@ public class AddEvent extends AppCompatActivity {
     }
 
     private void initDB() {
-        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
-        db=new ExternDatabase(databaseReference);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        db = new ExternDatabase(databaseReference);
     }
 
 
@@ -97,23 +110,23 @@ public class AddEvent extends AppCompatActivity {
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String city = editCity.getText().toString();
                 String date = editDate.getText().toString();
                 String time = editTime.getText().toString();
                 String titel = editTitle.getText().toString();
                 String definition = editDefinition.getText().toString();
-                String type = editType.getText().toString();
+                String type = typeEvent.getText().toString();
 
-                if(city.equals("")||date.equals("")||time.equals("")||titel.equals("")||definition.equals("")||type.equals("")){
+
+                if (city.equals("") || date.equals("") || time.equals("") || titel.equals("") || definition.equals("") || type.equals("")) {
                     return;
-                }else {
+                } else {
                     editCity.setText("");
                     editTime.setText("");
                     editTitle.setText("");
                     editDate.setText("");
-                    editType.setText("");
                     editDefinition.setText("");
-
                     addEvent(city, date, time, titel, definition, type);
                 }
             }
@@ -126,21 +139,21 @@ public class AddEvent extends AppCompatActivity {
         cal.setTime(dueDate);
         String month;
         String day;
-        if(cal.get(Calendar.MONTH)+1<10){
-            month=""+0+(cal.get(Calendar.MONTH)+1);
-        }else {
-            month=""+(cal.get(Calendar.MONTH)+1);
+        if (cal.get(Calendar.MONTH) + 1 < 10) {
+            month = "" + 0 + (cal.get(Calendar.MONTH) + 1);
+        } else {
+            month = "" + (cal.get(Calendar.MONTH) + 1);
         }
-        if(cal.get(Calendar.DAY_OF_MONTH)<10){
-            day=""+0+cal.get(Calendar.DAY_OF_MONTH);
-        }else {
-            day=""+cal.get(Calendar.DAY_OF_MONTH);
+        if (cal.get(Calendar.DAY_OF_MONTH) < 10) {
+            day = "" + 0 + cal.get(Calendar.DAY_OF_MONTH);
+        } else {
+            day = "" + cal.get(Calendar.DAY_OF_MONTH);
         }
-        int realDate = Integer.parseInt(""+cal.get(Calendar.YEAR)+month+day);
-        Event event = new Event(city,realDate,time,titel,definition,type);
-        boolean saved= db.insertItem(event);
+        int realDate = Integer.parseInt("" + cal.get(Calendar.YEAR) + month + day);
+        Event event = new Event(city, realDate, time, titel, definition, type);
+        boolean saved = db.insertItem(event);
 
-
+        Toast.makeText(this,"You added the Event '"+titel+"'.",Toast.LENGTH_LONG).show();
     }
 
     private Date getDateFromString(String dateString) {
@@ -155,20 +168,79 @@ public class AddEvent extends AppCompatActivity {
     }
 
     private void initUI() {
-        editCity = (EditText) findViewById(R.id.editCity);
-        editDate = (EditText) findViewById(R.id.editDate);
+
+        // Get a reference to the AutoCompleteTextView in the layout
+        editCity = (AutoCompleteTextView) findViewById(R.id.editCity);
+        // Get the string array
+        String[] cities = getResources().getStringArray(R.array.cities_array);
+        // Create the adapter and set it to the AutoCompleteTextView
+        ArrayAdapter<String> adapterCities = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, cities);
+        editCity.setAdapter(adapterCities);
+
+        editType = (Spinner) findViewById(R.id.editType);
+        ArrayAdapter adapterType = ArrayAdapter.createFromResource(this, R.array.eventtype_array, R.layout.support_simple_spinner_dropdown_item);
+        editType.setAdapter(adapterType);
+        editType.setOnItemSelectedListener(this);
+
         editTitle = (EditText) findViewById(R.id.editTitel);
-        editDefinition = (EditText) findViewById(R.id.editDefinition);
+        editDate = (EditText) findViewById(R.id.editDate);
         editTime = (EditText) findViewById(R.id.editTime);
-        editType = (EditText) findViewById(R.id.editType);
+        editDefinition = (EditText) findViewById(R.id.editDefinition);
 
         enter = (Button) findViewById(R.id.button_add);
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        typeEvent = (TextView) view;
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "AddEvent Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app URL is correct.
+                Uri.parse("android-app://com.example.kristine.eventastic.Activities/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(client, viewAction);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "AddEvent Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app URL is correct.
+                Uri.parse("android-app://com.example.kristine.eventastic.Activities/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(client, viewAction);
+        client.disconnect();
+    }
 
 
-    public static class DatePickerFragment extends DialogFragment implements
-            DatePickerDialog.OnDateSetListener {
+    public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -193,8 +265,7 @@ public class AddEvent extends AppCompatActivity {
         }
     }
 
-    public static class TimePickerFragment extends DialogFragment
-            implements TimePickerDialog.OnTimeSetListener {
+    public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -208,24 +279,21 @@ public class AddEvent extends AppCompatActivity {
         }
 
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            TextView t=(TextView)getActivity().findViewById(R.id.editTime);
+            TextView t = (TextView) getActivity().findViewById(R.id.editTime);
             String hour;
             String min;
-            if(hourOfDay<10){
-                hour="0"+hourOfDay;
+            if (hourOfDay < 10) {
+                hour = "0" + hourOfDay;
+            } else {
+                hour = "" + hourOfDay;
             }
-            else {
-                hour=""+hourOfDay;
+            if (minute < 10) {
+                min = "0" + minute;
+            } else {
+                min = "" + minute;
             }
-            if(minute<10){
-                min="0"+minute;
-            }
-            else {
-                min=""+minute;
-            }
-            t.setText(hour+":"+min);
+            t.setText(hour + ":" + min);
         }
-
 
 
     }

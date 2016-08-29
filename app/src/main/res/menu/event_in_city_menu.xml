@@ -10,6 +10,13 @@
     </item>
 
     <item
+        android:title="My Events"
+        android:id="@+id/event_in_city_to_my_events"
+        android:icon="@drawable/to_particpating_events"
+        app:showAsAction="always">
+    </item>
+
+    <item
         android:id="@+id/event_in_city_settings"
         android:icon="@drawable/settings"
         android:title="Settings"

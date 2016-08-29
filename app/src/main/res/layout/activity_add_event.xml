@@ -26,26 +26,26 @@
         android:layout_marginTop="40dp"
         android:id="@+id/line1">
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/editCity"
-            android:layout_weight="0.5"
-            android:hint="Edit the city"
-            android:inputType="text"
-            android:textStyle="italic"
-            android:textSize="16dp" />
-
-        <EditText
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editType"
             android:layout_weight="0.5"
-            android:hint="Edit event type"
+            android:hint="@string/edit_city"
             android:inputType="text"
             android:textStyle="italic"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:id="@+id/editType"
+            android:hint="@string/edit_eventType"
+            android:inputType="text"
+            android:textStyle="italic"
+            android:textSize="16sp" >
+        </Spinner>
     </LinearLayout>
 
 

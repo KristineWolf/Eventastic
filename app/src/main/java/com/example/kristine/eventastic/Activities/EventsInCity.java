@@ -1,15 +1,12 @@
 package com.example.kristine.eventastic.Activities;
 
 import android.content.Intent;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.kristine.eventastic.Adapter.CityAdapter;
@@ -99,25 +96,29 @@ public class EventsInCity extends AppCompatActivity {
         int id= item.getItemId();
         switch (id){
 
+            //hier kann der Nutzer ein Event zur Datenbank hinzufügen
             case R.id.event_in_city_add_event:
                 Intent intent=new Intent(EventsInCity.this,AddEvent.class);
                 startActivity(intent);
-                return true;
 
+            //hier wird eine Einstellungsactivity geöffnet
             case R.id.event_in_city_settings:
-                //hier wird eine Einstellungsactivity geöffnet
-                //bin mir aber nicht sicher ob des auch eine Activity ist
-                //sollte eig etwas anderes sein --> SharedPreferences -->VL 04 bei Einstellungen
-                return true;
+                Intent intent2= new Intent(EventsInCity.this, SettingsActivity.class);
+                startActivity(intent2);
+                break;
 
             //dadurch kommt der Nutzer zu seinen Veranstaltungen, an denen er teilnehmen will
+            case R.id.event_in_city_to_my_events:
+                Intent intent3 = new Intent(EventsInCity.this, ParticipatingEvents.class);
+                startActivity(intent3);
+                break;
 
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
-                return true;
+                break;
 
         }
 
-        return false;
+        return true;
     }
 }

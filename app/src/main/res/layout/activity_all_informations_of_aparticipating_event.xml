@@ -82,7 +82,7 @@
         android:layout_marginTop="25dp"
         android:textColor="@color/white"
         android:background="@color/colorPrimaryDark"
-        android:text="Don´t want to participate"
+        android:text="@string/button_delete"
         android:id="@+id/delete_event_button"
         android:layout_below="@+id/information_of_participating_event_definition"
         android:layout_centerHorizontal="true" />
