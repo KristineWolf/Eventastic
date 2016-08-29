@@ -77,7 +77,7 @@ public class InternDatabase {
                 String time=cursor.getString(3);
                 String titel=cursor.getString(4);
                 String type =cursor.getString(5);
-
+                //checking if event took place
                 if(date< ContemporaryDate.getContemporaryDate()){
                     deleteEvent(city,time,titel,type,definition);
                 }else {
