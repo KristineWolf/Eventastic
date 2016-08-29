@@ -51,14 +51,6 @@
         </activity>
 
         <activity
-            android:name=".Activities.EventAlone"
-            android:parentActivityName=".Activities.EventsInCity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.EventsInCity" />
-        </activity>
-
-        <activity
             android:name=".Activities.Calendar"
             android:parentActivityName=".MainActivity">
             <meta-data
