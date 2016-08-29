@@ -44,19 +44,23 @@ public class InternDatabase {
 
     private void close(){db.close();}
 
-    public boolean insertEventItem(String city, String date, String time, String defintion, String type, String title){
+    public void insertEventItem(String city, String date, String time, String defintion, String type, String title){
         open();
-        ContentValues values=new ContentValues();
+        ContentValues values = new ContentValues();
         values.put(KEY_CITY, city);
         values.put(KEY_DATE, ChangeDateFormat.changeFirstIntoDateFormatAfterwardsIntoInteger(date));
-        values.put(KEY_TIME,time);
+        values.put(KEY_TIME, time);
         values.put(KEY_TITEL, title);
         values.put(KEY_DEFINITION, defintion);
         values.put(KEY_TYPE, type);
         db.insert(DATABASE_TABLE, null, values);
         close();
-        return true;
     }
+
+
+
+
+
 
     public ArrayList<Event> getAllEvents(){
         open();
@@ -72,15 +76,27 @@ public class InternDatabase {
                 String time=cursor.getString(3);
                 String titel=cursor.getString(4);
                 String type =cursor.getString(5);
-
-                events.add(new Event(city,date,time,titel,definition,type));
+                if(!events.contains(new Event(city,date,time,titel,definition,type))) {
+                    events.add(new Event(city, date, time, titel, definition, type));
+                }
             }while (cursor.moveToNext());
 
         }
         cursor.close();
         close();
 
+
         return events;
+    }
+
+    private ArrayList<Event> probe(ArrayList<Event> events) {
+        ArrayList<Event> result = new ArrayList<>();
+        for(int i=0; i<events.size()-1; i++){
+            if(!result.equals(events.get(i))){
+               result.add(events.get(i));
+            }
+        }
+        return result;
     }
 
     public void deleteEvent(String city, String time, String titel,String type, String definition){

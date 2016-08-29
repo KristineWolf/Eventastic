@@ -6,9 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kristine.eventastic.Databases.InternDatabase;
+import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
+import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
+
+import java.sql.Array;
+import java.util.ArrayList;
 
 public class AllInformationsOfAnEvent extends AppCompatActivity {
 
@@ -47,8 +53,11 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.insertEventItem(city.getText().toString(),date.getText().toString(),time.getText().toString(),definition.getText().toString(),type.getText().toString(),titel.getText().toString());
-                add.setText(R.string.button_added);
+                    db.deleteEvent(city.getText().toString(), time.getText().toString(),titel.getText().toString(),type.getText().toString(), definition.getText().toString());
+                    db.insertEventItem(city.getText().toString(), date.getText().toString(), time.getText().toString(), definition.getText().toString(), type.getText().toString(), titel.getText().toString());
+                    add.setText(R.string.button_added);
+
+
             }
         });
     }
