@@ -81,4 +81,48 @@ public class ExternDatabase {
             }
         }
     }
+
+    public ArrayList<Event> getEventsForACity(final int date, final String city){
+
+        db.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                getDataForACity(dataSnapshot,date,city);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                getDataForACity(dataSnapshot,date,city);
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+        return events;
+    }
+
+    private void getDataForACity(DataSnapshot dataSnapshot, int date, String city) {
+        events.clear();
+        for(DataSnapshot data:dataSnapshot.getChildren()){
+            Event event = data.getValue(Event.class);
+            if(data.getValue(Event.class).getDate()>=date&& data.getValue(Event.class).getCity().equals(city)){
+                events.add(event);
+            }
+        }
+    }
 }
