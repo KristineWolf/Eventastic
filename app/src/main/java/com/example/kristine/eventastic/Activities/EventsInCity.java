@@ -100,6 +100,7 @@ public class EventsInCity extends AppCompatActivity {
             case R.id.event_in_city_add_event:
                 Intent intent=new Intent(EventsInCity.this,AddEvent.class);
                 startActivity(intent);
+                break;
 
             //hier wird eine Einstellungsactivity geöffnet
             case R.id.event_in_city_settings:

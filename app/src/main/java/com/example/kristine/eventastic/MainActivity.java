@@ -67,22 +67,22 @@ public class MainActivity extends AppCompatActivity {
             case R.id.main_activity_explanation:
                 Intent intent= new Intent(MainActivity.this, Explanation.class);
                 startActivity(intent);
-                break;
+                return true;
 
             //öffnet die Kalender-Activity
             case R.id.main_activity_calendar:
                 Intent intent3 = new Intent(MainActivity.this, Calendar.class);
                 startActivity(intent3);
+                return true;
 
             case R.id.main_activity_settings:
                 //hier wird eine Einstellungsactivity geöffnet
                 Intent intent2= new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent2);
-                break;
-            default:
-                super.onOptionsItemSelected(item);
+                return true;
+
         }
 
-        return true;
+        return false;
     }
 }
