@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.kristine.eventastic.Activities.AllInformationsOfAParticipatingEvent;
+import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
 
@@ -44,11 +45,8 @@ public class EventAdapter extends ArrayAdapter<Event>{
             TextView type =(TextView)v.findViewById(R.id.event_type);
 
             titel.setText(arrayList.get(position).getTitel());
-            String actuellDate=""+arrayList.get(position).getDate();
-            String year= ""+actuellDate.charAt(0)+actuellDate.charAt(1)+actuellDate.charAt(2)+actuellDate.charAt(3);
-            String month=""+actuellDate.charAt(4)+actuellDate.charAt(5);
-            String day=""+actuellDate.charAt(6)+actuellDate.charAt(7);
-            date.setText(""+day+"."+month+"."+year);
+
+            date.setText(ChangeDateFormat.changeIntoString(arrayList.get(position).getDate()));
 
             time.setText(arrayList.get(position).getTime());
 
@@ -59,15 +57,12 @@ public class EventAdapter extends ArrayAdapter<Event>{
             @Override
             public void onClick(View v) {
                 String[]details=new String[6];
-                String actuellDate=""+arrayList.get(position).getDate();
-                String year= ""+actuellDate.charAt(0)+actuellDate.charAt(1)+actuellDate.charAt(2)+actuellDate.charAt(3);
-                String month=""+actuellDate.charAt(4)+actuellDate.charAt(5);
-                String day=""+actuellDate.charAt(6)+actuellDate.charAt(7);
+
                 details[0]=arrayList.get(position).getCity();
                 details[1]=arrayList.get(position).getTitel();
                 details[2]=arrayList.get(position).getTime();
                 details[3]=arrayList.get(position).getType();
-                details[4]=""+day+"."+month+"."+year;
+                details[4]= ChangeDateFormat.changeIntoString(arrayList.get(position).getDate());
                 details[5]=arrayList.get(position).getDefintion();
                 seeAllDetailsOfEvent(details);
             }

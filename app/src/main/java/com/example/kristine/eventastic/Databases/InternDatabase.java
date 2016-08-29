@@ -7,6 +7,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
 import com.example.kristine.eventastic.JavaClasses.Event;
 
 import java.util.ArrayList;
@@ -44,13 +45,10 @@ public class InternDatabase {
     private void close(){db.close();}
 
     public boolean insertEventItem(String city, String date, String time, String defintion, String type, String title){
-        String day= ""+date.charAt(0)+date.charAt(1);
-        String month=""+date.charAt(3)+date.charAt(4);
-        String year=""+date.charAt(6)+date.charAt(7)+date.charAt(8)+date.charAt(9);
         open();
         ContentValues values=new ContentValues();
         values.put(KEY_CITY, city);
-        values.put(KEY_DATE, Integer.parseInt(""+year+month+day));
+        values.put(KEY_DATE, ChangeDateFormat.changeFirstIntoDateFormatAfterwardsIntoInteger(date));
         values.put(KEY_TIME,time);
         values.put(KEY_TITEL, title);
         values.put(KEY_DEFINITION, defintion);
@@ -79,15 +77,13 @@ public class InternDatabase {
             }while (cursor.moveToNext());
 
         }
+        cursor.close();
         close();
 
         return events;
     }
 
-    public void deleteEvent(String city,String date, String time, String titel,String type, String definition){
-        String day= ""+date.charAt(0)+date.charAt(1);
-        String month=""+date.charAt(3)+date.charAt(4);
-        String year=""+date.charAt(6)+date.charAt(7)+date.charAt(8)+date.charAt(9);
+    public void deleteEvent(String city, String time, String titel,String type, String definition){
         String whereClause= KEY_CITY+" =? AND "+KEY_TIME+" =? AND "+KEY_TITEL+ " =? AND "+
                 KEY_TYPE+" =? AND "+KEY_DEFINITION+" =?";
         open();

@@ -47,7 +47,7 @@ public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.deleteEvent(city.getText().toString(),date.getText().toString(),time.getText().toString(),titel.getText().toString(),type.getText().toString(),definition.getText().toString());
+                db.deleteEvent(city.getText().toString(),time.getText().toString(),titel.getText().toString(),type.getText().toString(),definition.getText().toString());
                 delete.setText(R.string.button_deleted);
             }
         });

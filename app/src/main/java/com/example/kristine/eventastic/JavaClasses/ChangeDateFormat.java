@@ -12,12 +12,6 @@ import java.util.Locale;
  */
 public class ChangeDateFormat {
 
-    public static int changeIntoInteger(String sDate){
-        String day= ""+sDate.charAt(6)+sDate.charAt(7);
-        String month=""+sDate.charAt(4)+sDate.charAt(5);
-        String year =""+sDate.charAt(0)+sDate.charAt(1)+sDate.charAt(2)+sDate.charAt(3);
-        return Integer.parseInt(""+year+month+day);
-    }
 
     public static String changeIntoString(int iDate){
         String date = ""+iDate;
