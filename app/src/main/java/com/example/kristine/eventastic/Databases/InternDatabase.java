@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
+import com.example.kristine.eventastic.JavaClasses.ContemporaryDate;
 import com.example.kristine.eventastic.JavaClasses.Event;
 
 import java.util.ArrayList;
@@ -76,9 +77,13 @@ public class InternDatabase {
                 String time=cursor.getString(3);
                 String titel=cursor.getString(4);
                 String type =cursor.getString(5);
-                if(!events.contains(new Event(city,date,time,titel,definition,type))) {
+
+                if(date< ContemporaryDate.getContemporaryDate()){
+                    deleteEvent(city,time,titel,type,definition);
+                }else {
                     events.add(new Event(city, date, time, titel, definition, type));
                 }
+
             }while (cursor.moveToNext());
 
         }
@@ -89,15 +94,7 @@ public class InternDatabase {
         return events;
     }
 
-    private ArrayList<Event> probe(ArrayList<Event> events) {
-        ArrayList<Event> result = new ArrayList<>();
-        for(int i=0; i<events.size()-1; i++){
-            if(!result.equals(events.get(i))){
-               result.add(events.get(i));
-            }
-        }
-        return result;
-    }
+
 
     public void deleteEvent(String city, String time, String titel,String type, String definition){
         String whereClause= KEY_CITY+" =? AND "+KEY_TIME+" =? AND "+KEY_TITEL+ " =? AND "+
