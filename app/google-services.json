@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "1044760967750",
-    "firebase_url": "https://androidprojekt16-fd51a.firebaseio.com",
-    "project_id": "androidprojekt16-fd51a",
-    "storage_bucket": "androidprojekt16-fd51a.appspot.com"
+    "project_number": "4662130225",
+    "firebase_url": "https://android-129c6.firebaseio.com",
+    "project_id": "android-129c6",
+    "storage_bucket": "android-129c6.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1044760967750:android:797ddb4f269d31e6",
+        "mobilesdk_app_id": "1:4662130225:android:797ddb4f269d31e6",
         "android_client_info": {
           "package_name": "com.example.kristine.eventastic"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1044760967750-p4l2rdmkks1nbv7jitve23q3bf86cf4b.apps.googleusercontent.com",
+          "client_id": "4662130225-eed0i0542a9d05ccpu9jvdg499ap5jvo.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDJfgJpGQGUt_yOO8niiCfbh9ZAySun7eI"
+          "current_key": "AIzaSyBErsXXb9Hvvv1SRNZXOdWlTuK6VcAaLUc"
         }
       ],
       "services": {

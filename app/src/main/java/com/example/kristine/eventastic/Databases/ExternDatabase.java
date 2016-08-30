@@ -23,7 +23,7 @@ public class ExternDatabase {
     private Boolean saved;
 
     public ExternDatabase(){
-        Firebase mRef=new Firebase("https://androidprojekt16-fd51a.firebaseio.com/");
+        Firebase mRef=new Firebase("https://android-129c6.firebaseio.com/");
         db=mRef.child("events");
     }
 
