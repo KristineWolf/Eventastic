@@ -15,6 +15,7 @@ import com.example.kristine.eventastic.Activities.Explanation;
 import com.example.kristine.eventastic.Activities.ParticipatingEvents;
 import com.example.kristine.eventastic.Activities.SettingsActivity;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private Button eventsInSpecifiedCity;

@@ -14,6 +14,7 @@ import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Kristine on 28.08.2016.
@@ -26,6 +27,7 @@ public class EventAdapter extends ArrayAdapter<Event>{
         super(context, R.layout.event, arrayList);
         this.arrayList=arrayList;
         this.context=context;
+
     }
 
     public View getView(final int position, View convertView, ViewGroup parent){
@@ -53,31 +55,8 @@ public class EventAdapter extends ArrayAdapter<Event>{
             type.setText(arrayList.get(position).getType());
         }
 
-        v.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String[]details=new String[6];
-
-                details[0]=arrayList.get(position).getCity();
-                details[1]=arrayList.get(position).getTitel();
-                details[2]=arrayList.get(position).getTime();
-                details[3]=arrayList.get(position).getType();
-                details[4]= ChangeDateFormat.changeIntoString(arrayList.get(position).getDate());
-                details[5]=arrayList.get(position).getDefintion();
-                seeAllDetailsOfEvent(details);
-            }
-        });
         return v;
     }
 
-    private void seeAllDetailsOfEvent(String[] allInformations) {
-        Intent intent= new Intent(context,AllInformationsOfAParticipatingEvent.class);
-        intent.putExtra("city",allInformations[0]);
-        intent.putExtra("titel",allInformations[1]);
-        intent.putExtra("time",allInformations[2]);
-        intent.putExtra("type",allInformations[3]);
-        intent.putExtra("date",allInformations[4]);
-        intent.putExtra("definition",allInformations[5]);
-        context.startActivity(intent);
-    }
+
 }

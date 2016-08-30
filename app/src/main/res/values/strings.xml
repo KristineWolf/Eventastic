@@ -11,7 +11,7 @@
     <string name="button_added">Have fun!</string>
     <string name="button_delete">Don´t want to participate</string>
     <string name="button_deleted">You will not participate.</string>
-    
+
     <!-- Strings für AddEvent -->
     <string name="edit_city">Edit the city</string>
     <string name="edit_eventType">Edit event type</string>

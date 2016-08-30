@@ -7,10 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.kristine.eventastic.Adapter.EventAdapter;
 import com.example.kristine.eventastic.Databases.InternDatabase;
+import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
 
@@ -57,6 +60,20 @@ public class ParticipatingEvents extends AppCompatActivity {
 
     private void initListView() {
         listView = (ListView) findViewById(R.id.listView_of_participating_events);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ParticipatingEvents.this, AllInformationsOfAParticipatingEvent.class);
+                intent.putExtra("city",arrayList.get(position).getCity());
+                intent.putExtra("titel",arrayList.get(position).getTitel());
+                intent.putExtra("time",arrayList.get(position).getTime());
+                intent.putExtra("type",arrayList.get(position).getType());
+                intent.putExtra("date", ChangeDateFormat.changeIntoString(arrayList.get(position).getDate()));
+                intent.putExtra("definition",arrayList.get(position).getDefintion());
+
+                startActivity(intent);
+            }
+        });
     }
 
     private void initDB() {

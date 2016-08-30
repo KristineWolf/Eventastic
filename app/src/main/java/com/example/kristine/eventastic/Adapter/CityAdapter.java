@@ -45,41 +45,18 @@ public class CityAdapter extends ArrayAdapter<Event> {
             TextView type =(TextView)v.findViewById(R.id.event_type);
 
             titel.setText(arrayList.get(position).getTitel());
-            String currentlDate= ChangeDateFormat.changeIntoString(arrayList.get(position).getDate());
-            date.setText(currentlDate);
+            date.setText(ChangeDateFormat.changeIntoString(arrayList.get(position).getDate()));
 
             time.setText(arrayList.get(position).getTime());
 
             type.setText(arrayList.get(position).getType());
         }
-        v.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String[]details=new String[6];
 
-                details[0]=arrayList.get(position).getCity();
-                details[1]=arrayList.get(position).getTitel();
-                details[2]=arrayList.get(position).getTime();
-                details[3]=arrayList.get(position).getType();
-                details[4]=ChangeDateFormat.changeIntoString(arrayList.get(position).getDate());
-                details[5]=arrayList.get(position).getDefintion();
-                seeAllDetailsOfEvent(details);
-            }
-        });
 
         return v;
     }
 
-    private void seeAllDetailsOfEvent(String...allInformations){
-        Intent intent= new Intent(context,AllInformationsOfAnEvent.class);
-        intent.putExtra("city",allInformations[0]);
-        intent.putExtra("titel",allInformations[1]);
-        intent.putExtra("time",allInformations[2]);
-        intent.putExtra("type",allInformations[3]);
-        intent.putExtra("date",allInformations[4]);
-        intent.putExtra("definition",allInformations[5]);
-        context.startActivity(intent);
-    }
+
 
 
 }

@@ -96,6 +96,8 @@ public class InternDatabase {
 
 
 
+
+
     public void deleteEvent(String city, String time, String titel,String type, String definition){
         String whereClause= KEY_CITY+" =? AND "+KEY_TIME+" =? AND "+KEY_TITEL+ " =? AND "+
                 KEY_TYPE+" =? AND "+KEY_DEFINITION+" =?";

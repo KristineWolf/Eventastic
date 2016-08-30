@@ -1,9 +1,11 @@
 package com.example.kristine.eventastic.JavaClasses;
 
+import java.io.Serializable;
+
 /**
  * Created by Kristine on 10.08.2016.
  */
-public class Event implements Comparable<Event>{
+public class Event implements Comparable<Event> {
 
     private String city;
     private int date;
