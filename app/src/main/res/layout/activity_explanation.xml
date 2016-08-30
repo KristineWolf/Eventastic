@@ -9,25 +9,38 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.kristine.eventastic.Activities.Explanation">
 
+
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/about_this_app_title"
-        android:id="@+id/textView"
+        android:text="@string/about_this_App"
+        android:id="@+id/about_this_app_title"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textStyle="bold"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/about_this_app_text"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/textView"
+        android:id="@+id/informatio_about_event"
+        android:layout_below="@+id/about_this_app_title"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/logo2"
+        android:background="@color/colorPrimaryDark"
+        android:layout_alignParentBottom="true" />
 
 
 </RelativeLayout>

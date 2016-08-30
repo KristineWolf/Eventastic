@@ -49,7 +49,6 @@
 
     <!-- Strings für SettingsActivity -->
     <string name="about_this_App">About this App</string>
-    <string name="about_this_app_title">Hi there!</string>
     <string name="about_this_app_text">This app is called EVENTASTIC. Once used it, you will never want to do without it again.</string>
 
     <!-- Strings für CalenderActivity -->
