@@ -12,35 +12,48 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
+        android:layout_height="match_parent"
+        android:layout_weight="0.4"
         android:id="@+id/logo"
         android:src="@drawable/logo2"
         android:background="@color/colorPrimaryDark"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="0.6"
+        android:weightSum="1">
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.25"
+        android:layout_height="match_parent"
         android:text="@string/events_city"
+        android:drawableBottom="@drawable/to_all_events"
         android:id="@+id/toAllEventsInACity"
-        android:layout_marginTop="35dp"
+        android:layout_weight="0.5"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginRight="7.5dp"
         android:textStyle="bold"
         android:textSize="20sp"
         android:background="@color/colorPrimaryDark"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white" />
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.25"
+        android:layout_height="match_parent"
         android:text="@string/participating_events"
         android:id="@+id/EventsYouWantToParticipate"
-        android:layout_marginTop="35dp"
+        android:drawableBottom="@drawable/to_particpating_events"
+        android:layout_weight="0.5"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="7.5dp"
+        android:layout_marginBottom="40dp"
         android:textSize="20sp"
         android:textStyle="bold"
         android:background="@color/colorPrimaryDark"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white" />
 
+    </LinearLayout>
 
 </LinearLayout>
