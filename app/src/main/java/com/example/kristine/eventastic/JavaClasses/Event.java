@@ -3,7 +3,7 @@ package com.example.kristine.eventastic.JavaClasses;
 /**
  * Created by Kristine on 10.08.2016.
  */
-public class Event {
+public class Event implements Comparable<Event>{
 
     private String city;
     private int date;
@@ -47,4 +47,12 @@ public class Event {
 
     public void setType(String type){this.type=type;}
 
+    @Override
+    public int compareTo(Event another) {
+        int comparisonResult=(""+date).compareTo(""+another.getDate());
+        if(comparisonResult==0){
+            comparisonResult=time.compareTo(another.getTime());
+        }
+        return comparisonResult;
+    }
 }

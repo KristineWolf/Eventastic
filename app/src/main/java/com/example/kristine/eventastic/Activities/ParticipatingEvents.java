@@ -15,6 +15,7 @@ import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ParticipatingEvents extends AppCompatActivity {
 
@@ -35,8 +36,14 @@ public class ParticipatingEvents extends AppCompatActivity {
     private void updateList() {
         arrayList.clear();
         arrayList.addAll(db.getAllEvents());
-        listView.setAdapter(adapter);
 
+        listView.setAdapter(adapter);
+        sortData();
+    }
+
+    private void sortData() {
+        Collections.sort(arrayList);
+        adapter.notifyDataSetChanged();
     }
 
     private void initUI() {
