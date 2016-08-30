@@ -35,22 +35,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="YOUR NEXT EVENT: "
-            android:textStyle="italic"
-            android:layout_weight="0.2"/>
+            android:text="@string/calendar_next_event"
+            android:textColor="@color/red"
+            android:textStyle="bold"
+            android:layout_weight="0.3"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:hint="TITEL"
+            android:hint="@string/hint_title"
             android:id="@+id/information_of_participating_event_title"
-            android:layout_weight="0.8"
+            android:layout_weight="0.7"
             android:textStyle="bold"/>
-
-
     </LinearLayout>
-
 
     <LinearLayout
         android:orientation="horizontal"
@@ -58,55 +56,33 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/first_line"
         android:id="@+id/linear_layout_1"
-        android:layout_marginTop="25dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Event type"
-            android:id="@+id/information_of_participating_event_type"
-            android:layout_weight="0.5"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="City"
-            android:id="@+id/information_of_participating_event_city"
-            android:layout_weight="0.5"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linear_layout_1"
-        android:id="@+id/linear_layout_2"
         android:layout_marginTop="15dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Date"
-            android:drawableLeft="@drawable/date"
-            android:id="@+id/information_of_participating_event_date"
-            android:layout_weight="0.4"/>
+            android:hint="@string/hint_city"
+            android:id="@+id/information_of_participating_event_city"
+            android:layout_weight="0.33"
+            android:textSize="23sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Time"
+            android:hint="@string/hint_date"
+            android:drawableLeft="@drawable/date"
+            android:id="@+id/information_of_participating_event_date"
+            android:layout_weight="0.33"
+            android:textSize="23sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_time"
             android:drawableLeft="@drawable/time"
             android:id="@+id/information_of_participating_event_time"
-            android:layout_weight="0.6"/>
+            android:layout_weight="0.33"
+            android:textSize="23sp"/>
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Definition"
-        android:id="@+id/information_of_participating_event_definition"
-        android:layout_below="@+id/linear_layout_2"
-        android:layout_marginTop="15dp" />
-
 
 </RelativeLayout>

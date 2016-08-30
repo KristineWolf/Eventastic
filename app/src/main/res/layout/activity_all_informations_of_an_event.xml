@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:hint="TITEL"
+        android:textSize="25sp"
         android:id="@+id/clicked_event_titel"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -30,18 +31,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Event type"
-            android:id="@+id/clicked_event_type"
+            android:hint="@string/hint_city"
+            android:textStyle="italic"
+            android:id="@+id/clicked_event_city"
             android:layout_weight="0.5"
-            android:layout_gravity="left"/>
+            android:textSize="23sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="City"
-            android:id="@+id/clicked_event_city"
+            android:hint="@string/hint_eventType"
+            android:id="@+id/clicked_event_type"
             android:layout_weight="0.5"
-            android:layout_gravity="right" />
+            android:textSize="23sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -50,23 +52,25 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/first_linear_layout"
         android:id="@+id/second_linear_layout"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="25dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Date"
+            android:hint="@string/hint_date"
             android:drawableLeft="@drawable/date"
             android:id="@+id/clicked_event_date"
-            android:layout_weight="0.5"/>
+            android:layout_weight="0.5"
+            android:textSize="23sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Time"
+            android:hint="@string/hint_time"
             android:drawableLeft="@drawable/time"
             android:id="@+id/clicked_event_time"
-            android:layout_weight="0.5"/>
+            android:layout_weight="0.5"
+            android:textSize="23sp"/>
     </LinearLayout>
 
     <TextView
@@ -75,7 +79,8 @@
         android:hint="New Text"
         android:id="@+id/clicked_event_definition"
         android:layout_below="@+id/second_linear_layout"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        android:textSize="20sp"/>
 
     <Button
         android:layout_width="match_parent"
@@ -84,7 +89,7 @@
         android:textStyle="bold"
         android:layout_marginTop="25dp"
         android:textColor="@color/white"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/red"
         android:text="@string/button_add"
         android:id="@+id/add_event_button"
         android:layout_below="@+id/clicked_event_definition"

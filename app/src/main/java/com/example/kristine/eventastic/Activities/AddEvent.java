@@ -4,13 +4,11 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -23,20 +21,19 @@ import com.example.kristine.eventastic.Databases.ExternDatabase;
 import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
-/**
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
- **/
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
+
+/**
+ * import com.google.android.gms.appindexing.Action;
+ * import com.google.android.gms.appindexing.AppIndex;
+ **/
 
 public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -142,7 +139,8 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         Event event = new Event(city, ChangeDateFormat.changeFirstIntoDateFormatAfterwardsIntoInteger(date), time, titel, definition, type);
         boolean saved = db.insertItem(event);
 
-        Toast.makeText(this,"You added the Event '"+titel+"'.",Toast.LENGTH_LONG).show();
+        String messageAdded = getResources().getString(R.string.toast_added);
+        Toast.makeText(this,messageAdded+titel+"'.",Toast.LENGTH_LONG).show();
     }
 
 

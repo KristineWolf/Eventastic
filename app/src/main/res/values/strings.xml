@@ -6,6 +6,10 @@
     <string name="events_city">Events in this city</string>
     <string name="participating_events">Participating Events</string>
 
+    <!-- strings für Toasts -->
+    <string name="toast_added">"You added the Event '"</string>
+    <string name="toast_deleted">"Event is deleted from your list."</string>
+
     <!-- Strings Information about an Event-->
     <string name="button_add">Want to Participate</string>
     <string name="button_added">Have fun!</string>
@@ -49,9 +53,43 @@
 
     <!-- Strings für SettingsActivity -->
     <string name="about_this_App">About this App</string>
-    <string name="about_this_app_text">This app is called EVENTASTIC. Once used it, you will never want to do without it again.</string>
+
+    <string name="about_this_app_what">What it is about.</string>
+    <string name="about_this_app_what_text">This app is called EVENTASTIC. It helps you finding
+        upcoming events in your city. Also you can add an event to the list, so that other users of this app can
+        participate in it. Once used EVENTASTIC, you will never want to create your nightlife without it again.</string>
+
+    <string name="about_this_app_how">How to use it.</string>
+    <string name="about_this_app_how_text">EVENTASTIC is for free very easy to use. You don´t have to create
+        an account and sign in. First, you simply select a CITY or let the app find your position. Then have a look on
+        different types of events and click on I WANT TO PARTICIPATE. Your upcoming events will be listed on
+        PARTICIPATING EVENTS. That´s it.</string>
+
+    <string name="about_this_app_help">What you can do.</string>
+    <string name="about_this_app_help_text">To improve the use of this application, tell your friends and
+        family about EVENTASTIC. The more people using this app, the more
+        events will be shared and the better for all of us.</string>
+
+
+    <string name="about_this_app_contact">Contact us.</string>
+    <!-- eventastic.app@gmail.com, passwort:projekt2016 -->
+    <string name="about_this_app_contact_text">Do you have any suggestions, criticisms, or anything
+        else that you want to tell us? Simply write us an e-mail to eventastic.app@gmail.com. We are looking
+        forward to hearing from you!</string>
+
 
     <!-- Strings für CalenderActivity -->
-    <string name="calendar">Kalender</string>
+    <string name="calendar">Calendar</string>
+
+
+    <!-- Strings für HINTS -->
+    <string name="hint_title">TITLE</string>
+    <string name="hint_city">City</string>
+    <string name="hint_eventType">Event type</string>
+    <string name="hint_date">Date</string>
+    <string name="hint_time">Time</string>
+    <string name="hint_definition">Definition</string>
+    <string name="calendar_next_event">YOUR NEXT EVENT:</string>
+
 
 </resources>
