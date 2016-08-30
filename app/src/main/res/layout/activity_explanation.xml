@@ -10,6 +10,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.kristine.eventastic.Activities.Explanation">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
@@ -87,5 +95,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/about_this_app_contact_text"
         android:id="@+id/about_contact_text"        />
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
