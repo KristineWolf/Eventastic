@@ -26,14 +26,13 @@
         android:layout_marginTop="40dp"
         android:id="@+id/line1">
 
-        <EditText
-            android:id="@+id/editCity"
+        <AutoCompleteTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:hint="@string/edit_city"
             android:inputType="text"
-            android:textStyle="italic"
+            android:hint="@string/edit_city"
+            android:id="@+id/editCity"
             android:textSize="16sp" />
 
         <Spinner
@@ -126,7 +125,7 @@
         android:layout_below="@+id/line4"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="62dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/red"
         android:textColor="@color/white"/>
 
 </RelativeLayout>

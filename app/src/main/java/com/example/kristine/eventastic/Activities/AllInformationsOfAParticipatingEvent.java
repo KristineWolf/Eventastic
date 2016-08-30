@@ -1,11 +1,12 @@
 package com.example.kristine.eventastic.Activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kristine.eventastic.Databases.InternDatabase;
 import com.example.kristine.eventastic.R;
@@ -48,7 +49,12 @@ public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 db.deleteEvent(city.getText().toString(),time.getText().toString(),titel.getText().toString(),type.getText().toString(),definition.getText().toString());
+                Intent intent = new Intent(AllInformationsOfAParticipatingEvent.this, ParticipatingEvents.class);
+                startActivity(intent);
                 delete.setText(R.string.button_deleted);
+                String messageDeleted = getResources().getString(R.string.toast_deleted);
+                Toast toast = Toast.makeText(AllInformationsOfAParticipatingEvent.this,messageDeleted, Toast.LENGTH_LONG);
+                toast.show();
             }
         });
     }

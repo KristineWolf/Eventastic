@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:hint="TITEL"
+        android:textSize="25sp"
+        android:hint="@string/hint_title"
         android:id="@+id/information_of_participating_event_title"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -31,16 +32,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Event type"
-            android:id="@+id/information_of_participating_event_type"
-            android:layout_weight="0.5"/>
+            android:hint="@string/hint_city"
+            android:textStyle="italic"
+            android:id="@+id/information_of_participating_event_city"
+            android:layout_weight="0.5"
+            android:textSize="23sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="City"
-            android:id="@+id/information_of_participating_event_city"
-            android:layout_weight="0.5"/>
+            android:hint="@string/hint_eventType"
+            android:id="@+id/information_of_participating_event_type"
+            android:layout_weight="0.5"
+            android:textSize="23sp"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -54,25 +59,30 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Date"
+            android:hint="@string/hint_date"
+            android:drawableLeft="@drawable/date"
             android:id="@+id/information_of_participating_event_date"
-            android:layout_weight="0.4"/>
+            android:layout_weight="0.5"
+            android:textSize="23sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Time"
+            android:hint="@string/hint_time"
+            android:drawableLeft="@drawable/time"
             android:id="@+id/information_of_participating_event_time"
-            android:layout_weight="0.6"/>
+            android:layout_weight="0.5"
+            android:textSize="23sp"/>
     </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Definition"
+        android:hint="@string/hint_definition"
         android:id="@+id/information_of_participating_event_definition"
         android:layout_below="@+id/linear_layout_2"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        android:textSize="20sp"/>
 
     <Button
         android:layout_width="match_parent"
@@ -81,7 +91,7 @@
         android:textStyle="bold"
         android:layout_marginTop="25dp"
         android:textColor="@color/white"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/red"
         android:text="@string/button_delete"
         android:id="@+id/delete_event_button"
         android:layout_below="@+id/information_of_participating_event_definition"

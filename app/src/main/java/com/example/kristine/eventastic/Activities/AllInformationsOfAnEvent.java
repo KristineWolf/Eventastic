@@ -1,20 +1,14 @@
 package com.example.kristine.eventastic.Activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.kristine.eventastic.Databases.InternDatabase;
-import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
-import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
-
-import java.sql.Array;
-import java.util.ArrayList;
 
 public class AllInformationsOfAnEvent extends AppCompatActivity {
 
@@ -65,7 +59,7 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
 
 
     private void setUI(Bundle extras) {
-        city.setText(extras.getString("city"));
+        city.setText("in "+ extras.getString("city"));
         titel.setText(extras.getString("titel"));
         definition.setText(extras.getString("definition"));
         type.setText(extras.getString("type"));
