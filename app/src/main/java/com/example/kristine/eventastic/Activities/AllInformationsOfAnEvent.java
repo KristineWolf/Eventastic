@@ -12,12 +12,12 @@ import com.example.kristine.eventastic.R;
 
 public class AllInformationsOfAnEvent extends AppCompatActivity {
 
-    private TextView city;
-    private TextView titel;
-    private TextView definition;
-    private TextView type;
-    private TextView date;
-    private TextView time;
+    private String city;
+    private String titel;
+    private String definition;
+    private String type;
+    private String date;
+    private String time;
 
     private Button add;
 
@@ -30,13 +30,20 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
         setContentView(R.layout.activity_all_informations_of_an_event);
         Intent intent=getIntent();
         Bundle extras =intent.getExtras();
+        informationInBundle(extras);
         initUI();
-        setUI(extras);
         initDB();
         initOnClickListener();
     }
 
-
+    private void informationInBundle(Bundle extras) {
+        city=extras.getString("city");
+        time=extras.getString("time");
+        titel=extras.getString("titel");
+        date=extras.getString("date");
+        definition=extras.getString("definition");
+        type=extras.getString("type");
+    }
 
 
     private void initDB() {
@@ -47,8 +54,8 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    db.deleteEvent(city.getText().toString(), time.getText().toString(),titel.getText().toString(),type.getText().toString(), definition.getText().toString());
-                    db.insertEventItem(city.getText().toString(), date.getText().toString(), time.getText().toString(), definition.getText().toString(), type.getText().toString(), titel.getText().toString());
+                    db.deleteEvent(city, time,titel,type, definition);
+                    db.insertEventItem(city, date, time, definition, type, titel);
                     add.setText(R.string.button_added);
 
 
@@ -58,27 +65,25 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
 
 
 
-    private void setUI(Bundle extras) {
-        city.setText("in "+ extras.getString("city"));
-        titel.setText(extras.getString("titel"));
-        definition.setText(extras.getString("definition"));
-        type.setText(extras.getString("type"));
-        date.setText(extras.getString("date"));
-        time.setText(extras.getString("time"));
 
-
-    }
 
 
 
     private void initUI() {
-        city=(TextView)findViewById(R.id.clicked_event_city);
-        titel=(TextView)findViewById(R.id.clicked_event_titel);
-        definition=(TextView)findViewById(R.id.clicked_event_definition);
-        type=(TextView)findViewById(R.id.clicked_event_type);
-        date=(TextView)findViewById(R.id.clicked_event_date);
-        time=(TextView)findViewById(R.id.clicked_event_time);
+        TextView tCity=(TextView)findViewById(R.id.clicked_event_city);
+        TextView tTitel=(TextView)findViewById(R.id.clicked_event_titel);
+        TextView tDefinition=(TextView)findViewById(R.id.clicked_event_definition);
+        TextView tType=(TextView)findViewById(R.id.clicked_event_type);
+        TextView tDate=(TextView)findViewById(R.id.clicked_event_date);
+        TextView tTime=(TextView)findViewById(R.id.clicked_event_time);
 
         add=(Button)findViewById(R.id.add_event_button);
+
+        tCity.setText("in "+ city);
+        tTitel.setText(titel);
+        tDefinition.setText(definition);
+        tType.setText(type);
+        tDate.setText(date);
+        tTime.setText(time);
     }
 }
