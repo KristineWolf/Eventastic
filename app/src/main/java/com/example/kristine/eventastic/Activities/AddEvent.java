@@ -35,7 +35,8 @@ import java.util.Locale;
 
 public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private EditText editCity;
+    private AutoCompleteTextView editCities;
+
     private EditText editTitle;
     private EditText editDate;
     private EditText editTime;
@@ -102,7 +103,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
             @Override
             public void onClick(View v) {
 
-                String city = editCity.getText().toString();
+                String city = editCities.getText().toString();
                 String date = editDate.getText().toString();
                 String time = editTime.getText().toString();
                 String titel = editTitle.getText().toString();
@@ -113,7 +114,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
                 if (city.equals("") || date.equals("") || time.equals("") || titel.equals("") || definition.equals("") || type.equals("")) {
                     return;
                 } else {
-                    editCity.setText("");
+                    editCities.setText("");
                     editTime.setText("");
                     editTitle.setText("");
                     editDate.setText("");
@@ -150,7 +151,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
     private void initCityAutocomplete() {
-        AutoCompleteTextView editCities = (AutoCompleteTextView)findViewById(R.id.editCity);
+        editCities = (AutoCompleteTextView)findViewById(R.id.editCity);
         String[] citiesToSelect = getResources().getStringArray(R.array.cities_array);
         ArrayAdapter<String> adapterCities = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,citiesToSelect);
         editCities.setAdapter(adapterCities);

@@ -13,12 +13,12 @@ import com.example.kristine.eventastic.R;
 
 public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
 
-    private TextView city;
-    private TextView titel;
-    private TextView definition;
-    private TextView type;
-    private TextView date;
-    private TextView time;
+    private String city;
+    private String titel;
+    private String definition;
+    private String type;
+    private String date;
+    private String time;
 
     private Button delete;
 
@@ -31,13 +31,21 @@ public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
         setContentView(R.layout.activity_all_informations_of_aparticipating_event);
         Intent intent=getIntent();
         Bundle extras =intent.getExtras();
+        informationInBundle(extras);
         initUI();
-        setUI(extras);
         initDB();
         initOnClickListener();
     }
 
 
+    private void informationInBundle(Bundle extras) {
+        city=extras.getString("city");
+        time=extras.getString("time");
+        titel=extras.getString("titel");
+        date=extras.getString("date");
+        definition=extras.getString("definition");
+        type=extras.getString("type");
+    }
 
 
     private void initDB() {
@@ -48,7 +56,7 @@ public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.deleteEvent(city.getText().toString(),time.getText().toString(),titel.getText().toString(),type.getText().toString(),definition.getText().toString());
+                db.deleteEvent(city,time,titel,type,definition);
                 Intent intent = new Intent(AllInformationsOfAParticipatingEvent.this, ParticipatingEvents.class);
                 startActivity(intent);
                 delete.setText(R.string.button_deleted);
@@ -61,26 +69,25 @@ public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
 
 
 
-    private void setUI(Bundle extras) {
-        city.setText(extras.getString("city"));
-        titel.setText(extras.getString("titel"));
-        definition.setText(extras.getString("definition"));
-        type.setText(extras.getString("type"));
-        date.setText(extras.getString("date"));
-        time.setText(extras.getString("time"));
 
-    }
 
 
 
     private void initUI() {
-        city=(TextView)findViewById(R.id.information_of_participating_event_city);
-        titel=(TextView)findViewById(R.id.information_of_participating_event_title);
-        definition=(TextView)findViewById(R.id.information_of_participating_event_definition);
-        type=(TextView)findViewById(R.id.information_of_participating_event_type);
-        date=(TextView)findViewById(R.id.information_of_participating_event_date);
-        time=(TextView)findViewById(R.id.information_of_participating_event_time);
+        TextView tCity=(TextView)findViewById(R.id.information_of_participating_event_city);
+        TextView tTitel=(TextView)findViewById(R.id.information_of_participating_event_title);
+        TextView tDefinition=(TextView)findViewById(R.id.information_of_participating_event_definition);
+        TextView tType=(TextView)findViewById(R.id.information_of_participating_event_type);
+        TextView tDate=(TextView)findViewById(R.id.information_of_participating_event_date);
+        TextView tTime=(TextView)findViewById(R.id.information_of_participating_event_time);
 
         delete=(Button)findViewById(R.id.delete_event_button);
+
+        tCity.setText("in "+city);
+        tTitel.setText(titel);
+        tDefinition.setText(definition);
+        tType.setText(type);
+        tDate.setText(date);
+        tTime.setText(time);
     }
 }
