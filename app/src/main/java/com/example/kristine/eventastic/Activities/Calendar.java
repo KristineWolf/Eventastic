@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.kristine.eventastic.Adapter.EventAdapter;
 import com.example.kristine.eventastic.Databases.InternDatabase;
+import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
 
@@ -45,6 +46,7 @@ public class Calendar extends AppCompatActivity{
         getCurrentDateTime();
     }
 
+    //zur Hilfe ich hab die Zeit als String gespeichert in der Form hh:mm falls des wichtig ist
     private void getCurrentDateTime() {
         //falls übereinstimmt mit nächstem Event, 1 Stunde vor Beginn Notification senden.
         //noch nicht fertig
@@ -73,7 +75,10 @@ public class Calendar extends AppCompatActivity{
         date = (TextView)findViewById(R.id.information_of_next_event_date);
         //date.setText(arrayList.get(0).getDate());
         //--> funktioniert nicht, App stürzt ab. konnte auf die Schnelle keimen Fehler finden
-        date.setText("31.08.2016");
+        // weil ich das Datum als int wert in der Form gespeichert hab: yyyymmdd
+        //dadurch lässt sich schneller überprüfen ob eine Veranstaltung schon stattgefunden hat
+        //deswegen musst du den int wert in einen String umwandeln mit der ChangeDateFormat klasse
+        date.setText(ChangeDateFormat.changeIntoString(arrayList.get(0).getDate()));
         time = (TextView)findViewById(R.id.information_of_next_event_time);
         time.setText(arrayList.get(0).getTime());
     }
