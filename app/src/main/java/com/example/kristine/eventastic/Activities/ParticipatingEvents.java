@@ -99,7 +99,7 @@ public class ParticipatingEvents extends AppCompatActivity {
                 return true;
 
             case R.id.participating_events_to_calendar:
-                Intent intent3 = new Intent(ParticipatingEvents.this,Calendar.class);
+                Intent intent3 = new Intent(ParticipatingEvents.this,CalendarActivity.class);
                 startActivity(intent3);
                 return true;
 
