@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:hint="@string/hint_title"
-            android:id="@+id/information_of_participating_event_title"
+            android:id="@+id/information_of_next_event_title"
             android:layout_weight="0.7"
             android:textStyle="bold"/>
     </LinearLayout>
@@ -62,16 +62,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/hint_city"
-            android:id="@+id/information_of_participating_event_city"
+            android:id="@+id/information_of_next_event_city"
             android:layout_weight="0.33"
-            android:textSize="23sp"/>
+            android:textSize="17sp"
+            android:textStyle="italic"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/hint_date"
             android:drawableLeft="@drawable/date"
-            android:id="@+id/information_of_participating_event_date"
+            android:id="@+id/information_of_next_event_date"
             android:layout_weight="0.33"
             android:textSize="23sp"/>
 
@@ -80,7 +81,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/hint_time"
             android:drawableLeft="@drawable/time"
-            android:id="@+id/information_of_participating_event_time"
+            android:id="@+id/information_of_next_event_time"
             android:layout_weight="0.33"
             android:textSize="23sp"/>
     </LinearLayout>

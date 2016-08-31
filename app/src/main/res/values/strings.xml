@@ -57,7 +57,7 @@
     <string name="about_this_app_what">What it is about.</string>
     <string name="about_this_app_what_text">This app is called EVENTASTIC. It helps you finding
         upcoming events in your city. Also you can add an event to the list, so that other users of this app can
-        participate in it. Once used EVENTASTIC, you will never want to create your nightlife without it again.</string>
+        participate in it. Once used EVENTASTIC, you will never want to explore the nightlife without it again.</string>
 
     <string name="about_this_app_how">How to use it.</string>
     <string name="about_this_app_how_text">EVENTASTIC is for free very easy to use. You don´t have to create
@@ -80,7 +80,10 @@
 
     <!-- Strings für CalenderActivity -->
     <string name="calendar">Calendar</string>
+    <string name="calendar_next_event">YOUR NEXT EVENT:</string>
 
+    <string name="notification_title">Event</string>
+    <string name="notification_text">....</string>
 
     <!-- Strings für HINTS -->
     <string name="hint_title">TITLE</string>
@@ -89,7 +92,6 @@
     <string name="hint_date">Date</string>
     <string name="hint_time">Time</string>
     <string name="hint_definition">Definition</string>
-    <string name="calendar_next_event">YOUR NEXT EVENT:</string>
 
 
 </resources>

@@ -69,7 +69,6 @@ public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
         date.setText(extras.getString("date"));
         time.setText(extras.getString("time"));
 
-
     }
 
 

@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -23,25 +22,20 @@ import com.example.kristine.eventastic.Databases.ExternDatabase;
 import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
-/**
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
- **/
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
+
+/**
+ * import com.google.android.gms.appindexing.Action;
+ * import com.google.android.gms.appindexing.AppIndex;
+ **/
 
 public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private EditText editCity;
-    private Spinner editType;
     private EditText editTitle;
     private EditText editDate;
     private EditText editTime;
@@ -140,31 +134,29 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
 
     private void initUI() {
         initTypeSpinner();
-
-        // Get a reference to the AutoCompleteTextView in the layout
-        editCity = (EditText) findViewById(R.id.editCity);
-        // Get the string array
-        /*String[] cities = getResources().getStringArray(R.array.cities_array);
-        // Create the adapter and set it to the AutoCompleteTextView
-        ArrayAdapter<String> adapterCities = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, cities);
-        editCity.setAdapter(adapterCities);
-        */
-
-
+        initCityAutocomplete();
         editTitle = (EditText) findViewById(R.id.editTitel);
         editDate = (EditText) findViewById(R.id.editDate);
         editTime = (EditText) findViewById(R.id.editTime);
         editDefinition = (EditText) findViewById(R.id.editDefinition);
-
         enter = (Button) findViewById(R.id.button_add);
     }
 
     private void initTypeSpinner() {
-        editType = (Spinner) findViewById(R.id.editType);
+        Spinner editType = (Spinner) findViewById(R.id.editType);
         ArrayAdapter adapterType = ArrayAdapter.createFromResource(this, R.array.eventtype_array, R.layout.support_simple_spinner_dropdown_item);
         editType.setAdapter(adapterType);
         editType.setOnItemSelectedListener(this);
     }
+
+    private void initCityAutocomplete() {
+        AutoCompleteTextView editCities = (AutoCompleteTextView)findViewById(R.id.editCity);
+        String[] citiesToSelect = getResources().getStringArray(R.array.cities_array);
+        ArrayAdapter<String> adapterCities = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,citiesToSelect);
+        editCities.setAdapter(adapterCities);
+        editCities.setThreshold(1);
+    }
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
