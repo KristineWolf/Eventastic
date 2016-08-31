@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.kristine.eventastic.Activities.Calendar;
+import com.example.kristine.eventastic.Activities.CalendarActivity;
 import com.example.kristine.eventastic.Activities.EventsInCity;
 import com.example.kristine.eventastic.Activities.Explanation;
 import com.example.kristine.eventastic.Activities.ParticipatingEvents;
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
             //öffnet die Kalender-Activity
             case R.id.main_activity_calendar:
-                Intent intent3 = new Intent(MainActivity.this, Calendar.class);
+                Intent intent3 = new Intent(MainActivity.this, CalendarActivity.class);
                 startActivity(intent3);
                 return true;
 

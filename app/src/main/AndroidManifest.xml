@@ -82,7 +82,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.EventsInCity" />
         </activity>
-        <activity android:name=".Probe.ProbeActivity"></activity>
+        <activity android:name=".Probe.ProbeActivity" />
+        <activity android:name=".Activities.CalendarActivity"></activity>
     </application>
 
 </manifest>

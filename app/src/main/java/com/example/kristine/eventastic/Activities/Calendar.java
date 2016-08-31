@@ -7,6 +7,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.CalendarView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kristine.eventastic.Adapter.EventAdapter;
 import com.example.kristine.eventastic.Databases.InternDatabase;
@@ -100,6 +101,13 @@ public class Calendar extends AppCompatActivity{
 
     private void initUI() {
         calendarView = (CalendarView)findViewById(R.id.calendarView);
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
+
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                Toast.makeText(getApplicationContext(),dayOfMonth+"."+month+"."+year,Toast.LENGTH_SHORT).show();
+            }
+        });
         initListAdapter();
     }
 
