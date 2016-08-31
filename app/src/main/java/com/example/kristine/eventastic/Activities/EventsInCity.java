@@ -56,7 +56,7 @@ public class EventsInCity extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Event event=dataSnapshot.getValue(Event.class);
-                if(event.getDate()>ContemporaryDate.getContemporaryDate()) {
+                if(event.getDate()>=ContemporaryDate.getContemporaryDate()) {
                     arraylist.add(event);
                     Collections.sort(arraylist);
                     adapter.notifyDataSetChanged();
@@ -66,7 +66,7 @@ public class EventsInCity extends AppCompatActivity {
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 Event event=dataSnapshot.getValue(Event.class);
-                if(event.getDate()>ContemporaryDate.getContemporaryDate()) {
+                if(event.getDate()>=ContemporaryDate.getContemporaryDate()) {
                     arraylist.add(event);
                     Collections.sort(arraylist);
                     adapter.notifyDataSetChanged();
@@ -76,7 +76,7 @@ public class EventsInCity extends AppCompatActivity {
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 Event event=dataSnapshot.getValue(Event.class);
-                if(event.getDate()>ContemporaryDate.getContemporaryDate()) {
+                if(event.getDate()>=ContemporaryDate.getContemporaryDate()) {
                     arraylist.add(event);
                     Collections.sort(arraylist);
                     adapter.notifyDataSetChanged();
