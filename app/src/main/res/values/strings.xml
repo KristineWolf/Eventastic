@@ -6,6 +6,8 @@
     <string name="events_city">Events in this city</string>
     <string name="participating_events">Participating Events</string>
 
+    <string name="all_events_title">Events in</string>
+
     <!-- strings für Toasts -->
     <string name="toast_added">"You added the Event '"</string>
     <string name="toast_deleted">"Event is deleted from your list."</string>
@@ -92,7 +94,7 @@
         <item>Sonstiges</item>
     </string-array>
 
-    <!-- Strings für SettingsActivity -->
+    <!-- Strings für ExplanationActivity -->
     <string name="about_this_App">About this App</string>
 
     <string name="about_this_app_what">What it is about.</string>
@@ -123,6 +125,8 @@
     <string name="calendar">Calendar</string>
     <string name="calendar_next_event">YOUR NEXT EVENT:</string>
 
+
+
     <string name="notification_title">Event in one hour - be prepared!</string>
     <string name="notification_text_1">At </string>
     <string name="notification_text_2">the event ´</string>
@@ -135,6 +139,7 @@
     <string name="hint_date">Date</string>
     <string name="hint_time">Time</string>
     <string name="hint_definition">Definition</string>
+    <string name="button_get_position">get my position</string>
 
 
 </resources>

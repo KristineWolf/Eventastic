@@ -45,8 +45,10 @@ public class Calendar extends AppCompatActivity{
         initDB();
         initUI();
         updateList();
-        setNextEvent();
-        checkNotification();
+        if (arrayList.size() != 0){
+            setNextEvent();
+            checkNotification();
+        }
     }
 
     private void checkNotification() {

@@ -2,15 +2,16 @@ package com.example.kristine.eventastic.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.kristine.eventastic.Adapter.CityAdapter;
 import com.example.kristine.eventastic.Databases.ExternDatabase;
@@ -21,19 +22,15 @@ import com.example.kristine.eventastic.R;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.FirebaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 
 
 public class EventsInCity extends AppCompatActivity {
 
     private ListView listView;
-
+    private SearchView searchForCity;
     private ExternDatabase helper;
 
     private CityAdapter adapter;
@@ -102,8 +99,18 @@ public class EventsInCity extends AppCompatActivity {
     }
 
     private void initUI() {
+        setupSearchView();
+        initCityName();
         initListView();
         initListAdapter();
+    }
+
+    private void initCityName() {
+        TextView city = (TextView)findViewById(R.id.title_events_in_this_city);
+        city.setText(getString(R.string.all_events_title)+ " jeweilige Stadt");
+    }
+
+    private void setupSearchView() {
     }
 
     private void initListView() {

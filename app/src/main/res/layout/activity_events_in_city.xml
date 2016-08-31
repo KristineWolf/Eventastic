@@ -20,10 +20,18 @@
         <SearchView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/searchView"
+            android:id="@+id/searchViewCities"
             android:background="@color/white"
             android:queryHint="Enter a city"
-            />
+            android:iconifiedByDefault="false"
+            android:layout_weight="0.5"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_get_position"
+            android:text="@string/button_get_position"
+            android:layout_weight="0.5"/>
 
 
     </LinearLayout>
