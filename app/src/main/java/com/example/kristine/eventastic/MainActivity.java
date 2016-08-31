@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.kristine.eventastic.Activities.Calendar;
-import com.example.kristine.eventastic.Activities.CalendarActivity;
 import com.example.kristine.eventastic.Activities.EventsInCity;
 import com.example.kristine.eventastic.Activities.Explanation;
 import com.example.kristine.eventastic.Activities.ParticipatingEvents;
@@ -54,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         eventsTheUserWantsToVisit=(Button)findViewById(R.id.EventsYouWantToParticipate);
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater =getMenuInflater();
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
             //öffnet die Kalender-Activity
             case R.id.main_activity_calendar:
-                Intent intent3 = new Intent(MainActivity.this, CalendarActivity.class);
+                Intent intent3 = new Intent(MainActivity.this, Calendar.class);
                 startActivity(intent3);
                 return true;
 
