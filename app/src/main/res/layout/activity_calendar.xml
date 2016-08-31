@@ -7,21 +7,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/calendar"
-        android:id="@+id/title_calendar"
-        android:textStyle="bold"
-        android:textSize="26sp"
-        android:textAlignment="center"/>
 
     <CalendarView
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/calendarView"
-        android:layout_below="@+id/title_calendar"
         android:firstDayOfWeek="2"
         android:showWeekNumber="true"
         android:layout_centerHorizontal="true" />
@@ -37,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/calendar_next_event"
+            android:id="@+id/title_next_event"
             android:textColor="@color/red"
             android:textStyle="bold"
             android:layout_weight="0.3"/>

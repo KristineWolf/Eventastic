@@ -2,10 +2,12 @@ package com.example.kristine.eventastic.Activities;
 
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,8 +37,6 @@ public class Calendar extends AppCompatActivity{
     private TextView date;
     private TextView time;
 
-    private String df;
-
     private CalendarView calendarView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,56 +48,29 @@ public class Calendar extends AppCompatActivity{
         if (arrayList.size() != 0){
             setNextEvent();
             checkNotification();
+        } else {
+            actionsWhenNoEventYet();
+
         }
     }
 
-    private void checkNotification() {
-        //heute Datum und nächstes Event Datum
-        Date dateTo = java.util.Calendar.getInstance().getTime();
-        SimpleDateFormat dateFormatterDate = new SimpleDateFormat("dd.MM.yyyy");
-        String dateToday = dateFormatterDate.format(dateTo);
-        String dateEvent = ChangeDateFormat.changeIntoString(arrayList.get(0).getDate());
+    private void actionsWhenNoEventYet() {
+        title.setVisibility(View.INVISIBLE);
+        city.setVisibility(View.INVISIBLE);
+        date.setVisibility(View.INVISIBLE);
+        time.setVisibility(View.INVISIBLE);
+        TextView nextEvent = (TextView) findViewById(R.id.title_next_event);
 
-        // aktuelle Uhrzeit EventUhrzeit
-        SimpleDateFormat dateFormatterTime = new SimpleDateFormat("HH:mm");
-        String timeNow = dateFormatterTime.format(new Date());
-        String timeEvent = arrayList.get(0).getTime();
-
-        //falls Datum und Zeit übereinstimmt mit nächstem Event, Notification senden.
-        //Bin noch am überlegen, wie man das am besten löst, dass sie eine Stunde eher abgeschickt wird
-        if (dateEvent.equals(dateToday)){
-            if (timeEvent.equals(timeNow)){
-                sendNotification();
+        //TODO: evtl noch anders gestalten
+        nextEvent.setText(getString(R.string.nothing_on_list));
+        nextEvent.setTextSize(20);
+        nextEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Calendar.this,EventsInCity.class);
+                startActivity(intent);
             }
-        }
-    }
-
-    private void sendNotification() {
-        //habe im raw orner verschiedene Töne hinzugefügt. Kannst du gerne auch ändern bzw Töne für Tasten hinzufügen
-        Uri sound = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.snare_drum_roll);
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.to_all_events)
-                        .setContentTitle(getString(R.string.notification_title))
-                        .setContentText(getString(R.string.notification_text_1)+" "+ arrayList.get(0).getTime() + " "+getString(R.string.notification_text_2) + arrayList.get(0).getTitel()+getString(R.string.notification_text_3))
-                        .setSound(sound);
-
-        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.notify(1, mBuilder.build());
-    }
-
-    private void setNextEvent() {
-        title = (TextView)findViewById(R.id.information_of_next_event_title);
-        title.setText(arrayList.get(0).getTitel());
-        city  = (TextView)findViewById(R.id.information_of_next_event_city);
-        city.setText(arrayList.get(0).getCity());
-
-        date = (TextView)findViewById(R.id.information_of_next_event_date);
-        String dateEvent = ChangeDateFormat.changeIntoString(arrayList.get(0).getDate());
-        date.setText(dateEvent);
-
-        time = (TextView)findViewById(R.id.information_of_next_event_time);
-        time.setText(arrayList.get(0).getTime());
+        });
     }
 
     private void updateList() {
@@ -116,9 +89,13 @@ public class Calendar extends AppCompatActivity{
     }
 
     private void initUI() {
+        title = (TextView)findViewById(R.id.information_of_next_event_title);
+        city  = (TextView)findViewById(R.id.information_of_next_event_city);
+        date = (TextView)findViewById(R.id.information_of_next_event_date);
+        time = (TextView)findViewById(R.id.information_of_next_event_time);
         calendarView = (CalendarView)findViewById(R.id.calendarView);
+        calendarView.setDate(java.util.Calendar.getInstance().getTimeInMillis(),true,true);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
-
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 Toast.makeText(getApplicationContext(),dayOfMonth+"."+month+"."+year,Toast.LENGTH_SHORT).show();
@@ -131,6 +108,53 @@ public class Calendar extends AppCompatActivity{
         adapter = new EventAdapter(this, arrayList);
     }
 
+
+    private void setNextEvent() {
+        title.setText(arrayList.get(0).getTitel());
+        city.setText(arrayList.get(0).getCity());
+        String dateEvent = ChangeDateFormat.changeIntoString(arrayList.get(0).getDate());
+        time.setText(arrayList.get(0).getTime());
+        date.setText(dateEvent);
+        // TODO: dieses Datum im CalendarView markieren. Event setzen geht leider nicht, da es ein default CalendarView ist.
+    }
+
+
+    private void checkNotification() {
+        //heute Datum und nächstes Event Datum
+        Date dateTo = java.util.Calendar.getInstance().getTime();
+        SimpleDateFormat dateFormatterDate = new SimpleDateFormat("dd.MM.yyyy");
+        String dateToday = dateFormatterDate.format(dateTo);
+        String dateEvent = ChangeDateFormat.changeIntoString(arrayList.get(0).getDate());
+
+        // aktuelle Uhrzeit EventUhrzeit
+        SimpleDateFormat dateFormatterTime = new SimpleDateFormat("HH:mm");
+        String timeNow = dateFormatterTime.format(new Date());
+        String timeEvent = arrayList.get(0).getTime();
+
+        //falls Datum und Zeit übereinstimmt mit nächstem Event, Notification senden.
+        //TODO: Notification eine Stunde eher abschicken
+        if (dateEvent.equals(dateToday)){
+            if (timeEvent.equals(timeNow)){
+                sendNotification();
+            }
+        }
+    }
+
+    private void sendNotification() {
+        //habe im raw orner verschiedene Töne hinzugefügt. Kannst du gerne auch ändern bzw Töne für Tasten hinzufügen
+        Uri sound = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.snare_drum_roll);
+        long[] vibrate = {500,1000};
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.to_all_events)
+                        .setContentTitle(getString(R.string.notification_title))
+                        .setContentText(getString(R.string.notification_text_1)+" "+ arrayList.get(0).getTime() + " "+getString(R.string.notification_text_2) + arrayList.get(0).getTitel()+getString(R.string.notification_text_3))
+                        .setSound(sound)
+                        .setVibrate(vibrate);
+
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.notify(1, mBuilder.build());
+    }
 
 
 }
