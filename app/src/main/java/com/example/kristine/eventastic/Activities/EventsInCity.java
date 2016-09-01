@@ -2,12 +2,8 @@ package com.example.kristine.eventastic.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -16,17 +12,12 @@ import android.widget.TextView;
 import com.example.kristine.eventastic.Adapter.CityAdapter;
 import com.example.kristine.eventastic.Databases.ExternDatabase;
 import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
-import com.example.kristine.eventastic.JavaClasses.ContemporaryDate;
 import com.example.kristine.eventastic.JavaClasses.Event;
-import com.example.kristine.eventastic.JavaClasses.Probe;
-import com.example.kristine.eventastic.JavaClasses.Probe2;
+import com.example.kristine.eventastic.JavaClasses.AllEventsPuffer;
+import com.example.kristine.eventastic.JavaClasses.AllEventsInACity;
 import com.example.kristine.eventastic.R;
-import com.firebase.client.ChildEventListener;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.FirebaseError;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 
 public class EventsInCity extends AppCompatActivity {
@@ -48,8 +39,8 @@ public class EventsInCity extends AppCompatActivity {
         Intent intent=getIntent();
         Bundle extras=intent.getExtras();
         selectedCity = extras.getString("selected_city");
-        Probe2.clearEvent();
-        allCities.addAll(Probe.getAllEvents());
+        AllEventsInACity.clearEvent();
+        allCities.addAll(AllEventsPuffer.getAllEvents());
         searching();
         initDB();
         initUI();
@@ -60,7 +51,7 @@ public class EventsInCity extends AppCompatActivity {
     private void searching() {
         for(int i=0; i<allCities.size(); i++){
             if(selectedCity.equals(allCities.get(i).getCity())){
-                Probe2.enterEvent(allCities.get(i));
+                AllEventsInACity.enterEvent(allCities.get(i));
             }
         }
     }
@@ -68,7 +59,7 @@ public class EventsInCity extends AppCompatActivity {
 
     private void updateList() {
         arraylist.clear();
-        arraylist.addAll(Probe2.getSpecificCities());
+        arraylist.addAll(AllEventsInACity.getSpecificCities());
         listView.setAdapter(adapter);
     }
 

@@ -15,7 +15,7 @@ import android.widget.ListView;
 import com.example.kristine.eventastic.Databases.ExternDatabase;
 import com.example.kristine.eventastic.JavaClasses.ContemporaryDate;
 import com.example.kristine.eventastic.JavaClasses.Event;
-import com.example.kristine.eventastic.JavaClasses.Probe;
+import com.example.kristine.eventastic.JavaClasses.AllEventsPuffer;
 import com.example.kristine.eventastic.R;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -35,7 +35,7 @@ public class AllPossibleCities extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_possible_cities);
-        Probe.clearArrayList();
+        AllEventsPuffer.clearArrayList();
         initDB();
         initUI();
         updateList();
@@ -48,9 +48,9 @@ public class AllPossibleCities extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Event event=dataSnapshot.getValue(Event.class);
                 if(event.getDate()>= ContemporaryDate.getContemporaryDate()) {
-                    ArrayList probe = Probe.getAllEvents();
-                    Probe.enterEvent(event);
-                    Collections.sort(Probe.getAllEvents());
+                    ArrayList probe = AllEventsPuffer.getAllEvents();
+                    AllEventsPuffer.enterEvent(event);
+                    Collections.sort(AllEventsPuffer.getAllEvents());
 
                     if(!arraylist.equals(event.getCity())) {
                         arraylist.add(event.getCity());
@@ -64,8 +64,8 @@ public class AllPossibleCities extends AppCompatActivity {
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 Event event=dataSnapshot.getValue(Event.class);
                 if(event.getDate()>= ContemporaryDate.getContemporaryDate()) {
-                    Probe.enterEvent(event);
-                    Collections.sort(Probe.getAllEvents());
+                    AllEventsPuffer.enterEvent(event);
+                    Collections.sort(AllEventsPuffer.getAllEvents());
                     if(!arraylist.equals(event.getCity())) {
                         arraylist.add(event.getCity());
                         Collections.sort(arraylist);
@@ -79,8 +79,8 @@ public class AllPossibleCities extends AppCompatActivity {
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 Event event=dataSnapshot.getValue(Event.class);
                 if(event.getDate()>= ContemporaryDate.getContemporaryDate()) {
-                    Probe.enterEvent(event);
-                    Collections.sort(Probe.getAllEvents());
+                    AllEventsPuffer.enterEvent(event);
+                    Collections.sort(AllEventsPuffer.getAllEvents());
                     if(!arraylist.equals(event.getCity())) {
                         arraylist.add(event.getCity());
                         Collections.sort(arraylist);
