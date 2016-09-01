@@ -95,6 +95,11 @@ public class Calendar extends AppCompatActivity{
         time = (TextView)findViewById(R.id.information_of_next_event_time);
         calendarView = (CalendarView)findViewById(R.id.calendarView);
         calendarView.setDate(java.util.Calendar.getInstance().getTimeInMillis(),true,true);
+        calendarView.setSelectedWeekBackgroundColor(getResources().getColor(R.color.light_red));
+
+        calendarView.setWeekSeparatorLineColor(getResources().getColor(R.color.transparent));
+
+        calendarView.setSelectedDateVerticalBar(R.color.red);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
