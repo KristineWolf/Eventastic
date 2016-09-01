@@ -15,6 +15,7 @@ import android.widget.ListView;
 import com.example.kristine.eventastic.Databases.ExternDatabase;
 import com.example.kristine.eventastic.JavaClasses.ContemporaryDate;
 import com.example.kristine.eventastic.JavaClasses.Event;
+import com.example.kristine.eventastic.JavaClasses.Probe;
 import com.example.kristine.eventastic.R;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -34,18 +35,24 @@ public class AllPossibleCities extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_possible_cities);
+        Probe.clearArrayList();
         initDB();
         initUI();
         updateList();
     }
 
     private void updateList() {
+        arraylist.clear();
         helper.db.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Event event=dataSnapshot.getValue(Event.class);
                 if(event.getDate()>= ContemporaryDate.getContemporaryDate()) {
-                    if(!arraylist.equals(event.getCity())){
+                    ArrayList probe = Probe.getAllEvents();
+                    Probe.enterEvent(event);
+                    Collections.sort(Probe.getAllEvents());
+
+                    if(!arraylist.equals(event.getCity())) {
                         arraylist.add(event.getCity());
                         Collections.sort(arraylist);
                         adapter.notifyDataSetChanged();
@@ -56,20 +63,25 @@ public class AllPossibleCities extends AppCompatActivity {
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 Event event=dataSnapshot.getValue(Event.class);
-                if(event.getDate()>=ContemporaryDate.getContemporaryDate()) {
-                    if(!arraylist.equals(event.getCity())){
+                if(event.getDate()>= ContemporaryDate.getContemporaryDate()) {
+                    Probe.enterEvent(event);
+                    Collections.sort(Probe.getAllEvents());
+                    if(!arraylist.equals(event.getCity())) {
                         arraylist.add(event.getCity());
                         Collections.sort(arraylist);
                         adapter.notifyDataSetChanged();
                     }
+
                 }
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 Event event=dataSnapshot.getValue(Event.class);
-                if(event.getDate()>=ContemporaryDate.getContemporaryDate()) {
-                    if(!arraylist.equals(event.getCity())){
+                if(event.getDate()>= ContemporaryDate.getContemporaryDate()) {
+                    Probe.enterEvent(event);
+                    Collections.sort(Probe.getAllEvents());
+                    if(!arraylist.equals(event.getCity())) {
                         arraylist.add(event.getCity());
                         Collections.sort(arraylist);
                         adapter.notifyDataSetChanged();
@@ -87,6 +99,7 @@ public class AllPossibleCities extends AppCompatActivity {
 
             }
         });
+
         listview.setAdapter(adapter);
     }
 

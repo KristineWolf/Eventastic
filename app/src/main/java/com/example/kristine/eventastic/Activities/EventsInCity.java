@@ -18,6 +18,8 @@ import com.example.kristine.eventastic.Databases.ExternDatabase;
 import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
 import com.example.kristine.eventastic.JavaClasses.ContemporaryDate;
 import com.example.kristine.eventastic.JavaClasses.Event;
+import com.example.kristine.eventastic.JavaClasses.Probe;
+import com.example.kristine.eventastic.JavaClasses.Probe2;
 import com.example.kristine.eventastic.R;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -35,65 +37,38 @@ public class EventsInCity extends AppCompatActivity {
 
     private CityAdapter adapter;
     private ArrayList<Event> arraylist=new ArrayList<>();
+    private ArrayList<Event> allCities=new ArrayList<>();
     private String selectedCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_in_city);
+
         Intent intent=getIntent();
         Bundle extras=intent.getExtras();
-        selectedCity=extras.getString("selected_city");
+        selectedCity = extras.getString("selected_city");
+        Probe2.clearEvent();
+        allCities.addAll(Probe.getAllEvents());
+        searching();
         initDB();
         initUI();
         updateList();
 
     }
 
+    private void searching() {
+        for(int i=0; i<allCities.size(); i++){
+            if(selectedCity.equals(allCities.get(i).getCity())){
+                Probe2.enterEvent(allCities.get(i));
+            }
+        }
+    }
 
 
     private void updateList() {
-        helper.db.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Event event=dataSnapshot.getValue(Event.class);
-                if(event.getCity()==selectedCity) {
-                    arraylist.add(event);
-                    Collections.sort(arraylist);
-                    adapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                Event event=dataSnapshot.getValue(Event.class);
-                if(event.getCity()==selectedCity) {
-                    arraylist.add(event);
-                    Collections.sort(arraylist);
-                    adapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                Event event=dataSnapshot.getValue(Event.class);
-                if(event.getCity()==selectedCity) {
-                    arraylist.add(event);
-                    Collections.sort(arraylist);
-                    adapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
+        arraylist.clear();
+        arraylist.addAll(Probe2.getSpecificCities());
         listView.setAdapter(adapter);
     }
 
