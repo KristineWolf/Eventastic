@@ -83,12 +83,6 @@
                 android:value=".Activities.EventsInCity" />
         </activity>
 
-        <activity android:name=".Activities.CalendarActivity"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
     </application>
 
 </manifest>
