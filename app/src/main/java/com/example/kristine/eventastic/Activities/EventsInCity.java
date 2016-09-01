@@ -35,11 +35,15 @@ public class EventsInCity extends AppCompatActivity {
 
     private CityAdapter adapter;
     private ArrayList<Event> arraylist=new ArrayList<>();
+    private String selectedCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_in_city);
+        Intent intent=getIntent();
+        Bundle extras=intent.getExtras();
+        selectedCity=extras.getString("selected_city");
         initDB();
         initUI();
         updateList();
@@ -53,7 +57,7 @@ public class EventsInCity extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Event event=dataSnapshot.getValue(Event.class);
-                if(event.getDate()>=ContemporaryDate.getContemporaryDate()) {
+                if(event.getCity()==selectedCity) {
                     arraylist.add(event);
                     Collections.sort(arraylist);
                     adapter.notifyDataSetChanged();
@@ -63,7 +67,7 @@ public class EventsInCity extends AppCompatActivity {
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 Event event=dataSnapshot.getValue(Event.class);
-                if(event.getDate()>=ContemporaryDate.getContemporaryDate()) {
+                if(event.getCity()==selectedCity) {
                     arraylist.add(event);
                     Collections.sort(arraylist);
                     adapter.notifyDataSetChanged();
@@ -73,7 +77,7 @@ public class EventsInCity extends AppCompatActivity {
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 Event event=dataSnapshot.getValue(Event.class);
-                if(event.getDate()>=ContemporaryDate.getContemporaryDate()) {
+                if(event.getCity()==selectedCity) {
                     arraylist.add(event);
                     Collections.sort(arraylist);
                     adapter.notifyDataSetChanged();
@@ -107,7 +111,7 @@ public class EventsInCity extends AppCompatActivity {
 
     private void initCityName() {
         TextView city = (TextView)findViewById(R.id.title_events_in_this_city);
-        city.setText(getString(R.string.all_events_title)+ " jeweilige Stadt");
+        city.setText(getString(R.string.all_events_title)+" "+ selectedCity);
     }
 
     private void setupSearchView() {
@@ -135,42 +139,5 @@ public class EventsInCity extends AppCompatActivity {
        adapter=new CityAdapter(this,arraylist);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater =getMenuInflater();
-        inflater.inflate(R.menu.event_in_city_menu,menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected (MenuItem item) {
-        int id= item.getItemId();
-        switch (id){
-
-            //hier kann der Nutzer ein Event zur Datenbank hinzufügen
-            case R.id.event_in_city_add_event:
-                Intent intent=new Intent(EventsInCity.this,AddEvent.class);
-                startActivity(intent);
-                break;
-
-            //hier wird eine Einstellungsactivity geöffnet
-            case R.id.event_in_city_settings:
-                Intent intent2= new Intent(EventsInCity.this, SettingsActivity.class);
-                startActivity(intent2);
-                break;
-
-            //dadurch kommt der Nutzer zu seinen Veranstaltungen, an denen er teilnehmen will
-            case R.id.event_in_city_to_my_events:
-                Intent intent3 = new Intent(EventsInCity.this, ParticipatingEvents.class);
-                startActivity(intent3);
-                break;
-
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                break;
-
-        }
-
-        return true;
-    }
 }

@@ -28,10 +28,10 @@
         </activity>
         <activity
             android:name=".Activities.EventsInCity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".Activities.AllPossibleCities">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".Activities.AllPossibleCities" />
         </activity>
         <activity
             android:name=".Activities.ParticipatingEvents"
@@ -49,10 +49,10 @@
         </activity>
         <activity
             android:name=".Activities.AddEvent"
-            android:parentActivityName=".Activities.EventsInCity">
+            android:parentActivityName=".Activities.AllPossibleCities">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.EventsInCity" />
+                android:value=".Activities.AllPossibleCities" />
         </activity>
         <activity
             android:name=".Activities.Calendar"
@@ -82,7 +82,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.EventsInCity" />
         </activity>
-
+        <activity android:name=".Activities.AllPossibleCities"></activity>
     </application>
 
 </manifest>

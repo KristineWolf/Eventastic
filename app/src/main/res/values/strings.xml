@@ -6,7 +6,7 @@
     <string name="events_city">Events in this city</string>
     <string name="participating_events">Participating Events</string>
 
-    <string name="all_events_title">Events in</string>
+    <string name="all_events_title">Events in </string>
 
     <!-- strings für Toasts -->
     <string name="toast_added">"You added the Event '"</string>

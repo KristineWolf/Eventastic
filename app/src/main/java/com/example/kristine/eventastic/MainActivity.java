@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.kristine.eventastic.Activities.AllPossibleCities;
 import com.example.kristine.eventastic.Activities.Calendar;
 import com.example.kristine.eventastic.Activities.EventsInCity;
 import com.example.kristine.eventastic.Activities.Explanation;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         eventsInSpecifiedCity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, EventsInCity.class);
+                Intent intent = new Intent(MainActivity.this, AllPossibleCities.class);
                 startActivity(intent);
             }
         });
