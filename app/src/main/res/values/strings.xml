@@ -5,22 +5,21 @@
     <string name="app_name">Eventastic</string>
     <string name="events_city">Events in this city</string>
     <string name="participating_events">Participating Events</string>
-
     <string name="all_events_title">Events in </string>
 
-    <!-- strings für Toasts -->
-    <string name="toast_added">"You added the Event '"</string>
-    <string name="toast_deleted">"Event is deleted from your list."</string>
 
     <!-- Strings Information about an Event-->
     <string name="button_add">Want to Participate</string>
     <string name="button_added">Have fun!</string>
     <string name="button_delete">Don´t want to participate</string>
     <string name="button_deleted">You will not participate.</string>
+    <string name="city_in">in</string>
 
     <!-- Strings für AddEvent -->
     <string name="edit_city">Edit the city</string>
     <string name="edit_eventType">Edit event type</string>
+    <string name="button_text_enter">Enter</string>
+    <string name="title_add_event">Add new Event</string>
 
     <string-array name="cities_array">
         <item>Aachen</item>
@@ -83,7 +82,6 @@
         <item>Würzburg</item>
     </string-array>
 
-
     <string-array name="eventtype_array">
         <item>Konzert</item>
         <item>Party</item>
@@ -94,7 +92,9 @@
         <item>Sonstiges</item>
     </string-array>
 
-    <!-- Strings für ExplanationActivity -->
+
+
+    <!-- Strings für AboutTheApp -->
     <string name="about_this_App">About this App</string>
 
     <string name="about_this_app_what">What it is about.</string>
@@ -121,13 +121,19 @@
         forward to hearing from you!</string>
 
 
+
+
     <!-- Strings für CalenderActivity -->
     <string name="calendar">Calendar</string>
     <string name="calendar_next_event">YOUR NEXT EVENT:</string>
-
-    <string name="button_get_position">get my position</string>
     <string name="nothing_on_list">There´s no event on your list yet. \n CLICK HERE and add some!</string>
 
+
+    <!-- strings für Toasts -->
+    <string name="toast_added">"You added the Event '"</string>
+    <string name="toast_deleted">"Event is deleted from your list."</string>
+
+    <!-- für Notification -->
     <string name="notification_title">Event in one hour!</string>
     <string name="notification_text_1">At </string>
     <string name="notification_text_2">the event ´</string>
@@ -141,5 +147,21 @@
     <string name="hint_date">Date</string>
     <string name="hint_time">Time</string>
     <string name="hint_definition">Definition</string>
+
+    <string name="hint_edit_title">Edit the event title</string>
+    <string name="hint_edit_date">Edit the date</string>
+    <string name="hint_edit_time">Edit the time</string>
+    <string name="hint_edit_info">Edit important Information to the event</string>
+
+
+    <!-- Strings for KEYS -->
+    <string name="key_city">city</string>
+    <string name="key_title">title</string>
+    <string name="key_time">time</string>
+    <string name="key_type">type</string>
+    <string name="key_date">date</string>
+    <string name="key_definition">definition</string>
+
+
 
 </resources>

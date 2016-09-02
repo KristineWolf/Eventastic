@@ -113,7 +113,7 @@ public class Calendar extends AppCompatActivity{
 
 
     private void setNextEvent() {
-        title.setText(arrayList.get(0).getTitel());
+        title.setText(arrayList.get(0).getTitle());
         city.setText(arrayList.get(0).getCity());
         String dateEvent = ChangeDateFormat.changeIntoString(arrayList.get(0).getDate());
         time.setText(arrayList.get(0).getTime());
@@ -152,7 +152,7 @@ public class Calendar extends AppCompatActivity{
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.to_all_events)
                         .setContentTitle(getString(R.string.notification_title))
-                        .setContentText(getString(R.string.notification_text_1)+" "+ arrayList.get(0).getTime() + " "+getString(R.string.notification_text_2) + arrayList.get(0).getTitel()+getString(R.string.notification_text_3))
+                        .setContentText(getString(R.string.notification_text_1)+" "+ arrayList.get(0).getTime() + " "+getString(R.string.notification_text_2) + arrayList.get(0).getTitle()+getString(R.string.notification_text_3))
                         .setSound(sound);
 
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

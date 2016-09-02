@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add new Event"
+        android:text="@string/title_add_event"
         android:id="@+id/addEventText"
         android:textStyle="bold"
         android:textSize="26dp"
@@ -60,10 +60,10 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editTitel"
+            android:id="@+id/editTitle"
             android:inputType="text"
             android:singleLine="true"
-            android:hint="Edit the event titel"
+            android:hint="@string/hint_edit_title"
             android:textStyle="italic"
             android:textSize="16dp" />
     </LinearLayout>
@@ -81,7 +81,7 @@
             android:inputType="date"
             android:id="@+id/editDate"
             android:layout_weight="0.5"
-            android:hint="Edit the date"
+            android:hint="@string/hint_edit_date"
             android:focusable="false"
             android:textStyle="italic"
             android:textSize="16dp" />
@@ -93,7 +93,7 @@
             android:inputType="time"
             android:id="@+id/editTime"
             android:layout_weight="0.5"
-            android:hint="Edit the time"
+            android:hint="@string/hint_edit_time"
             android:focusable="false"
             android:textStyle="italic"
             android:textSize="16dp" />
@@ -113,7 +113,7 @@
             android:layout_centerHorizontal="true"
             android:singleLine="true"
             android:inputType="text"
-            android:hint="Edit important Information to the event"
+            android:hint="@string/hint_edit_info"
             android:textStyle="italic"
             android:textSize="16dp" />
     </LinearLayout>
@@ -121,7 +121,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter"
+        android:text="@string/button_text_enter"
         android:id="@+id/button_add"
         android:layout_below="@+id/line4"
         android:layout_centerHorizontal="true"

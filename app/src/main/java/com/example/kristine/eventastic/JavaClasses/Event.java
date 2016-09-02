@@ -1,7 +1,5 @@
 package com.example.kristine.eventastic.JavaClasses;
 
-import java.io.Serializable;
-
 /**
  * Created by Kristine on 10.08.2016.
  */
@@ -10,17 +8,17 @@ public class Event implements Comparable<Event> {
     private String city;
     private int date;
     private String time;
-    private String titel;
+    private String title;
     private String defintion;
     private String type;
 
     public Event(){}
 
-    public Event(String city, int date, String time, String titel, String defintion, String type){
+    public Event(String city, int date, String time, String title, String defintion, String type){
         this.city=city;
         this.date=date;
         this.time=time;
-        this.titel=titel;
+        this.title=title;
         this.defintion=defintion;
         this.type=type;
     }
@@ -37,9 +35,9 @@ public class Event implements Comparable<Event> {
 
     public void setTime(String time){this.time=time;}
 
-    public String getTitel(){return titel;}
+    public String getTitle(){return title;}
 
-    public void setTitel(String titel){this.titel=titel;}
+    public void setTitle(String title){this.title=title;}
 
     public String getDefintion(){return defintion;}
 

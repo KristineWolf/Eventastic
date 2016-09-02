@@ -24,7 +24,7 @@ public class InternDatabase {
     public static final String KEY_CITY ="city";
     public static final String KEY_DATE="date";
     public static final String KEY_TIME="time";
-    public static final String KEY_TITEL="titel";
+    public static final String KEY_TITLE="title";
     public static final String KEY_DEFINITION="definition";
     public static final String KEY_TYPE="type";
 
@@ -51,7 +51,7 @@ public class InternDatabase {
         values.put(KEY_CITY, city);
         values.put(KEY_DATE, ChangeDateFormat.changeFirstIntoDateFormatAfterwardsIntoInteger(date));
         values.put(KEY_TIME, time);
-        values.put(KEY_TITEL, title);
+        values.put(KEY_TITLE, title);
         values.put(KEY_DEFINITION, defintion);
         values.put(KEY_TYPE, type);
         db.insert(DATABASE_TABLE, null, values);
@@ -67,7 +67,7 @@ public class InternDatabase {
         open();
         ArrayList<Event> events = new ArrayList<>();
         Cursor cursor=db.query(DATABASE_TABLE, new String[]{
-                        KEY_CITY, KEY_DATE, KEY_DEFINITION, KEY_TIME, KEY_TITEL, KEY_TYPE},
+                        KEY_CITY, KEY_DATE, KEY_DEFINITION, KEY_TIME, KEY_TITLE, KEY_TYPE},
                 null, null, null, null, null);
         if(cursor.moveToFirst()){
             do{
@@ -75,13 +75,13 @@ public class InternDatabase {
                 int date =cursor.getInt(1);
                 String definition=cursor.getString(2);
                 String time=cursor.getString(3);
-                String titel=cursor.getString(4);
+                String title=cursor.getString(4);
                 String type =cursor.getString(5);
                 //checking if event took place
                 if(date< ContemporaryDate.getContemporaryDate()){
-                    deleteEvent(city,time,titel,type,definition);
+                    deleteEvent(city,time,title,type,definition);
                 }else {
-                    events.add(new Event(city, date, time, titel, definition, type));
+                    events.add(new Event(city, date, time, title, definition, type));
                 }
 
             }while (cursor.moveToNext());
@@ -98,11 +98,11 @@ public class InternDatabase {
 
 
 
-    public void deleteEvent(String city, String time, String titel,String type, String definition){
-        String whereClause= KEY_CITY+" =? AND "+KEY_TIME+" =? AND "+KEY_TITEL+ " =? AND "+
+    public void deleteEvent(String city, String time, String title,String type, String definition){
+        String whereClause= KEY_CITY+" =? AND "+KEY_TIME+" =? AND "+KEY_TITLE+ " =? AND "+
                 KEY_TYPE+" =? AND "+KEY_DEFINITION+" =?";
         open();
-        db.delete(DATABASE_TABLE,whereClause,new String[]{city,time,titel,type,definition});
+        db.delete(DATABASE_TABLE,whereClause,new String[]{city,time,title,type,definition});
         close();
 
     }
@@ -116,7 +116,7 @@ public class InternDatabase {
                 +KEY_DATE +" integer, "
                 +KEY_DEFINITION+" string, "
                 +KEY_TIME+" string, "
-                +KEY_TITEL+" string, "
+                +KEY_TITLE+" string, "
                 +KEY_TYPE+" string);";
 
         public DBOpenHelper(Context context,String dbName, SQLiteDatabase.CursorFactory factory, int version){
