@@ -1,25 +1,25 @@
 <resources>
 
     <!-- general strings -->
-    <string name="settings">Settings</string>
+    <string name="settings">Einstellungen</string>
     <string name="app_name">Eventastic</string>
-    <string name="events_city">Events in this city</string>
-    <string name="participating_events">Participating Events</string>
+    <string name="events_city">Events in dieser Stadt</string>
+    <string name="participating_events">Meine Events</string>
     <string name="all_events_title">Events in </string>
 
 
     <!-- Strings Information about an Event-->
-    <string name="button_add">Want to Participate</string>
-    <string name="button_added">Have fun!</string>
-    <string name="button_delete">Don´t want to participate</string>
-    <string name="button_deleted">You will not participate.</string>
+    <string name="button_add">Ich nehme teil.</string>
+    <string name="button_added">Viel Spaß!</string>
+    <string name="button_delete">Ich will doch nicht teilnehmen</string>
+    <string name="button_deleted">Du hast abgesagt.</string>
     <string name="city_in">in</string>
 
     <!-- Strings für AddEvent -->
-    <string name="edit_city">Edit the city</string>
-    <string name="edit_eventType">Edit event type</string>
+    <string name="edit_city">Gib eine Stadt ein</string>
+    <string name="edit_eventType">Wähle den Eventtyp aus</string>
     <string name="button_text_enter">Enter</string>
-    <string name="title_add_event">Add new Event</string>
+    <string name="title_add_event">Event hnzufügen</string>
 
     <string-array name="cities_array">
         <item>Aachen</item>
@@ -83,26 +83,26 @@
     </string-array>
 
     <string-array name="eventtype_array">
-        <item>concert</item>
-        <item>party</item>
-        <item>festival</item>
-        <item>theater</item>
-        <item>comedy</item>
-        <item>sports event</item>
-        <item>other</item>
+        <item>Konzert</item>
+        <item>Party</item>
+        <item>Festival</item>
+        <item>Theater</item>
+        <item>Comedy</item>
+        <item>Sportevent</item>
+        <item>Sonstiges</item>
     </string-array>
 
 
 
     <!-- Strings für AboutTheApp -->
-    <string name="about_this_App">About this App</string>
+    <string name="about_this_App">Über diese App</string>
 
-    <string name="about_this_app_what">What it is about.</string>
+    <string name="about_this_app_what">Darum geht´s.</string>
     <string name="about_this_app_what_text">This app is called EVENTASTIC. It helps you finding
         upcoming events in your city. Also you can add an event to the list, so that other users of this app can
         participate in it. Once used EVENTASTIC, you will never want to explore the nightlife without it again.</string>
 
-    <string name="about_this_app_how">How to use it.</string>
+    <string name="about_this_app_how">So funktioniert´s.</string>
     <string name="about_this_app_how_text">EVENTASTIC is for free very easy to use. You don´t have to create
         an account and sign in. First, you simply select a CITY or let the app find your position. Then have a look on
         different types of events and click on I WANT TO PARTICIPATE. Your upcoming events will be listed on
@@ -114,7 +114,7 @@
         events will be shared and the better for all of us.</string>
 
 
-    <string name="about_this_app_contact">Contact us.</string>
+    <string name="about_this_app_contact">Schreib´ uns.</string>
     <!-- eventastic.app@gmail.com, passwort:projekt2016 -->
     <string name="about_this_app_contact_text">Do you have any suggestions, criticisms, or anything
         else that you want to tell us? Simply write us an e-mail to eventastic.app@gmail.com. We are looking
@@ -124,34 +124,34 @@
 
 
     <!-- Strings für CalenderActivity -->
-    <string name="calendar">Calendar</string>
-    <string name="calendar_next_event">YOUR NEXT EVENT:</string>
-    <string name="nothing_on_list">There´s no event on your list yet. \n CLICK HERE and add some!</string>
+    <string name="calendar">Kalender</string>
+    <string name="calendar_next_event">DEIN NÄCHSTES EVENT:</string>
+    <string name="nothing_on_list">Du hast noch keine Events ausgewählt. \n KLICKE HIER und füge welche hinzu!</string>
 
 
     <!-- strings für Toasts -->
-    <string name="toast_added">"You added the Event '"</string>
-    <string name="toast_deleted">"Event is deleted from your list."</string>
+    <string name="toast_added">"Du hast folgendes Event hinzugefügt: '"</string>
+    <string name="toast_deleted">"Dieses Event wurde von deiner Liste gelöscht."</string>
 
     <!-- für Notification -->
-    <string name="notification_title">Event in one hour!</string>
-    <string name="notification_text_1">At </string>
-    <string name="notification_text_2">the event ´</string>
-    <string name="notification_text_3">´ starts. Have fun!</string>
+    <string name="notification_title">Event in einer Stunde!</string>
+    <string name="notification_text_1">Um </string>
+    <string name="notification_text_2"> beginnt das Event ´</string>
+    <string name="notification_text_3">´ Viel Spaß!</string>
 
 
     <!-- Strings für HINTS -->
-    <string name="hint_title">TITLE</string>
-    <string name="hint_city">City</string>
-    <string name="hint_eventType">Event type</string>
-    <string name="hint_date">Date</string>
-    <string name="hint_time">Time</string>
+    <string name="hint_title">TITEL</string>
+    <string name="hint_city">Stadt</string>
+    <string name="hint_eventType">Event Typ</string>
+    <string name="hint_date">Datum</string>
+    <string name="hint_time">Uhrzeit</string>
     <string name="hint_definition">Definition</string>
 
-    <string name="hint_edit_title">Edit the event title</string>
-    <string name="hint_edit_date">Edit the date</string>
-    <string name="hint_edit_time">Edit the time</string>
-    <string name="hint_edit_info">Edit important Information to the event</string>
+    <string name="hint_edit_title">Gib Event Title ein</string>
+    <string name="hint_edit_date">Wähle Datum aus</string>
+    <string name="hint_edit_time">Wähle Uhrzeit aus</string>
+    <string name="hint_edit_info">Füge wichtige Informationen hinzu</string>
 
 
     <!-- Strings for KEYS -->
