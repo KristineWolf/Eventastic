@@ -38,12 +38,12 @@ public class EventAdapter extends ArrayAdapter<Event>{
             v=convertView;
         }
         if(arrayList.get(position)!=null){
-            TextView title =(TextView) v.findViewById(R.id.event_title);
+            TextView titel =(TextView) v.findViewById(R.id.event_titel);
             TextView date =(TextView)v.findViewById(R.id.event_date);
             TextView time =(TextView)v.findViewById(R.id.event_time);
             TextView type =(TextView)v.findViewById(R.id.event_type);
 
-            title.setText(arrayList.get(position).getTitle());
+            titel.setText(arrayList.get(position).getTitel());
 
             date.setText(ChangeDateFormat.changeIntoString(arrayList.get(position).getDate()));
 

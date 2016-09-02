@@ -8,17 +8,17 @@ public class Event implements Comparable<Event> {
     private String city;
     private int date;
     private String time;
-    private String title;
+    private String titel;
     private String defintion;
     private String type;
 
     public Event(){}
 
-    public Event(String city, int date, String time, String title, String defintion, String type){
+    public Event(String city, int date, String time, String titel, String defintion, String type){
         this.city=city;
         this.date=date;
         this.time=time;
-        this.title=title;
+        this.titel=titel;
         this.defintion=defintion;
         this.type=type;
     }
@@ -35,9 +35,9 @@ public class Event implements Comparable<Event> {
 
     public void setTime(String time){this.time=time;}
 
-    public String getTitle(){return title;}
+    public String getTitel(){return titel;}
 
-    public void setTitle(String title){this.title=title;}
+    public void setTitel(String titel){this.titel=titel;}
 
     public String getDefintion(){return defintion;}
 

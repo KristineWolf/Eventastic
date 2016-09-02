@@ -2,4 +2,22 @@
 <resources>
     <string name="app_name">Eventastic</string>
     <string name="about_this_App"> À propos de l\'application.</string>
+    <string name="about_this_app_contact_text">Tes idées, conseils, suggestions ou commentaires en vue d\'améliorer cette application sont les bienvenus! N\'hésité pas à nous contacter par courrier électronique à eventastic.app@gmail.com.</string>
+    <string name="about_this_app_how_text">EVENTASTIC </string>
+    <string name="calendar_next_event">PROCHAIN ÉVÉNEMENT:</string>
+    <string name="about_this_app_contact">Nous contacter.</string>
+    <string name="about_this_app_how">Comment l\'utiliser.</string>
+    <string name="button_added">Amuse-toi!</string>
+    <string name="button_add">Ja participerai.</string>
+    <string name="button_delete">Je ne participerai pas.</string>
+    <string name="all_events_title">Événements à</string>
+    <string name="about_this_app_help">Ce que tu peux faire.</string>
+    <string name="settings">Paramètres</string>
+    <string name="key_city">city</string>
+    <string name="key_date">date</string>
+    <string name="key_definition">definition</string>
+    <string name="key_time">time</string>
+    <string name="key_title">title</string>
+    <string name="key_type">type</string>
+    <string name="about_this_app_what">De quoi il s\'agit.</string>
 </resources>

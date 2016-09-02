@@ -60,7 +60,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editTitle"
+            android:id="@+id/editTitel"
             android:inputType="text"
             android:singleLine="true"
             android:hint="@string/hint_edit_title"

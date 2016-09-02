@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="app_name">Eventastic</string>
+    <string name="about_this_app_help">Cómo apoyar.</string>
+    <string name="about_this_app_how">Así funciona.</string>
+    <string name="button_added">¡Que disfrutes!</string>
+    <string name="button_add">Voy a participar</string>
+    <string name="all_events_title">Evento en</string>
+    <string name="about_this_App">Sobre esta aplicación.</string>
+    <string name="about_this_app_contact">Ponte en contacto con nosotros.</string>
+    <string name="about_this_app_contact_text">Les quedaríamos muy agradecidos por cualquier tipo de críticas, sugerencias y preguntas respecto a esta aplicación transmitidas por Email.</string>
+    <string name="button_delete">No quiero participar.</string>
+    <string name="key_city">city</string>
+    <string name="key_date">date</string>
+    <string name="key_definition">definition</string>
+    <string name="key_time">time</string>
+    <string name="key_title">title</string>
+    <string name="key_type">type</string>
+    <string name="settings">Parámetros</string>
+    <string name="about_this_app_help_text"></string>
+    <string name="participating_events"></string>
+    <string name="about_this_app_what">De que trata.</string>
+    <string name="hint_city">Ciudad</string>
 </resources>

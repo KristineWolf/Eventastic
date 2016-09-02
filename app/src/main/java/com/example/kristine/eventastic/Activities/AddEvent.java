@@ -66,7 +66,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
     private void initUI() {
         initTypeSpinner();
         initCityAutocomplete();
-        editTitle = (EditText) findViewById(R.id.editTitle);
+        editTitle = (EditText) findViewById(R.id.editTitel);
         editDate = (EditText) findViewById(R.id.editDate);
         editTime = (EditText) findViewById(R.id.editTime);
         editDefinition = (EditText) findViewById(R.id.editDefinition);
@@ -181,14 +181,14 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
                 String city = editCities.getText().toString();
                 String date = editDate.getText().toString();
                 String time = editTime.getText().toString();
-                String title = editTitle.getText().toString();
+                String titel = editTitle.getText().toString();
                 String definition = editDefinition.getText().toString();
                 String type = typeEvent.getText().toString();
 
 
 
 
-                if (city.equals("") || date.equals("") || time.equals("") || title.equals("") || definition.equals("") || type.equals("")) {
+                if (city.equals("") || date.equals("") || time.equals("") || titel.equals("") || definition.equals("") || type.equals("")) {
                     return;
                 } else {
                     editCities.setText("");
@@ -196,17 +196,17 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
                     editTitle.setText("");
                     editDate.setText("");
                     editDefinition.setText("");
-                    addEvent(city, date, time, title, definition, type);
+                    addEvent(city, date, time, titel, definition, type);
                 }
             }
         });
     }
 
-    private void addEvent(String city, String date, String time, String title, String definition, String type) {
-        Event event = new Event(city, ChangeDateFormat.changeFirstIntoDateFormatAfterwardsIntoInteger(date), time, title, definition, type);
+    private void addEvent(String city, String date, String time, String titel, String definition, String type) {
+        Event event = new Event(city, ChangeDateFormat.changeFirstIntoDateFormatAfterwardsIntoInteger(date), time, titel, definition, type);
         boolean saved = db.insertItem(event);
 
-        Toast.makeText(this,"You added the Event '"+title+"'.",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"You added the Event '"+titel+"'.",Toast.LENGTH_LONG).show();
     }
 
 
