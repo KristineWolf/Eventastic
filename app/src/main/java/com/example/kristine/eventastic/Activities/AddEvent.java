@@ -186,6 +186,8 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
                 String type = typeEvent.getText().toString();
 
 
+
+
                 if (city.equals("") || date.equals("") || time.equals("") || title.equals("") || definition.equals("") || type.equals("")) {
                     return;
                 } else {
