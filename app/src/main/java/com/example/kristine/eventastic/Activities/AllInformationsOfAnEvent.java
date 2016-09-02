@@ -2,7 +2,11 @@ package com.example.kristine.eventastic.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -85,5 +89,29 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
         tType.setText(type);
         tDate.setText(date);
         tTime.setText(time);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater =getMenuInflater();
+        inflater.inflate(R.menu.empty_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+        int id= item.getItemId();
+        switch (id){
+
+
+            case android.R.id.home:
+                Intent intent=new Intent(AllInformationsOfAnEvent.this,EventsInCity.class);
+                intent.putExtra("selected_city",city);
+                startActivity(intent);
+                break;
+
+        }
+
+        return true;
     }
 }

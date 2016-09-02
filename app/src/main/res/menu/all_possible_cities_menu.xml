@@ -4,17 +4,22 @@
 
     <item
         android:title="Add Event"
-        android:id="@+id/event_in_city_add_event"
+        android:id="@+id/all_possible_cities_add_event"
         android:icon="@drawable/add"
         app:showAsAction="always">
     </item>
 
     <item
         android:title="My Events"
-        android:id="@+id/event_in_city_to_my_events"
+        android:id="@+id/all_possible_cities_to_my_events"
         android:icon="@drawable/to_particpating_events"
         app:showAsAction="always">
     </item>
 
-
+    <item
+        android:id="@+id/all_possible_cities_settings"
+        android:icon="@drawable/settings"
+        android:title="Settings"
+        app:showAsAction="always">
+    </item>
 </menu>

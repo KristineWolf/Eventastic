@@ -48,7 +48,7 @@ public class AllPossibleCities extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Event event=dataSnapshot.getValue(Event.class);
                 if(event.getDate()>= ContemporaryDate.getContemporaryDate()) {
-                    ArrayList probe = AllEventsPuffer.getAllEvents();
+
                     AllEventsPuffer.enterEvent(event);
                     Collections.sort(AllEventsPuffer.getAllEvents());
 
@@ -131,7 +131,7 @@ public class AllPossibleCities extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater =getMenuInflater();
-        inflater.inflate(R.menu.event_in_city_menu,menu);
+        inflater.inflate(R.menu.all_possible_cities_menu,menu);
         return true;
     }
 
@@ -141,19 +141,19 @@ public class AllPossibleCities extends AppCompatActivity {
         switch (id){
 
             //hier kann der Nutzer ein Event zur Datenbank hinzufügen
-            case R.id.event_in_city_add_event:
+            case R.id.all_possible_cities_add_event:
                 Intent intent=new Intent(AllPossibleCities.this,AddEvent.class);
                 startActivity(intent);
                 break;
 
             //hier wird eine Einstellungsactivity geöffnet
-            case R.id.event_in_city_settings:
+            case R.id.all_possible_cities_settings:
                 Intent intent2= new Intent(AllPossibleCities.this, SettingsActivity.class);
                 startActivity(intent2);
                 break;
 
             //dadurch kommt der Nutzer zu seinen Veranstaltungen, an denen er teilnehmen will
-            case R.id.event_in_city_to_my_events:
+            case R.id.all_possible_cities_to_my_events:
                 Intent intent3 = new Intent(AllPossibleCities.this, ParticipatingEvents.class);
                 startActivity(intent3);
                 break;

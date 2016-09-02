@@ -2,8 +2,12 @@ package com.example.kristine.eventastic.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -35,7 +39,7 @@ public class EventsInCity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_in_city);
-
+        AllEventsInACity.clearEvent();
         Intent intent=getIntent();
         Bundle extras=intent.getExtras();
         selectedCity = extras.getString("selected_city");
@@ -105,5 +109,38 @@ public class EventsInCity extends AppCompatActivity {
        adapter=new CityAdapter(this,arraylist);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater =getMenuInflater();
+        inflater.inflate(R.menu.event_in_city_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+        int id= item.getItemId();
+        switch (id){
+
+            //hier kann der Nutzer ein Event zur Datenbank hinzufügen
+            case R.id.event_in_city_add_event:
+                Intent intent=new Intent(EventsInCity.this,AddEvent.class);
+                startActivity(intent);
+                break;
+
+
+            //dadurch kommt der Nutzer zu seinen Veranstaltungen, an denen er teilnehmen will
+            case R.id.event_in_city_to_my_events:
+                Intent intent3 = new Intent(EventsInCity.this, ParticipatingEvents.class);
+                startActivity(intent3);
+                break;
+
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                break;
+
+        }
+
+        return true;
+    }
 
 }
