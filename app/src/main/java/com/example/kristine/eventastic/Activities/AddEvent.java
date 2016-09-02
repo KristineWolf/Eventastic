@@ -29,6 +29,7 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 
+//activity to add an event to the list
 public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private AutoCompleteTextView editCities;
@@ -47,9 +48,49 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         initDateField();
         initTimeField();
         initClickListener();
-
     }
 
+    private void initDB() {
+        db = new ExternDatabase();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        typeEvent = (TextView) view;
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+    }
+
+    private void initUI() {
+        initTypeSpinner();
+        initCityAutocomplete();
+        editTitle = (EditText) findViewById(R.id.editTitle);
+        editDate = (EditText) findViewById(R.id.editDate);
+        editTime = (EditText) findViewById(R.id.editTime);
+        editDefinition = (EditText) findViewById(R.id.editDefinition);
+        enter = (Button) findViewById(R.id.button_add);
+    }
+
+    private void initTypeSpinner() {
+        Spinner editType = (Spinner) findViewById(R.id.editType);
+        ArrayAdapter adapterType = ArrayAdapter.createFromResource(this, R.array.eventtype_array, R.layout.support_simple_spinner_dropdown_item);
+        editType.setAdapter(adapterType);
+        editType.setOnItemSelectedListener(this);
+    }
+
+    private void initCityAutocomplete() {
+        editCities = (AutoCompleteTextView)findViewById(R.id.editCity);
+        String[] citiesToSelect = getResources().getStringArray(R.array.cities_array);
+        ArrayAdapter<String> adapterCities = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,citiesToSelect);
+        editCities.setAdapter(adapterCities);
+        editCities.setThreshold(1);
+    }
+
+
+
+    //methods to edit DATE and TIME information of the event to add
     private void initTimeField() {
         editTime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,15 +115,61 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
             }
         });
     }
-
     private void showDatePickerDialog(View v) {
         DialogFragment dateFragment = new DatePickerFragment();
         dateFragment.show(getFragmentManager(), "datePicker");
     }
 
-    private void initDB() {
 
-        db = new ExternDatabase();
+    public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            TextView textView = (TextView) getActivity().findViewById(R.id.editDate);
+
+            GregorianCalendar date = new GregorianCalendar(year, month, day);
+            DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT,
+                    Locale.GERMANY);
+            String dateString = df.format(date.getTime());
+
+            textView.setText(dateString);
+        }
+    }
+
+    public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            final Calendar c = Calendar.getInstance();
+            int hour = c.get(Calendar.HOUR_OF_DAY);
+            int minute = c.get(Calendar.MINUTE);
+            return new TimePickerDialog(getActivity(), this, hour, minute, true);
+        }
+
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            TextView t = (TextView) getActivity().findViewById(R.id.editTime);
+            String hour;
+            String min;
+            if (hourOfDay < 10) {
+                hour = "0" + hourOfDay;
+            } else {
+                hour = "" + hourOfDay;
+            }
+            if (minute < 10) {
+                min = "0" + minute;
+            } else {
+                min = "" + minute;
+            }
+            t.setText(hour + ":" + min);
+        }
     }
 
 
@@ -121,101 +208,5 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
 
-    private void initUI() {
-        initTypeSpinner();
-        initCityAutocomplete();
-        editTitle = (EditText) findViewById(R.id.editTitle);
-        editDate = (EditText) findViewById(R.id.editDate);
-        editTime = (EditText) findViewById(R.id.editTime);
-        editDefinition = (EditText) findViewById(R.id.editDefinition);
-        enter = (Button) findViewById(R.id.button_add);
-    }
-
-    private void initTypeSpinner() {
-        Spinner editType = (Spinner) findViewById(R.id.editType);
-        ArrayAdapter adapterType = ArrayAdapter.createFromResource(this, R.array.eventtype_array, R.layout.support_simple_spinner_dropdown_item);
-        editType.setAdapter(adapterType);
-        editType.setOnItemSelectedListener(this);
-    }
-
-    private void initCityAutocomplete() {
-        editCities = (AutoCompleteTextView)findViewById(R.id.editCity);
-        String[] citiesToSelect = getResources().getStringArray(R.array.cities_array);
-        ArrayAdapter<String> adapterCities = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,citiesToSelect);
-        editCities.setAdapter(adapterCities);
-        editCities.setThreshold(1);
-    }
-
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        typeEvent = (TextView) view;
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-    }
-
-
-
-
-    public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            final Calendar c = Calendar.getInstance();
-            int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
-            int day = c.get(Calendar.DAY_OF_MONTH);
-
-
-            return new DatePickerDialog(getActivity(), this, year, month, day);
-        }
-
-        public void onDateSet(DatePicker view, int year, int month, int day) {
-            TextView textView = (TextView) getActivity().findViewById(R.id.editDate);
-
-            GregorianCalendar date = new GregorianCalendar(year, month, day);
-            DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT,
-                    Locale.GERMANY);
-            String dateString = df.format(date.getTime());
-
-            textView.setText(dateString);
-        }
-    }
-
-
-    public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            final Calendar c = Calendar.getInstance();
-            int hour = c.get(Calendar.HOUR_OF_DAY);
-            int minute = c.get(Calendar.MINUTE);
-
-
-            return new TimePickerDialog(getActivity(), this, hour, minute,
-                    true);
-        }
-
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            TextView t = (TextView) getActivity().findViewById(R.id.editTime);
-            String hour;
-            String min;
-            if (hourOfDay < 10) {
-                hour = "0" + hourOfDay;
-            } else {
-                hour = "" + hourOfDay;
-            }
-            if (minute < 10) {
-                min = "0" + minute;
-            } else {
-                min = "" + minute;
-            }
-            t.setText(hour + ":" + min);
-        }
-
-
-    }
 
 }

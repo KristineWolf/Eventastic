@@ -61,11 +61,6 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
     }
 
 
-
-
-
-
-
     private void initUI() {
         TextView tCity=(TextView)findViewById(R.id.clicked_event_city);
         TextView tTitle=(TextView)findViewById(R.id.clicked_event_title);

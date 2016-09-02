@@ -1,12 +1,14 @@
 package com.example.kristine.eventastic.Activities;
 
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CalendarView;
@@ -123,13 +125,13 @@ public class Calendar extends AppCompatActivity{
 
 
     private void checkNotification() {
-        //heute Datum und nächstes Event Datum
+        //date today and date nexte event
         Date dateTo = java.util.Calendar.getInstance().getTime();
         SimpleDateFormat dateFormatterDate = new SimpleDateFormat("dd.MM.yyyy");
         String dateToday = dateFormatterDate.format(dateTo);
         String dateEvent = ChangeDateFormat.changeIntoString(arrayList.get(0).getDate());
 
-        // aktuelle Uhrzeit EventUhrzeit
+        // aktuelle Uhrzeit, EventUhrzeit
         SimpleDateFormat dateFormatterTime = new SimpleDateFormat("HH:mm");
         String timeNow = dateFormatterTime.format(new Date());
         String timeEvent = arrayList.get(0).getTime();
@@ -153,7 +155,17 @@ public class Calendar extends AppCompatActivity{
                         .setSmallIcon(R.drawable.to_all_events)
                         .setContentTitle(getString(R.string.notification_title))
                         .setContentText(getString(R.string.notification_text_1)+" "+ arrayList.get(0).getTime() + " "+getString(R.string.notification_text_2) + arrayList.get(0).getTitle()+getString(R.string.notification_text_3))
-                        .setSound(sound);
+                        .setSound(sound)
+                        .setTicker("EVENTASTIC:  new message");
+
+        Intent toThisEvent = new Intent(this,Calendar.class);
+
+        TaskStackBuilder tStackBuilder = TaskStackBuilder.create(this);
+        tStackBuilder.addParentStack(Calendar.class);
+        tStackBuilder.addNextIntent(toThisEvent);
+
+        PendingIntent pendingIntentNotification = tStackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
+        mBuilder.setContentIntent(pendingIntentNotification);
 
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         mNotificationManager.notify(1, mBuilder.build());
