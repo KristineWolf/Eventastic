@@ -1,8 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <resources>
 
+    <string name="app_name">Eventastic</string>
     <!-- general strings -->
     <string name="settings">Einstellungen</string>
-    <string name="app_name">Eventastic</string>
     <string name="events_city">Events in dieser Stadt</string>
     <string name="participating_events">Meine Events</string>
     <string name="all_events_title">Events in </string>
@@ -116,9 +118,8 @@
 
     <string name="about_this_app_contact">Schreib´ uns.</string>
     <!-- eventastic.app@gmail.com, passwort:projekt2016 -->
-    <string name="about_this_app_contact_text">Do you have any suggestions, criticisms, or anything
-        else that you want to tell us? Simply write us an e-mail to eventastic.app@gmail.com. We are looking
-        forward to hearing from you!</string>
+    <string name="about_this_app_contact_text">Hast Verbesserungsvorschläge, Kritik oder irgendetwas, das du ns mitteilen möchtest?
+        Schreib uns einfach e-mail an eventastic.app@gmail.com. Wir freuen uns auf Rückmeldung!</string>
 
 
 
@@ -161,7 +162,6 @@
     <string name="key_type">type</string>
     <string name="key_date">date</string>
     <string name="key_definition">definition</string>
-
 
 
 </resources>

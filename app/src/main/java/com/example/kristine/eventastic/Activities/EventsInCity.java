@@ -32,7 +32,6 @@ import java.util.Collections;
 public class EventsInCity extends AppCompatActivity {
 
     private ListView listView;
-    private SearchView searchForCity;
     private ExternDatabase helper;
 
     private CityAdapter adapter;
@@ -85,7 +84,7 @@ public class EventsInCity extends AppCompatActivity {
 
     private void initCityName() {
         TextView city = (TextView)findViewById(R.id.title_events_in_this_city);
-        city.setText(getString(R.string.all_events_title)+" "+ selectedCity);
+        city.setText(getString(R.string.all_events_title)+ " " + selectedCity);
     }
 
     private void setupSearchView() {
