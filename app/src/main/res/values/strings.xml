@@ -128,7 +128,7 @@
     <string name="button_get_position">get my position</string>
     <string name="nothing_on_list">There´s no event on your list yet. \n CLICK HERE and add some!</string>
 
-    <string name="notification_title">Event in one hour - be prepared!</string>
+    <string name="notification_title">Event in one hour!</string>
     <string name="notification_text_1">At </string>
     <string name="notification_text_2">the event ´</string>
     <string name="notification_text_3">´ starts. Have fun!</string>

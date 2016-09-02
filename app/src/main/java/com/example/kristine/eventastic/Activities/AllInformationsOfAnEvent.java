@@ -12,15 +12,8 @@ import com.example.kristine.eventastic.R;
 
 public class AllInformationsOfAnEvent extends AppCompatActivity {
 
-    private String city;
-    private String titel;
-    private String definition;
-    private String type;
-    private String date;
-    private String time;
-
+    private String city, titel, definition, type, date, time;
     private Button add;
-
     private InternDatabase db;
 
 

@@ -32,18 +32,10 @@ import java.util.Locale;
 public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private AutoCompleteTextView editCities;
-
-    private EditText editTitle;
-    private EditText editDate;
-    private EditText editTime;
-    private EditText editDefinition;
-
+    private EditText editTitle, editDate, editTime, editDefinition;
     private TextView typeEvent;
-
     private Button enter;
-
     private ExternDatabase db;
-
 
 
     @Override

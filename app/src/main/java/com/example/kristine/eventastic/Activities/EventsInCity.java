@@ -36,8 +36,7 @@ public class EventsInCity extends AppCompatActivity {
     private ExternDatabase helper;
 
     private CityAdapter adapter;
-    private ArrayList<Event> arraylist=new ArrayList<>();
-    private ArrayList<Event> allCities=new ArrayList<>();
+    private ArrayList<Event> arraylist=new ArrayList<>(), allCities=new ArrayList<>();
     private String selectedCity;
 
     @Override

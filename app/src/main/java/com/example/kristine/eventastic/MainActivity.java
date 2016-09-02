@@ -11,8 +11,7 @@ import android.widget.Button;
 
 import com.example.kristine.eventastic.Activities.AllPossibleCities;
 import com.example.kristine.eventastic.Activities.Calendar;
-import com.example.kristine.eventastic.Activities.EventsInCity;
-import com.example.kristine.eventastic.Activities.Explanation;
+import com.example.kristine.eventastic.Activities.AboutTheApp;
 import com.example.kristine.eventastic.Activities.ParticipatingEvents;
 import com.example.kristine.eventastic.Activities.SettingsActivity;
 
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         switch (id){
             //diese Activity soll die App erklären, wozu sie dient was man alles machen kann...
             case R.id.main_activity_explanation:
-                Intent intent= new Intent(MainActivity.this, Explanation.class);
+                Intent intent= new Intent(MainActivity.this, AboutTheApp.class);
                 startActivity(intent);
                 return true;
 
@@ -89,4 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
         return false;
     }
+
+
+
 }

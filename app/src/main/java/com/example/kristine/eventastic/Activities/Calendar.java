@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -32,10 +33,7 @@ public class Calendar extends AppCompatActivity{
     private InternDatabase db;
     private EventAdapter adapter;
 
-    private TextView title;
-    private TextView city;
-    private TextView date;
-    private TextView time;
+    private TextView title, city, date, time;
 
     private CalendarView calendarView;
     @Override
@@ -148,14 +146,14 @@ public class Calendar extends AppCompatActivity{
     private void sendNotification() {
         //habe im raw orner verschiedene Töne hinzugefügt. Kannst du gerne auch ändern bzw Töne für Tasten hinzufügen
         Uri sound = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.snare_drum_roll);
-        long[] vibrate = {500,1000};
+        Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        vibrator.vibrate(3000);
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.to_all_events)
                         .setContentTitle(getString(R.string.notification_title))
                         .setContentText(getString(R.string.notification_text_1)+" "+ arrayList.get(0).getTime() + " "+getString(R.string.notification_text_2) + arrayList.get(0).getTitel()+getString(R.string.notification_text_3))
-                        .setSound(sound)
-                        .setVibrate(vibrate);
+                        .setSound(sound);
 
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         mNotificationManager.notify(1, mBuilder.build());
