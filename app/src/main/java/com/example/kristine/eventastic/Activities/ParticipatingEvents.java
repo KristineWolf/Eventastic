@@ -64,12 +64,12 @@ public class ParticipatingEvents extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ParticipatingEvents.this, AllInformationsOfAParticipatingEvent.class);
-                intent.putExtra("city",arrayList.get(position).getCity());
-                intent.putExtra("titel",arrayList.get(position).getTitel());
-                intent.putExtra("time",arrayList.get(position).getTime());
-                intent.putExtra("type",arrayList.get(position).getType());
-                intent.putExtra("date", ChangeDateFormat.changeIntoString(arrayList.get(position).getDate()));
-                intent.putExtra("definition",arrayList.get(position).getDefintion());
+                intent.putExtra(getResources().getString(R.string.key_city),arrayList.get(position).getCity());
+                intent.putExtra(getResources().getString(R.string.key_title),arrayList.get(position).getTitle());
+                intent.putExtra(getResources().getString(R.string.key_time),arrayList.get(position).getTime());
+                intent.putExtra(getResources().getString(R.string.key_type),arrayList.get(position).getType());
+                intent.putExtra(getResources().getString(R.string.key_date), ChangeDateFormat.changeIntoString(arrayList.get(position).getDate()));
+                intent.putExtra(getResources().getString(R.string.key_definition),arrayList.get(position).getDefintion());
 
                 startActivity(intent);
             }

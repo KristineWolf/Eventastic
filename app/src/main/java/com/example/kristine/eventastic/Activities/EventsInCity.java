@@ -31,8 +31,7 @@ public class EventsInCity extends AppCompatActivity {
     private ExternDatabase helper;
 
     private CityAdapter adapter;
-    private ArrayList<Event> arraylist=new ArrayList<>();
-    private ArrayList<Event> allCities=new ArrayList<>();
+    private ArrayList<Event> arraylist=new ArrayList<>(), allCities=new ArrayList<>();
     private String selectedCity;
 
     @Override
@@ -94,7 +93,7 @@ public class EventsInCity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(EventsInCity.this, AllInformationsOfAnEvent.class);
                 intent.putExtra("city",arraylist.get(position).getCity());
-                intent.putExtra("titel",arraylist.get(position).getTitel());
+                intent.putExtra("title",arraylist.get(position).getTitle());
                 intent.putExtra("time",arraylist.get(position).getTime());
                 intent.putExtra("type",arraylist.get(position).getType());
                 intent.putExtra("date", ChangeDateFormat.changeIntoString(arraylist.get(position).getDate()));

@@ -13,15 +13,8 @@ import com.example.kristine.eventastic.R;
 
 public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
 
-    private String city;
-    private String titel;
-    private String definition;
-    private String type;
-    private String date;
-    private String time;
-
+    private String city, title, definition, type, date, time;
     private Button delete;
-
     private InternDatabase db;
 
 
@@ -41,12 +34,11 @@ public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
     private void informationInBundle(Bundle extras) {
         city=extras.getString("city");
         time=extras.getString("time");
-        titel=extras.getString("titel");
+        title=extras.getString("title");
         date=extras.getString("date");
         definition=extras.getString("definition");
         type=extras.getString("type");
     }
-
 
     private void initDB() {
         db=new InternDatabase(this);
@@ -56,7 +48,7 @@ public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.deleteEvent(city,time,titel,type,definition);
+                db.deleteEvent(city,time,title,type,definition);
                 Intent intent = new Intent(AllInformationsOfAParticipatingEvent.this, ParticipatingEvents.class);
                 startActivity(intent);
                 delete.setText(R.string.button_deleted);
@@ -67,15 +59,9 @@ public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
         });
     }
 
-
-
-
-
-
-
     private void initUI() {
         TextView tCity=(TextView)findViewById(R.id.information_of_participating_event_city);
-        TextView tTitel=(TextView)findViewById(R.id.information_of_participating_event_title);
+        TextView tTitle=(TextView)findViewById(R.id.information_of_participating_event_title);
         TextView tDefinition=(TextView)findViewById(R.id.information_of_participating_event_definition);
         TextView tType=(TextView)findViewById(R.id.information_of_participating_event_type);
         TextView tDate=(TextView)findViewById(R.id.information_of_participating_event_date);
@@ -83,8 +69,8 @@ public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
 
         delete=(Button)findViewById(R.id.delete_event_button);
 
-        tCity.setText("in "+city);
-        tTitel.setText(titel);
+        tCity.setText(getResources().getString(R.string.city_in)+" "+city);
+        tTitle.setText(title);
         tDefinition.setText(definition);
         tType.setText(type);
         tDate.setText(date);

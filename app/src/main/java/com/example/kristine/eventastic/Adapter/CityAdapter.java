@@ -1,14 +1,12 @@
 package com.example.kristine.eventastic.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.kristine.eventastic.Activities.AllInformationsOfAnEvent;
 import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
@@ -39,12 +37,12 @@ public class CityAdapter extends ArrayAdapter<Event> {
             v=convertView;
         }
         if(arrayList.get(position)!=null){
-            TextView titel =(TextView) v.findViewById(R.id.event_titel);
+            TextView title =(TextView) v.findViewById(R.id.event_title);
             TextView date =(TextView)v.findViewById(R.id.event_date);
             TextView time =(TextView)v.findViewById(R.id.event_time);
             TextView type =(TextView)v.findViewById(R.id.event_type);
 
-            titel.setText(arrayList.get(position).getTitel());
+            title.setText(arrayList.get(position).getTitle());
             date.setText(ChangeDateFormat.changeIntoString(arrayList.get(position).getDate()));
 
             time.setText(arrayList.get(position).getTime());

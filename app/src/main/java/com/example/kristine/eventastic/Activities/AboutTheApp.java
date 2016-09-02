@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.example.kristine.eventastic.R;
 
-public class Explanation extends AppCompatActivity {
+public class AboutTheApp extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

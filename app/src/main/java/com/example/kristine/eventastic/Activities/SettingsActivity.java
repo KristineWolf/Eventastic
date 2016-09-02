@@ -20,4 +20,6 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
     public boolean onPreferenceChange(Preference preference, Object value) {
         return false;
     }
+
+
 }

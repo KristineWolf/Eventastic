@@ -16,15 +16,8 @@ import com.example.kristine.eventastic.R;
 
 public class AllInformationsOfAnEvent extends AppCompatActivity {
 
-    private String city;
-    private String titel;
-    private String definition;
-    private String type;
-    private String date;
-    private String time;
-
+    private String city, title, definition, type, date, time;
     private Button add;
-
     private InternDatabase db;
 
 
@@ -43,7 +36,7 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
     private void informationInBundle(Bundle extras) {
         city=extras.getString("city");
         time=extras.getString("time");
-        titel=extras.getString("titel");
+        title=extras.getString("title");
         date=extras.getString("date");
         definition=extras.getString("definition");
         type=extras.getString("type");
@@ -58,8 +51,8 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    db.deleteEvent(city, time,titel,type, definition);
-                    db.insertEventItem(city, date, time, definition, type, titel);
+                    db.deleteEvent(city, time,title,type, definition);
+                    db.insertEventItem(city, date, time, definition, type, title);
                     add.setText(R.string.button_added);
 
 
@@ -75,7 +68,7 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
 
     private void initUI() {
         TextView tCity=(TextView)findViewById(R.id.clicked_event_city);
-        TextView tTitel=(TextView)findViewById(R.id.clicked_event_titel);
+        TextView tTitle=(TextView)findViewById(R.id.clicked_event_title);
         TextView tDefinition=(TextView)findViewById(R.id.clicked_event_definition);
         TextView tType=(TextView)findViewById(R.id.clicked_event_type);
         TextView tDate=(TextView)findViewById(R.id.clicked_event_date);
@@ -83,8 +76,8 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
 
         add=(Button)findViewById(R.id.add_event_button);
 
-        tCity.setText("in "+ city);
-        tTitel.setText(titel);
+        tCity.setText(getResources().getString(R.string.city_in)+" "+ city);
+        tTitle.setText(title);
         tDefinition.setText(definition);
         tType.setText(type);
         tDate.setText(date);
