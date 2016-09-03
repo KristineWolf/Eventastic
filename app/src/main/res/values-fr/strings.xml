@@ -19,7 +19,7 @@
     <string name="key_title">title</string>
     <string name="key_type">type</string>
     <string name="about_this_app_what">De quoi il s\'agit.</string>
-    <string name="about_this_app_help_text">Pour améliorer l\'utilisation de cette application, parle à tes amis et à ta famille de EVENTASTIC. Plus il y a de gens qui utilisent cette application, mieux ce sera. Allez le faire!</string>
+    <string name="about_this_app_help_text">Pour améliorer l\'utilisation de cette application, parle à tes amis et à ta famille de EVENTASTIC. Plus il y a de gens qui utilisent cette application, mieux ce sera. Allez-le faire!</string>
     <string name="hint_city">Ville</string>
     <string name="hint_date">Date</string>
     <string name="button_deleted">Tu as annulé cette événement.</string>
@@ -55,4 +55,6 @@
         <item>événement sportif</item>
         <item>autre</item>
     </string-array>
+    <string name="about_this_app_how_text">EVENTASTIC c\'est gratuit et très facil d\'user. Tu n\'a pas besoin de céer un compte personnel. Premièrement sélectionne une ville ou l\'application peut déterminer ta position. Ensuite regarde la liste d\'événements. Clique sur JE PARTICIPERAI et l\'événement c\'est sur ta liste.</string>
+    <string name="about_this_app_what_text">Cette application s\'appelle EVENTASTIC. Cela aide trouver événements á ta ville. Aussi peux ajouter un événement à la liste pour que les autres peuvent y participer. Essaye-le et tu vas constater... plus jamais sans EVENTASTIC!</string>
 </resources>

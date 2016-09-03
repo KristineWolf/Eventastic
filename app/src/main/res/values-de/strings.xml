@@ -100,9 +100,6 @@
     <string name="about_this_App">Über diese App</string>
 
     <string name="about_this_app_what">Darum geht´s.</string>
-    <string name="about_this_app_what_text">This app is called EVENTASTIC. It helps you finding
-        upcoming events in your city. Also you can add an event to the list, so that other users of this app can
-        participate in it. Once used EVENTASTIC, you will never want to explore the nightlife without it again.</string>
 
     <string name="about_this_app_how">So funktioniert´s.</string>
 
@@ -158,6 +155,7 @@
     <string name="key_definition">definition</string>
     <string name="about_this_app_help_text">Erzähle Freunden und Familie von dieser App und  hilfe uns dabei, EVENTASTIC zu verbessern. Je mehr User, desto mehr Events werden geteilt und desto mehr Nutzen haben wir alle davon</string>
     <string name="about_this_app_how_text">EVENTASTIC ist kostenlos und einfach zu bedienen. Du musst keinen Account erstellen und dich einloggen. Zuerst wählst du eine Stadt aus oder lässt die App deinen Standort bestimmen.  Werf dann einen Blick auf die Liste mit den dort anstehenden Events. Klicke auf ICH NEHME TEIL. Deine bevorstehenden findest du auf MEINE EVENTS.</string>
+    <string name="about_this_app_what_text">Diese App hilft dir anstehende Events in deiner Stadt zu finden. Auch du kannst ein Event hinzufügen, sodass andere Nutzer daran teilnehmen können. Probier\'s aus und du wirst merken... nie wieder ohne EVENTASTIC!</string>
 
 
 </resources>
