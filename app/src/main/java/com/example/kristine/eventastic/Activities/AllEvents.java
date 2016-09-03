@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.kristine.eventastic.Adapter.CityAdapter;
+import com.example.kristine.eventastic.Adapter.EventAdapter;
 import com.example.kristine.eventastic.Databases.ExternDatabase;
 import com.example.kristine.eventastic.JavaClasses.AllEventsPuffer;
 import com.example.kristine.eventastic.JavaClasses.ContemporaryDate;
@@ -29,7 +30,7 @@ public class AllEvents extends AppCompatActivity {
 
     private ExternDatabase db;
     private ListView listview;
-    private CityAdapter adapter;
+    private EventAdapter adapter;
     private Button toAllPossibleCities;
     private ArrayList<Event> events=new ArrayList<>();
 
@@ -115,7 +116,7 @@ public class AllEvents extends AppCompatActivity {
     }
 
     private void initAdapter() {
-        adapter=new CityAdapter(this,events);
+        adapter=new EventAdapter(this,events);
     }
 
     private void initListView() {

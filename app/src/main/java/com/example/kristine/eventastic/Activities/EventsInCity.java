@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.kristine.eventastic.Adapter.CityAdapter;
+import com.example.kristine.eventastic.Adapter.EventAdapter;
 import com.example.kristine.eventastic.Databases.ExternDatabase;
 import com.example.kristine.eventastic.JavaClasses.AllEventsInACity;
 import com.example.kristine.eventastic.JavaClasses.AllEventsPuffer;
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 public class EventsInCity extends AppCompatActivity {
 
     private ListView listView;
-    private CityAdapter adapter;
+    private EventAdapter adapter;
     private ArrayList<Event> arraylist=new ArrayList<>(), allCities=new ArrayList<>();
     private String selectedCity;
 
@@ -97,7 +98,7 @@ public class EventsInCity extends AppCompatActivity {
     }
 
     private void initListAdapter() {
-       adapter=new CityAdapter(this,arraylist);
+       adapter=new EventAdapter(this,arraylist);
     }
 
     @Override
