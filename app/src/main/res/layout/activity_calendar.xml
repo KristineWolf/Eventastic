@@ -10,7 +10,9 @@
 <!-- dadurch kann ich den Kalender sehen wenn du eine bestimmte höhe festsetzt
 und die App hängt dann auch nicht...was hälst du davon??
 müsstest dann eben nur für die bestimmten Bildgrößen eine größe festsetzen :)
-oder du nimmst einfach immer die Hälfte des Bildschirmes -->
+oder du nimmst einfach immer die Hälfte des Bildschirmes
+
+Klappt leider nicht bei mir, da wird die CalenderView nur zur Hälfte angezeigt.-->
     <CalendarView
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -81,5 +83,9 @@ oder du nimmst einfach immer die Hälfte des Bildschirmes -->
             android:layout_weight="0.33"
             android:textSize="23sp"/>
     </LinearLayout>
+
+    <!-- Wir könnten hier noch zusätzliche Möglichkeiten für den Nutzer einfügen, damit diese Activity auch bisschen interkativ ist.
+        z.B. könnte er das Event auf facebook teilen oder nach dem Wetterbericht für diesen Tag und Ort fragen.
+        Sind vielleicht zwei blöde Beispiele, fällt dir noch was ein? -->
 
 </RelativeLayout>
