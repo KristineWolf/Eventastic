@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
+import com.example.kristine.eventastic.JavaClasses.ContemporaryDate;
 import com.example.kristine.eventastic.JavaClasses.Event;
 
 import java.util.ArrayList;
@@ -77,9 +78,13 @@ public class InternDatabase {
                 String titel=cursor.getString(4);
                 String type =cursor.getString(5);
 
+                //events bleiben noch solange sichtbar bis der Tag vorbei ist, da Veranstaltung ja noch stattfindet!
+                if(date< ContemporaryDate.getContemporaryDate()){
+                    deleteEvent(city,time,titel,type,definition);
+                }else {
 
                     events.add(new Event(city, date, time, titel, definition, type));
-
+                }
 
             }while (cursor.moveToNext());
 
