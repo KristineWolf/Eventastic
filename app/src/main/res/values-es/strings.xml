@@ -8,7 +8,7 @@
     <string name="all_events_title">Evento en</string>
     <string name="about_this_App">Sobre esta aplicación.</string>
     <string name="about_this_app_contact">Ponte en contacto con nosotros.</string>
-    <string name="about_this_app_contact_text">Estaríamos muy agradecidos por cualquier tipo de críticas, sugerencias y preguntas respecto a esta aplicación. Escribenos al email eventastic.app@gmail.com.</string>
+    <string name="about_this_app_contact_text">Estaríamos muy agradecidos por cualquier tipo de críticas, sugerencias y preguntas respecto a esta aplicación. Escríbenos al email eventastic.app@gmail.com.</string>
     <string name="button_delete">No quiero participar.</string>
     <string name="key_city">city</string>
     <string name="key_date">date</string>
@@ -17,7 +17,7 @@
     <string name="key_title">title</string>
     <string name="key_type">type</string>
     <string name="settings">Parámetros</string>
-    <string name="about_this_app_help_text"></string>
+    <string name="about_this_app_help_text">Ayúdanos mejorar esta aplicación y muestra EVENTASTIC a tus amigos y familiares. Cuanta más gente está usando esta app, más eventos compartidos y mejor para el uso!</string>
     <string name="participating_events">Mis Eventos</string>
     <string name="about_this_app_what">De que trata.</string>
     <string name="hint_city">Ciudad</string>
@@ -56,4 +56,6 @@
         <item>evento deportivo</item>
         <item>otro</item>
     </string-array>
+    <string name="about_this_app_how_text">EVENTASTIC es gratis y muy fácil de usar. No tienes que crear una cuenta o registrarte. Primero, eliges una ciudad o dejas la aplicación encontrar tu lugar. Después mira la lista donde están eventos diferentes. Haz clic en VOY A PARTICIPAR. Tu próximo evento está en MIS EVENTOS.</string>
+    <string name="about_this_app_what_text">Esta aplicación se llama EVENTASTIC. Te ayuda encontras próximos eventos en tu ciudad. También puedes añadir un evento a la lista y otros usarios pueden participar. Pruebalo y vas a encontrar... nunca más sin esta aplicación!</string>
 </resources>
