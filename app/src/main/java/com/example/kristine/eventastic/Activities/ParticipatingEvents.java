@@ -28,7 +28,7 @@ import java.util.Date;
 
 public class ParticipatingEvents extends AppCompatActivity {
 
-    private static final int ONE_HOUR = 3600 * 1000;
+    private static final int ONE_HOUR_IN_MILLISEC = 3600 * 1000;
     private ListView listView;
     private ArrayList<Event> arrayList = new ArrayList<>();
     private InternDatabase db;
@@ -61,7 +61,6 @@ public class ParticipatingEvents extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    // wird eine Std vor EventBeginn ausgelöst
     private void scheduleNotification(int i) {
         Intent intent = new Intent(getApplicationContext(),AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
@@ -69,14 +68,16 @@ public class ParticipatingEvents extends AppCompatActivity {
         String timeEvent = arrayList.get(i).getTime();
         String oneHourBefore = dateEvent +" " +timeEvent;
         SimpleDateFormat formattedDate = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-        long oneHourBeforeLong;
+        //Event-Datum und Uhrzeit in Millisec
+        long oneHourBeforeEventBegin;
         try {
             Date d = formattedDate.parse(oneHourBefore);
-            oneHourBeforeLong = d.getTime();
+            oneHourBeforeEventBegin = d.getTime();
         } catch (ParseException e){
             return;
         }
-        long notificationInMillisec = oneHourBeforeLong+ONE_HOUR;
+        //1 Stunde vor EventBeginn soll Notification ausgelöst werden
+        long notificationInMillisec = oneHourBeforeEventBegin-ONE_HOUR_IN_MILLISEC;
         AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC,notificationInMillisec,pendingIntent);
     }
