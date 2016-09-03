@@ -95,7 +95,6 @@
     </string-array>
 
 
-
     <!-- Strings für AboutTheApp -->
     <string name="about_this_App">About this App</string>
 
@@ -121,8 +120,6 @@
     <string name="about_this_app_contact_text">Do you have any suggestions, criticisms, or anything
         else that you want to tell us? Simply write us an e-mail to eventastic.app@gmail.com. We are looking
         forward to hearing from you!</string>
-
-
 
 
     <!-- Strings für CalenderActivity -->
@@ -163,7 +160,6 @@
     <string name="key_type">type</string>
     <string name="key_date">date</string>
     <string name="key_definition">definition</string>
-
 
 
 </resources>

@@ -32,12 +32,12 @@ public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
 
 
     private void informationInBundle(Bundle extras) {
-        city=extras.getString("city");
-        time=extras.getString("time");
-        titel=extras.getString("titel");
-        date=extras.getString("date");
-        definition=extras.getString("definition");
-        type=extras.getString("type");
+        city=extras.getString(getResources().getString(R.string.key_city));
+        time=extras.getString(getResources().getString(R.string.key_time));
+        titel=extras.getString(getResources().getString(R.string.key_title));
+        date=extras.getString(getResources().getString(R.string.key_date));
+        definition=extras.getString(getResources().getString(R.string.key_definition));
+        type=extras.getString(getResources().getString(R.string.key_type));
     }
 
     private void initDB() {

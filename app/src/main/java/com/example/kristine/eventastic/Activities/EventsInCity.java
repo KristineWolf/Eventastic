@@ -26,8 +26,6 @@ import java.util.ArrayList;
 public class EventsInCity extends AppCompatActivity {
 
     private ListView listView;
-    private ExternDatabase helper;
-
     private CityAdapter adapter;
     private ArrayList<Event> arraylist=new ArrayList<>(), allCities=new ArrayList<>();
     private String selectedCity;
@@ -36,41 +34,39 @@ public class EventsInCity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_in_city);
-        AllEventsInACity.clearEvent();
-        Intent intent=getIntent();
-        Bundle extras=intent.getExtras();
-        selectedCity = extras.getString("selected_city");
-        AllEventsInACity.clearEvent();
-        allCities.addAll(AllEventsPuffer.getAllEvents());
-        searching();
-        initDB();
+        getSelectedCity();
+        getDataFromPuffer();
+        searchingThroughData();
         initUI();
         updateList();
 
     }
 
-    private void searching() {
+    private void getDataFromPuffer() {
+        allCities.addAll(AllEventsPuffer.getAllEvents());
+    }
+
+    private void getSelectedCity() {
+        Intent intent=getIntent();
+        Bundle extras=intent.getExtras();
+        selectedCity = extras.getString("selected_city");
+    }
+
+    private void searchingThroughData() {
         for(int i=0; i<allCities.size(); i++){
             if(selectedCity.equals(allCities.get(i).getCity())){
-                AllEventsInACity.enterEvent(allCities.get(i));
+                arraylist.add(allCities.get(i));
             }
         }
     }
 
 
     private void updateList() {
-        arraylist.clear();
-        arraylist.addAll(AllEventsInACity.getSpecificCities());
         listView.setAdapter(adapter);
     }
 
 
-    private void initDB() {
-        helper=new ExternDatabase();
-    }
-
     private void initUI() {
-        setupSearchView();
         initCityName();
         initListView();
         initListAdapter();
@@ -81,8 +77,6 @@ public class EventsInCity extends AppCompatActivity {
         city.setText(getString(R.string.all_events_title)+ " " + selectedCity);
     }
 
-    private void setupSearchView() {
-    }
 
     private void initListView() {
         listView=(ListView) findViewById(R.id.allEventsInACity);

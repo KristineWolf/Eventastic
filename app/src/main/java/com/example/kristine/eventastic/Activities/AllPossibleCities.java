@@ -12,22 +12,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.kristine.eventastic.Databases.ExternDatabase;
-import com.example.kristine.eventastic.JavaClasses.ContemporaryDate;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.JavaClasses.AllEventsPuffer;
 import com.example.kristine.eventastic.R;
-import com.firebase.client.ChildEventListener;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.FirebaseError;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class AllPossibleCities extends AppCompatActivity {
 
-    private ExternDatabase helper;
     private ListView listview;
+    private ArrayList<Event>allEvents=new ArrayList<>();
     private ArrayList<String> arraylist=new ArrayList<>();
     private ArrayAdapter<String> adapter;
 
@@ -35,72 +30,23 @@ public class AllPossibleCities extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_possible_cities);
-        AllEventsPuffer.clearArrayList();
-        initDB();
+        getDataFromPuffer();
+        searchingThroughData();
         initUI();
         updateList();
     }
 
     private void updateList() {
-        arraylist.clear();
-        helper.db.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Event event=dataSnapshot.getValue(Event.class);
-                if(event.getDate()>= ContemporaryDate.getContemporaryDate()) {
-
-                    AllEventsPuffer.enterEvent(event);
-                    Collections.sort(AllEventsPuffer.getAllEvents());
-
-                    if(!arraylist.equals(event.getCity())) {
-                        arraylist.add(event.getCity());
-                        Collections.sort(arraylist);
-                        adapter.notifyDataSetChanged();
-                    }
-                }
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                Event event=dataSnapshot.getValue(Event.class);
-                if(event.getDate()>= ContemporaryDate.getContemporaryDate()) {
-                    AllEventsPuffer.enterEvent(event);
-                    Collections.sort(AllEventsPuffer.getAllEvents());
-                    if(!arraylist.equals(event.getCity())) {
-                        arraylist.add(event.getCity());
-                        Collections.sort(arraylist);
-                        adapter.notifyDataSetChanged();
-                    }
-
-                }
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                Event event=dataSnapshot.getValue(Event.class);
-                if(event.getDate()>= ContemporaryDate.getContemporaryDate()) {
-                    AllEventsPuffer.enterEvent(event);
-                    Collections.sort(AllEventsPuffer.getAllEvents());
-                    if(!arraylist.equals(event.getCity())) {
-                        arraylist.add(event.getCity());
-                        Collections.sort(arraylist);
-                        adapter.notifyDataSetChanged();
-                    }
-                }
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-
         listview.setAdapter(adapter);
+    }
+
+    private void searchingThroughData() {
+        for(int i=0; i<allEvents.size();i++){
+            if (!arraylist.contains(allEvents.get(i).getCity())){
+                arraylist.add(allEvents.get(i).getCity());
+            }
+        }
+        Collections.sort(arraylist);
     }
 
     private void initUI() {
@@ -124,14 +70,14 @@ public class AllPossibleCities extends AppCompatActivity {
         });
     }
 
-    private void initDB() {
-        helper=new ExternDatabase();
+    private void getDataFromPuffer(){
+        allEvents.addAll(AllEventsPuffer.getAllEvents());
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater =getMenuInflater();
-        inflater.inflate(R.menu.all_possible_cities_menu,menu);
+        inflater.inflate(R.menu.all_menu,menu);
         return true;
     }
 
