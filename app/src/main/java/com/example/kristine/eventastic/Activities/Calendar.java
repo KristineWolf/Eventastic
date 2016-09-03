@@ -40,7 +40,7 @@ public class Calendar extends AppCompatActivity {
         initUI();
         updateList();
         if (arrayList.size() != 0){
-            setNextEvent();
+            checkIfFirstEventOver();
         } else {
             noEventOnMyList();
         }
@@ -86,7 +86,7 @@ public class Calendar extends AppCompatActivity {
         adapter = new EventAdapter(this, arrayList);
     }
 
-    private void noEventOnMyList() {
+     private void noEventOnMyList() {
         title.setVisibility(View.INVISIBLE);
         city.setVisibility(View.INVISIBLE);
         date.setVisibility(View.INVISIBLE);
@@ -94,7 +94,7 @@ public class Calendar extends AppCompatActivity {
         TextView nextEvent = (TextView) findViewById(R.id.title_next_event);
         calendarView.setDate(System.currentTimeMillis(),false,true);
 
-        //TODO: evtl noch anders gestalten
+        //TODO: noch anders gestalten
         nextEvent.setText(getString(R.string.nothing_on_list));
         nextEvent.setTextSize(20);
         nextEvent.setOnClickListener(new View.OnClickListener() {
@@ -104,14 +104,41 @@ public class Calendar extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
+     }
 
-    private void setNextEvent() {
-        title.setText(arrayList.get(0).getTitel());
-        city.setText(arrayList.get(0).getCity());
-        String dateEvent = ChangeDateFormat.changeIntoString(arrayList.get(0).getDate());
-        time.setText(arrayList.get(0).getTime());
+     private void checkIfFirstEventOver() {
+        //date today and date next event
+       SimpleDateFormat dateFormatterDate = new SimpleDateFormat("dd.MM.yyyy");
+       Date longDateToday = java.util.Calendar.getInstance().getTime();
+       String stringDateToday = dateFormatterDate.format(longDateToday);
+       String stringDateEvent = ChangeDateFormat.changeIntoString(arrayList.get(0).getDate());
+
+       //event-begin in Millisec
+       SimpleDateFormat formattedTime = new SimpleDateFormat("HH:mm");
+       String stringTimeEvent = arrayList.get(0).getTime();
+       long longEventBeginTime;
+       try {
+           Date d = formattedTime.parse(stringTimeEvent);
+           longEventBeginTime = d.getTime();
+       } catch (ParseException e){
+           return;
+       }
+
+        //falls Event heute, aber schon vorbei, zweiten (1) Eintrag aus der Liste wählen. Sonst der ersten (0)
+        if (stringDateEvent.equals(stringDateToday)){
+            if (longEventBeginTime < System.currentTimeMillis())
+                setNextEvent(1);
+        } else
+            setNextEvent(0);
+     }
+
+    private void setNextEvent(int event) {
+        title.setText(arrayList.get(event).getTitel());
+        city.setText(arrayList.get(event).getCity());
+        String dateEvent = ChangeDateFormat.changeIntoString(arrayList.get(event).getDate());
+        time.setText(arrayList.get(event).getTime());
         date.setText(dateEvent);
+
         //Setzen des CalenderViews auf das nächste Datum
         String stringDate = dateEvent;
         SimpleDateFormat f = new SimpleDateFormat("dd.MM.yyyy");
@@ -119,56 +146,8 @@ public class Calendar extends AppCompatActivity {
             Date d = f.parse(stringDate);
             long milliseconds = d.getTime();
             calendarView.setDate(milliseconds);
-        } catch (ParseException e){
+        } catch (ParseException et){
             return;
         }
     }
-
-    /*
-   private void checkNotification() {
-        //date today and date nexte event
-        Date dateTo = java.util.Calendar.getInstance().getTime();
-        SimpleDateFormat dateFormatterDate = new SimpleDateFormat("dd.MM.yyyy");
-        String dateToday = dateFormatterDate.format(dateTo);
-        String dateEvent = ChangeDateFormat.changeIntoString(arrayList.get(0).getDate());
-
-        // aktuelle Uhrzeit, EventUhrzeit
-        SimpleDateFormat dateFormatterTime = new SimpleDateFormat("HH:mm");
-        String timeNowPlusOneHour = dateFormatterTime.format(new Date(System.currentTimeMillis()+ 3600 * 1000));
-        String timeEvent = arrayList.get(0).getTime();
-
-        //falls Datum übereinstimmt mit nächstem Event, eine Stunde vor Beginn Notificiation abschicken
-        if (dateEvent.equals(dateToday)){
-            if (timeEvent.equals(timeNowPlusOneHour))
-                sendNotification();
-        }
-    }
-
-    private void sendNotification() {
-        Uri sound = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.snare_drum_roll);
-        long[] vibrate = { 1000, 1000, 1000, 1000, 1000 } ;
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.to_all_events)
-                        .setContentTitle(getString(R.string.notification_title))
-                        .setContentText(getString(R.string.notification_text_1)+" "+ arrayList.get(0).getTime() + " "+getString(R.string.notification_text_2) + arrayList.get(0).getTitel()+getString(R.string.notification_text_3))
-                        .setSound(sound)
-                        .setVibrate(vibrate)
-                        .setLights(Color.RED, 3000, 3000);
-
-        Intent toThisEvent = new Intent(this,Calendar.class);
-
-        TaskStackBuilder tStackBuilder = TaskStackBuilder.create(this);
-        tStackBuilder.addParentStack(Calendar.class);
-        tStackBuilder.addNextIntent(toThisEvent);
-
-        PendingIntent pendingIntentNotification = tStackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
-        mBuilder.setContentIntent(pendingIntentNotification);
-
-        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.notify(1, mBuilder.build());
-    }
-
-    */
-
 }

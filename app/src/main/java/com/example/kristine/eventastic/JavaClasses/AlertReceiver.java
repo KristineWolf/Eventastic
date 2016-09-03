@@ -30,7 +30,8 @@ public class AlertReceiver extends BroadcastReceiver{
                         .setSound(sound)
                         .setVibrate(vibrate)
                         .setLights(Color.RED, 3000, 3000);
-
         myNotificationManager.notify(1,mBuilder.build());
+
+        //TODO: User kommt nach Klick zu CalendarActivity
     }
 }

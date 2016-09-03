@@ -14,8 +14,8 @@ oder du nimmst einfach immer die Hälfte des Bildschirmes
 
 Klappt leider nicht bei mir, da wird die CalenderView nur zur Hälfte angezeigt.-->
     <CalendarView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/calendarView"
         android:firstDayOfWeek="2"
         android:showWeekNumber="true"

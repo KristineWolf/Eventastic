@@ -64,20 +64,22 @@ public class ParticipatingEvents extends AppCompatActivity {
     private void scheduleNotification(int i) {
         Intent intent = new Intent(getApplicationContext(),AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-        String dateEvent = ChangeDateFormat.changeIntoString(arrayList.get(i).getDate());
-        String timeEvent = arrayList.get(i).getTime();
-        String oneHourBefore = dateEvent +" " +timeEvent;
-        SimpleDateFormat formattedDate = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+
+        String stringDateEvent = ChangeDateFormat.changeIntoString(arrayList.get(i).getDate());
+        String stringTimeEvent = arrayList.get(i).getTime();
+        String stringBeginEvent = stringDateEvent+" " +stringTimeEvent;
+
         //Event-Datum und Uhrzeit in Millisec
-        long oneHourBeforeEventBegin;
+        SimpleDateFormat formattedDate = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+        long longBeginEvent;
         try {
-            Date d = formattedDate.parse(oneHourBefore);
-            oneHourBeforeEventBegin = d.getTime();
+            Date d = formattedDate.parse(stringBeginEvent);
+            longBeginEvent = d.getTime();
         } catch (ParseException e){
             return;
         }
         //1 Stunde vor EventBeginn soll Notification ausgelöst werden
-        long notificationInMillisec = oneHourBeforeEventBegin-ONE_HOUR_IN_MILLISEC;
+        long notificationInMillisec = longBeginEvent-ONE_HOUR_IN_MILLISEC;
         AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC,notificationInMillisec,pendingIntent);
     }
@@ -136,12 +138,9 @@ public class ParticipatingEvents extends AppCompatActivity {
                 startActivity(intent3);
                 return true;
 
-
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
-
-
         }
 
         return false;
