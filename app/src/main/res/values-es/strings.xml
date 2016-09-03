@@ -4,11 +4,11 @@
     <string name="about_this_app_help">Cómo apoyar.</string>
     <string name="about_this_app_how">Así funciona.</string>
     <string name="button_added">¡Que disfrutes!</string>
-    <string name="button_add">Voy a participar</string>
+    <string name="button_add">Voy a participar.</string>
     <string name="all_events_title">Evento en</string>
     <string name="about_this_App">Sobre esta aplicación.</string>
     <string name="about_this_app_contact">Ponte en contacto con nosotros.</string>
-    <string name="about_this_app_contact_text">Les quedaríamos muy agradecidos por cualquier tipo de críticas, sugerencias y preguntas respecto a esta aplicación transmitidas por Email.</string>
+    <string name="about_this_app_contact_text">Estaríamos muy agradecidos por cualquier tipo de críticas, sugerencias y preguntas respecto a esta aplicación. Escribenos al email eventastic.app@gmail.com.</string>
     <string name="button_delete">No quiero participar.</string>
     <string name="key_city">city</string>
     <string name="key_date">date</string>
@@ -18,7 +18,42 @@
     <string name="key_type">type</string>
     <string name="settings">Parámetros</string>
     <string name="about_this_app_help_text"></string>
-    <string name="participating_events"></string>
+    <string name="participating_events">Mis Eventos</string>
     <string name="about_this_app_what">De que trata.</string>
     <string name="hint_city">Ciudad</string>
+    <string name="hint_date">Fecha</string>
+    <string name="hint_time">Hora</string>
+    <string name="button_deleted">No vas a participar.</string>
+    <string name="button_text_enter">Aceptar</string>
+    <string name="calendar">Calendario</string>
+    <string name="city_in">en</string>
+    <string name="events_city">Eventos en esta ciudad</string>
+    <string name="calendar_next_event">TU PRÓXIMO EVENTO:</string>
+    <string name="hint_definition">Definición</string>
+    <string name="hint_title">TÍTULO</string>
+    <string name="notification_title">Evento en una hora!</string>
+    <string name="toast_added">Has añadido este evento a la lista: \'</string>
+    <string name="edit_city">Ingrese una ciudad</string>
+    <string name="edit_eventType">Elige el tipo de evento</string>
+    <string name="hint_edit_date">Elige la fecha</string>
+    <string name="hint_edit_time">Elige la hora</string>
+    <string name="hint_edit_title">Ingresa el título del evento</string>
+    <string name="hint_eventType">tipo del evento</string>
+    <string name="title_add_event">Añadir evento</string>
+    <string name="notification_text_1">A</string>
+    <string name="notification_text_2">comienza el evento \'</string>
+    <string name="notification_text_3">\' ¡Pásalo bien!</string>
+    <string name="hint_edit_info">Añade información sobre el evento</string>
+    <string name="nothing_on_list">Todavía ne has elegido un evento. \n Haz clic aqui y añade.</string>
+    <string name="toast_deleted">Este evento fue borrado de tu lista. \'</string>
+
+    <string-array name="eventtype_array">
+        <item>concierto</item>
+        <item>fiesta</item>
+        <item>festival</item>
+        <item>teatro</item>
+        <item>cómico</item>
+        <item>evento deportivo</item>
+        <item>otro</item>
+    </string-array>
 </resources>

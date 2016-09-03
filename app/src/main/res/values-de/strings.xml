@@ -125,14 +125,14 @@
 
 
     <!-- strings für Toasts -->
-    <string name="toast_added">"Du hast folgendes Event hinzugefügt: '"</string>
-    <string name="toast_deleted">"Dieses Event wurde von deiner Liste gelöscht."</string>
+    <string name="toast_added">Du hast folgendes Event hinzugefügt: \'</string>
+    <string name="toast_deleted">Dieses Event wurde von deiner Liste gelöscht: \'</string>
 
     <!-- für Notification -->
     <string name="notification_title">Event in einer Stunde!</string>
     <string name="notification_text_1">Um </string>
-    <string name="notification_text_2"> beginnt das Event ´</string>
-    <string name="notification_text_3">´ Viel Spaß!</string>
+    <string name="notification_text_2">beginnt das Event \'</string>
+    <string name="notification_text_3">\' Viel Spaß!</string>
 
 
     <!-- Strings für HINTS -->
@@ -143,7 +143,7 @@
     <string name="hint_time">Uhrzeit</string>
     <string name="hint_definition">Definition</string>
 
-    <string name="hint_edit_title">Gib Event Title ein</string>
+    <string name="hint_edit_title">Gib den Event Titel ein</string>
     <string name="hint_edit_date">Wähle Datum aus</string>
     <string name="hint_edit_time">Wähle Uhrzeit aus</string>
     <string name="hint_edit_info">Füge wichtige Informationen hinzu</string>
