@@ -34,7 +34,7 @@ public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
     private void informationInBundle(Bundle extras) {
         city=extras.getString("city");
         time=extras.getString("time");
-        titel=extras.getString("title");
+        titel=extras.getString("titel");
         date=extras.getString("date");
         definition=extras.getString("definition");
         type=extras.getString("type");
