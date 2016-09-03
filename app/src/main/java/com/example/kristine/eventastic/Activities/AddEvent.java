@@ -206,7 +206,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         Event event = new Event(city, ChangeDateFormat.changeFirstIntoDateFormatAfterwardsIntoInteger(date), time, titel, definition, type);
         boolean saved = db.insertItem(event);
 
-        Toast.makeText(this,"You added the Event '"+titel+"'.",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,getResources().getString(R.string.toast_added)+titel+"'.",Toast.LENGTH_LONG).show();
     }
 
 

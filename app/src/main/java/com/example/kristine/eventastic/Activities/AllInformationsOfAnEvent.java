@@ -32,6 +32,7 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
         initOnClickListener();
     }
 
+
     private void informationInBundle(Bundle extras) {
         city=extras.getString("city");
         time=extras.getString("time");
@@ -53,8 +54,6 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
                     db.deleteEvent(city, time,titel,type, definition);
                     db.insertEventItem(city, date, time, definition, type, titel);
                     add.setText(R.string.button_added);
-
-
             }
         });
     }
@@ -78,6 +77,7 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
         tTime.setText(time);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater =getMenuInflater();
@@ -89,16 +89,12 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
     public boolean onOptionsItemSelected (MenuItem item) {
         int id= item.getItemId();
         switch (id){
-
-
             case android.R.id.home:
                 Intent intent=new Intent(AllInformationsOfAnEvent.this,EventsInCity.class);
                 intent.putExtra("selected_city",city);
                 startActivity(intent);
                 break;
-
         }
-
         return true;
     }
 }

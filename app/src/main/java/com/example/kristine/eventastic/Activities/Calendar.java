@@ -1,14 +1,7 @@
 package com.example.kristine.eventastic.Activities;
 
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Vibrator;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CalendarView;
@@ -21,6 +14,7 @@ import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +23,7 @@ import java.util.Date;
 /**
  * Created by Teresa on 29.08.2016.
  */
-public class Calendar extends AppCompatActivity{
+public class Calendar extends AppCompatActivity {
 
     private ArrayList<Event> arrayList = new ArrayList<>();
     private InternDatabase db;
@@ -47,30 +41,9 @@ public class Calendar extends AppCompatActivity{
         updateList();
         if (arrayList.size() != 0){
             setNextEvent();
-            checkNotification();
         } else {
-            actionsWhenNoEventYet();
-
+            noEventOnMyList();
         }
-    }
-
-    private void actionsWhenNoEventYet() {
-        title.setVisibility(View.INVISIBLE);
-        city.setVisibility(View.INVISIBLE);
-        date.setVisibility(View.INVISIBLE);
-        time.setVisibility(View.INVISIBLE);
-        TextView nextEvent = (TextView) findViewById(R.id.title_next_event);
-
-        //TODO: evtl noch anders gestalten
-        nextEvent.setText(getString(R.string.nothing_on_list));
-        nextEvent.setTextSize(20);
-        nextEvent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(Calendar.this,AllPossibleCities.class);
-                startActivity(intent);
-            }
-        });
     }
 
     private void updateList() {
@@ -113,6 +86,25 @@ public class Calendar extends AppCompatActivity{
         adapter = new EventAdapter(this, arrayList);
     }
 
+    private void noEventOnMyList() {
+        title.setVisibility(View.INVISIBLE);
+        city.setVisibility(View.INVISIBLE);
+        date.setVisibility(View.INVISIBLE);
+        time.setVisibility(View.INVISIBLE);
+        TextView nextEvent = (TextView) findViewById(R.id.title_next_event);
+        calendarView.setDate(System.currentTimeMillis(),false,true);
+
+        //TODO: evtl noch anders gestalten
+        nextEvent.setText(getString(R.string.nothing_on_list));
+        nextEvent.setTextSize(20);
+        nextEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Calendar.this,AllPossibleCities.class);
+                startActivity(intent);
+            }
+        });
+    }
 
     private void setNextEvent() {
         title.setText(arrayList.get(0).getTitel());
@@ -120,11 +112,20 @@ public class Calendar extends AppCompatActivity{
         String dateEvent = ChangeDateFormat.changeIntoString(arrayList.get(0).getDate());
         time.setText(arrayList.get(0).getTime());
         date.setText(dateEvent);
-        // TODO: dieses Datum im CalendarView markieren. Event setzen geht leider nicht, da es ein default CalendarView ist.
+        //Setzen des CalenderViews auf das nächste Datum
+        String stringDate = dateEvent;
+        SimpleDateFormat f = new SimpleDateFormat("dd.MM.yyyy");
+        try {
+            Date d = f.parse(stringDate);
+            long milliseconds = d.getTime();
+            calendarView.setDate(milliseconds);
+        } catch (ParseException e){
+            return;
+        }
     }
 
-
-    private void checkNotification() {
+    /*
+   private void checkNotification() {
         //date today and date nexte event
         Date dateTo = java.util.Calendar.getInstance().getTime();
         SimpleDateFormat dateFormatterDate = new SimpleDateFormat("dd.MM.yyyy");
@@ -133,30 +134,27 @@ public class Calendar extends AppCompatActivity{
 
         // aktuelle Uhrzeit, EventUhrzeit
         SimpleDateFormat dateFormatterTime = new SimpleDateFormat("HH:mm");
-        String timeNow = dateFormatterTime.format(new Date());
+        String timeNowPlusOneHour = dateFormatterTime.format(new Date(System.currentTimeMillis()+ 3600 * 1000));
         String timeEvent = arrayList.get(0).getTime();
 
-        //falls Datum und Zeit übereinstimmt mit nächstem Event, Notification senden.
-        //TODO: Notification eine Stunde eher abschicken
+        //falls Datum übereinstimmt mit nächstem Event, eine Stunde vor Beginn Notificiation abschicken
         if (dateEvent.equals(dateToday)){
-            if (timeEvent.equals(timeNow)){
+            if (timeEvent.equals(timeNowPlusOneHour))
                 sendNotification();
-            }
         }
     }
 
     private void sendNotification() {
-        //habe im raw orner verschiedene Töne hinzugefügt. Kannst du gerne auch ändern bzw Töne für Tasten hinzufügen
         Uri sound = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.snare_drum_roll);
-        Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-        vibrator.vibrate(3000);
+        long[] vibrate = { 1000, 1000, 1000, 1000, 1000 } ;
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.to_all_events)
                         .setContentTitle(getString(R.string.notification_title))
                         .setContentText(getString(R.string.notification_text_1)+" "+ arrayList.get(0).getTime() + " "+getString(R.string.notification_text_2) + arrayList.get(0).getTitel()+getString(R.string.notification_text_3))
                         .setSound(sound)
-                        .setTicker("EVENTASTIC:  new message");
+                        .setVibrate(vibrate)
+                        .setLights(Color.RED, 3000, 3000);
 
         Intent toThisEvent = new Intent(this,Calendar.class);
 
@@ -171,5 +169,6 @@ public class Calendar extends AppCompatActivity{
         mNotificationManager.notify(1, mBuilder.build());
     }
 
+    */
 
 }

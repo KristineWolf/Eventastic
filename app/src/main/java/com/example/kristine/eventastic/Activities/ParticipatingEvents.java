@@ -1,5 +1,7 @@
 package com.example.kristine.eventastic.Activities;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -13,15 +15,20 @@ import android.widget.ListView;
 
 import com.example.kristine.eventastic.Adapter.EventAdapter;
 import com.example.kristine.eventastic.Databases.InternDatabase;
+import com.example.kristine.eventastic.JavaClasses.AlertReceiver;
 import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 
 public class ParticipatingEvents extends AppCompatActivity {
 
+    private static final int ONE_HOUR = 3600 * 1000;
     private ListView listView;
     private ArrayList<Event> arrayList = new ArrayList<>();
     private InternDatabase db;
@@ -42,11 +49,36 @@ public class ParticipatingEvents extends AppCompatActivity {
 
         listView.setAdapter(adapter);
         sortData();
+
+        for (int i=0;i<arrayList.size();i++){
+            //Für jedes Event in der Liste wird eine notification erzeugt.
+            scheduleNotification(i);
+        }
     }
 
     private void sortData() {
         Collections.sort(arrayList);
         adapter.notifyDataSetChanged();
+    }
+
+    // wird eine Std vor EventBeginn ausgelöst
+    private void scheduleNotification(int i) {
+        Intent intent = new Intent(getApplicationContext(),AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        String dateEvent = ChangeDateFormat.changeIntoString(arrayList.get(i).getDate());
+        String timeEvent = arrayList.get(i).getTime();
+        String oneHourBefore = dateEvent +" " +timeEvent;
+        SimpleDateFormat formattedDate = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+        long oneHourBeforeLong;
+        try {
+            Date d = formattedDate.parse(oneHourBefore);
+            oneHourBeforeLong = d.getTime();
+        } catch (ParseException e){
+            return;
+        }
+        long notificationInMillisec = oneHourBeforeLong+ONE_HOUR;
+        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC,notificationInMillisec,pendingIntent);
     }
 
     private void initUI() {
