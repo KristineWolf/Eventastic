@@ -1,6 +1,7 @@
 package com.example.kristine.eventastic.Activities;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -145,10 +146,9 @@ public class CalendarActivity extends AppCompatActivity {
         date.setText(dateEvent);
 
         //Setzen des CalenderViews auf das nächste Datum
-        String stringDate = dateEvent;
         SimpleDateFormat f = new SimpleDateFormat("dd.MM.yyyy");
         try {
-            Date d = f.parse(stringDate);
+            Date d = f.parse(dateEvent);
             long milliseconds = d.getTime();
             calendarView.setDate(milliseconds);
         } catch (ParseException et){
@@ -161,13 +161,15 @@ public class CalendarActivity extends AppCompatActivity {
         MenuInflater inflater =getMenuInflater();
         inflater.inflate(R.menu.calendar_activity_menu,menu);
 
+        //setup shareMenuItem
         MenuItem shareItem = menu.findItem(R.id.menu_item_share);
         ShareActionProvider myShareActionProvider = (android.support.v7.widget.ShareActionProvider)MenuItemCompat.getActionProvider(shareItem);
-
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setAction(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_TEXT,"Check out the Event EVENTTITLE in CITY on Eventastic!");
+        Resources res = getResources();
+        String text = String.format(res.getString(R.string.message_share),title.getText(), city.getText());
+        shareIntent.putExtra(Intent.EXTRA_TEXT,text);
         myShareActionProvider.setShareIntent(shareIntent);
 
         return true;
@@ -179,19 +181,15 @@ public class CalendarActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected (MenuItem item) {
         int id= item.getItemId();
         switch (id){
-
             //back to my events
             case R.id.calendar_to_all_my_events:
                 Intent intent = new Intent(CalendarActivity.this, ParticipatingEvents.class);
                 startActivity(intent);
                 break;
-
             case android.R.id.home:
                 finish();
                 break;
-
         }
-
         return true;
     }
 }
