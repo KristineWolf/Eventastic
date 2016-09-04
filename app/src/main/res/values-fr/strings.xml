@@ -28,14 +28,13 @@
     <string name="city_in">à</string>
     <string name="events_city">Événements à cette ville.</string>
     <string name="hint_title">TITRE</string>
-    <string name="notification_title">Événement dans une heure!</string>
+    <string name="notification_title">Eventastic!</string>
     <string name="participating_events">Mes Événements</string>
     <string name="edit_city">Entre une ville</string>
     <string name="edit_eventType">Entre le type de l\'événement</string>
     <string name="hint_definition">Définition</string>
     <string name="title_add_event">Ajouter événement</string>
-    <string name="notification_text_1">À</string>
-    <string name="notification_text_2">commence el événement \'</string>
+    <string name="notification_text">Dans une heure il y a un événement.</string>
     <string name="hint_edit_date">Sélectionne la date</string>
     <string name="hint_edit_time">Sélectionne l\'heure</string>
     <string name="hint_edit_info">Ajoute des informations de cette événement.</string>
@@ -43,7 +42,6 @@
     <string name="hint_eventType">Entre el type de l\'événement.</string>
     <string name="hint_time">Heure</string>
     <string name="nothing_on_list">Clique ici.</string>
-    <string name="notification_text_3">\' Amuse-toi!</string>
     <string name="toast_added">"Tu as ajouté cette événement à la liste."</string>
     <string name="toast_deleted">Événent est supprimé de ta liste.</string>
     <string-array name="eventtype_array">

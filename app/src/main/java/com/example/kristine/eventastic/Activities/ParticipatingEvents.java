@@ -2,6 +2,7 @@ package com.example.kristine.eventastic.Activities;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -51,7 +52,7 @@ public class ParticipatingEvents extends AppCompatActivity {
         sortData();
 
         for (int i=0;i<arrayList.size();i++){
-            //Für jedes Event am heutigen Tag wird eine Notification erzeugt.
+            //Für jedes Event der Liste wird eine Notification erzeugt.
             scheduleNotification(i);
         }
     }
@@ -62,26 +63,26 @@ public class ParticipatingEvents extends AppCompatActivity {
     }
 
     private void scheduleNotification(int i) {
-        Intent intent = new Intent(getApplicationContext(),AlertReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-
+        //get Event-timeStamp in millisec
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         String stringDateEvent = ChangeDateFormat.changeIntoString(arrayList.get(i).getDate());
         String stringTimeEvent = arrayList.get(i).getTime();
-        String stringBeginEvent = stringDateEvent+" " +stringTimeEvent;
-
-        //Event-Datum und Uhrzeit in Millisec
-        SimpleDateFormat formattedDate = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+        String stringEventBegin = stringDateEvent+" "+stringTimeEvent;
         long longBeginEvent;
         try {
-            Date d = formattedDate.parse(stringBeginEvent);
+            Date d = dateFormatter.parse(stringEventBegin);
             longBeginEvent = d.getTime();
         } catch (ParseException e){
             return;
         }
-        //1 Stunde vor EventBeginn soll Notification ausgelöst werden
+        //1 hour before eventBegin: set notification
         long notificationInMillisec = longBeginEvent-ONE_HOUR_IN_MILLISEC;
-        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC,notificationInMillisec,pendingIntent);
+
+        //TODO: klappt irgendwie nicht, dass der Alarm 1 Stunde vorher ausgelöst wird. Ich weiß aber absolut nicht wieso. Findest du einen Fehler? Vllt schreibe ich den tutoren dazu eine E-Mail...
+        Intent intent = new Intent(getApplicationContext(),AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP,notificationInMillisec,pendingIntent);
     }
 
     private void initUI() {
@@ -133,7 +134,7 @@ public class ParticipatingEvents extends AppCompatActivity {
                 return true;
 
             case R.id.participating_events_to_calendar:
-                Intent intent3 = new Intent(ParticipatingEvents.this,Calendar.class);
+                Intent intent3 = new Intent(ParticipatingEvents.this,CalendarActivity.class);
                 startActivity(intent3);
                 return true;
 

@@ -2,7 +2,12 @@ package com.example.kristine.eventastic.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ShareActionProvider;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TextView;
@@ -23,12 +28,11 @@ import java.util.Date;
 /**
  * Created by Teresa on 29.08.2016.
  */
-public class Calendar extends AppCompatActivity {
+public class CalendarActivity extends AppCompatActivity {
 
     private ArrayList<Event> arrayList = new ArrayList<>();
     private InternDatabase db;
     private EventAdapter adapter;
-    private int i;
     private TextView title, city, date, time;
 
     private CalendarView calendarView;
@@ -100,32 +104,32 @@ public class Calendar extends AppCompatActivity {
         nextEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Calendar.this,AllEvents.class);
+                Intent intent=new Intent(CalendarActivity.this,AllEvents.class);
                 startActivity(intent);
             }
         });
      }
 
     private void checkIfNextEventOver(int numbEvents) {
-        //date today and date next event
-       SimpleDateFormat dateFormatterDate = new SimpleDateFormat("dd.MM.yyyy");
-       Date longDateToday = java.util.Calendar.getInstance().getTime();
-       String stringDateToday = dateFormatterDate.format(longDateToday);
-       String stringDateEvent = ChangeDateFormat.changeIntoString(arrayList.get(numbEvents).getDate());
+       //current TimeStamp millisec
+        long longDateToday = System.currentTimeMillis();
 
-       //event-begin in Millisec
-       SimpleDateFormat formattedTime = new SimpleDateFormat("HH:mm");
-       String stringTimeEvent = arrayList.get(numbEvents).getTime();
-       long longEventBeginTime;
-       try {
-           Date d = formattedTime.parse(stringTimeEvent);
-           longEventBeginTime = d.getTime();
-       } catch (ParseException e){
+        //TimeStamp next event millisec
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+        String stringDateEvent = ChangeDateFormat.changeIntoString(arrayList.get(numbEvents).getDate());
+        String stringTimeEvent = arrayList.get(numbEvents).getTime();
+        String stringEventBegin = stringDateEvent+" "+stringTimeEvent;
+
+        long longEventBegin;
+        try {
+           Date d = dateFormatter.parse(stringEventBegin);
+           longEventBegin = d.getTime();
+        } catch (ParseException e){
            return;
-       }
+        }
 
-        //falls Event heute, aber schon vorbei, nächsten Eintrag aus der Liste überprüfen.
-        if (stringDateEvent.equals(stringDateToday) && longEventBeginTime < System.currentTimeMillis()){
+        //falls Event schon vorbei, nächsten Eintrag aus der Liste überprüfen.
+        if (longEventBegin < longDateToday){
             if (arrayList.size()>numbEvents+1){
                 checkIfNextEventOver(numbEvents+1);
             } else noEventOnMyList();
@@ -150,5 +154,44 @@ public class Calendar extends AppCompatActivity {
         } catch (ParseException et){
             return;
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater =getMenuInflater();
+        inflater.inflate(R.menu.calendar_activity_menu,menu);
+
+        MenuItem shareItem = menu.findItem(R.id.menu_item_share);
+        ShareActionProvider myShareActionProvider = (android.support.v7.widget.ShareActionProvider)MenuItemCompat.getActionProvider(shareItem);
+
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT,"Check out the Event EVENTTITLE in CITY on Eventastic!");
+        myShareActionProvider.setShareIntent(shareIntent);
+
+        return true;
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+        int id= item.getItemId();
+        switch (id){
+
+            //back to my events
+            case R.id.calendar_to_all_my_events:
+                Intent intent = new Intent(CalendarActivity.this, ParticipatingEvents.class);
+                startActivity(intent);
+                break;
+
+            case android.R.id.home:
+                finish();
+                break;
+
+        }
+
+        return true;
     }
 }
