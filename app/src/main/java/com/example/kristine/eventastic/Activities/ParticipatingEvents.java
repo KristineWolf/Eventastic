@@ -129,7 +129,7 @@ public class ParticipatingEvents extends AppCompatActivity {
 
             //hier kommt der Nutzer zu allen Events
             case R.id.participating_events_to_all_events:
-                Intent intent = new Intent(ParticipatingEvents.this, AllPossibleCities.class);
+                Intent intent = new Intent(ParticipatingEvents.this, AllEvents.class);
                 startActivity(intent);
                 return true;
 

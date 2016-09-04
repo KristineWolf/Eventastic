@@ -16,6 +16,7 @@ import com.example.kristine.eventastic.Adapter.CityAdapter;
 import com.example.kristine.eventastic.Adapter.EventAdapter;
 import com.example.kristine.eventastic.Databases.ExternDatabase;
 import com.example.kristine.eventastic.JavaClasses.AllEventsPuffer;
+import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
 import com.example.kristine.eventastic.JavaClasses.ContemporaryDate;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
@@ -30,7 +31,7 @@ public class AllEvents extends AppCompatActivity {
 
     private ExternDatabase db;
     private ListView listview;
-    private EventAdapter adapter;
+    private CityAdapter adapter;
     private Button toAllPossibleCities;
     private ArrayList<Event> events=new ArrayList<>();
 
@@ -116,7 +117,7 @@ public class AllEvents extends AppCompatActivity {
     }
 
     private void initAdapter() {
-        adapter=new EventAdapter(this,events);
+        adapter=new CityAdapter(this,events);
     }
 
     private void initListView() {
@@ -124,7 +125,16 @@ public class AllEvents extends AppCompatActivity {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(AllEvents.this, AllInformationsOfAnEvent.class);
+                //intent.putExtra("event",arraylist.get(position));
+                intent.putExtra("city",events.get(position).getCity());
+                intent.putExtra("titel",events.get(position).getTitel());
+                intent.putExtra("time",events.get(position).getTime());
+                intent.putExtra("type",events.get(position).getType());
+                intent.putExtra("date", ChangeDateFormat.changeIntoString(events.get(position).getDate()));
+                intent.putExtra("definition",events.get(position).getDefintion());
 
+                startActivity(intent);
             }
         });
     }

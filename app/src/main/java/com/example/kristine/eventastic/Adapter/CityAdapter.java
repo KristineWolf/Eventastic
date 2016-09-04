@@ -22,7 +22,7 @@ public class CityAdapter extends ArrayAdapter<Event> {
     private Context context;
 
     public CityAdapter (Context context, ArrayList<Event> arrayList){
-        super(context, R.layout.event, arrayList);
+        super(context, R.layout.all_events, arrayList);
         this.arrayList=arrayList;
         this.context=context;
     }
@@ -31,23 +31,26 @@ public class CityAdapter extends ArrayAdapter<Event> {
         View v;
         if(convertView==null){
             LayoutInflater inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v=inflater.inflate(R.layout.event,null);
+            v=inflater.inflate(R.layout.all_events,null);
         }
         else {
             v=convertView;
         }
         if(arrayList.get(position)!=null){
-            TextView titel =(TextView) v.findViewById(R.id.event_titel);
-            TextView date =(TextView)v.findViewById(R.id.event_date);
-            TextView time =(TextView)v.findViewById(R.id.event_time);
-            TextView type =(TextView)v.findViewById(R.id.event_type);
+            TextView titel =(TextView) v.findViewById(R.id.all_event_titel);
+            TextView date =(TextView)v.findViewById(R.id.all_event_date);
+            TextView time =(TextView)v.findViewById(R.id.all_event_time);
+            TextView type =(TextView)v.findViewById(R.id.all_event_short_description);
+
+
 
             titel.setText(arrayList.get(position).getTitel());
-            date.setText(ChangeDateFormat.changeIntoString(arrayList.get(position).getDate()));
+            date.setText(
+                    ChangeDateFormat.changeIntoString(arrayList.get(position).getDate()));
 
             time.setText(arrayList.get(position).getTime());
 
-            type.setText(arrayList.get(position).getType());
+            type.setText("A "+arrayList.get(position).getType()+" in "+arrayList.get(position).getCity());
         }
 
 

@@ -74,42 +74,5 @@ public class AllPossibleCities extends AppCompatActivity {
         allEvents.addAll(AllEventsPuffer.getAllEvents());
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater =getMenuInflater();
-        inflater.inflate(R.menu.all_menu,menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected (MenuItem item) {
-        int id= item.getItemId();
-        switch (id){
-
-            //hier kann der Nutzer ein Event zur Datenbank hinzufügen
-            case R.id.all_possible_cities_add_event:
-                Intent intent=new Intent(AllPossibleCities.this,AddEvent.class);
-                startActivity(intent);
-                break;
-
-            //hier wird eine Einstellungsactivity geöffnet
-            case R.id.all_possible_cities_settings:
-                Intent intent2= new Intent(AllPossibleCities.this, SettingsActivity.class);
-                startActivity(intent2);
-                break;
-
-            //dadurch kommt der Nutzer zu seinen Veranstaltungen, an denen er teilnehmen will
-            case R.id.all_possible_cities_to_my_events:
-                Intent intent3 = new Intent(AllPossibleCities.this, ParticipatingEvents.class);
-                startActivity(intent3);
-                break;
-
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                break;
-
-        }
-
-        return true;
-    }
 }

@@ -12,10 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.kristine.eventastic.Adapter.CityAdapter;
 import com.example.kristine.eventastic.Adapter.EventAdapter;
-import com.example.kristine.eventastic.Databases.ExternDatabase;
-import com.example.kristine.eventastic.JavaClasses.AllEventsInACity;
 import com.example.kristine.eventastic.JavaClasses.AllEventsPuffer;
 import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
 import com.example.kristine.eventastic.JavaClasses.Event;
@@ -85,6 +82,7 @@ public class EventsInCity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(EventsInCity.this, AllInformationsOfAnEvent.class);
+                //intent.putExtra("event",arraylist.get(position));
                 intent.putExtra("city",arraylist.get(position).getCity());
                 intent.putExtra("titel",arraylist.get(position).getTitel());
                 intent.putExtra("time",arraylist.get(position).getTime());
@@ -127,7 +125,7 @@ public class EventsInCity extends AppCompatActivity {
                 break;
 
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                finish();
                 break;
 
         }

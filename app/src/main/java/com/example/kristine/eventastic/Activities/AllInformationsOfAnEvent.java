@@ -90,9 +90,7 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
         int id= item.getItemId();
         switch (id){
             case android.R.id.home:
-                Intent intent=new Intent(AllInformationsOfAnEvent.this,EventsInCity.class);
-                intent.putExtra("selected_city",city);
-                startActivity(intent);
+                finish();
                 break;
         }
         return true;

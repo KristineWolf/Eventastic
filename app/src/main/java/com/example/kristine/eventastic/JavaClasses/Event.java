@@ -1,9 +1,14 @@
 package com.example.kristine.eventastic.JavaClasses;
 
+import android.app.SearchableInfo;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Created by Kristine on 10.08.2016.
  */
-public class Event implements Comparable<Event> {
+public class Event implements Comparable<Event>, Serializable {
 
     private String city;
     private int date;
