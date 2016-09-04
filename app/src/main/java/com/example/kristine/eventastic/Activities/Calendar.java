@@ -100,7 +100,7 @@ public class Calendar extends AppCompatActivity {
         nextEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Calendar.this,AllPossibleCities.class);
+                Intent intent=new Intent(Calendar.this,AllEvents.class);
                 startActivity(intent);
             }
         });
