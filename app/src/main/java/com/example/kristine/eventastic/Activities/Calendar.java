@@ -28,7 +28,7 @@ public class Calendar extends AppCompatActivity {
     private ArrayList<Event> arrayList = new ArrayList<>();
     private InternDatabase db;
     private EventAdapter adapter;
-
+    private int i;
     private TextView title, city, date, time;
 
     private CalendarView calendarView;
@@ -40,7 +40,7 @@ public class Calendar extends AppCompatActivity {
         initUI();
         updateList();
         if (arrayList.size() != 0){
-            checkIfFirstEventOver();
+            checkIfNextEventOver(0);
         } else {
             noEventOnMyList();
         }
@@ -106,16 +106,16 @@ public class Calendar extends AppCompatActivity {
         });
      }
 
-     private void checkIfFirstEventOver() {
+    private void checkIfNextEventOver(int numbEvents) {
         //date today and date next event
        SimpleDateFormat dateFormatterDate = new SimpleDateFormat("dd.MM.yyyy");
        Date longDateToday = java.util.Calendar.getInstance().getTime();
        String stringDateToday = dateFormatterDate.format(longDateToday);
-       String stringDateEvent = ChangeDateFormat.changeIntoString(arrayList.get(0).getDate());
+       String stringDateEvent = ChangeDateFormat.changeIntoString(arrayList.get(numbEvents).getDate());
 
        //event-begin in Millisec
        SimpleDateFormat formattedTime = new SimpleDateFormat("HH:mm");
-       String stringTimeEvent = arrayList.get(0).getTime();
+       String stringTimeEvent = arrayList.get(numbEvents).getTime();
        long longEventBeginTime;
        try {
            Date d = formattedTime.parse(stringTimeEvent);
@@ -124,13 +124,14 @@ public class Calendar extends AppCompatActivity {
            return;
        }
 
-        //falls Event heute, aber schon vorbei, zweiten (1) Eintrag aus der Liste wählen. Sonst der ersten (0)
-        if (stringDateEvent.equals(stringDateToday)){
-            if (longEventBeginTime < System.currentTimeMillis())
-                setNextEvent(1);
+        //falls Event heute, aber schon vorbei, nächsten Eintrag aus der Liste überprüfen.
+        if (stringDateEvent.equals(stringDateToday) && longEventBeginTime < System.currentTimeMillis()){
+            if (arrayList.size()>numbEvents+1){
+                checkIfNextEventOver(numbEvents+1);
+            } else noEventOnMyList();
         } else
-            setNextEvent(0);
-     }
+            setNextEvent(numbEvents);
+    }
 
     private void setNextEvent(int event) {
         title.setText(arrayList.get(event).getTitel());

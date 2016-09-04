@@ -51,7 +51,7 @@ public class ParticipatingEvents extends AppCompatActivity {
         sortData();
 
         for (int i=0;i<arrayList.size();i++){
-            //Für jedes Event in der Liste wird eine notification erzeugt.
+            //Für jedes Event am heutigen Tag wird eine Notification erzeugt.
             scheduleNotification(i);
         }
     }
@@ -126,7 +126,6 @@ public class ParticipatingEvents extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-
             //hier kommt der Nutzer zu allen Events
             case R.id.participating_events_to_all_events:
                 Intent intent = new Intent(ParticipatingEvents.this, AllEvents.class);
@@ -142,7 +141,6 @@ public class ParticipatingEvents extends AppCompatActivity {
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
         }
-
         return false;
     }
 }
