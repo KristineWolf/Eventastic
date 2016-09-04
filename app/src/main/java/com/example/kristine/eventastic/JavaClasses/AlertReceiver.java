@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 
-import com.example.kristine.eventastic.Activities.Calendar;
+import com.example.kristine.eventastic.Activities.CalendarActivity;
 import com.example.kristine.eventastic.R;
 
 /**
@@ -19,7 +19,7 @@ public class AlertReceiver extends BroadcastReceiver{
     @Override
     public void onReceive(Context context, Intent intent) {
         NotificationManager myNotificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent notificationIntent = new Intent(context,Calendar.class);
+        Intent notificationIntent = new Intent(context,CalendarActivity.class);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         Uri sound = Uri.parse("android.resource://" +"com.example.kristine.eventastic.JavaClasses"+ "/" + R.raw.snare_drum_roll);
         long[] vibrate = { 1000, 1000, 1000, 1000, 1000 } ;
