@@ -13,6 +13,7 @@ import com.example.kristine.eventastic.Activities.AllEvents;
 import com.example.kristine.eventastic.Activities.AllPossibleCities;
 import com.example.kristine.eventastic.Activities.Calendar;
 import com.example.kristine.eventastic.Activities.AboutTheApp;
+import com.example.kristine.eventastic.Activities.EventNearLocation;
 import com.example.kristine.eventastic.Activities.ParticipatingEvents;
 import com.example.kristine.eventastic.Activities.SettingsActivity;
 

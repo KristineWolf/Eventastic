@@ -1,6 +1,10 @@
 package com.example.kristine.eventastic.Activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,15 +38,44 @@ public class AllEvents extends AppCompatActivity {
     private CityAdapter adapter;
     private Button toAllPossibleCities;
     private ArrayList<Event> events=new ArrayList<>();
+    private SharedPreferences sharedPreferences;
+    private boolean location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_events);
         AllEventsPuffer.clearArrayList();
+        getSettings();
         initDB();
         initUI();
         updateList();
+    }
+
+    private void getSettings() {
+        sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        location=sharedPreferences.getBoolean("Location",false);
+        if(location==false){
+            AlertDialog.Builder builder=new AlertDialog.Builder(this);
+            builder.setTitle("Access to your location.");
+            builder.setMessage("Change the settings to get events in your neighbourhood.");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent i= new Intent(AllEvents.this,SettingsActivity.class);
+                    startActivity(i);
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            builder.setCancelable(false);
+            AlertDialog dialog=builder.create();
+            dialog.show();
+        }
     }
 
     private void updateList() {
