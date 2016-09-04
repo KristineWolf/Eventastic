@@ -125,7 +125,7 @@
     <!-- Strings für CalenderActivity -->
     <string name="calendar">Calendar</string>
     <string name="calendar_next_event">YOUR NEXT EVENT:</string>
-    <string name="nothing_on_list">There´s no event on your list yet. \n CLICK HERE and add some!</string>
+    <string name="nothing_on_list">There´s no upcoming event on your list. \n CLICK HERE and add some!</string>
 
 
     <!-- strings für Toasts -->
