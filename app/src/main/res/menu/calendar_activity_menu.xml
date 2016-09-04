@@ -6,8 +6,15 @@
         android:title="My Events"
         android:id="@+id/calendar_to_all_my_events"
         android:icon="@drawable/to_particpating_events"
-        app:showAsAction="always">
+        app:showAsAction="ifRoom">
     </item>
+
+    <item
+        android:title="Share"
+        android:id="@+id/menu_item_share"
+        app:showAsAction="ifRoom"
+        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"/>
+
 
 
 </menu>

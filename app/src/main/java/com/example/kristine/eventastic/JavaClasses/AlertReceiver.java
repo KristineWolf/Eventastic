@@ -30,7 +30,7 @@ public class AlertReceiver extends BroadcastReceiver{
                 new android.support.v4.app.NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.to_all_events)
                         .setContentTitle(context.getResources().getString(R.string.notification_title))
-                        .setContentText(context.getResources().getString(R.string.notification_text_1))
+                        .setContentText(context.getResources().getString(R.string.notification_text))
                         .setSound(sound)
                         .setVibrate(vibrate)
                         .setLights(Color.RED, 3000, 3000)

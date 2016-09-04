@@ -2,7 +2,9 @@ package com.example.kristine.eventastic.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ShareActionProvider;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,7 +33,6 @@ public class CalendarActivity extends AppCompatActivity {
     private ArrayList<Event> arrayList = new ArrayList<>();
     private InternDatabase db;
     private EventAdapter adapter;
-    private int i;
     private TextView title, city, date, time;
 
     private CalendarView calendarView;
@@ -159,8 +160,20 @@ public class CalendarActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater =getMenuInflater();
         inflater.inflate(R.menu.calendar_activity_menu,menu);
+
+        MenuItem shareItem = menu.findItem(R.id.menu_item_share);
+        ShareActionProvider myShareActionProvider = (android.support.v7.widget.ShareActionProvider)MenuItemCompat.getActionProvider(shareItem);
+
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT,"Check out the Event EVENTTITLE in CITY on Eventastic!");
+        myShareActionProvider.setShareIntent(shareIntent);
+
         return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected (MenuItem item) {

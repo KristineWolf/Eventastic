@@ -126,10 +126,8 @@
     <string name="toast_deleted">Dieses Event wurde von deiner Liste gelöscht: \'</string>
 
     <!-- für Notification -->
-    <string name="notification_title">Event in einer Stunde!</string>
-    <string name="notification_text_1">Um </string>
-    <string name="notification_text_2">beginnt das Event \'</string>
-    <string name="notification_text_3">\' Viel Spaß!</string>
+    <string name="notification_title">Eventastic!</string>
+    <string name="notification_text">In einer Stunde hast du ein Event. Klicke für mehr Info</string>
 
 
     <!-- Strings für HINTS -->
