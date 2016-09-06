@@ -1,7 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+
+    compileSdkVersion 'Google Inc.:Google APIs:23'
     buildToolsVersion "23.0.3"
 
     defaultConfig {
@@ -26,7 +27,6 @@ dependencies {
     compile 'com.google.firebase:firebase-core:9.4.0'
     compile 'com.google.firebase:firebase-database:9.4.0'
     compile 'com.firebase:firebase-client-android:2.3.1'
-
 
 }
 

@@ -9,10 +9,28 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.kristine.eventastic.Activities.EventNearLocation">
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        android:text="To all possible cities"
+        android:id="@+id/from_events_in_neighbourhood_to_all_possible_cities"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+
     <TextView
+        android:layout_below="@+id/from_events_in_neighbourhood_to_all_possible_cities"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/user_location"
         android:text="Location"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/city_location"
+        android:text="City"
+        android:layout_below="@+id/user_location"/>
 
 </RelativeLayout>

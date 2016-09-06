@@ -91,6 +91,9 @@ public class AllEvents extends AppCompatActivity {
                     Collections.sort(events);
                     adapter.notifyDataSetChanged();
                     toAllPossibleCities.setEnabled(true);
+                    if(sharedPreferences.getBoolean("Location",false)){
+                        toAllPossibleCities.setText("Events in your neighbourhood.");
+                    }
                     toAllPossibleCities.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
                 }
             }
@@ -144,8 +147,13 @@ public class AllEvents extends AppCompatActivity {
         toAllPossibleCities.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(AllEvents.this,AllPossibleCities.class);
-                startActivity(intent);
+                if(location){
+                    Intent i =new Intent(AllEvents.this, EventNearLocation.class);
+                    startActivity(i);
+                }else {
+                    Intent intent = new Intent(AllEvents.this, AllPossibleCities.class);
+                    startActivity(intent);
+                }
             }
         });
     }
