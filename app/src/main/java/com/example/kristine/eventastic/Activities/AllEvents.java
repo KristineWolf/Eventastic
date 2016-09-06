@@ -53,6 +53,7 @@ public class AllEvents extends AppCompatActivity {
     }
 
     private void getSettings() {
+
         sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         location=sharedPreferences.getBoolean("Location",false);
         if(location==false){

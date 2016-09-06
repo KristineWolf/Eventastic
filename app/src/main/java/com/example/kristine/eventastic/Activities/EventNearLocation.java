@@ -42,6 +42,7 @@ public class EventNearLocation extends AppCompatActivity {
 
     private void initLocationManager() {
         String locService = Context.LOCATION_SERVICE;
+
         locationManager = (LocationManager) getSystemService(locService);
         locationListener = new LocationListener() {
             @Override
@@ -75,7 +76,7 @@ public class EventNearLocation extends AppCompatActivity {
                 return;
             }
         }else {
-            locationManager.requestLocationUpdates("gps", 5000, 0, locationListener);
+
         }
 
     }
@@ -85,7 +86,7 @@ public class EventNearLocation extends AppCompatActivity {
         switch (requestCode){
             case 10:
                 if(grantResults.length>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                    locationManager.requestLocationUpdates("gps", 5000, 0, locationListener);
+
                     return;
                 }
         }
