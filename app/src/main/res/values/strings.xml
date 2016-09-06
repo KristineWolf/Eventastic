@@ -159,5 +159,8 @@
     <string name="key_date">date</string>
     <string name="key_definition">definition</string>
 
+    <!-- String for sharing text -->
+    <string name="message_share">Check out the Event %1$s in %2$s on Eventastic!</string>
+
 
 </resources>
