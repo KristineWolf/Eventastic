@@ -19,24 +19,40 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.kristine.eventastic.Adapter.CityAdapter;
+import com.example.kristine.eventastic.AsyncTask.GetAddressesOfCities;
+import com.example.kristine.eventastic.AsyncTask.GetNearestCityAsyncTask;
+import com.example.kristine.eventastic.JavaClasses.AllEventsPuffer;
+import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
+import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
 
 import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
 public class EventNearLocation extends AppCompatActivity {
 
-    private TextView currentLocation, positionCity;
+    private TextView currentLocation;
+    private ListView positionCity;
     private LocationManager locationManager;
-
+    private Location userLocation;
     private Button toAllCities;
     private LocationListener locationListener;
+    private ArrayList<String> cityNames=new ArrayList<>();
+    private ArrayList<Address> allLocations=new ArrayList<>();
+    private int counter=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +60,36 @@ public class EventNearLocation extends AppCompatActivity {
         setContentView(R.layout.activity_event_near_location);
         initUI();
         initLocationManager();
+        initLocationOfAllCities();
         initLocationListener();
+
+
+
+
     }
+
+
+
+    private void initLocationOfAllCities() {
+        GetAddressesOfCities cities=new GetAddressesOfCities(this);
+        cities.execute(this);
+
+        try {
+            allLocations= cities.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void initLocationListener() {
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                currentLocation.setText(" lat: " + location.getLatitude() + " lon: " + location.getLongitude());
+
+                setToast(location);
             }
 
             @Override
@@ -78,7 +116,7 @@ public class EventNearLocation extends AppCompatActivity {
                 requestPermissions(new String[]{
                         Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION,
                         Manifest.permission.INTERNET
-                }, 10);//10 ist requestCode und kann irgendeine Zahl gewählt werden
+                }, 5);//10 ist requestCode und kann irgendeine Zahl gewählt werden
                 return;
             }
         } else {
@@ -88,20 +126,68 @@ public class EventNearLocation extends AppCompatActivity {
     }
 
 
+
+
+    private void setToast(Location location) {
+        Geocoder gc=new Geocoder(this,Locale.GERMAN);
+        try {
+            List<Address>addresses=gc.getFromLocation(location.getLatitude(),location.getLongitude(),1);
+            if(addresses.size()!=0){
+                Address a=addresses.get(0);
+
+                currentLocation.setText(a.getLocality());
+            }
+        }catch (IOException e){
+            Log.d("GEO",e.toString());
+        }
+
+        if(counter<1) {
+            GetNearestCityAsyncTask nearestCity = new GetNearestCityAsyncTask(location, EventNearLocation.this);
+            nearestCity.execute(allLocations);
+            try {
+
+                final ArrayList<Event> events=nearestCity.get();
+                CityAdapter cityAdapter=new CityAdapter(this,events);
+                positionCity.setAdapter(cityAdapter);
+                positionCity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(EventNearLocation.this, AllInformationsOfAnEvent.class);
+                        //intent.putExtra("event",arraylist.get(position));
+                        intent.putExtra("city",events.get(position).getCity());
+                        intent.putExtra("titel",events.get(position).getTitel());
+                        intent.putExtra("time",events.get(position).getTime());
+                        intent.putExtra("type",events.get(position).getType());
+                        intent.putExtra("date", ChangeDateFormat.changeIntoString(events.get(position).getDate()));
+                        intent.putExtra("definition",events.get(position).getDefintion());
+
+                        startActivity(intent);
+                    }
+                });
+
+
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+        counter++;
+
+    }
+
+
+
     private void initLocationManager() {
         String locService = Context.LOCATION_SERVICE;
-
         locationManager = (LocationManager) getSystemService(locService);
-
-
-
-
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode){
-            case 10:
+            case 5:
                 if(grantResults.length>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED){
 
                     return;
@@ -121,18 +207,10 @@ public class EventNearLocation extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        positionCity=(TextView)findViewById(R.id.city_location);
+        positionCity=(ListView)findViewById(R.id.city_location);
 
-        Geocoder gc=new Geocoder(this, Locale.GERMAN);
-        String locationName="Regensburg";
-        List<Address>locations=null;
 
-        try {
-            locations =gc.getFromLocationName(locationName,5);
-            Address address=locations.get(0);
-            positionCity.setText(""+address.getLatitude()+"+lon:"+address.getLongitude());
-        }catch (IOException e){
-            Log.d("TAG","Unable to get address from ölocation name"+e.toString());
-        }
     }
+
+
 }

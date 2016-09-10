@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kristine.eventastic">
 
-    <uses-sdk android:minSdkVersion="14"
-        android:targetSdkVersion="17"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -89,7 +87,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".Activities.EventNearLocation"></activity>
+        <activity android:name=".Activities.EventNearLocation"
+            android:parentActivityName=".Activities.AllEvents">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.AllEvents"/>
+        </activity>
     </application>
 
 </manifest>
