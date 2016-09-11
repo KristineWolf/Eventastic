@@ -2,9 +2,7 @@ package com.example.kristine.eventastic.JavaClasses;
 
 import java.util.ArrayList;
 
-/**
- * Created by Kristine on 01.09.2016.
- */
+//this static class saves all events from the firebase database
 public class AllEventsPuffer {
 
     private static ArrayList<Event> allEvents=new ArrayList<>();

@@ -7,9 +7,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
-/**
- * Created by Kristine on 29.08.2016.
- */
+//this class changes the format of a date
 public class ChangeDateFormat {
 
 

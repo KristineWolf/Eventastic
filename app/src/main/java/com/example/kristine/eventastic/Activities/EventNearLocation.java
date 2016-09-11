@@ -1,7 +1,6 @@
 package com.example.kristine.eventastic.Activities;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,7 +9,6 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.media.audiofx.BassBoost;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -27,29 +25,24 @@ import android.widget.TextView;
 import com.example.kristine.eventastic.Adapter.CityAdapter;
 import com.example.kristine.eventastic.AsyncTask.GetAddressesOfCities;
 import com.example.kristine.eventastic.AsyncTask.GetNearestCityAsyncTask;
-import com.example.kristine.eventastic.JavaClasses.AllEventsPuffer;
-import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
 
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
+//this activity presents specific events that are the closest to the user´s location.
 public class EventNearLocation extends AppCompatActivity {
 
     private TextView currentLocation;
     private ListView positionCity;
     private LocationManager locationManager;
-    private Location userLocation;
     private Button toAllCities;
     private LocationListener locationListener;
-    private ArrayList<String> cityNames=new ArrayList<>();
     private ArrayList<Address> allLocations=new ArrayList<>();
     private int counter=0;
 
@@ -62,10 +55,6 @@ public class EventNearLocation extends AppCompatActivity {
         initLocationManager();
         initLocationOfAllCities();
         initLocationListener();
-
-
-
-
     }
 
 
@@ -153,13 +142,8 @@ public class EventNearLocation extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(EventNearLocation.this, AllInformationsOfAnEvent.class);
-                        //intent.putExtra("event",arraylist.get(position));
-                        intent.putExtra("city",events.get(position).getCity());
-                        intent.putExtra("titel",events.get(position).getTitel());
-                        intent.putExtra("time",events.get(position).getTime());
-                        intent.putExtra("type",events.get(position).getType());
-                        intent.putExtra("date", ChangeDateFormat.changeIntoString(events.get(position).getDate()));
-                        intent.putExtra("definition",events.get(position).getDefintion());
+                        intent.putExtra(getResources().getString(R.string.event_in_intent),events.get(position));
+
 
                         startActivity(intent);
                     }

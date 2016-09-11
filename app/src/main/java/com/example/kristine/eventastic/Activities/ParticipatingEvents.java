@@ -4,8 +4,8 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
+//this activity presents all events the user wants to participate
 public class ParticipatingEvents extends AppCompatActivity {
 
     private static final int ONE_HOUR_IN_MILLISEC = 3600 * 1000;
@@ -47,12 +48,11 @@ public class ParticipatingEvents extends AppCompatActivity {
     private void updateList() {
         arrayList.clear();
         arrayList.addAll(db.getAllEvents());
-
         listView.setAdapter(adapter);
         sortData();
 
         for (int i=0;i<arrayList.size();i++){
-            //Für jedes Event der Liste wird eine Notification erzeugt.
+            //for every event will be a notifications compiled
             scheduleNotification(i);
         }
     }
@@ -64,7 +64,7 @@ public class ParticipatingEvents extends AppCompatActivity {
 
     private void scheduleNotification(int i) {
         //get Event-timeStamp in millisec
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+        SimpleDateFormat dateFormatter = new SimpleDateFormat(getResources().getString(R.string.simple_date_format_1));
         String stringDateEvent = ChangeDateFormat.changeIntoString(arrayList.get(i).getDate());
         String stringTimeEvent = arrayList.get(i).getTime();
         String stringEventBegin = stringDateEvent+" "+stringTimeEvent;
@@ -78,11 +78,13 @@ public class ParticipatingEvents extends AppCompatActivity {
         //1 hour before eventBegin: set notification
         long notificationInMillisec = longBeginEvent-ONE_HOUR_IN_MILLISEC;
 
-        //TODO: klappt irgendwie nicht, dass der Alarm 1 Stunde vorher ausgelöst wird. Ich weiß aber absolut nicht wieso. Findest du einen Fehler? Vllt schreibe ich den tutoren dazu eine E-Mail...
+
         Intent intent = new Intent(getApplicationContext(),AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP,notificationInMillisec,pendingIntent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP,notificationInMillisec,pendingIntent);
+        }
     }
 
     private void initUI() {
@@ -100,12 +102,7 @@ public class ParticipatingEvents extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ParticipatingEvents.this, AllInformationsOfAParticipatingEvent.class);
-                intent.putExtra(getResources().getString(R.string.key_city),arrayList.get(position).getCity());
-                intent.putExtra(getResources().getString(R.string.key_title),arrayList.get(position).getTitel());
-                intent.putExtra(getResources().getString(R.string.key_time),arrayList.get(position).getTime());
-                intent.putExtra(getResources().getString(R.string.key_type),arrayList.get(position).getType());
-                intent.putExtra(getResources().getString(R.string.key_date), ChangeDateFormat.changeIntoString(arrayList.get(position).getDate()));
-                intent.putExtra(getResources().getString(R.string.key_definition),arrayList.get(position).getDefintion());
+                intent.putExtra(getResources().getString(R.string.event_in_intent),arrayList.get(position));
 
                 startActivity(intent);
             }
@@ -127,7 +124,7 @@ public class ParticipatingEvents extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            //hier kommt der Nutzer zu allen Events
+            //choosing this the user will get to all possible events
             case R.id.participating_events_to_all_events:
                 Intent intent = new Intent(ParticipatingEvents.this, AllEvents.class);
                 startActivity(intent);
@@ -139,7 +136,7 @@ public class ParticipatingEvents extends AppCompatActivity {
                 return true;
 
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                finish();
                 return true;
         }
         return false;

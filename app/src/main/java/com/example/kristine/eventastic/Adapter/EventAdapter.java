@@ -13,9 +13,6 @@ import com.example.kristine.eventastic.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by Kristine on 28.08.2016.
- */
 public class EventAdapter extends ArrayAdapter<Event>{
     private ArrayList<Event> arrayList;
     private Context context;

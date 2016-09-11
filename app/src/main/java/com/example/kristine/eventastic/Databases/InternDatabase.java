@@ -13,9 +13,7 @@ import com.example.kristine.eventastic.JavaClasses.Event;
 
 import java.util.ArrayList;
 
-/**
- * Created by Kristine on 28.08.2016.
- */
+//this in the SQlite database which saves all participating events
 public class InternDatabase {
     private static final String DATABASE_NAME="participatingevents";
     private static final int DATABASE_VERSION=1;
@@ -78,7 +76,7 @@ public class InternDatabase {
                 String titel=cursor.getString(4);
                 String type =cursor.getString(5);
 
-                //events bleiben noch solange sichtbar bis der Tag vorbei ist, da Veranstaltung ja noch stattfindet!
+                //events are still visible and in the database till their day is over
                 if(date< ContemporaryDate.getContemporaryDate()){
                     deleteEvent(city,time,titel,type,definition);
                 }else {

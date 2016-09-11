@@ -51,7 +51,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
     private void initDB() {
-        db = new ExternDatabase();
+        db = new ExternDatabase(this);
     }
 
     @Override
@@ -73,6 +73,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         enter = (Button) findViewById(R.id.button_add);
     }
 
+    //with this the user can select different types for an event
     private void initTypeSpinner() {
         Spinner editType = (Spinner) findViewById(R.id.editType);
         ArrayAdapter adapterType = ArrayAdapter.createFromResource(this, R.array.eventtype_array, R.layout.support_simple_spinner_dropdown_item);
@@ -80,6 +81,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         editType.setOnItemSelectedListener(this);
     }
 
+    //this will show the user possible cities while he is writing
     private void initCityAutocomplete() {
         editCities = (AutoCompleteTextView)findViewById(R.id.editCity);
         String[] citiesToSelect = getResources().getStringArray(R.array.cities_array);
@@ -103,7 +105,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
 
     public void showTimePickerDialog(View v) {
         DialogFragment newFragment = new TimePickerFragment();
-        newFragment.show(getFragmentManager(), "timePicker");
+        newFragment.show(getFragmentManager(), getResources().getString(R.string.time_picker));
     }
 
 
@@ -117,7 +119,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
     }
     private void showDatePickerDialog(View v) {
         DialogFragment dateFragment = new DatePickerFragment();
-        dateFragment.show(getFragmentManager(), "datePicker");
+        dateFragment.show(getFragmentManager(), getResources().getString(R.string.date_picker));
     }
 
 
@@ -134,12 +136,10 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
             TextView textView = (TextView) getActivity().findViewById(R.id.editDate);
-
             GregorianCalendar date = new GregorianCalendar(year, month, day);
             DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT,
                     Locale.GERMANY);
             String dateString = df.format(date.getTime());
-
             textView.setText(dateString);
         }
     }
@@ -159,16 +159,16 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
             String hour;
             String min;
             if (hourOfDay < 10) {
-                hour = "0" + hourOfDay;
+                hour = getResources().getString(R.string.adding_0) + hourOfDay;
             } else {
                 hour = "" + hourOfDay;
             }
             if (minute < 10) {
-                min = "0" + minute;
+                min = getResources().getString(R.string.adding_0) + minute;
             } else {
                 min = "" + minute;
             }
-            t.setText(hour + ":" + min);
+            t.setText(hour + getResources().getString(R.string.adding_double_dot) + min);
         }
     }
 
@@ -177,7 +177,6 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String city = editCities.getText().toString();
                 String date = editDate.getText().toString();
                 String time = editTime.getText().toString();
@@ -205,8 +204,9 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
     private void addEvent(String city, String date, String time, String titel, String definition, String type) {
         Event event = new Event(city, ChangeDateFormat.changeFirstIntoDateFormatAfterwardsIntoInteger(date), time, titel, definition, type);
         boolean saved = db.insertItem(event);
-
-        Toast.makeText(this,getResources().getString(R.string.toast_added)+titel+"'.",Toast.LENGTH_LONG).show();
+        if(saved) {
+            Toast.makeText(this, getResources().getString(R.string.toast_added) + titel + "'.", Toast.LENGTH_LONG).show();
+        }
     }
 
 

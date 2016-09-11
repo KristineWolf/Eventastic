@@ -2,9 +2,7 @@ package com.example.kristine.eventastic.JavaClasses;
 
 import java.util.Calendar;
 
-/**
- * Created by Kristine on 29.08.2016.
- */
+//this class returns the contemporary date in this format: yyyymmdd
 public class ContemporaryDate {
 
     public static int getContemporaryDate(){

@@ -17,10 +17,8 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.kristine.eventastic.Adapter.CityAdapter;
-import com.example.kristine.eventastic.Adapter.EventAdapter;
 import com.example.kristine.eventastic.Databases.ExternDatabase;
 import com.example.kristine.eventastic.JavaClasses.AllEventsPuffer;
-import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
 import com.example.kristine.eventastic.JavaClasses.ContemporaryDate;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
@@ -31,6 +29,7 @@ import com.firebase.client.FirebaseError;
 import java.util.ArrayList;
 import java.util.Collections;
 
+//this activity presents all events
 public class AllEvents extends AppCompatActivity {
 
     private ExternDatabase db;
@@ -46,41 +45,51 @@ public class AllEvents extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_events);
         AllEventsPuffer.clearArrayList();
-        getSettings();
         initDB();
         initUI();
         updateList();
     }
 
-    private void getSettings() {
-
+    //every time the activity has to check the settings and therefore will react to it.
+    @Override
+    protected void onResume() {
+        super.onResume();
         sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        location=sharedPreferences.getBoolean("Location",false);
+        location=sharedPreferences.getBoolean(getResources().getString(R.string.location),false);
         if(location==false){
+            toAllPossibleCities.setText(getResources().getString(R.string.button_to_all_cities));
             AlertDialog.Builder builder=new AlertDialog.Builder(this);
-            builder.setTitle("Access to your location.");
-            builder.setMessage("Change the settings to get events in your neighbourhood.");
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            builder.setTitle(getResources().getString(R.string.dialog_title));
+            builder.setMessage(getResources().getString(R.string.dialog_message));
+            builder.setPositiveButton(getResources().getString(R.string.dialog_pos_button), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Intent i= new Intent(AllEvents.this,SettingsActivity.class);
+                                        Intent i= new Intent(AllEvents.this,SettingsActivity.class);
                     startActivity(i);
                 }
             });
-            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton(getResources().getString(R.string.dialog_neg_button), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
+
                 }
             });
             builder.setCancelable(false);
             AlertDialog dialog=builder.create();
             dialog.show();
+        }else {
+            toAllPossibleCities.setText(getResources().getString(R.string.button_to_events_in_neighborhood));
         }
     }
 
+
+
     private void updateList() {
         events.clear();
+        //with this Listener the activity gets events from the firebase database
+        //the activity will get only events which will still take place.
+        //all events are going to be saved in a static class
         db.db.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -91,9 +100,6 @@ public class AllEvents extends AppCompatActivity {
                     Collections.sort(events);
                     adapter.notifyDataSetChanged();
                     toAllPossibleCities.setEnabled(true);
-                    if(sharedPreferences.getBoolean("Location",false)){
-                        toAllPossibleCities.setText("Events in your neighbourhood.");
-                    }
                     toAllPossibleCities.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
                 }
             }
@@ -144,6 +150,7 @@ public class AllEvents extends AppCompatActivity {
 
     private void initButton() {
         toAllPossibleCities=(Button)findViewById(R.id.to_all_possible_cities);
+        //According to whether the user permits the app to get the location, he gets two different Activities.
         toAllPossibleCities.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,21 +175,14 @@ public class AllEvents extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(AllEvents.this, AllInformationsOfAnEvent.class);
-                //intent.putExtra("event",arraylist.get(position));
-                intent.putExtra("city",events.get(position).getCity());
-                intent.putExtra("titel",events.get(position).getTitel());
-                intent.putExtra("time",events.get(position).getTime());
-                intent.putExtra("type",events.get(position).getType());
-                intent.putExtra("date", ChangeDateFormat.changeIntoString(events.get(position).getDate()));
-                intent.putExtra("definition",events.get(position).getDefintion());
-
+                intent.putExtra(getResources().getString(R.string.event_in_intent),events.get(position));
                 startActivity(intent);
             }
         });
     }
 
     private void initDB() {
-        db=new ExternDatabase();
+        db=new ExternDatabase(this);
     }
 
     @Override
@@ -197,19 +197,18 @@ public class AllEvents extends AppCompatActivity {
         int id= item.getItemId();
         switch (id){
 
-            //hier kann der Nutzer ein Event zur Datenbank hinzufügen
+
             case R.id.all_possible_cities_add_event:
                 Intent intent=new Intent(AllEvents.this,AddEvent.class);
                 startActivity(intent);
                 break;
 
-            //hier wird eine Einstellungsactivity geöffnet
             case R.id.all_possible_cities_settings:
                 Intent intent2= new Intent(AllEvents.this, SettingsActivity.class);
                 startActivity(intent2);
                 break;
 
-            //dadurch kommt der Nutzer zu seinen Veranstaltungen, an denen er teilnehmen will
+            //Choosing this icon the user gets to the activity which contains all participating events.
             case R.id.all_possible_cities_to_my_events:
                 Intent intent3 = new Intent(AllEvents.this, ParticipatingEvents.class);
                 startActivity(intent3);

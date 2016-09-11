@@ -12,15 +12,14 @@ import android.widget.Button;
 import com.example.kristine.eventastic.Activities.AllEvents;
 import com.example.kristine.eventastic.Activities.CalendarActivity;
 import com.example.kristine.eventastic.Activities.AboutTheApp;
-import com.example.kristine.eventastic.Activities.EventNearLocation;
+
 import com.example.kristine.eventastic.Activities.ParticipatingEvents;
 import com.example.kristine.eventastic.Activities.SettingsActivity;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button eventsInSpecifiedCity;
-    private Button eventsTheUserWantsToVisit;
+    private Button eventsInSpecifiedCity, eventsTheUserWantsToVisit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         initClickListener();
     }
 
-    //Registirierung der On-Click-Listener auf die beiden Button der Home-Activity
+    //with those Buttons the user will get to the two most important sections of our app.
     private void initClickListener() {
         eventsInSpecifiedCity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,20 +66,19 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected (MenuItem item) {
         int id= item.getItemId();
         switch (id){
-            //diese Activity soll die App erklären, wozu sie dient was man alles machen kann...
+
             case R.id.main_activity_explanation:
                 Intent intent= new Intent(MainActivity.this, AboutTheApp.class);
                 startActivity(intent);
                 return true;
 
-            //öffnet die Kalender-Activity
+
             case R.id.main_activity_calendar:
                 Intent intent3 = new Intent(MainActivity.this, CalendarActivity.class);
                 startActivity(intent3);
                 return true;
 
             case R.id.main_activity_settings:
-                //hier wird eine Einstellungsactivity geöffnet
                 Intent intent2= new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent2);
                 return true;

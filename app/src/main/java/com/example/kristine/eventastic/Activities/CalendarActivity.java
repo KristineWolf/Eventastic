@@ -26,9 +26,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
-/**
- * Created by Teresa on 29.08.2016.
- */
+//this activity presents an calendar which will show the user the next event
 public class CalendarActivity extends AppCompatActivity {
 
     private ArrayList<Event> arrayList = new ArrayList<>();
@@ -37,12 +35,14 @@ public class CalendarActivity extends AppCompatActivity {
     private TextView title, city, date, time;
 
     private CalendarView calendarView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         initDB();
         initUI();
+        initListAdapter();
         updateList();
         if (arrayList.size() != 0){
             checkIfNextEventOver(0);
@@ -84,13 +84,13 @@ public class CalendarActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),dayOfMonth+"."+month+"."+year,Toast.LENGTH_SHORT).show();
             }
         });
-        initListAdapter();
     }
 
     private void initListAdapter() {
         adapter = new EventAdapter(this, arrayList);
     }
 
+    //this will be shown if the user won´t participate in any event.
      private void noEventOnMyList() {
         title.setVisibility(View.INVISIBLE);
         city.setVisibility(View.INVISIBLE);
@@ -116,7 +116,7 @@ public class CalendarActivity extends AppCompatActivity {
         long longDateToday = System.currentTimeMillis();
 
         //TimeStamp next event millisec
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+        SimpleDateFormat dateFormatter = new SimpleDateFormat(getResources().getString(R.string.simple_date_format_1));
         String stringDateEvent = ChangeDateFormat.changeIntoString(arrayList.get(numbEvents).getDate());
         String stringTimeEvent = arrayList.get(numbEvents).getTime();
         String stringEventBegin = stringDateEvent+" "+stringTimeEvent;
@@ -129,7 +129,7 @@ public class CalendarActivity extends AppCompatActivity {
            return;
         }
 
-        //falls Event schon vorbei, nächsten Eintrag aus der Liste überprüfen.
+        //if event is over, proofing for next event
         if (longEventBegin < longDateToday){
             if (arrayList.size()>numbEvents+1){
                 checkIfNextEventOver(numbEvents+1);
@@ -145,8 +145,8 @@ public class CalendarActivity extends AppCompatActivity {
         time.setText(arrayList.get(event).getTime());
         date.setText(dateEvent);
 
-        //Setzen des CalenderViews auf das nächste Datum
-        SimpleDateFormat f = new SimpleDateFormat("dd.MM.yyyy");
+        //set date in calendar for next event
+        SimpleDateFormat f = new SimpleDateFormat(getResources().getString(R.string.simple_date_format_2));
         try {
             Date d = f.parse(dateEvent);
             long milliseconds = d.getTime();
@@ -166,7 +166,7 @@ public class CalendarActivity extends AppCompatActivity {
         ShareActionProvider myShareActionProvider = (android.support.v7.widget.ShareActionProvider)MenuItemCompat.getActionProvider(shareItem);
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setAction(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
+        shareIntent.setType(getResources().getString(R.string.share_intent_type));
         Resources res = getResources();
         String text = String.format(res.getString(R.string.message_share),title.getText(), city.getText());
         shareIntent.putExtra(Intent.EXTRA_TEXT,text);

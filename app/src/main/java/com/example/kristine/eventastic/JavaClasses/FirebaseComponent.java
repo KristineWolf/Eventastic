@@ -2,9 +2,7 @@ package com.example.kristine.eventastic.JavaClasses;
 
 import com.firebase.client.Firebase;
 
-/**
- * Created by Kristine on 30.08.2016.
- */
+//this class is important to get a connection to the firebase database
 public class FirebaseComponent extends android.app.Application{
 
     @Override

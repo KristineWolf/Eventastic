@@ -11,9 +11,7 @@ import android.net.Uri;
 import com.example.kristine.eventastic.Activities.CalendarActivity;
 import com.example.kristine.eventastic.R;
 
-/**
- * Created by Teresa on 03.09.2016.
- */
+
 public class AlertReceiver extends BroadcastReceiver{
 
     @Override

@@ -15,13 +15,17 @@
     <string name="button_added">Have fun!</string>
     <string name="button_delete">Don´t want to participate</string>
     <string name="button_deleted">You will not participate.</string>
-    <string name="city_in">in</string>
+    <string name="city_in">in </string>
 
     <!-- Strings für AddEvent -->
     <string name="edit_city">Edit the city</string>
     <string name="edit_eventType">Edit event type</string>
     <string name="button_text_enter">Enter</string>
     <string name="title_add_event">Add new Event</string>
+  /  <string name="time_picker">timePicker</string>
+  /  <string name="date_picker">datePicker</string>
+  /  <string name="adding_0">0</string>
+  /  <string name="adding_double_dot">:</string>
 
     <string-array name="cities_array">
         <item>Aachen</item>
@@ -126,6 +130,9 @@
     <string name="calendar">Calendar</string>
     <string name="calendar_next_event">YOUR NEXT EVENT:</string>
     <string name="nothing_on_list">There´s no upcoming event on your list. \n CLICK HERE and add some!</string>
+   / <string name="share_intent_type">text/plain</string>
+    / <string name="simple_date_format_2">dd.MM.yyyy</string>
+    / <string name="simple_date_format_1">dd.MM.yyyy HH:mm</string>
 
 
     <!-- strings für Toasts -->
@@ -161,6 +168,31 @@
 
     <!-- String for sharing text -->
     <string name="message_share">Check out the Event %1$s in %2$s on Eventastic!</string>
+
+
+    <!--String for AllEvents-->
+    <string name="location">Location</string>
+    <string name="button_to_all_cities">To all Possible Cities</string>
+    <string name="dialog_title">Access to your location.</string>
+    <string name="dialog_message">Change the settings to get events in your neighbourhood.</string>
+    <string name="dialog_pos_button">OK</string>
+    <string name="dialog_neg_button">No</string>
+    <string name="button_to_events_in_neighborhood">Events in your neighbourhood.</string>
+
+    <!--String for putting an events into an intent-->
+    <string name="event_in_intent">event</string>
+
+    <!--String for putting a city into an intent-->
+    <string name="selected_city">selected_city</string>
+
+
+    <!--String for CityAdapter-->
+    <string name="a_">A </string>
+    <string name="in_"> in </string>
+
+    <!--String for ExternDatabase-->
+    <string name="firebase_url">https://android-129c6.firebaseio.com/</string>
+    <string name="firebase_child">events</string>
 
 
 </resources>

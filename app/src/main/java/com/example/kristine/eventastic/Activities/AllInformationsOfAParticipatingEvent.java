@@ -3,14 +3,20 @@ package com.example.kristine.eventastic.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kristine.eventastic.Databases.InternDatabase;
+import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
+import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
 
+//this activity presents all the informations of a participating event and allows the user to eliminate the event from his list.
 public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
 
     private String city, titel, definition, type, date, time;
@@ -32,18 +38,20 @@ public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
 
 
     private void informationInBundle(Bundle extras) {
-        city=extras.getString(getResources().getString(R.string.key_city));
-        time=extras.getString(getResources().getString(R.string.key_time));
-        titel=extras.getString(getResources().getString(R.string.key_title));
-        date=extras.getString(getResources().getString(R.string.key_date));
-        definition=extras.getString(getResources().getString(R.string.key_definition));
-        type=extras.getString(getResources().getString(R.string.key_type));
+        Event event = (Event)extras.get(getResources().getString(R.string.event_in_intent));
+        city=event.getCity();
+        time=event.getTime();
+        titel=event.getTitel();
+        date=ChangeDateFormat.changeIntoString(event.getDate());
+        definition=event.getDefintion();
+        type=event.getType();
     }
 
     private void initDB() {
         db=new InternDatabase(this);
     }
 
+    //cklicking the button will eliminate the event from the list.
     private void initOnClickListener() {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,5 +83,23 @@ public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
         tType.setText(type);
         tDate.setText(date);
         tTime.setText(time);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater =getMenuInflater();
+        inflater.inflate(R.menu.empty_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+        int id= item.getItemId();
+        switch (id){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return true;
     }
 }

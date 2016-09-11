@@ -13,9 +13,7 @@ import com.example.kristine.eventastic.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by Kristine on 22.08.2016.
- */
+
 public class CityAdapter extends ArrayAdapter<Event> {
 
     private ArrayList<Event> arrayList;
@@ -45,12 +43,10 @@ public class CityAdapter extends ArrayAdapter<Event> {
 
 
             titel.setText(arrayList.get(position).getTitel());
-            date.setText(
-                    ChangeDateFormat.changeIntoString(arrayList.get(position).getDate()));
+            date.setText(ChangeDateFormat.changeIntoString(arrayList.get(position).getDate()));
 
             time.setText(arrayList.get(position).getTime());
-
-            type.setText("A "+arrayList.get(position).getType()+" in "+arrayList.get(position).getCity());
+            type.setText(context.getResources().getString(R.string.a_)+" "+arrayList.get(position).getType()+" "+context.getResources().getString(R.string.in_)+" "+arrayList.get(position).getCity());
         }
 
 

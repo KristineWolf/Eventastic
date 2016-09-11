@@ -11,8 +11,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.kristine.eventastic.Databases.InternDatabase;
+import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
+import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
 
+//this activity presents all informations of an event and allows the user to participate to the event.
 public class AllInformationsOfAnEvent extends AppCompatActivity {
 
     private String city, titel, definition, type, date, time;
@@ -33,13 +36,15 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
     }
 
 
+
     private void informationInBundle(Bundle extras) {
-        city=extras.getString("city");
-        time=extras.getString("time");
-        titel=extras.getString("titel");
-        date=extras.getString("date");
-        definition=extras.getString("definition");
-        type=extras.getString("type");
+        Event event = (Event)extras.get(getResources().getString(R.string.event_in_intent));
+        city=event.getCity();
+        time=event.getTime();
+        titel=event.getTitel();
+        date= ChangeDateFormat.changeIntoString(event.getDate());
+        definition=event.getDefintion();
+        type=event.getType();
     }
 
 
@@ -47,6 +52,7 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
         db=new InternDatabase(this);
     }
 
+    //clicking the button will save the event in the SQlite database
     private void initOnClickListener() {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +75,7 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
 
         add=(Button)findViewById(R.id.add_event_button);
 
-        tCity.setText(getResources().getString(R.string.city_in)+" "+ city);
+        tCity.setText(getResources().getString(R.string.city_in)+" "+city);
         tTitel.setText(titel);
         tDefinition.setText(definition);
         tType.setText(type);

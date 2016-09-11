@@ -13,18 +13,12 @@ müsstest dann eben nur für die bestimmten Bildgrößen eine größe festsetzen
 oder du nimmst einfach immer die Hälfte des Bildschirmes
 
 Klappt leider nicht bei mir, da wird die CalenderView nur zur Hälfte angezeigt.-->
-    <CalendarView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/calendarView"
-        android:firstDayOfWeek="2"
-        android:showWeekNumber="true"
-        android:layout_centerHorizontal="true" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/calendarView"
+
         android:layout_marginTop="15dp"
         android:id="@+id/first_line"
         android:orientation="horizontal">
@@ -83,6 +77,16 @@ Klappt leider nicht bei mir, da wird die CalenderView nur zur Hälfte angezeigt.
             android:layout_weight="0.33"
             android:textSize="23sp"/>
     </LinearLayout>
+
+    <CalendarView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:id="@+id/calendarView"
+        android:firstDayOfWeek="2"
+        android:layout_below="@+id/linear_layout_1"
+        android:showWeekNumber="true"
+        android:layout_centerHorizontal="true" />
 
     <!-- Wir könnten hier noch zusätzliche Möglichkeiten für den Nutzer einfügen, damit diese Activity auch bisschen interkativ ist.
         z.B. könnte er das Event auf facebook teilen oder nach dem Wetterbericht für diesen Tag und Ort fragen.
