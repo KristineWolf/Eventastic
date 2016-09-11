@@ -15,9 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by Kristine on 09.09.2016.
- */
+//this will return all addresses of possible cities
 public class GetAddressesOfCities extends AsyncTask<Context,Integer,ArrayList<Address>> {
     private Context context;
     private ArrayList<String>cities=new ArrayList<>();
