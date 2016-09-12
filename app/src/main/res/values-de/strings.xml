@@ -21,6 +21,10 @@
     <string name="edit_city">Gib eine Stadt ein</string>
     <string name="edit_eventType">Wähle den Eventtyp aus</string>
     <string name="button_text_enter">Enter</string>
+    <string name="time_picker">timePicker</string>
+    <string name="date_picker">datePicker</string>
+    <string name="adding_0">0</string>
+    <string name="adding_double_dot">:</string>
     <string name="title_add_event">Event hinzufügen</string>
 
     <string-array name="cities_array">
@@ -119,6 +123,10 @@
     <string name="calendar">Kalender</string>
     <string name="calendar_next_event">DEIN NÄCHSTES EVENT:</string>
     <string name="nothing_on_list">Du hast noch keine Events ausgewählt. \n KLICKE HIER und füge welche hinzu!</string>
+    <string name="share_intent_type">text/plain</string>
+    <string name="simple_date_format_2">dd.MM.yyyy</string>
+    <string name="simple_date_format_1">dd.MM.yyyy HH:mm</string>
+
 
 
     <!-- strings für Toasts -->
@@ -156,4 +164,32 @@
     <string name="about_this_app_what_text">Diese App hilft dir anstehende Events in deiner Stadt zu finden. Auch du kannst ein Event hinzufügen, sodass andere Nutzer daran teilnehmen können. Probier\'s aus und du wirst merken... nie wieder ohne EVENTASTIC!</string>
 
 
+    <!--String for CityAdapter-->
+    <string name="a_"> </string>
+    <string name="in_"> in </string>
+
+    <!--String for ExternDatabase-->
+    <string name="firebase_url">https://android-129c6.firebaseio.com/</string>
+    <string name="firebase_child">events</string>
+
+
+    <!--String for checking network connection-->
+    <string name="network_title">Keine Netzwerkverbindung vorhanden.</string>
+    <string name="network_message">Überprüfe deine Netzwerkverbindung!</string>
+    <string name="network_button">Ok</string>
+
+    <!--String for putting an events into an intent-->
+    <string name="event_in_intent">event</string>
+
+    <!--String for putting a city into an intent-->
+    <string name="selected_city">selected_city</string>
+
+    <!--String for AllEvents-->
+    <string name="location">Location</string>
+    <string name="button_to_all_cities">Zu allen möglichen Städten</string>
+    <string name="dialog_title">Zugang zu deiner Position.</string>
+    <string name="dialog_message">Ändere die Einstellungen, um Events in deiner Nähe zu erhalten</string>
+    <string name="dialog_pos_button">OK</string>
+    <string name="dialog_neg_button">Nein</string>
+    <string name="button_to_events_in_neighborhood">Events in deiner Nähe.</string>
 </resources>

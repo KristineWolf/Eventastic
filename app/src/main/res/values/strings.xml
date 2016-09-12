@@ -103,7 +103,7 @@
     <string name="about_this_App">About this App</string>
 
     <string name="about_this_app_what">What it is about.</string>
-    <string name="about_this_app_what_text">This app is called EVENTASTIC. It helps you finding
+    /<string name="about_this_app_what_text">This app is called EVENTASTIC. It helps you finding
         upcoming events in your city. Also you can add an event to the list, so that other users of this app can
         participate in it. Once used EVENTASTIC, you will never want to explore the nightlife without it again.</string>
 
@@ -163,7 +163,7 @@
     <!-- String for sharing text -->
     <string name="message_share">Check out the Event %1$s in %2$s on Eventastic!</string>
 
-
+/
     <!--String for AllEvents-->
     <string name="location">Location</string>
     <string name="button_to_all_cities">To all Possible Cities</string>
@@ -193,4 +193,7 @@
     <string name="network_title">No network available.</string>
     <string name="network_message">Check your network connection!</string>
     <string name="network_button">Ok</string>
+
+    /
 </resources>
+
