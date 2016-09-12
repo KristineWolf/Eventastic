@@ -194,6 +194,12 @@
     <string name="network_message">Check your network connection!</string>
     <string name="network_button">Ok</string>
 
+    <!--String für preferences.xml-->
+    <string name="pref_title">Location</string>
+    <string name="pref_key">Location</string>
+    <string name="pref_summary">Access to your location</string>
+    <string name="pref_default_value">false</string>
+
     /
 </resources>
 

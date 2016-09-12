@@ -192,4 +192,10 @@
     <string name="dialog_pos_button">OK</string>
     <string name="dialog_neg_button">Nein</string>
     <string name="button_to_events_in_neighborhood">Events in deiner Nähe.</string>
+
+    <!--String für preferences.xml-->
+    <string name="pref_title">Location</string>
+    <string name="pref_key">Location</string>
+    <string name="pref_summary">Zugang zu deiner Position</string>
+    <string name="pref_default_value">false</string>
 </resources>
