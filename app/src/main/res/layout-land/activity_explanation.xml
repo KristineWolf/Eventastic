@@ -34,7 +34,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/about_this_app_what"
                 android:id="@+id/about_what"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="@dimen/fifteen_dp"
                 android:textColor="@color/red"
                 android:textStyle="bold"/>/>
 
@@ -51,7 +51,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/about_this_app_how"
                 android:id="@+id/about_how"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="@dimen/fifteen_dp"
                 android:textColor="@color/red"
                 android:textStyle="bold"/>/>
 
@@ -68,7 +68,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/about_this_app_help"
                 android:id="@+id/about_help"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="@dimen/fifteen_dp"
                 android:textColor="@color/red"
                 android:textStyle="bold"/>/>
 
@@ -85,7 +85,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/about_this_app_contact"
                 android:id="@+id/about_contact"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="@dimen/fifteen_dp"
                 android:textColor="@color/red"
                 android:textStyle="bold"/>
 

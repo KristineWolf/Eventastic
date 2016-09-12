@@ -12,13 +12,13 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/fifteen_dp"
         android:layout_height="wrap_content"
         android:text="To all possible cities"
         android:id="@+id/to_all_possible_cities"
         android:textColor="@color/white"
         android:enabled="false"
-        android:textSize="16sp"
+        android:textSize="@dimen/sixteen_sp"
         android:textStyle="bold"/>
 
     <ListView
@@ -26,6 +26,6 @@
         android:layout_height="match_parent"
         android:id="@+id/all_events_listview"
         android:layout_below="@+id/to_all_possible_cities"
-        android:layout_marginTop="10dp"></ListView>
+        android:layout_marginTop="@dimen/ten_dp"></ListView>
 
 </RelativeLayout>

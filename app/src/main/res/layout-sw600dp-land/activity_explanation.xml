@@ -15,8 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="@dimen/twenty_dp"
+            android:layout_marginRight="@dimen/twenty_dp"
             android:orientation="vertical">
 
             <TextView
@@ -26,8 +26,8 @@
                 android:text="@string/about_this_App"
                 android:id="@+id/about_this_app_title"
                 android:textStyle="bold"
-                android:layout_marginTop="25dp"
-                android:textSize="40sp"
+                android:layout_marginTop="@dimen/twentyfive_dp"
+                android:textSize="@dimen/forty_sp"
                 android:textAlignment="center"/>
 
             <TextView
@@ -36,16 +36,16 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/about_this_app_what"
                 android:id="@+id/about_what"
-                android:layout_marginTop="25dp"
-                android:textSize="26sp"
+                android:layout_marginTop="@dimen/twentyfive_dp"
+                android:textSize="@dimen/twenty_six_sp"
                 android:textColor="@color/red"
                 android:textStyle="bold"/>/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textSize="20sp"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:textSize="@dimen/twenty_sp"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/about_this_app_what_text"
                 android:id="@+id/about_what_text" />
@@ -56,16 +56,16 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/about_this_app_how"
                 android:id="@+id/about_how"
-                android:layout_marginTop="25dp"
-                android:textSize="26sp"
+                android:layout_marginTop="@dimen/twentyfive_dp"
+                android:textSize="@dimen/twenty_six_sp"
                 android:textColor="@color/red"
                 android:textStyle="bold"/>/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textSize="20sp"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:textSize="@dimen/twenty_sp"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/about_this_app_how_text"
                 android:id="@+id/about_how_text" />
@@ -76,16 +76,16 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/about_this_app_help"
                 android:id="@+id/about_help"
-                android:layout_marginTop="25dp"
-                android:textSize="26sp"
+                android:layout_marginTop="@dimen/twentyfive_dp"
+                android:textSize="@dimen/twenty_six_sp"
                 android:textColor="@color/red"
                 android:textStyle="bold"/>/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textSize="20sp"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:textSize="@dimen/twenty_sp"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/about_this_app_help_text"
                 android:id="@+id/about_help_text" />
@@ -96,16 +96,16 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/about_this_app_contact"
                 android:id="@+id/about_contact"
-                android:layout_marginTop="25dp"
-                android:textSize="26sp"
+                android:layout_marginTop="@dimen/twentyfive_dp"
+                android:textSize="@dimen/twenty_six_sp"
                 android:textColor="@color/red"
                 android:textStyle="bold"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_marginTop="10dp"
+                android:textSize="@dimen/twenty_sp"
+                android:layout_marginTop="@dimen/ten_dp"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/about_this_app_contact_text"
                 android:id="@+id/about_contact_text"        />

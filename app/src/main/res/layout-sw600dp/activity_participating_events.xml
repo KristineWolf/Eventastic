@@ -19,13 +19,13 @@
         android:id="@+id/title_participating_events"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
-        android:textSize="40sp"
+        android:textSize="@dimen/forty_sp"
         android:textStyle="bold"/>
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/thirty_sp"
         android:id="@+id/listView_of_participating_events"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

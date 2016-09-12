@@ -12,8 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginTop="@dimen/fifteen_dp"
+        android:layout_marginLeft="@dimen/twenty_dp"
         android:id="@+id/first_line"
         android:orientation="horizontal">
 
@@ -23,7 +23,7 @@
             android:text="@string/calendar_next_event"
             android:id="@+id/title_next_event"
             android:textColor="@color/red"
-            android:textSize="20sp"
+            android:textSize="@dimen/twenty_sp"
             android:textStyle="bold"
             android:layout_weight="0.3"/>
 
@@ -34,7 +34,7 @@
             android:hint="@string/hint_title"
             android:id="@+id/information_of_next_event_title"
             android:layout_weight="0.7"
-            android:textSize="30sp"
+            android:textSize="@dimen/thirty_sp"
             android:textStyle="bold"/>
     </LinearLayout>
 
@@ -44,8 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/first_line"
         android:id="@+id/linear_layout_1"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="15dp">
+        android:layout_marginLeft="@dimen/twenty_dp"
+        android:layout_marginTop="@dimen/fifteen_dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
             android:hint="@string/hint_city"
             android:id="@+id/information_of_next_event_city"
             android:layout_weight="0.33"
-            android:textSize="26sp"
+            android:textSize="@dimen/twenty_six_sp"
             android:textStyle="italic"/>
 
         <TextView
@@ -63,7 +63,7 @@
             android:drawableLeft="@drawable/date"
             android:id="@+id/information_of_next_event_date"
             android:layout_weight="0.33"
-            android:textSize="26sp"/>
+            android:textSize="@dimen/twenty_six_sp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -72,13 +72,13 @@
             android:drawableLeft="@drawable/time"
             android:id="@+id/information_of_next_event_time"
             android:layout_weight="0.33"
-            android:textSize="26sp"/>
+            android:textSize="@dimen/twenty_six_sp"/>
     </LinearLayout>
 
     <CalendarView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/thirty_dp"
         android:id="@+id/calendarView"
         android:firstDayOfWeek="2"
         android:background="@color/light_grey"

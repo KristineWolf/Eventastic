@@ -2,22 +2,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="12dp">
+    android:padding="@dimen/twelve_dp">
 
     <TextView
         android:id="@+id/all_event_titel"
         android:textColor="@color/red"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="26sp"
+        android:layout_marginTop="@dimen/twenty_dp"
+        android:textSize="@dimen/twenty_six_sp"
         android:textAlignment="center"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/all_event_short_description"
-        android:layout_marginTop="20dp"
-        android:textSize="26sp"
+        android:layout_marginTop="@dimen/twenty_dp"
+        android:textSize="@dimen/twenty_six_sp"
         android:textStyle="italic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,12 +32,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/all_event_short_description"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/twenty_dp"
         android:id="@+id/l">
 
         <TextView
             android:id="@+id/all_event_date"
-            android:textSize="26sp"
+            android:textSize="@dimen/twenty_six_sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
@@ -45,7 +45,7 @@
 
         <TextView
             android:id="@+id/all_event_time"
-            android:textSize="26sp"
+            android:textSize="@dimen/twenty_six_sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"

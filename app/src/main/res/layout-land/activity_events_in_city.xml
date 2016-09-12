@@ -18,11 +18,11 @@
         android:id="@+id/title_events_in_this_city"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="@dimen/twentyfour_sp"
         android:textStyle="bold"/>
 
     <ListView
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/ten_dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/allEventsInACity"
