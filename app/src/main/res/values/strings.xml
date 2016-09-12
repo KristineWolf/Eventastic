@@ -158,13 +158,7 @@
     <string name="hint_edit_info">Edit important Information to the event</string>
 
 
-    <!-- Strings for KEYS -->
-    <string name="key_city">city</string>
-    <string name="key_title">titel</string>
-    <string name="key_time">time</string>
-    <string name="key_type">type</string>
-    <string name="key_date">date</string>
-    <string name="key_definition">definition</string>
+
 
     <!-- String for sharing text -->
     <string name="message_share">Check out the Event %1$s in %2$s on Eventastic!</string>
@@ -195,4 +189,8 @@
     <string name="firebase_child">events</string>
 
 
+    <!--String for checking network connection-->
+    <string name="network_title">No network available.</string>
+    <string name="network_message">Check your network connection!</string>
+    <string name="network_button">Ok</string>
 </resources>

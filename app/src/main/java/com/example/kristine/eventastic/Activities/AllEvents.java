@@ -47,8 +47,9 @@ public class AllEvents extends AppCompatActivity {
         AllEventsPuffer.clearArrayList();
         initDB();
         initUI();
-        updateList();
+
     }
+
 
     //every time the activity has to check the settings and therefore will react to it.
     @Override
@@ -81,9 +82,16 @@ public class AllEvents extends AppCompatActivity {
         }else {
             toAllPossibleCities.setText(getResources().getString(R.string.button_to_events_in_neighborhood));
         }
+
     }
 
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        updateList();
+    }
 
     private void updateList() {
         events.clear();
