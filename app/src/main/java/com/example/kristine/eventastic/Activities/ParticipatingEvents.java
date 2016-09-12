@@ -1,10 +1,8 @@
 package com.example.kristine.eventastic.Activities;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
+
 import android.content.Intent;
-import android.os.Build;
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -16,13 +14,10 @@ import android.widget.ListView;
 
 import com.example.kristine.eventastic.Adapter.EventAdapter;
 import com.example.kristine.eventastic.Databases.InternDatabase;
-import com.example.kristine.eventastic.JavaClasses.AlertReceiver;
-import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
+
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -30,7 +25,6 @@ import java.util.Date;
 //this activity presents all events the user wants to participate
 public class ParticipatingEvents extends AppCompatActivity {
 
-    private static final int ONE_HOUR_IN_MILLISEC = 3600 * 1000;
     private ListView listView;
     private ArrayList<Event> arrayList = new ArrayList<>();
     private InternDatabase db;
@@ -51,10 +45,7 @@ public class ParticipatingEvents extends AppCompatActivity {
         listView.setAdapter(adapter);
         sortData();
 
-        for (int i=0;i<arrayList.size();i++){
-            //for every event will be a notifications compiled
-            scheduleNotification(i);
-        }
+
     }
 
     private void sortData() {
@@ -62,30 +53,7 @@ public class ParticipatingEvents extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    private void scheduleNotification(int i) {
-        //get Event-timeStamp in millisec
-        SimpleDateFormat dateFormatter = new SimpleDateFormat(getResources().getString(R.string.simple_date_format_1));
-        String stringDateEvent = ChangeDateFormat.changeIntoString(arrayList.get(i).getDate());
-        String stringTimeEvent = arrayList.get(i).getTime();
-        String stringEventBegin = stringDateEvent+" "+stringTimeEvent;
-        long longBeginEvent;
-        try {
-            Date d = dateFormatter.parse(stringEventBegin);
-            longBeginEvent = d.getTime();
-        } catch (ParseException e){
-            return;
-        }
-        //1 hour before eventBegin: set notification
-        long notificationInMillisec = longBeginEvent-ONE_HOUR_IN_MILLISEC;
 
-
-        Intent intent = new Intent(getApplicationContext(),AlertReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP,notificationInMillisec,pendingIntent);
-        }
-    }
 
     private void initUI() {
         initListView();

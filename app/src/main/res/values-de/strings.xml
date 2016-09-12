@@ -198,4 +198,8 @@
     <string name="pref_key">Location</string>
     <string name="pref_summary">Zugang zu deiner Position</string>
     <string name="pref_default_value">false</string>
+    <string name="pref_title_notifications">Benachrichtigungen</string>
+    <string name="pref_key_notifications">Benachrichtigungen</string>
+    <string name="pref_summary_notifications">App darf Benachrichtigungen versenden.</string>
+    <string name="pref_noti_default_value">true</string>
 </resources>

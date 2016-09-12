@@ -4,9 +4,11 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +23,7 @@ import com.example.kristine.eventastic.Activities.AboutTheApp;
 
 import com.example.kristine.eventastic.Activities.ParticipatingEvents;
 import com.example.kristine.eventastic.Activities.SettingsActivity;
+import com.example.kristine.eventastic.Service.NotificationService;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -59,10 +62,29 @@ public class MainActivity extends AppCompatActivity {
         eventsTheUserWantsToVisit=(Button)findViewById(R.id.EventsYouWantToParticipate);
     }
 
-    //checking network connection and point the user out if there is no connection
+
     @Override
     protected void onResume() {
         super.onResume();
+        checkNotification();
+        checkNetworkConnection();
+
+    }
+
+    //checking if eventastic may send notifications
+    private void checkNetworkConnection() {
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        boolean noti=sharedPreferences.getBoolean(getResources().getString(R.string.pref_key_notifications),true);
+        if(noti){
+            startService(new Intent(this, NotificationService.class));
+
+        }else {
+            stopService(new Intent(this,NotificationService.class));
+        }
+    }
+
+    //checking network connection and point the user out if there is no connection
+    private void checkNotification() {
         ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info=connectivityManager.getActiveNetworkInfo();
         if(info!=null&&info.isConnected()){
