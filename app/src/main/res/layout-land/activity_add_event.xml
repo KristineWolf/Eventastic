@@ -1,6 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/white"
+    tools:context=".Activities.AddEvent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_add_event"
+        android:id="@+id/addEventText"
+        android:textStyle="bold"
+        android:textSize="26sp"
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addEventText"
+        android:layout_marginTop="15dp"
+        android:id="@+id/line1">
+
+        <AutoCompleteTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:inputType="text"
+            android:textStyle="italic"
+            android:hint="@string/edit_city"
+            android:id="@+id/editCity"
+            android:textSize="16sp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTitel"
+            android:inputType="text"
+            android:layout_weight="0.5"
+            android:hint="@string/hint_edit_title"
+            android:textStyle="italic"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line1"
+        android:id="@+id/line3"
+        android:layout_marginTop="5dp">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:id="@+id/editDate"
+            android:layout_weight="0.5"
+            android:hint="@string/hint_edit_date"
+            android:focusable="false"
+            android:textStyle="italic"
+            android:textSize="16sp" />
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="time"
+            android:id="@+id/editTime"
+            android:layout_weight="0.5"
+            android:hint="@string/hint_edit_time"
+            android:focusable="false"
+            android:textStyle="italic"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/line4"
+        android:layout_below="@+id/line3"
+        android:layout_marginTop="5dp">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editDefinition"
+            android:layout_centerHorizontal="true"
+            android:singleLine="true"
+            android:inputType="text"
+            android:hint="@string/hint_edit_info"
+            android:textStyle="italic"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/line2"
+    android:layout_below="@+id/line4"
+    android:layout_marginTop="5dp">
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:id="@+id/editType"
+        android:hint="@string/edit_eventType"
+        android:inputType="text"
+        android:textStyle="italic"
+        android:textSize="16sp" >
+    </Spinner>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_text_enter"
+            android:id="@+id/button_add"
+            android:layout_weight="0.5"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@color/red"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
 </LinearLayout>
+
+
+
+</RelativeLayout>

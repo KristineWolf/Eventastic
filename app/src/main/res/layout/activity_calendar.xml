@@ -7,18 +7,10 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-<!-- dadurch kann ich den Kalender sehen wenn du eine bestimmte höhe festsetzt
-und die App hängt dann auch nicht...was hälst du davon??
-müsstest dann eben nur für die bestimmten Bildgrößen eine größe festsetzen :)
-oder du nimmst einfach immer die Hälfte des Bildschirmes
-
-Klappt leider nicht bei mir, da wird die CalenderView nur zur Hälfte angezeigt.-->
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="15dp"
         android:id="@+id/first_line"
         android:orientation="horizontal">
@@ -84,12 +76,11 @@ Klappt leider nicht bei mir, da wird die CalenderView nur zur Hälfte angezeigt.
         android:layout_marginTop="10dp"
         android:id="@+id/calendarView"
         android:firstDayOfWeek="2"
+        android:background="@color/light_grey"
         android:layout_below="@+id/linear_layout_1"
         android:showWeekNumber="true"
         android:layout_centerHorizontal="true" />
 
-    <!-- Wir könnten hier noch zusätzliche Möglichkeiten für den Nutzer einfügen, damit diese Activity auch bisschen interkativ ist.
-        z.B. könnte er das Event auf facebook teilen oder nach dem Wetterbericht für diesen Tag und Ort fragen.
-        Sind vielleicht zwei blöde Beispiele, fällt dir noch was ein? -->
+
 
 </RelativeLayout>

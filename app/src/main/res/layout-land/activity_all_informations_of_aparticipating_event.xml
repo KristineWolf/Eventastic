@@ -1,6 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/white"
+    tools:context="com.example.kristine.eventastic.Activities.AllInformationsOfAParticipatingEvent">
 
-</LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="25sp"
+        android:hint="@string/hint_title"
+        android:id="@+id/information_of_participating_event_title"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@+id/information_of_participating_event_title"
+        android:id="@+id/linear_layout_1"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_city"
+            android:textStyle="italic"
+            android:id="@+id/information_of_participating_event_city"
+            android:layout_weight="0.5"
+            android:textSize="23sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_eventType"
+            android:id="@+id/information_of_participating_event_type"
+            android:layout_weight="0.5"
+            android:textSize="23sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear_layout_1"
+        android:id="@+id/linear_layout_2"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_date"
+            android:drawableLeft="@drawable/date"
+            android:id="@+id/information_of_participating_event_date"
+            android:layout_weight="0.5"
+            android:textSize="23sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_time"
+            android:drawableLeft="@drawable/time"
+            android:id="@+id/information_of_participating_event_time"
+            android:layout_weight="0.5"
+            android:textSize="23sp"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_definition"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/information_of_participating_event_definition"
+        android:layout_below="@+id/linear_layout_2"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/white"
+        android:background="@color/red"
+        android:text="@string/button_delete"
+        android:id="@+id/delete_event_button"
+        android:layout_below="@+id/information_of_participating_event_definition"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
