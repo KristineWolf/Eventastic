@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.kristine.eventastic.Adapter.CityAdapter;
 import com.example.kristine.eventastic.Adapter.EventAdapter;
 import com.example.kristine.eventastic.Databases.InternDatabase;
 
@@ -28,7 +29,7 @@ public class ParticipatingEvents extends AppCompatActivity {
     private ListView listView;
     private ArrayList<Event> arrayList = new ArrayList<>();
     private InternDatabase db;
-    private EventAdapter adapter;
+    private CityAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +62,7 @@ public class ParticipatingEvents extends AppCompatActivity {
     }
 
     private void initListAdapter() {
-        adapter = new EventAdapter(this, arrayList);
+        adapter = new CityAdapter(this, arrayList);
     }
 
     private void initListView() {

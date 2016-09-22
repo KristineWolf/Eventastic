@@ -14,7 +14,7 @@ public class AllEventsPuffer {
 
     }
 
-    public static void clearArrayList(){
+    public static void cleanArrayList(){
         allEvents.clear();
     }
 

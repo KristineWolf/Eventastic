@@ -22,9 +22,8 @@ import com.example.kristine.eventastic.JavaClasses.AllEventsPuffer;
 import com.example.kristine.eventastic.JavaClasses.ContemporaryDate;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
-import com.firebase.client.ChildEventListener;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.FirebaseError;
+
+import com.google.firebase.database.DatabaseError;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,7 +43,6 @@ public class AllEvents extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_events);
-        AllEventsPuffer.clearArrayList();
         initDB();
         initUI();
 
@@ -86,10 +84,11 @@ public class AllEvents extends AppCompatActivity {
     }
 
 
-
+    //every time this activity appears, the puffer of all events has to be cleaned
     @Override
     protected void onStart() {
         super.onStart();
+        AllEventsPuffer.cleanArrayList();
         updateList();
     }
 
@@ -98,9 +97,9 @@ public class AllEvents extends AppCompatActivity {
         //with this Listener the activity gets events from the firebase database
         //the activity will get only events which will still take place.
         //all events are going to be saved in a static class
-        db.db.addChildEventListener(new ChildEventListener() {
+        db.mRef.addChildEventListener(new com.google.firebase.database.ChildEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+            public void onChildAdded(com.google.firebase.database.DataSnapshot dataSnapshot, String s) {
                 Event event=dataSnapshot.getValue(Event.class);
                 if(event.getDate()>= ContemporaryDate.getContemporaryDate()) {
                     AllEventsPuffer.enterEvent(event);
@@ -113,7 +112,7 @@ public class AllEvents extends AppCompatActivity {
             }
 
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            public void onChildChanged(com.google.firebase.database.DataSnapshot dataSnapshot, String s) {
                 Event event=dataSnapshot.getValue(Event.class);
                 if(event.getDate()>= ContemporaryDate.getContemporaryDate()) {
                     AllEventsPuffer.enterEvent(event);
@@ -124,7 +123,7 @@ public class AllEvents extends AppCompatActivity {
             }
 
             @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            public void onChildRemoved(com.google.firebase.database.DataSnapshot dataSnapshot) {
                 Event event=dataSnapshot.getValue(Event.class);
                 if(event.getDate()>= ContemporaryDate.getContemporaryDate()) {
                     AllEventsPuffer.enterEvent(event);
@@ -135,17 +134,22 @@ public class AllEvents extends AppCompatActivity {
             }
 
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            public void onChildMoved(com.google.firebase.database.DataSnapshot dataSnapshot, String s) {
 
             }
 
             @Override
-            public void onCancelled(FirebaseError firebaseError) {
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
 
-        listview.setAdapter(adapter);
+
+
+
+
+
+    listview.setAdapter(adapter);
     }
 
 

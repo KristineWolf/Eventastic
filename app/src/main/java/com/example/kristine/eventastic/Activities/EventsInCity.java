@@ -53,7 +53,9 @@ public class EventsInCity extends AppCompatActivity {
     private void searchingThroughData() {
         for(int i=0; i<allCities.size(); i++){
             if(selectedCity.equals(allCities.get(i).getCity())){
-                arraylist.add(allCities.get(i));
+                if(!arraylist.equals(allCities.get(i))) {
+                    arraylist.add(allCities.get(i));
+                }
             }
         }
     }
@@ -83,7 +85,7 @@ public class EventsInCity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(EventsInCity.this, AllInformationsOfAnEvent.class);
                 intent.putExtra(getResources().getString(R.string.event_in_intent),arraylist.get(position));
-
+                startActivity(intent);
             }
         });
     }
