@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="All Events"
+        android:id="@+id/to_all_events"
+        android:icon="@drawable/to_all_events"
+        app:showAsAction="always">
+    </item>
+
+    <item
+        android:title="My Events"
+        android:id="@+id/to_my_events"
+        android:icon="@drawable/to_particpating_events"
+        app:showAsAction="always">
+    </item>
+
+</menu>

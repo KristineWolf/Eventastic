@@ -82,7 +82,7 @@ public class AllPossibleCities extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater =getMenuInflater();
-        inflater.inflate(R.menu.empty_menu,menu);
+        inflater.inflate(R.menu.all_possible_cities_menu,menu);
         return true;
     }
 
@@ -90,6 +90,16 @@ public class AllPossibleCities extends AppCompatActivity {
     public boolean onOptionsItemSelected (MenuItem item) {
         int id= item.getItemId();
         switch (id){
+            case R.id.to_all_events:
+                Intent i= new Intent (AllPossibleCities.this,AllEvents.class);
+                startActivity(i);
+                finish();
+                break;
+            case R.id.to_my_events:
+                Intent i2=new Intent(AllPossibleCities.this,ParticipatingEvents.class);
+                startActivity(i2);
+                finish();
+                break;
             case android.R.id.home:
                 finish();
                 break;
