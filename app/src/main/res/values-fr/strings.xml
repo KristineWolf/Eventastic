@@ -35,7 +35,7 @@
     <string name="hint_edit_title">Entre el titre de l\'événement.</string>
     <string name="hint_eventType">Entre el type de l\'événement.</string>
     <string name="hint_time">Heure</string>
-    <string name="nothing_on_list">Clique ici.</string>
+    <string name="nothing_on_list">Tu n\'as pas encore choisi un évènement. Clique ici.</string>
     <string name="toast_added">"Tu as ajouté cette événement à la liste."</string>
     <string name="toast_deleted">Événent est supprimé de ta liste.</string>
     <string-array name="eventtype_array">
@@ -80,4 +80,12 @@
     <string name="network_title">Il n\'y a pas de connexion à Internet.</string>
     <string name="dialog_message">Modifie les paramètres pour voir des évènements à proximité.</string>
     <string name="network_message">Vérifie la connexion á Internet.</string>
+    <string name="about_this_app_contact_tab">Contacte</string>
+    <string name="about_this_app_help_tab">aide</string>
+    <string name="about_this_app_how_tab">comme</string>
+    <string name="about_this_app_what_tab">quoi</string>
+    <string name="e_mail">eventastic.app@gmail.com</string>
+    <string name="extra_body">Salut, parlons d\'EVENTASTIC...</string>
+    <string name="extra_subject">EVENTASTIC</string>
+    <string name="choose_email_client">Sélectionnez un client de messagerie</string>
 </resources>

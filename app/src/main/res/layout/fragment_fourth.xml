@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragments.FourthFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/about_this_app_contact"
+        android:id="@+id/about_what"
+        android:layout_marginTop="@dimen/fifteen_dp"
+        android:textColor="@color/red"
+        android:textStyle="bold"
+        android:padding="@dimen/ten_dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about_this_app_contact_text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:padding="@dimen/ten_dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Mail"
+        android:id="@+id/button_mail"
+        android:layout_margin="@dimen/ten_dp"/>
+
+
+</LinearLayout>

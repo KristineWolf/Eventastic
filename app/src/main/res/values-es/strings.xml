@@ -36,7 +36,7 @@
     <string name="title_add_event">Añadir evento</string>
     <string name="notification_text">En una hore tienes un evento. Haz clic!</string>
     <string name="hint_edit_info">Añade información sobre el evento</string>
-    <string name="nothing_on_list">Todavía ne has elegido un evento. \n Haz clic aqui y añade.</string>
+    <string name="nothing_on_list">Todavía ne has elegido un evento. Haz clic aqui y añade.</string>
     <string name="toast_deleted">Este evento fue borrado de tu lista. \'</string>
 
     <string-array name="eventtype_array">
@@ -81,4 +81,12 @@
     <string name="network_message">Comprobe tu conexión de red.</string>
     <string name="network_title">No hay conexión de red.</string>
     <string name="dialog_message">Cambie la configuración para ver eventos cercanos.</string>
+    <string name="about_this_app_contact_tab">Contacto</string>
+    <string name="about_this_app_help_tab">apoyo</string>
+    <string name="about_this_app_how_tab">como</string>
+    <string name="about_this_app_what_tab">que</string>
+    <string name="e_mail">eventastic.app@gmail.com</string>
+    <string name="extra_body">Hola, hablemos de EVENTASTIC...</string>
+    <string name="extra_subject">EVENTASTIC</string>
+    <string name="choose_email_client">Seleccione un cliente de correo electrónico</string>
 </resources>

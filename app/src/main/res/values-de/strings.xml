@@ -10,7 +10,7 @@
     <string name="all_events_title">Events in </string>
 
 
-    <!-- Strings Information about an Event-->
+    <!-- Strings Information activity_about an Event-->
     <string name="button_add">Ich nehme teil.</string>
     <string name="button_added">Viel Spaß!</string>
     <string name="button_delete">Ich will doch nicht teilnehmen</string>
@@ -122,7 +122,7 @@
     <!-- Strings für CalenderActivity -->
     <string name="calendar">Kalender</string>
     <string name="calendar_next_event">DEIN NÄCHSTES EVENT:</string>
-    <string name="nothing_on_list">Du hast noch keine Events ausgewählt. \n KLICKE HIER und füge welche hinzu!</string>
+    <string name="nothing_on_list">Du hast noch keine Events ausgewählt. KLICKE HIER und füge welche hinzu!</string>
     <string name="share_intent_type">text/plain</string>
     <string name="simple_date_format_2">dd.MM.yyyy</string>
     <string name="simple_date_format_1">dd.MM.yyyy HH:mm</string>
@@ -196,4 +196,12 @@
     <string name="pref_summary_notifications">App darf Benachrichtigungen versenden.</string>
     <string name="pref_noti_default_value">true</string>
     <string name="message_share">Hallo! Sieh dir mal %1$s in %2$s auf Eventastic an!</string>
+    <string name="about_this_app_contact_tab">Kontakt</string>
+    <string name="about_this_app_what_tab">was</string>
+    <string name="about_this_app_help_tab">support</string>
+    <string name="about_this_app_how_tab">wie</string>
+    <string name="e_mail">eventastic.app@gmail.com</string>
+    <string name="extra_body">Hallo, </string>
+    <string name="extra_subject">EVENTASTIC</string>
+    <string name="choose_email_client">Wähle einen eMail-Client aus</string>
 </resources>
