@@ -153,19 +153,12 @@
 
 
     <!-- Strings for KEYS -->
-    <string name="key_city">city</string>
-    <string name="key_title">title</string>
-    <string name="key_time">time</string>
-    <string name="key_type">type</string>
-    <string name="key_date">date</string>
-    <string name="key_definition">definition</string>
     <string name="about_this_app_help_text">Erzähle Freunden und Familie von dieser App und  hilfe uns dabei, EVENTASTIC zu verbessern. Je mehr User, desto mehr Events werden geteilt und desto mehr Nutzen haben wir alle davon</string>
     <string name="about_this_app_how_text">EVENTASTIC ist kostenlos und einfach zu bedienen. Du musst keinen Account erstellen und dich einloggen. Zuerst wählst du eine Stadt aus oder lässt die App deinen Standort bestimmen.  Werf dann einen Blick auf die Liste mit den dort anstehenden Events. Klicke auf ICH NEHME TEIL. Deine bevorstehenden findest du auf MEINE EVENTS.</string>
     <string name="about_this_app_what_text">Diese App hilft dir anstehende Events in deiner Stadt zu finden. Auch du kannst ein Event hinzufügen, sodass andere Nutzer daran teilnehmen können. Probier\'s aus und du wirst merken... nie wieder ohne EVENTASTIC!</string>
 
 
     <!--String for CityAdapter-->
-    <string name="a_"> </string>
     <string name="in_"> in </string>
 
     <!--String for ExternDatabase-->
@@ -176,7 +169,7 @@
     <!--String for checking network connection-->
     <string name="network_title">Keine Netzwerkverbindung vorhanden.</string>
     <string name="network_message">Überprüfe deine Netzwerkverbindung!</string>
-    <string name="network_button">Ok</string>
+    <string name="network_button">OK</string>
 
     <!--String for putting an events into an intent-->
     <string name="event_in_intent">event</string>
@@ -202,4 +195,5 @@
     <string name="pref_key_notifications">Benachrichtigungen</string>
     <string name="pref_summary_notifications">App darf Benachrichtigungen versenden.</string>
     <string name="pref_noti_default_value">true</string>
+    <string name="message_share">Hallo! Sieh dir mal %1$s in %2$s auf Eventastic an!</string>
 </resources>

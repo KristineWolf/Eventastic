@@ -1,7 +1,6 @@
 package com.example.kristine.eventastic.Activities;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -167,14 +166,12 @@ public class CalendarActivity extends AppCompatActivity {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setAction(Intent.ACTION_SEND);
         shareIntent.setType(getResources().getString(R.string.share_intent_type));
-        Resources res = getResources();
-        String text = String.format(res.getString(R.string.message_share),title.getText(), city.getText());
+        String text = String.format(getResources().getString(R.string.message_share),title.getText(), city.getText());
         shareIntent.putExtra(Intent.EXTRA_TEXT,text);
         myShareActionProvider.setShareIntent(shareIntent);
 
         return true;
     }
-
 
 
     @Override

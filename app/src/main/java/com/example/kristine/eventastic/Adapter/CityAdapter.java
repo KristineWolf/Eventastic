@@ -46,7 +46,7 @@ public class CityAdapter extends ArrayAdapter<Event> {
             date.setText(ChangeDateFormat.changeIntoString(arrayList.get(position).getDate()));
 
             time.setText(arrayList.get(position).getTime());
-            type.setText(context.getResources().getString(R.string.a_)+" "+arrayList.get(position).getType()+" "+context.getResources().getString(R.string.in_)+" "+arrayList.get(position).getCity());
+            type.setText(arrayList.get(position).getType()+" "+context.getResources().getString(R.string.in_)+" "+arrayList.get(position).getCity());
         }
 
 
