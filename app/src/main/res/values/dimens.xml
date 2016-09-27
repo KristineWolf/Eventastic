@@ -18,7 +18,8 @@
     <dimen name="margin_xsmall">5dp</dimen>
 
     <!-- padding sizes dp -->
-    <dimen name="padding_button_main">10dp</dimen>
+    <dimen name="padding_button_top_main">25dp</dimen>
+    <dimen name="padding_button_side_main">20dp</dimen>
     <dimen name="padding_button_main_land">10dp</dimen>
     <dimen name="padding_small">12dp</dimen>
 

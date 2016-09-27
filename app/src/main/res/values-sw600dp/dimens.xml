@@ -8,6 +8,7 @@
     <dimen name="title_text_size">40sp</dimen>
     <dimen name="normal_text_size">24sp</dimen>
     <dimen name="button_text_size">22sp</dimen>
+    <dimen name="button_main_text_size">30sp</dimen>
     <dimen name="info_event_text_size">26sp</dimen>
     <dimen name="info_event_text_small_size">23sp</dimen>
 
@@ -19,9 +20,10 @@
     <dimen name="margin_xsmall">10dp</dimen>
 
     <!-- padding sizes dp -->
-    <dimen name="padding_button_main">30dp</dimen>
-    <dimen name="padding_top_button_main_land">30dp</dimen>
-    <dimen name="padding_button_main_land">100dp</dimen>
+    <dimen name="padding_button_top_main">40dp</dimen>
+    <dimen name="padding_button_side_main">30dp</dimen>
+    <dimen name="padding_top_button_main_land">20dp</dimen>
+    <dimen name="padding_button_main_land">40dp</dimen>
 
 
 </resources>

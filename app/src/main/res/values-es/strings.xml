@@ -21,7 +21,7 @@
     <string name="button_text_enter">Aceptar</string>
     <string name="calendar">Calendario</string>
     <string name="city_in">en</string>
-    <string name="events_city">Eventos en esta ciudad</string>
+    <string name="events_city">Todos Eventos</string>
     <string name="calendar_next_event">TU PRÓXIMO EVENTO:</string>
     <string name="hint_definition">Definición</string>
     <string name="hint_title">TÍTULO</string>
@@ -51,7 +51,7 @@
     <string name="about_this_app_how_text">EVENTASTIC es gratis y muy fácil de usar. No tienes que crear una cuenta o registrarte. Primero, eliges una ciudad o dejas la aplicación encontrar tu lugar. Después mira la lista donde están eventos diferentes. Haz clic en VOY A PARTICIPAR. Tu próximo evento está en MIS EVENTOS.</string>
     <string name="about_this_app_what_text">Esta aplicación se llama EVENTASTIC. Te ayuda encontras próximos eventos en tu ciudad. También puedes añadir un evento a la lista y otros usarios pueden participar. Pruebalo y vas a encontrar… nunca más sin esta aplicación!</string>
     <string name="button_to_all_cities">A todas la ciudades</string>
-    <string name="button_to_events_in_neighborhood">Eventos cercano</string>
+    <string name="button_to_events_in_neighborhood">a los Eventos cercano</string>
     <string name="adding_0">0</string>
     <string name="adding_double_dot">:</string>
     <string name="firebase_url">https://android-129c6.firebaseio.com/</string>

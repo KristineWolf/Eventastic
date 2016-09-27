@@ -20,7 +20,7 @@
     <string name="button_text_enter">Enter</string>
     <string name="calendar">Calendrier</string>
     <string name="city_in">à</string>
-    <string name="events_city">Événements à cette ville.</string>
+    <string name="events_city">Tous Évènements</string>
     <string name="hint_title">TITRE</string>
     <string name="notification_title">Eventastic!</string>
     <string name="participating_events">Mes Évènements</string>
@@ -76,7 +76,7 @@
     <string name="pref_default_value">false</string>
     <string name="in_">à</string>
     <string name="date_picker">datePicker</string>
-    <string name="button_to_events_in_neighborhood">Évènements à proximité</string>
+    <string name="button_to_events_in_neighborhood">à Évènements à proximité</string>
     <string name="network_title">Il n\'y a pas de connexion à Internet.</string>
     <string name="dialog_message">Modifie les paramètres pour voir des évènements à proximité.</string>
     <string name="network_message">Vérifie la connexion á Internet.</string>

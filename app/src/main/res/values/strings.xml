@@ -5,7 +5,7 @@
     <!-- general strings -->
     <string name="settings">Settings</string>
     <string name="app_name">Eventastic</string>
-    <string name="events_city">Events in this city</string>
+    <string name="events_city">all events</string>
     <string name="participating_events">My Events</string>
     <string name="all_events_title">Events in </string>
     <string name="content_description_logo">Logo Eventastic</string>
@@ -176,7 +176,7 @@
     <string name="dialog_message">Change the settings to get events in your neighbourhood.</string>
     <string name="dialog_pos_button">OK</string>
     <string name="dialog_neg_button">No</string>
-    <string name="button_to_events_in_neighborhood">Events in your neighbourhood.</string>
+    <string name="button_to_events_in_neighborhood">to events in your neighbourhood</string>
 
     <!--String for putting an events into an intent-->
     <string name="event_in_intent">event</string>

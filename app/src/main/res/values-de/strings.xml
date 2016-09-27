@@ -5,7 +5,7 @@
     <string name="app_name">Eventastic</string>
     <!-- general strings -->
     <string name="settings">Einstellungen</string>
-    <string name="events_city">Events in dieser Stadt</string>
+    <string name="events_city">Alle Events</string>
     <string name="participating_events">Meine Events</string>
     <string name="all_events_title">Events in </string>
 
@@ -184,7 +184,7 @@
     <string name="dialog_message">Ändere die Einstellungen, um Events in deiner Nähe zu erhalten</string>
     <string name="dialog_pos_button">OK</string>
     <string name="dialog_neg_button">Nein</string>
-    <string name="button_to_events_in_neighborhood">Events in deiner Nähe.</string>
+    <string name="button_to_events_in_neighborhood">zu Events in deiner Nähe.</string>
 
     <!--String für preferences.xml-->
     <string name="pref_title">Location</string>
