@@ -36,7 +36,7 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
     }
 
 
-
+    // puts all the information of an event into a bundle
     private void informationInBundle(Bundle extras) {
         Event event = (Event)extras.get(getResources().getString(R.string.event_in_intent));
         city=event.getCity();

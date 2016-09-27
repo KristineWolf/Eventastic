@@ -56,11 +56,6 @@ public class InternDatabase {
         close();
     }
 
-
-
-
-
-
     public ArrayList<Event> getAllEvents(){
         open();
         ArrayList<Event> events = new ArrayList<>();
@@ -80,21 +75,15 @@ public class InternDatabase {
                 if(date< ContemporaryDate.getContemporaryDate()){
                     deleteEvent(city,time,titel,type,definition);
                 }else {
-
                     events.add(new Event(city, date, time, titel, definition, type));
                 }
-
             }while (cursor.moveToNext());
-
         }
         cursor.close();
         close();
 
-
         return events;
     }
-
-
 
 
 
@@ -104,7 +93,6 @@ public class InternDatabase {
         open();
         db.delete(DATABASE_TABLE,whereClause,new String[]{city,time,titel,type,definition});
         close();
-
     }
 
 

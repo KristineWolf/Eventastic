@@ -48,7 +48,6 @@ public class AllEvents extends AppCompatActivity {
 
     }
 
-
     //every time the activity has to check the settings and therefore will react to it.
     @Override
     protected void onResume() {
@@ -80,7 +79,6 @@ public class AllEvents extends AppCompatActivity {
         }else {
             toAllPossibleCities.setText(getResources().getString(R.string.button_to_events_in_neighborhood));
         }
-
     }
 
 
@@ -96,7 +94,7 @@ public class AllEvents extends AppCompatActivity {
         events.clear();
         //with this Listener the activity gets events from the firebase database
         //the activity will get only events which will still take place.
-        //all events are going to be saved in a static class
+        //all events are saved in a static class
         db.mRef.addChildEventListener(new com.google.firebase.database.ChildEventListener() {
             @Override
             public void onChildAdded(com.google.firebase.database.DataSnapshot dataSnapshot, String s) {
@@ -135,19 +133,12 @@ public class AllEvents extends AppCompatActivity {
 
             @Override
             public void onChildMoved(com.google.firebase.database.DataSnapshot dataSnapshot, String s) {
-
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
-
-
-
-
-
 
     listview.setAdapter(adapter);
     }
@@ -209,12 +200,13 @@ public class AllEvents extends AppCompatActivity {
         int id= item.getItemId();
         switch (id){
 
-
+            //Choosing this icon the user gets to the activity to add an event.
             case R.id.all_possible_cities_add_event:
                 Intent intent=new Intent(AllEvents.this,AddEvent.class);
                 startActivity(intent);
                 break;
 
+            //Choosing this icon the user gets to the settingsActivity
             case R.id.all_possible_cities_settings:
                 Intent intent2= new Intent(AllEvents.this, SettingsActivity.class);
                 startActivity(intent2);
@@ -229,9 +221,7 @@ public class AllEvents extends AppCompatActivity {
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 break;
-
         }
-
         return true;
     }
 }

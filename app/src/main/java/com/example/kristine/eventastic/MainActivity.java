@@ -15,12 +15,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
+import com.example.kristine.eventastic.Activities.AboutTheApp;
 import com.example.kristine.eventastic.Activities.AllEvents;
 import com.example.kristine.eventastic.Activities.CalendarActivity;
-import com.example.kristine.eventastic.Activities.AboutTheApp;
-
 import com.example.kristine.eventastic.Activities.ParticipatingEvents;
 import com.example.kristine.eventastic.Activities.SettingsActivity;
 import com.example.kristine.eventastic.Service.NotificationService;
@@ -122,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
 
-
             case R.id.main_activity_calendar:
                 Intent intent3 = new Intent(MainActivity.this, CalendarActivity.class);
                 startActivity(intent3);
@@ -132,12 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent2= new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent2);
                 return true;
-
         }
-
         return false;
     }
-
-
-
 }

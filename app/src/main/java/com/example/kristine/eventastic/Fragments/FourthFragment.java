@@ -24,6 +24,7 @@ public class FourthFragment extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_fourth, container, false);
+        //get the mailButton and set ClickListener
         Button mailButton =(Button) view.findViewById(R.id.button_mail);
         mailButton.setOnClickListener(this);
         return view;
@@ -34,12 +35,17 @@ public class FourthFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.button_mail:
-                Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{getResources().getString(R.string.e_mail)});
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.extra_subject));
-                emailIntent.putExtra(Intent.EXTRA_TEXT,getResources().getString(R.string.extra_body));
-                emailIntent.setType("text/html");
-                startActivity(Intent.createChooser(emailIntent,getResources().getString(R.string.choose_email_client)));
+                //when clicked, user can choose an email client to send an email to the developer
+                openEMailClient();
         }
+    }
+
+    private void openEMailClient() {
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{getResources().getString(R.string.e_mail)});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.extra_subject));
+        emailIntent.putExtra(Intent.EXTRA_TEXT,getResources().getString(R.string.extra_body));
+        emailIntent.setType("text/html");
+        startActivity(Intent.createChooser(emailIntent,getResources().getString(R.string.choose_email_client)));
     }
 }

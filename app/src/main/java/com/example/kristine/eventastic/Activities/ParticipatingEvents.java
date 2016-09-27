@@ -2,7 +2,6 @@ package com.example.kristine.eventastic.Activities;
 
 
 import android.content.Intent;
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -13,15 +12,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.kristine.eventastic.Adapter.CityAdapter;
-import com.example.kristine.eventastic.Adapter.EventAdapter;
 import com.example.kristine.eventastic.Databases.InternDatabase;
-
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 
 //this activity presents all events the user wants to participate
 public class ParticipatingEvents extends AppCompatActivity {
@@ -45,15 +41,12 @@ public class ParticipatingEvents extends AppCompatActivity {
         arrayList.addAll(db.getAllEvents());
         listView.setAdapter(adapter);
         sortData();
-
-
     }
 
     private void sortData() {
         Collections.sort(arrayList);
         adapter.notifyDataSetChanged();
     }
-
 
 
     private void initUI() {
@@ -93,12 +86,13 @@ public class ParticipatingEvents extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            //choosing this the user will get to all possible events
+            //choosing this the user gets to all possible events
             case R.id.participating_events_to_all_events:
                 Intent intent = new Intent(ParticipatingEvents.this, AllEvents.class);
                 startActivity(intent);
                 return true;
 
+            //choosing this the user gets to CalendarActivity where is shown his next upcomming event
             case R.id.participating_events_to_calendar:
                 Intent intent3 = new Intent(ParticipatingEvents.this,CalendarActivity.class);
                 startActivity(intent3);

@@ -23,22 +23,22 @@ public class AboutTheApp extends AppCompatActivity {
     ViewPager viewPager;
     ViewPagerAdapter viewPagerAdapter;
 
-    // this activity shows information activity_about this app
+    // this activity called AboutTheApp shows information about the usage
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+
+        setupWindow();
+        setupToolBar();
+        setupBackArrow();
+    }
+
+
+    // setup toolbar with 4 slidingTabs showing short information/explanation texts
+    private void setupToolBar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null){
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
-
-        Window window = this.getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
-        }
 
         tabLayout =(TabLayout)findViewById(R.id.tablayout);
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.red));
@@ -51,5 +51,21 @@ public class AboutTheApp extends AppCompatActivity {
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+
+    private void setupBackArrow() {
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+    }
+
+
+    private void setupWindow() {
+        Window window = this.getWindow();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+        }
     }
 }

@@ -89,7 +89,7 @@ public class CalendarActivity extends AppCompatActivity {
         adapter = new EventAdapter(this, arrayList);
     }
 
-    //this will be shown if the user won´t participate in any event.
+    //this is shown if the user won´t participate in any event.
      private void noEventOnMyList() {
         title.setVisibility(View.INVISIBLE);
         city.setVisibility(View.INVISIBLE);
@@ -98,7 +98,6 @@ public class CalendarActivity extends AppCompatActivity {
         TextView nextEvent = (TextView) findViewById(R.id.title_next_event);
         calendarView.setDate(System.currentTimeMillis(),false,true);
 
-        //TODO: noch anders gestalten
         nextEvent.setText(getString(R.string.nothing_on_list));
         nextEvent.setTextSize(20);
         nextEvent.setOnClickListener(new View.OnClickListener() {
@@ -128,7 +127,7 @@ public class CalendarActivity extends AppCompatActivity {
            return;
         }
 
-        //if event is over, proofing for next event
+        //if eventof today is already over, proofing for next event
         if (longEventBegin < longDateToday){
             if (arrayList.size()>numbEvents+1){
                 checkIfNextEventOver(numbEvents+1);
@@ -144,7 +143,7 @@ public class CalendarActivity extends AppCompatActivity {
         time.setText(arrayList.get(event).getTime());
         date.setText(dateEvent);
 
-        //set date in calendar for next event
+        //set date in calendar for user's next event
         SimpleDateFormat f = new SimpleDateFormat(getResources().getString(R.string.simple_date_format_2));
         try {
             Date d = f.parse(dateEvent);
@@ -160,7 +159,7 @@ public class CalendarActivity extends AppCompatActivity {
         MenuInflater inflater =getMenuInflater();
         inflater.inflate(R.menu.calendar_activity_menu,menu);
 
-        //setup shareMenuItem
+        //setup shareMenuItem; short text about the user's next event
         MenuItem shareItem = menu.findItem(R.id.menu_item_share);
         ShareActionProvider myShareActionProvider = (android.support.v7.widget.ShareActionProvider)MenuItemCompat.getActionProvider(shareItem);
         Intent shareIntent = new Intent(Intent.ACTION_SEND);

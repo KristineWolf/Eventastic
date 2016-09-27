@@ -106,12 +106,11 @@ public class EventsInCity extends AppCompatActivity {
         int id= item.getItemId();
         switch (id){
 
-
+            //Choosing this icon the user gets to the activity to add an event.
             case R.id.event_in_city_add_event:
                 Intent intent=new Intent(EventsInCity.this,AddEvent.class);
                 startActivity(intent);
                 break;
-
 
             //Choosing this icon the user gets to the activity which contains all participating events.
             case R.id.event_in_city_to_my_events:
@@ -122,10 +121,7 @@ public class EventsInCity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 break;
-
         }
-
         return true;
     }
-
 }

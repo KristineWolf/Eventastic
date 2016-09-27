@@ -73,7 +73,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         enter = (Button) findViewById(R.id.button_add);
     }
 
-    //with this the user can select different types for an event
+    //with this spinner the user can select  different eventtypes
     private void initTypeSpinner() {
         Spinner editType = (Spinner) findViewById(R.id.editType);
         ArrayAdapter adapterType = ArrayAdapter.createFromResource(this, R.array.eventtype_array, R.layout.support_simple_spinner_dropdown_item);
@@ -81,7 +81,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         editType.setOnItemSelectedListener(this);
     }
 
-    //this will show the user possible cities while he is writing
+    //this autocomplete will show all possible cities to the user while typing
     private void initCityAutocomplete() {
         editCities = (AutoCompleteTextView)findViewById(R.id.editCity);
         String[] citiesToSelect = getResources().getStringArray(R.array.cities_array);
@@ -89,7 +89,6 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         editCities.setAdapter(adapterCities);
         editCities.setThreshold(1);
     }
-
 
 
     //methods to edit DATE and TIME information of the event to add
@@ -184,9 +183,6 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
                 String definition = editDefinition.getText().toString();
                 String type = typeEvent.getText().toString();
 
-
-
-
                 if (city.equals("") || date.equals("") || time.equals("") || titel.equals("") || definition.equals("") || type.equals("")) {
                     return;
                 } else {
@@ -201,6 +197,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         });
     }
 
+    //if EditText-Views are not empty, event is created and toast shows up
     private void addEvent(String city, String date, String time, String titel, String definition, String type) {
         Event event = new Event(city, ChangeDateFormat.changeFirstIntoDateFormatAfterwardsIntoInteger(date), time, titel, definition, type);
         boolean saved = db.insertItem(event);

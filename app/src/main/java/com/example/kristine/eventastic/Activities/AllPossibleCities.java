@@ -90,11 +90,15 @@ public class AllPossibleCities extends AppCompatActivity {
     public boolean onOptionsItemSelected (MenuItem item) {
         int id= item.getItemId();
         switch (id){
+
+            //Choosing this icon the user gets to the activity which contains all possible events.
             case R.id.to_all_events:
                 Intent i= new Intent (AllPossibleCities.this,AllEvents.class);
                 startActivity(i);
                 finish();
                 break;
+
+            //Choosing this icon the user gets to the activity which contains all participating events.
             case R.id.to_my_events:
                 Intent i2=new Intent(AllPossibleCities.this,ParticipatingEvents.class);
                 startActivity(i2);

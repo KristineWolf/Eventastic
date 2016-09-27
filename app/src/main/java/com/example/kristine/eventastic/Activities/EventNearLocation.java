@@ -1,38 +1,26 @@
 package com.example.kristine.eventastic.Activities;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Build;
-import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.kristine.eventastic.Adapter.CityAdapter;
 import com.example.kristine.eventastic.AsyncTask.GetAddressesOfCities;
 import com.example.kristine.eventastic.AsyncTask.GetNearestCityAsyncTask;
 import com.example.kristine.eventastic.Interface.LocationUpdateListener;
-import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.JavaClasses.LocationController;
 import com.example.kristine.eventastic.R;
-
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -183,12 +171,11 @@ public class EventNearLocation extends AppCompatActivity implements LocationUpda
         int id= item.getItemId();
         switch (id){
 
-
+            //Choosing this icon the user gets to the activity to add an event.
             case R.id.event_in_city_add_event:
                 Intent intent=new Intent(EventNearLocation.this,AddEvent.class);
                 startActivity(intent);
                 break;
-
 
             //Choosing this icon the user gets to the activity which contains all participating events.
             case R.id.event_in_city_to_my_events:
