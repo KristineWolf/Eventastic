@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:hint="@string/hint_title"
-        android:textSize="@dimen/twenty_six_sp"
+        android:textSize="@dimen/title_text_size"
         android:id="@+id/clicked_event_titel"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -36,7 +36,7 @@
             android:textStyle="italic"
             android:id="@+id/clicked_event_city"
             android:layout_weight="0.5"
-            android:textSize="@dimen/twentythree_sp"/>
+            android:textSize="@dimen/info_event_text_size"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
             android:hint="@string/hint_eventType"
             android:id="@+id/clicked_event_type"
             android:layout_weight="0.5"
-            android:textSize="@dimen/twentythree_sp"/>
+            android:textSize="@dimen/info_event_text_size"/>
     </LinearLayout>
 
     <LinearLayout
@@ -62,7 +62,7 @@
             android:drawableLeft="@drawable/date"
             android:id="@+id/clicked_event_date"
             android:layout_weight="0.5"
-            android:textSize="@dimen/twentythree_sp"/>
+            android:textSize="@dimen/info_event_text_size"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
             android:drawableLeft="@drawable/time"
             android:id="@+id/clicked_event_time"
             android:layout_weight="0.5"
-            android:textSize="@dimen/twentythree_sp"/>
+            android:textSize="@dimen/info_event_text_size" />
     </LinearLayout>
 
     <TextView
@@ -81,7 +81,7 @@
         android:id="@+id/clicked_event_definition"
         android:layout_below="@+id/second_linear_layout"
         android:layout_marginTop="@dimen/fifteen_dp"
-        android:textSize="@dimen/twenty_sp"/>
+        android:textSize="@dimen/info_event_text_size"/>
 
     <Button
         android:layout_width="match_parent"

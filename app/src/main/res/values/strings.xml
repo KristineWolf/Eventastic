@@ -9,15 +9,18 @@
     <string name="participating_events">My Events</string>
     <string name="all_events_title">Events in </string>
 
-
-    <!-- Strings Information activity_about an Event-->
+    <!-- strings for Information activity_about an Event-->
     <string name="button_add">Want to Participate</string>
     <string name="button_added">Have fun!</string>
     <string name="button_delete">Don´t want to participate</string>
     <string name="button_deleted">You will not participate.</string>
     <string name="city_in">in </string>
 
-    <!-- Strings für AddEvent -->
+    <!-- strings for eventNearLocation -->
+    <string name="to_cities">To all possible cities</string>
+    <string name="your_location">Your Location</string>
+
+    <!-- strings for AddEvent -->
     <string name="edit_city">Choose a city</string>
     <string name="edit_eventType">Select event type</string>
     <string name="button_text_enter">Enter</string>
@@ -99,7 +102,7 @@
     </string-array>
 
 
-    <!-- Strings für AboutTheApp -->
+    <!-- string for AboutTheApp -->
     <string name="about_this_App">About this App</string>
 
     <string name="about_this_app_what_tab">about</string>
@@ -122,12 +125,14 @@
         events will be shared and the better for all of us.</string>
 
     <string name="about_this_app_contact_tab">Contact</string>
-    <string name="about_this_app_contact">Contact us.</string> <!-- eventastic.app@gmail.com, passwort:projekt2016 -->
+    <string name="about_this_app_contact">Contact us.</string>
+    <!-- eventastic.app@gmail.com, password:projekt2016 -->
     <string name="about_this_app_contact_text">Do you have any suggestions, criticisms, or anything
         else that you want to tell us? Simply write us an e-mail to eventastic.app@gmail.com. We are looking
         forward to hearing from you!</string>
+    <string name="button_send_mail">Send Mail</string>
 
-    <!-- Strings für CalendarActivity -->
+    <!-- strings for CalendarActivity -->
     <string name="calendar">Calendar</string>
     <string name="calendar_next_event">YOUR NEXT EVENT:</string>
     <string name="nothing_on_list">There´s no upcoming event on your list. CLICK HERE and add some!</string>
@@ -139,11 +144,11 @@
     <string name="toast_added">You added the Event \'</string>
     <string name="toast_deleted">Event is deleted from your list.</string>
 
-    <!-- für Notification -->
+    <!-- strings for Notification -->
     <string name="notification_title">Eventastic!</string>
     <string name="notification_text">You have an event in one hour. Click for further information. </string>
 
-    <!-- Strings für HINTS -->
+    <!-- strings for HINTS -->
     <string name="hint_title">TITLE</string>
     <string name="hint_city">City</string>
     <string name="hint_eventType">Event type</string>
@@ -156,14 +161,14 @@
     <string name="hint_edit_time">Select a time</string>
     <string name="hint_edit_info">Add important Information to the event</string>
 
-    <!-- String for sharing text/email -->
+    <!-- strings for sharing text/email -->
     <string name="message_share">Hey there! Check out the event %1$s in %2$s on Eventastic!</string>
     <string name="e_mail">eventastic.app@gmail.com</string>
     <string name="extra_subject">EVENTASTIC</string>
-    <string name="extra_body">Hey there, let´s talk about EVENTASTIC...</string>
+    <string name="extra_body">Hey there, let´s talk about EVENTASTIC…</string>
     <string name="choose_email_client">Choose an email client.</string>
 
-    <!--String for AllEvents-->
+    <!-- strings for AllEvents-->
     <string name="location">Location</string>
     <string name="button_to_all_cities">To all Possible Cities</string>
     <string name="dialog_title">Access to your location.</string>
@@ -190,7 +195,7 @@
     <string name="network_message">Check your network connection!</string>
     <string name="network_button">OK</string>
 
-    <!--String für preferences.xml-->
+    <!--String for preferences.xml-->
     <string name="pref_title">Location</string>
     <string name="pref_key">Location</string>
     <string name="pref_summary">Access to your location</string>

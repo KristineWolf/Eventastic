@@ -155,7 +155,7 @@
     <!-- Strings for KEYS -->
     <string name="about_this_app_help_text">Erzähle Freunden und Familie von dieser App und  hilfe uns dabei, EVENTASTIC zu verbessern. Je mehr User, desto mehr Events werden geteilt und desto mehr Nutzen haben wir alle davon</string>
     <string name="about_this_app_how_text">EVENTASTIC ist kostenlos und einfach zu bedienen. Du musst keinen Account erstellen und dich einloggen. Zuerst wählst du eine Stadt aus oder lässt die App deinen Standort bestimmen.  Werf dann einen Blick auf die Liste mit den dort anstehenden Events. Klicke auf ICH NEHME TEIL. Deine bevorstehenden findest du auf MEINE EVENTS.</string>
-    <string name="about_this_app_what_text">Diese App hilft dir anstehende Events in deiner Stadt zu finden. Auch du kannst ein Event hinzufügen, sodass andere Nutzer daran teilnehmen können. Probier\'s aus und du wirst merken... nie wieder ohne EVENTASTIC!</string>
+    <string name="about_this_app_what_text">Diese App hilft dir anstehende Events in deiner Stadt zu finden. Auch du kannst ein Event hinzufügen, sodass andere Nutzer daran teilnehmen können. Probier\'s aus und du wirst merken… nie wieder ohne EVENTASTIC!</string>
 
 
     <!--String for CityAdapter-->
@@ -204,4 +204,6 @@
     <string name="extra_body">Hallo, </string>
     <string name="extra_subject">EVENTASTIC</string>
     <string name="choose_email_client">Wähle einen eMail-Client aus</string>
+    <string name="to_cities">Zu allen Städten</string>
+    <string name="your_location">Dein Standort</string>
 </resources>

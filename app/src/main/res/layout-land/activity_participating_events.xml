@@ -19,7 +19,7 @@
         android:id="@+id/title_participating_events"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
-        android:textSize="@dimen/twentyfour_sp"
+        android:textSize="@dimen/title_text_size"
         android:textStyle="bold"/>
 
     <ListView

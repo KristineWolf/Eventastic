@@ -13,32 +13,26 @@
         android:layout_width="match_parent"
         android:layout_marginTop="15dp"
         android:layout_height="wrap_content"
-        android:text="To all possible cities"
+        android:text="@string/to_cities"
         android:id="@+id/from_events_in_neighbourhood_to_all_possible_cities"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/white"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
-
-
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/user_location"
-            android:layout_weight="0.3"
-            android:text="Your Location"
-            android:textAlignment="center"
-            android:layout_below="@+id/from_events_in_neighbourhood_to_all_possible_cities"
-            android:layout_marginTop="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_location"
+        android:text="@string/your_location"
+        android:textAlignment="center"
+        android:layout_below="@+id/from_events_in_neighbourhood_to_all_possible_cities"
+        android:layout_marginTop="10dp"/>
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/city_location"
-
         android:layout_below="@+id/user_location"/>
 
 </RelativeLayout>

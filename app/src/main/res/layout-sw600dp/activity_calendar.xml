@@ -23,7 +23,7 @@
             android:id="@+id/title_next_event"
             android:textColor="@color/red"
             android:textStyle="bold"
-            android:textSize="@dimen/twenty_sp"
+            android:textSize="@dimen/info_event_text_small_size"
             android:layout_weight="0.3"/>
 
         <TextView
@@ -33,7 +33,7 @@
             android:hint="@string/hint_title"
             android:id="@+id/information_of_next_event_title"
             android:layout_weight="0.7"
-            android:textSize="@dimen/thirty_sp"
+            android:textSize="@dimen/info_event_text_size"
             android:textStyle="bold"/>
     </LinearLayout>
 
@@ -51,7 +51,7 @@
             android:hint="@string/hint_city"
             android:id="@+id/information_of_next_event_city"
             android:layout_weight="0.33"
-            android:textSize="@dimen/twenty_six_sp"
+            android:textSize="@dimen/info_event_text_size"
             android:textStyle="italic"/>
 
         <TextView
@@ -61,7 +61,7 @@
             android:drawableLeft="@drawable/date"
             android:id="@+id/information_of_next_event_date"
             android:layout_weight="0.33"
-            android:textSize="@dimen/twenty_six_sp"/>
+            android:textSize="@dimen/info_event_text_size"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -70,7 +70,7 @@
             android:drawableLeft="@drawable/time"
             android:id="@+id/information_of_next_event_time"
             android:layout_weight="0.33"
-            android:textSize="@dimen/twenty_six_sp"/>
+            android:textSize="@dimen/info_event_text_size"/>
     </LinearLayout>
 
     <CalendarView

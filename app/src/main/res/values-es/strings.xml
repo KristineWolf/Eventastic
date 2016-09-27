@@ -36,7 +36,7 @@
     <string name="title_add_event">Añadir evento</string>
     <string name="notification_text">En una hore tienes un evento. Haz clic!</string>
     <string name="hint_edit_info">Añade información sobre el evento</string>
-    <string name="nothing_on_list">Todavía ne has elegido un evento. Haz clic aqui y añade.</string>
+    <string name="nothing_on_list">Todavía ne has elegido un evento. Haz clic aquí y añade.</string>
     <string name="toast_deleted">Este evento fue borrado de tu lista. \'</string>
 
     <string-array name="eventtype_array">
@@ -49,7 +49,7 @@
         <item>otro</item>
     </string-array>
     <string name="about_this_app_how_text">EVENTASTIC es gratis y muy fácil de usar. No tienes que crear una cuenta o registrarte. Primero, eliges una ciudad o dejas la aplicación encontrar tu lugar. Después mira la lista donde están eventos diferentes. Haz clic en VOY A PARTICIPAR. Tu próximo evento está en MIS EVENTOS.</string>
-    <string name="about_this_app_what_text">Esta aplicación se llama EVENTASTIC. Te ayuda encontras próximos eventos en tu ciudad. También puedes añadir un evento a la lista y otros usarios pueden participar. Pruebalo y vas a encontrar... nunca más sin esta aplicación!</string>
+    <string name="about_this_app_what_text">Esta aplicación se llama EVENTASTIC. Te ayuda encontras próximos eventos en tu ciudad. También puedes añadir un evento a la lista y otros usarios pueden participar. Pruebalo y vas a encontrar… nunca más sin esta aplicación!</string>
     <string name="button_to_all_cities">A todas la ciudades</string>
     <string name="button_to_events_in_neighborhood">Eventos cercano</string>
     <string name="adding_0">0</string>
@@ -86,7 +86,9 @@
     <string name="about_this_app_how_tab">como</string>
     <string name="about_this_app_what_tab">que</string>
     <string name="e_mail">eventastic.app@gmail.com</string>
-    <string name="extra_body">Hola, hablemos de EVENTASTIC...</string>
+    <string name="extra_body">Hola, hablemos de EVENTASTIC…</string>
     <string name="extra_subject">EVENTASTIC</string>
     <string name="choose_email_client">Seleccione un cliente de correo electrónico</string>
+    <string name="to_cities">A todas las ciudades</string>
+    <string name="your_location">Tu lugar</string>
 </resources>

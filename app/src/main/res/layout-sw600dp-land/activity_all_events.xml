@@ -14,9 +14,9 @@
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/twenty_dp"
         android:layout_height="wrap_content"
-        android:text="To all possible cities"
+        android:text="@string/to_cities"
         android:id="@+id/to_all_possible_cities"
-        android:textSize="@dimen/twentyfour_sp"
+        android:textSize="@dimen/normal_text_size"
         android:textColor="@color/white"
         android:enabled="false"
         android:textStyle="bold"/>
