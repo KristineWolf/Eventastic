@@ -20,7 +20,7 @@ public class AlertReceiver extends BroadcastReceiver{
         Intent notificationIntent = new Intent(context,CalendarActivity.class);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-        Uri sound = Uri.parse("android.resource://" +"com.example.kristine.eventastic.JavaClasses"+ "/" + R.raw.snare_drum_roll);
+        Uri sound = Uri.parse("android.resource://" +"com.example.kristine.eventastic.JavaClasses"+ "/" + R.raw.xylophone);
         long[] vibrate = { 1000, 1000, 1000, 1000, 1000 } ;
 
         PendingIntent intentToCalendar = PendingIntent.getActivity(context, 0, notificationIntent, 0);

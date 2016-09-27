@@ -36,6 +36,12 @@ public class ParticipatingEvents extends AppCompatActivity {
         updateList();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateList();
+    }
+
     private void updateList() {
         arrayList.clear();
         arrayList.addAll(db.getAllEvents());

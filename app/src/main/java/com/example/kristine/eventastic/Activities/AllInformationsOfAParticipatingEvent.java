@@ -57,9 +57,8 @@ public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 db.deleteEvent(city,time,titel,type,definition);
-                Intent intent = new Intent(AllInformationsOfAParticipatingEvent.this, ParticipatingEvents.class);
-                startActivity(intent);
                 delete.setText(R.string.button_deleted);
+                finish();
                 String messageDeleted = getResources().getString(R.string.toast_deleted);
                 Toast toast = Toast.makeText(AllInformationsOfAParticipatingEvent.this,messageDeleted, Toast.LENGTH_LONG);
                 toast.show();

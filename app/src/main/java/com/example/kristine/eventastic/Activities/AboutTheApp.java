@@ -42,6 +42,10 @@ public class AboutTheApp extends AppCompatActivity {
 
         tabLayout =(TabLayout)findViewById(R.id.tablayout);
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.red));
+
+        // instances of ViewPager and PagerAdapter
+        //ViewPager handles animation and allows swiping horizontally to access previous and next steps
+        //The pager adapter provides the pages to the view pager widget
         viewPager = (ViewPager)findViewById(R.id.viewPager);
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragments(new FirstFragment(), getResources().getString(R.string.about_this_app_what_tab));

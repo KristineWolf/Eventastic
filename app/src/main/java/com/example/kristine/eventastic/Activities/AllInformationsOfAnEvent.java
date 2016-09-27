@@ -1,6 +1,7 @@
 package com.example.kristine.eventastic.Activities;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -22,7 +23,6 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
     private Button add;
     private InternDatabase db;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +34,6 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
         initDB();
         initOnClickListener();
     }
-
 
     // puts all the information of an event into a bundle
     private void informationInBundle(Bundle extras) {
@@ -54,12 +53,16 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
 
     //clicking the button will save the event in the SQlite database
     private void initOnClickListener() {
+        final MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.xylophone2);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    db.deleteEvent(city, time,titel,type, definition);
-                    db.insertEventItem(city, date, time, definition, type, titel);
-                    add.setText(R.string.button_added);
+                db.deleteEvent(city, time,titel,type, definition);
+                db.insertEventItem(city, date, time, definition, type, titel);
+                add.setText(R.string.button_added);
+                add.setClickable(false);
+                add.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                mediaPlayer.start();
             }
         });
     }
