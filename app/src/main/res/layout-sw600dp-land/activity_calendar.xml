@@ -12,8 +12,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/fifteen_dp"
-        android:layout_marginLeft="@dimen/twenty_dp"
+        android:layout_marginTop="@dimen/margin_xsmall"
+        android:layout_marginLeft="@dimen/margin_small"
+        android:layout_marginStart="@dimen/margin_small"
         android:id="@+id/first_line"
         android:orientation="horizontal">
 
@@ -44,8 +45,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/first_line"
         android:id="@+id/linear_layout_1"
-        android:layout_marginLeft="@dimen/twenty_dp"
-        android:layout_marginTop="@dimen/fifteen_dp">
+        android:layout_marginLeft="@dimen/margin_small"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small">
 
         <TextView
             android:layout_width="wrap_content"
@@ -61,6 +63,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/hint_date"
             android:drawableLeft="@drawable/date"
+            android:drawableStart="@drawable/date"
             android:id="@+id/information_of_next_event_date"
             android:layout_weight="0.33"
             android:textSize="@dimen/info_event_text_size"/>
@@ -70,6 +73,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/hint_time"
             android:drawableLeft="@drawable/time"
+            android:drawableStart="@drawable/time"
             android:id="@+id/information_of_next_event_time"
             android:layout_weight="0.33"
             android:textSize="@dimen/info_event_text_size"/>
@@ -77,8 +81,8 @@
 
     <CalendarView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/thirty_dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_large"
         android:id="@+id/calendarView"
         android:firstDayOfWeek="2"
         android:background="@color/light_grey"

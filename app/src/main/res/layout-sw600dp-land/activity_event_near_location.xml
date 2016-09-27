@@ -11,14 +11,13 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/margin_small"
         android:layout_height="wrap_content"
         android:text="@string/to_cities"
         android:id="@+id/from_events_in_neighbourhood_to_all_possible_cities"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="@dimen/button_text_size"/>
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
@@ -26,16 +25,14 @@
         android:id="@+id/user_location"
         android:text="@string/your_location"
         android:textAlignment="center"
-        android:textSize="@dimen/normal_text_size"
         android:layout_below="@+id/from_events_in_neighbourhood_to_all_possible_cities"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="@dimen/margin_small"/>
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/city_location"
-        android:textSize="@dimen/normal_text_size"
         android:layout_below="@+id/user_location"/>
 
 </RelativeLayout>

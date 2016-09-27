@@ -16,14 +16,15 @@
         android:text="@string/participating_events"
         android:id="@+id/title_participating_events"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_xsmall"
         android:textAlignment="center"
         android:textSize="@dimen/title_text_size"
         android:textStyle="bold"/>
 
     <ListView
-        android:layout_marginLeft="@dimen/twenty_dp"
-        android:layout_marginRight="@dimen/twenty_dp"
-        android:layout_marginTop="@dimen/thirty_dp"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView_of_participating_events"

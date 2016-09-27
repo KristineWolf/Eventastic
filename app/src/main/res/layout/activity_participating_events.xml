@@ -19,6 +19,7 @@
         android:id="@+id/title_participating_events"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
+        android:layout_marginTop="@dimen/margin_xsmall"
         android:textStyle="bold"
         android:textSize="@dimen/title_text_size"/>
 

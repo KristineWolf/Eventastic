@@ -17,6 +17,7 @@
         android:id="@+id/addEventText"
         android:textStyle="bold"
         android:textSize="@dimen/title_text_size"
+        android:layout_marginTop="@dimen/margin_small"
         android:textAlignment="center" />
 
     <LinearLayout
@@ -24,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addEventText"
-        android:layout_marginTop="@dimen/forty_dp"
+        android:layout_marginTop="@dimen/margin_large"
         android:id="@+id/line1">
 
         <AutoCompleteTextView
@@ -57,7 +58,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/line2"
         android:layout_below="@+id/line1"
-        android:layout_marginTop="@dimen/fifteen_dp">
+        android:layout_marginTop="@dimen/margin_small">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/line2"
         android:id="@+id/line3"
-        android:layout_marginTop="@dimen/fifteen_dp">
+        android:layout_marginTop="@dimen/margin_small">
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -106,7 +107,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/line4"
         android:layout_below="@+id/line3"
-        android:layout_marginTop="@dimen/fifteen_dp">
+        android:layout_marginTop="@dimen/margin_small">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -125,7 +126,7 @@
         android:id="@+id/button_add"
         android:layout_below="@+id/line4"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/fifty_dp"
+        android:layout_marginTop="@dimen/margin_small"
         android:background="@color/red"
         android:textStyle="bold"
         android:textColor="@color/white"/>

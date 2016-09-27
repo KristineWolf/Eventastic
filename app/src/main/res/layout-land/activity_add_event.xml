@@ -24,13 +24,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addEventText"
-        android:layout_marginTop="@dimen/fifteen_dp"
-        android:id="@+id/line1">
+        android:layout_marginTop="@dimen/margin_small"
+        android:id="@+id/line1"
+        android:weightSum="1">
 
         <AutoCompleteTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_weight="0.4"
             android:inputType="text"
             android:textStyle="italic"
             android:hint="@string/edit_city"
@@ -40,7 +41,7 @@
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_weight="0.2"
             android:id="@+id/editType"
             android:hint="@string/edit_eventType"
             android:inputType="text"
@@ -53,7 +54,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/editTitel"
             android:inputType="text"
-            android:layout_weight="0.5"
+            android:layout_weight="0.4"
             android:hint="@string/hint_edit_title"
             android:textStyle="italic"
             android:textSize="@dimen/normal_text_size" />
@@ -67,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/line1"
         android:id="@+id/line3"
-        android:layout_marginTop="@dimen/five_dp">
+        android:layout_marginTop="@dimen/margin_xsmall">
 
         <EditText
             android:layout_width="wrap_content"
@@ -99,7 +100,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/line4"
         android:layout_below="@+id/line3"
-        android:layout_marginTop="@dimen/five_dp">
+        android:layout_marginTop="@dimen/margin_xsmall">
 
         <EditText
             android:layout_width="match_parent"
@@ -119,7 +120,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/line2"
     android:layout_below="@+id/line4"
-    android:layout_marginTop="@dimen/five_dp">
+    android:layout_marginTop="@dimen/margin_xsmall">
 
         <Button
             android:layout_width="match_parent"
@@ -127,12 +128,11 @@
             android:text="@string/button_text_enter"
             android:id="@+id/button_add"
             android:layout_weight="0.5"
-            android:layout_marginTop="@dimen/ten_dp"
+            android:layout_marginTop="@dimen/margin_small"
             android:background="@color/red"
             android:textStyle="bold"
             android:textColor="@color/white"/>
-</LinearLayout>
 
-
+    </LinearLayout>
 
 </RelativeLayout>

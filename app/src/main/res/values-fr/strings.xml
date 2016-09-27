@@ -90,4 +90,6 @@
     <string name="choose_email_client">Sélectionnez un client de messagerie</string>
     <string name="your_location">Ta position</string>
     <string name="to_cities">À toutes villes</string>
+    <string name="button_send_mail">envoyer email</string>
+    <string name="content_description_logo">Logo Eventastic</string>
 </resources>

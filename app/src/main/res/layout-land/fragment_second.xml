@@ -11,16 +11,16 @@
         android:textSize="@dimen/info_event_text_size"
         android:text="@string/about_this_app_how"
         android:id="@+id/about_what"
-        android:layout_marginTop="@dimen/fifteen_dp"
+        android:layout_marginTop="@dimen/fragment_margin"
         android:textColor="@color/red"
         android:textStyle="bold"
-        android:padding="@dimen/ten_dp"/>
+        android:padding="@dimen/fragment_padding"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/about_this_app_how_text"
         android:textSize="@dimen/info_event_text_small_size"
-        android:padding="@dimen/ten_dp" />
+        android:padding="@dimen/fragment_padding" />
 
 </LinearLayout>

@@ -8,6 +8,7 @@
     <string name="events_city">Events in this city</string>
     <string name="participating_events">My Events</string>
     <string name="all_events_title">Events in </string>
+    <string name="content_description_logo">Logo Eventastic</string>
 
     <!-- strings for Information activity_about an Event-->
     <string name="button_add">Want to Participate</string>
@@ -130,7 +131,7 @@
     <string name="about_this_app_contact_text">Do you have any suggestions, criticisms, or anything
         else that you want to tell us? Simply write us an e-mail to eventastic.app@gmail.com. We are looking
         forward to hearing from you!</string>
-    <string name="button_send_mail">Send Mail</string>
+    <string name="button_send_mail">Write mail</string>
 
     <!-- strings for CalendarActivity -->
     <string name="calendar">Calendar</string>
@@ -204,6 +205,7 @@
     <string name="pref_key_notifications">Notifications</string>
     <string name="pref_summary_notifications">App may send notifications.</string>
     <string name="pref_noti_default_value">true</string>
+
 
 </resources>
 

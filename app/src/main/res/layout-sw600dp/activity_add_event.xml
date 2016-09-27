@@ -18,14 +18,14 @@
         android:id="@+id/addEventText"
         android:textStyle="bold"
         android:textSize="@dimen/title_text_size"
-        android:layout_marginTop="@dimen/thirty_dp"
+        android:layout_marginTop="@dimen/margin_small"
         android:textAlignment="center" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/forty_dp"
+        android:layout_marginTop="@dimen/margin_large"
         android:id="@+id/line1">
 
         <AutoCompleteTextView
@@ -40,7 +40,7 @@
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/margin_small"
             android:id="@+id/editType"
             android:hint="@string/edit_eventType"
             android:inputType="text"
@@ -56,7 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/line2"
-        android:layout_marginTop="@dimen/ten_dp">
+        android:layout_marginTop="@dimen/margin_small">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/line3"
-        android:layout_marginTop="@dimen/fifteen_dp">
+        android:layout_marginTop="@dimen/margin_small">
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/line4"
-        android:layout_marginTop="@dimen/fifteen_dp">
+        android:layout_marginTop="@dimen/margin_small">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
         android:layout_height="wrap_content"
         android:text="@string/button_text_enter"
         android:id="@+id/button_add"
-        android:layout_marginTop="@dimen/seventy_dp"
+        android:layout_marginTop="@dimen/margin_xlarge"
         android:textStyle="bold"
         android:textSize="@dimen/button_text_size"
         android:background="@color/red"

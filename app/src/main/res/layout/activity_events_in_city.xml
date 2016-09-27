@@ -19,11 +19,12 @@
         android:id="@+id/title_events_in_this_city"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
+        android:layout_marginTop="@dimen/margin_xsmall"
         android:textSize="@dimen/title_text_size"
         android:textStyle="bold"/>
 
     <ListView
-        android:layout_marginTop="@dimen/fifteen_dp"
+        android:layout_marginTop="@dimen/margin_small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/allEventsInACity"

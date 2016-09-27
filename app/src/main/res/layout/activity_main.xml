@@ -17,6 +17,7 @@
         android:layout_weight="0.4"
         android:id="@+id/logo"
         android:src="@drawable/logo2"
+        android:contentDescription="@string/content_description_logo"
         android:background="@color/colorPrimaryDark"/>
 
     <LinearLayout
@@ -30,12 +31,12 @@
             android:text="@string/events_city"
             android:drawableBottom="@drawable/to_all_events"
             android:id="@+id/toAllEventsInACity"
-            android:layout_marginTop="@dimen/twenty_dp"
+            android:layout_marginTop="@dimen/margin_small"
             android:textStyle="bold"
             android:textSize="@dimen/button_text_size"
             android:background="@color/red"
             android:textColor="@color/white"
-            android:padding="@dimen/ten_dp"/>
+            android:padding="@dimen/padding_button_main"/>
 
         <Button
             android:layout_width="match_parent"
@@ -44,12 +45,12 @@
             android:id="@+id/EventsYouWantToParticipate"
             android:drawableBottom="@drawable/to_particpating_events"
             android:layout_weight="0.5"
-            android:layout_marginTop="@dimen/twenty_dp"
+            android:layout_marginTop="@dimen/margin_small"
             android:textSize="@dimen/button_text_size"
             android:textStyle="bold"
             android:background="@color/red"
             android:textColor="@color/white"
-            android:padding="@dimen/ten_dp"/>
+            android:padding="@dimen/padding_button_main"/>
 
     </LinearLayout>
 
