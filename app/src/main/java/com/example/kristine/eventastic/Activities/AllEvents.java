@@ -100,6 +100,10 @@ public class AllEvents extends AppCompatActivity {
             public void onChildAdded(com.google.firebase.database.DataSnapshot dataSnapshot, String s) {
                 Event event=dataSnapshot.getValue(Event.class);
                 if(event.getDate()>= ContemporaryDate.getContemporaryDate()) {
+                    //at first type will be matched to the wright used language on user´s mobile phone
+                    int t= Integer.parseInt(event.getType());
+                    String[]types=getResources().getStringArray(R.array.eventtype_array);
+                    event.setType(types[t]);
                     AllEventsPuffer.enterEvent(event);
                     events.add(event);
                     Collections.sort(events);
@@ -113,6 +117,9 @@ public class AllEvents extends AppCompatActivity {
             public void onChildChanged(com.google.firebase.database.DataSnapshot dataSnapshot, String s) {
                 Event event=dataSnapshot.getValue(Event.class);
                 if(event.getDate()>= ContemporaryDate.getContemporaryDate()) {
+                    int t= Integer.parseInt(event.getType());
+                    String[]types=getResources().getStringArray(R.array.eventtype_array);
+                    event.setType(types[t]);
                     AllEventsPuffer.enterEvent(event);
                     events.add(event);
                     Collections.sort(events);
@@ -124,6 +131,9 @@ public class AllEvents extends AppCompatActivity {
             public void onChildRemoved(com.google.firebase.database.DataSnapshot dataSnapshot) {
                 Event event=dataSnapshot.getValue(Event.class);
                 if(event.getDate()>= ContemporaryDate.getContemporaryDate()) {
+                    int t= Integer.parseInt(event.getType());
+                    String[]types=getResources().getStringArray(R.array.eventtype_array);
+                    event.setType(types[t]);
                     AllEventsPuffer.enterEvent(event);
                     events.add(event);
                     Collections.sort(events);

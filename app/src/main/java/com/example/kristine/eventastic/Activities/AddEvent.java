@@ -199,13 +199,23 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
 
     //if EditText-Views are not empty, event is created and toast shows up
     private void addEvent(String city, String date, String time, String titel, String definition, String type) {
-        Event event = new Event(city, ChangeDateFormat.changeFirstIntoDateFormatAfterwardsIntoInteger(date), time, titel, definition, type);
+        int t= getTypePositionInArray(type);
+        Event event = new Event(city, ChangeDateFormat.changeFirstIntoDateFormatAfterwardsIntoInteger(date), time, titel, definition, ""+t);
         boolean saved = db.insertItem(event);
         if(saved) {
             Toast.makeText(this, getResources().getString(R.string.toast_added) + titel + "'.", Toast.LENGTH_LONG).show();
         }
     }
 
+    private int getTypePositionInArray(String type) {
+        String[]types=getResources().getStringArray(R.array.eventtype_array);
+        for (int i=0; i<types.length; i++){
+            if(types[i].equals(type)){
+                return i;
+            }
+        }
+        return 0;
+    }
 
 
 }
