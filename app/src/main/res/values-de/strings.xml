@@ -205,7 +205,8 @@
     <string name="extra_subject">EVENTASTIC</string>
     <string name="choose_email_client">Wähle einen eMail-Client aus</string>
     <string name="to_cities">Zu allen Städten</string>
-    <string name="your_location">Dein Standort</string>
+    <string name="your_location">Dein Standort ist</string>
+    <string name="please_wait">Bitte warte...</string>
     <string name="button_send_mail">eMail schreiben</string>
     <string name="content_description_logo">Logo Eventastic</string>
 </resources>

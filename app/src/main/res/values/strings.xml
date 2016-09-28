@@ -19,7 +19,8 @@
 
     <!-- strings for eventNearLocation -->
     <string name="to_cities">To all possible cities</string>
-    <string name="your_location">Your Location</string>
+    <string name="your_location">Your Location is</string>
+    <string name="please_wait">Please wait...</string>
 
     <!-- strings for AddEvent -->
     <string name="edit_city">Choose a city</string>

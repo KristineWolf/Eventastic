@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/user_location"
-        android:text="Please wait.."
+        android:text="@string/please_wait"
         android:textAlignment="center"
         android:textSize="@dimen/normal_text_size"
         android:layout_below="@+id/from_events_in_neighbourhood_to_all_possible_cities"
