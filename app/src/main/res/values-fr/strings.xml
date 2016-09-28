@@ -70,7 +70,7 @@
     <string name="network_button">D\'ACCORD</string>
     <string name="location">Localisation</string>
     <string name="dialog_neg_button">Non</string>
-    <string name="dialog_pos_button">OK</string>
+    <string name="dialog_pos_button">d\'accord</string>
     <string name="dialog_title">Accès à ta position.</string>
     <string name="event_in_intent">event</string>
     <string name="pref_default_value">false</string>
@@ -88,8 +88,9 @@
     <string name="extra_body">Salut, parlons d\'EVENTASTIC…</string>
     <string name="extra_subject">EVENTASTIC</string>
     <string name="choose_email_client">Sélectionnez un client de messagerie</string>
-    <string name="your_location">Ta position</string>
+    <string name="your_location">Ta position est</string>
     <string name="to_cities">À toutes villes</string>
     <string name="button_send_mail">envoyer email</string>
     <string name="content_description_logo">Logo Eventastic</string>
+    <string name="please_wait">attendre...</string>
 </resources>
