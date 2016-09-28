@@ -20,20 +20,24 @@
         android:textColor="@color/white"
         android:textStyle="bold" />
 
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/user_location"
-        android:text="@string/your_location"
+        android:text="Please wait.."
         android:textAlignment="center"
+        android:textSize="@dimen/normal_text_size"
         android:layout_below="@+id/from_events_in_neighbourhood_to_all_possible_cities"
         android:layout_marginTop="@dimen/margin_small"/>
 
 
-    <TextView
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/city_location"
+        android:layout_marginTop="@dimen/padding_button_main_land"
         android:layout_below="@+id/user_location"/>
+
 
 </RelativeLayout>

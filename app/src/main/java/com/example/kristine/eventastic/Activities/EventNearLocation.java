@@ -13,12 +13,18 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.kristine.eventastic.Adapter.CityAdapter;
+import com.example.kristine.eventastic.Adapter.EventAdapter;
 import com.example.kristine.eventastic.AsyncTask.GetAddressesOfCities;
 import com.example.kristine.eventastic.AsyncTask.GetNearestCityAsyncTask;
 import com.example.kristine.eventastic.Interface.LocationUpdateListener;
+import com.example.kristine.eventastic.JavaClasses.AllEventsPuffer;
+import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.JavaClasses.LocationController;
 import com.example.kristine.eventastic.R;
 
@@ -31,12 +37,12 @@ import java.util.concurrent.ExecutionException;
 //this activity presents specific events that are the closest to the user´s location.
 public class EventNearLocation extends AppCompatActivity implements LocationUpdateListener {
 
-    private TextView currentLocation,city;
-
-    private LocationManager locationManager;
+    private TextView userLocation;
     private Button toAllCities;
-    private LocationListener locationListener;
+    private ListView nearestEvents;
+    private CityAdapter adapter;
     private ArrayList<Address> allLocations=new ArrayList<>();
+    private ArrayList<Event>events=new ArrayList<>();
     private LocationController locationController;
 
 
@@ -75,77 +81,34 @@ public class EventNearLocation extends AppCompatActivity implements LocationUpda
         }
     }
 
-/**
-    private void initLocationListener() {
-        locationListener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
-                setUserLocation(location);
 
 
-            }
-
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-
-            }
-
-            @Override
-            public void onProviderEnabled(String provider) {
-
-            }
-
-            @Override
-            public void onProviderDisabled(String provider) {
-                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                startActivity(intent);
-
-            }
-        };
-
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{
-                        Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION,
-                        Manifest.permission.INTERNET
-                }, 5);
-                return;
-            }
-        } else {
-            locationManager.requestLocationUpdates("gps",100,0,locationListener);
-        }
-
-    }
-
-
-
-
-
-
-
-
-    private void initLocationManager() {
-        String locService = Context.LOCATION_SERVICE;
-        locationManager = (LocationManager) getSystemService(locService);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case 5:
-                if(grantResults.length>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED){
-
-                    return;
-                }
-                break;
-
-        }
-    }
-    */
 
     private void initUI() {
-        currentLocation=(TextView)findViewById(R.id.user_location);
+        initTextView();
+        initButton();
+        initListView();
+
+    }
+
+    private void initAdapter() {
+        adapter=new CityAdapter(this,events);
+    }
+
+    private void initListView() {
+        nearestEvents=(ListView) findViewById(R.id.city_location);
+        nearestEvents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(EventNearLocation.this, AllInformationsOfAnEvent.class);
+                intent.putExtra(getResources().getString(R.string.event_in_intent),events.get(position));
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    private void initButton() {
         toAllCities=(Button)findViewById(R.id.from_events_in_neighbourhood_to_all_possible_cities);
         toAllCities.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,8 +117,10 @@ public class EventNearLocation extends AppCompatActivity implements LocationUpda
                 startActivity(intent);
             }
         });
-        city=(TextView)findViewById(R.id.city_location);
+    }
 
+    private void initTextView() {
+        userLocation=(TextView)findViewById(R.id.user_location);
 
     }
 
@@ -201,7 +166,7 @@ public class EventNearLocation extends AppCompatActivity implements LocationUpda
             List<Address> addresses=gc.getFromLocation(location.getLatitude(),location.getLongitude(),1);
             if(addresses.size()!=0){
                 Address a=addresses.get(0);
-                currentLocation.setText(a.getLocality());
+                userLocation.setText("Your location is "+a.getLocality());
             }
         }catch (IOException e){
             Log.d("GEO",e.toString());
@@ -209,11 +174,15 @@ public class EventNearLocation extends AppCompatActivity implements LocationUpda
         GetNearestCityAsyncTask nearestCity=new GetNearestCityAsyncTask(location,this);
         nearestCity.execute(allLocations);
         try {
-            city.setText(nearestCity.get());
+            events=nearestCity.get();
+            initAdapter();
+            nearestEvents.setAdapter(adapter);
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+
     }
 }

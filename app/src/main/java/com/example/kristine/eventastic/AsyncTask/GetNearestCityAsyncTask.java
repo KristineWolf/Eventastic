@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Locale;
 
 //this will return all Events
-public class GetNearestCityAsyncTask extends AsyncTask<ArrayList<Address>,Integer,String> {
+public class GetNearestCityAsyncTask extends AsyncTask<ArrayList<Address>,Integer,ArrayList<Event>> {
 
     private Location userLocation;
     private Context context;
@@ -29,9 +29,9 @@ public class GetNearestCityAsyncTask extends AsyncTask<ArrayList<Address>,Intege
     }
 
     @Override
-    protected String doInBackground(ArrayList<Address>... params) {
+    protected ArrayList<Event> doInBackground(ArrayList<Address>... params) {
 
-        return getCityName(getNearestCity(params[0])) ;
+        return getEvents(getCityName(getNearestCity(params[0]))) ;
     }
 
     private String getCityName(ArrayList<Double> nearestCity) {
