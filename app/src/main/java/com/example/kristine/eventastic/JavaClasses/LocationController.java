@@ -4,8 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
+
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -13,15 +12,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 
 import com.example.kristine.eventastic.Interface.LocationUpdateListener;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 
 
+//this class listens to the user´s location.
 public class LocationController implements LocationListener {
 
     private static final long UPDATE_TIME = 1000;
@@ -54,8 +50,8 @@ public class LocationController implements LocationListener {
     }
 
     private void requestPermissions(String[] strings, int i) {
-
     }
+
 
     public void stop() {
         stopLocationRequest();

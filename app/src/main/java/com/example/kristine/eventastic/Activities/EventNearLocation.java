@@ -4,8 +4,7 @@ import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -19,11 +18,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.kristine.eventastic.Adapter.CityAdapter;
-import com.example.kristine.eventastic.Adapter.EventAdapter;
+
 import com.example.kristine.eventastic.AsyncTask.GetAddressesOfCities;
 import com.example.kristine.eventastic.AsyncTask.GetNearestCityAsyncTask;
 import com.example.kristine.eventastic.Interface.LocationUpdateListener;
-import com.example.kristine.eventastic.JavaClasses.AllEventsPuffer;
+
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.JavaClasses.LocationController;
 import com.example.kristine.eventastic.R;
@@ -55,7 +54,7 @@ public class EventNearLocation extends AppCompatActivity implements LocationUpda
         initLocationOfAllCities();
         initLocationController();
     }
-
+    //getting user´s location while activity is visible
     private void initLocationController() {
         locationController=new LocationController(this);
         locationController.setLocationUpdateListener(this);
@@ -63,8 +62,8 @@ public class EventNearLocation extends AppCompatActivity implements LocationUpda
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
         locationController.stop();
     }
 
@@ -158,7 +157,7 @@ public class EventNearLocation extends AppCompatActivity implements LocationUpda
     }
 
 
-
+    //setting user´s location and presenting the nearest events in a listView
     @Override
     public void onNewLocation(Location location) {
         Geocoder gc=new Geocoder(this, Locale.GERMAN);

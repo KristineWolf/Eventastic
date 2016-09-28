@@ -49,6 +49,8 @@ public class Event implements Comparable<Event>, Serializable {
 
     public void setType(String type){this.type=type;}
 
+
+
     @Override
     public int compareTo(Event another) {
         int comparisonResult=(""+date).compareTo(""+another.getDate());

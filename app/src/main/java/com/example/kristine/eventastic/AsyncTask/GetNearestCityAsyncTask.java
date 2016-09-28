@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-//this will return all Events
+//this will return the nearest Events to user´s location
 public class GetNearestCityAsyncTask extends AsyncTask<ArrayList<Address>,Integer,ArrayList<Event>> {
 
     private Location userLocation;
