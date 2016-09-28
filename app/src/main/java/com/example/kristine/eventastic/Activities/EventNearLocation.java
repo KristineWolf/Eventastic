@@ -166,7 +166,7 @@ public class EventNearLocation extends AppCompatActivity implements LocationUpda
             List<Address> addresses=gc.getFromLocation(location.getLatitude(),location.getLongitude(),1);
             if(addresses.size()!=0){
                 Address a=addresses.get(0);
-                userLocation.setText("Your location is "+a.getLocality());
+                userLocation.setText(getResources().getString(R.string.your_location)+" "+a.getLocality());
             }
         }catch (IOException e){
             Log.d("GEO",e.toString());
