@@ -45,6 +45,7 @@ public class NotificationService extends Service {
             scheduleNotification(i);
         }
         return START_STICKY;
+
     }
 
         private void scheduleNotification(int i) {
@@ -65,7 +66,7 @@ public class NotificationService extends Service {
 
 
             Intent intent = new Intent(getApplicationContext(),AlertReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),i,intent,PendingIntent.FLAG_UPDATE_CURRENT);
             AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 alarmManager.setExact(AlarmManager.RTC_WAKEUP,notificationInMillisec,pendingIntent);
