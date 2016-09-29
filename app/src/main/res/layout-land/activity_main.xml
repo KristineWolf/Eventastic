@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         android:layout_weight="0.4"
         android:id="@+id/logo"
-        android:src="@drawable/logo2"
+        android:src="@drawable/logo"
         android:contentDescription="@string/content_description_logo"
         android:background="@color/colorPrimaryDark"/>
 
