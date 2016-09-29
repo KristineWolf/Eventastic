@@ -34,7 +34,6 @@
     <string name="hint_edit_title">Ingresa el título del evento</string>
     <string name="hint_eventType">Tipo del evento</string>
     <string name="title_add_event">Añadir evento</string>
-    <string name="notification_text">En una hore tienes un evento. Haz clic!</string>
     <string name="hint_edit_info">Añade información sobre el evento</string>
     <string name="nothing_on_list">Todavía ne has elegido un evento. Haz clic aquí y añade.</string>
     <string name="toast_deleted">Este evento fue borrado de tu lista. \'</string>
@@ -95,4 +94,6 @@
     <string name="content_description_logo">Logo Eventastic</string>
     <string name="please_wait">Esperar...</string>
     <string name="permissions">Permisos</string>
+    <string name="notification_text_large">Qué no olvides: tienes un evento en una hora. Haz clic para más información! Qué lo pases bien!</string>
+    <string name="notification_text">Una hora más...</string>
 </resources>

@@ -28,7 +28,6 @@
     <string name="edit_eventType">Entre le type de l\'événement</string>
     <string name="hint_definition">Définition</string>
     <string name="title_add_event">Ajouter événement</string>
-    <string name="notification_text">Dans une heure il y a un événement.</string>
     <string name="hint_edit_date">Sélectionne la date</string>
     <string name="hint_edit_time">Sélectionne l\'heure</string>
     <string name="hint_edit_info">Ajoute des informations de cette événement.</string>
@@ -94,4 +93,6 @@
     <string name="content_description_logo">Logo Eventastic</string>
     <string name="please_wait">attendre...</string>
     <string name="permissions">Permissions</string>
+    <string name="notification_text_large">n\'oubliez pas: dans une heure il y a un événement. Cliquez ici pour plus d´information. J´espère que tu t\'amuse bien!</string>
+    <string name="notification_text">Encore une heure...</string>
 </resources>

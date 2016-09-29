@@ -135,7 +135,6 @@
 
     <!-- für Notification -->
     <string name="notification_title">Eventastic!</string>
-    <string name="notification_text">In einer Stunde hast du ein Event. Klicke für mehr Info</string>
 
 
     <!-- Strings für HINTS -->
@@ -210,4 +209,6 @@
     <string name="button_send_mail">eMail schreiben</string>
     <string name="content_description_logo">Logo Eventastic</string>
     <string name="permissions">Berechtigungen</string>
+    <string name="notification_text_large">Nicht vergessen: in einer Stunde hast du ein Event. Klicke für mehr Info. Viel Spaß!</string>
+    <string name="notification_text">Noch eine Stunde...</string>
 </resources>

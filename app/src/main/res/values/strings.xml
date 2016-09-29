@@ -148,7 +148,9 @@
 
     <!-- strings for Notification -->
     <string name="notification_title">Eventastic!</string>
-    <string name="notification_text">You have an event in one hour. Click for further information. </string>
+    <string name="notification_text">One more hour to go... </string>
+    <string name="notification_text_large">Don´t forget, you have an Event in one hour... Click for more information. We hope you have a great time!</string>
+
 
     <!-- strings for HINTS -->
     <string name="hint_title">TITLE</string>
