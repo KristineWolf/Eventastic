@@ -73,7 +73,7 @@
     <string name="location">Lugar</string>
     <string name="message_share">¡Hola! Mira el evento %1$s en %2$s por Eventastic!</string>
     <string name="dialog_neg_button">No</string>
-    <string name="dialog_pos_button">OK</string>
+    <string name="dialog_pos_button">Vale</string>
     <string name="dialog_title">Acceso a tu lugar.</string>
     <string name="event_in_intent">event</string>
     <string name="pref_default_value">false</string>
@@ -90,7 +90,8 @@
     <string name="extra_subject">EVENTASTIC</string>
     <string name="choose_email_client">Seleccione un cliente de correo electrónico</string>
     <string name="to_cities">A todas las ciudades</string>
-    <string name="your_location">Tu lugar</string>
+    <string name="your_location">Tu lugar es</string>
     <string name="button_send_mail">enviar correo</string>
     <string name="content_description_logo">Logo Eventastic</string>
+    <string name="please_wait">Esperar...</string>
 </resources>

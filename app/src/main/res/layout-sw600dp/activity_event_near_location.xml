@@ -14,6 +14,7 @@
         android:layout_marginTop="@dimen/margin_small"
         android:layout_height="wrap_content"
         android:text="@string/to_cities"
+        android:textSize="@dimen/button_text_size"
         android:id="@+id/from_events_in_neighbourhood_to_all_possible_cities"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/white"
