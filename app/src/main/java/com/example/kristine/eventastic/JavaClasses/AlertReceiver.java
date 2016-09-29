@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
 
 import com.example.kristine.eventastic.Activities.CalendarActivity;
 import com.example.kristine.eventastic.Activities.ParticipatingEvents;
@@ -30,19 +29,12 @@ public class AlertReceiver extends BroadcastReceiver{
 
         // setup actions
         Intent calendarIntent = new Intent(context, CalendarActivity.class);
-        TaskStackBuilder calendarStack =TaskStackBuilder.create(context);
-        calendarStack.addParentStack(CalendarActivity.class);
-        calendarStack.addNextIntent(calendarIntent);
-        PendingIntent piCalendar = calendarStack.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent piCalendar = PendingIntent.getActivity(context,1,calendarIntent,PendingIntent.FLAG_ONE_SHOT);
         NotificationCompat.Action action1 = new NotificationCompat.Action.Builder(R.drawable.calendar, context.getResources().getString(R.string.calendar), piCalendar).build();
 
-
         Intent eventsIntent = new Intent(context, ParticipatingEvents.class);
-        TaskStackBuilder eventStack =TaskStackBuilder.create(context);
-        eventStack.addParentStack(ParticipatingEvents.class);
-        eventStack.addNextIntent(eventsIntent);
-        PendingIntent piEvents = eventStack.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
-        NotificationCompat.Action action2 = new NotificationCompat.Action.Builder(R.drawable.to_all_events, context.getResources().getString(R.string.participating_events), piEvents).build();
+        PendingIntent piEvents = PendingIntent.getActivity(context,1,eventsIntent,PendingIntent.FLAG_ONE_SHOT);
+        NotificationCompat.Action action2 = new NotificationCompat.Action.Builder(R.drawable.to_particpating_events, context.getResources().getString(R.string.participating_events), piEvents).build();
 
 
         // setup notification
