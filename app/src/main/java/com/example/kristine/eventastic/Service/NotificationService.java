@@ -45,6 +45,7 @@ public class NotificationService extends Service {
             scheduleNotification(i);
         }
         return START_STICKY;
+
     }
 
         private void scheduleNotification(int i) {
