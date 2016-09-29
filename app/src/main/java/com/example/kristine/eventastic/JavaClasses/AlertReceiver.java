@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 
 import com.example.kristine.eventastic.Activities.CalendarActivity;
+import com.example.kristine.eventastic.Activities.ParticipatingEvents;
 import com.example.kristine.eventastic.R;
 
 
@@ -28,18 +30,25 @@ public class AlertReceiver extends BroadcastReceiver{
 
         // setup actions
         Intent calendarIntent = new Intent(context, CalendarActivity.class);
-        PendingIntent piCalendar = PendingIntent.getActivity(context,1,calendarIntent,PendingIntent.FLAG_ONE_SHOT);
+        TaskStackBuilder calendarStack =TaskStackBuilder.create(context);
+        calendarStack.addParentStack(CalendarActivity.class);
+        calendarStack.addNextIntent(calendarIntent);
+        PendingIntent piCalendar = calendarStack.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Action action1 = new NotificationCompat.Action.Builder(R.drawable.calendar, context.getResources().getString(R.string.calendar), piCalendar).build();
 
-        Intent eventsIntent = new Intent(context, CalendarActivity.class);
-        PendingIntent piEvents = PendingIntent.getActivity(context,1,eventsIntent,PendingIntent.FLAG_ONE_SHOT);
+
+        Intent eventsIntent = new Intent(context, ParticipatingEvents.class);
+        TaskStackBuilder eventStack =TaskStackBuilder.create(context);
+        eventStack.addParentStack(ParticipatingEvents.class);
+        eventStack.addNextIntent(eventsIntent);
+        PendingIntent piEvents = eventStack.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Action action2 = new NotificationCompat.Action.Builder(R.drawable.to_all_events, context.getResources().getString(R.string.participating_events), piEvents).build();
 
 
         // setup notification
         android.support.v4.app.NotificationCompat.Builder mBuilder =
                 new android.support.v4.app.NotificationCompat.Builder(context)
-                        .setSmallIcon(R.drawable.fox)
+                        .setSmallIcon(R.drawable.notification_fox)
                         .setContentTitle(context.getResources().getString(R.string.notification_title))
                         .setContentText(context.getResources().getString(R.string.notification_text))
                         .setSound(sound)
