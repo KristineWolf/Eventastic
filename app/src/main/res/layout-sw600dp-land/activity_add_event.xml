@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:textStyle="italic"
             android:layout_weight="0.4"
-            android:inputType="text"
+            android:inputType="textCapSentences"
             android:hint="@string/edit_city"
             android:id="@+id/editCity"
             android:textSize="@dimen/normal_text_size" />
@@ -62,15 +62,6 @@
         android:layout_weight="0.4" />
     </LinearLayout>
 
-
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/line2"
-        android:layout_below="@+id/line1"
-        android:layout_marginTop="@dimen/margin_xsmall"></LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -115,7 +106,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/editDefinition"
             android:singleLine="true"
-            android:inputType="text"
+            android:inputType="textAutoCorrect|textMultiLine"
+            android:maxLength="200"
             android:hint="@string/hint_edit_info"
             android:textStyle="italic"
             android:textSize="@dimen/normal_text_size" />

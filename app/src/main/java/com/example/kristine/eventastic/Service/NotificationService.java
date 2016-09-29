@@ -41,7 +41,7 @@ public class NotificationService extends Service {
         initDB();
         getEvents();
         for (int i=0;i<events.size();i++){
-            //for every event will be a notifications compiled
+            //for every event on the user's list will be a notification compiled
             scheduleNotification(i);
         }
         return START_STICKY;

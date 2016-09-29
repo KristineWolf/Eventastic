@@ -60,7 +60,7 @@ public class AllPossibleCities extends AppCompatActivity {
         adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,arraylist);
     }
 
-    //clicking on one city the user will get to an activity which will present only the events in this city.
+    //clicking on a city in the ListView the user gets to an activity which presents only the events in this city.
     private void initListView() {
         listview=(ListView)findViewById(R.id.all_cities);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {

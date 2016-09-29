@@ -177,7 +177,7 @@ public class CalendarActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected (MenuItem item) {
         int id= item.getItemId();
         switch (id){
-            //back to my events
+            //Choosing this icon the user gets to the activity which contains all participating events.
             case R.id.calendar_to_all_my_events:
                 Intent intent = new Intent(CalendarActivity.this, ParticipatingEvents.class);
                 startActivity(intent);

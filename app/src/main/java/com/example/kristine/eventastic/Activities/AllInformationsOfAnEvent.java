@@ -16,7 +16,7 @@ import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
 
-//this activity presents all informations of an event and allows the user to participate to the event.
+//this activity presents all informations of an event and allows the user to participate by clicking on a button.
 public class AllInformationsOfAnEvent extends AppCompatActivity {
 
     private String city, titel, definition, type, date, time;
@@ -45,7 +45,6 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
         definition=event.getDefintion();
         type=event.getType();
     }
-
 
     private void initDB() {
         db=new InternDatabase(this);

@@ -23,7 +23,7 @@ public class AboutTheApp extends AppCompatActivity {
     ViewPager viewPager;
     ViewPagerAdapter viewPagerAdapter;
 
-    // this activity called AboutTheApp shows information about the usage
+    // this activity shows information about this app and its usage
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +44,12 @@ public class AboutTheApp extends AppCompatActivity {
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.red));
 
         // instances of ViewPager and PagerAdapter
-        //ViewPager handles animation and allows swiping horizontally to access previous and next steps
-        //The pager adapter provides the pages to the view pager widget
+        // ViewPager handles animation and allows swiping horizontally to access previous and next steps
+        // The pager adapter provides the pages to the view pager widget
         viewPager = (ViewPager)findViewById(R.id.viewPager);
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+        // adding each fragment to the pager
         viewPagerAdapter.addFragments(new FirstFragment(), getResources().getString(R.string.about_this_app_what_tab));
         viewPagerAdapter.addFragments(new SecondFragment(), getResources().getString(R.string.about_this_app_how_tab));
         viewPagerAdapter.addFragments(new ThirdFragment(), getResources().getString(R.string.about_this_app_help_tab));
@@ -57,7 +59,7 @@ public class AboutTheApp extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
     }
 
-
+    //Choosing this icon the user gets back to the MainActivity
     private void setupBackArrow() {
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

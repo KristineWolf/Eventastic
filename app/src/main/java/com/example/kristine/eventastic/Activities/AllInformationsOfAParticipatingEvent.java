@@ -16,7 +16,8 @@ import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
 import com.example.kristine.eventastic.JavaClasses.Event;
 import com.example.kristine.eventastic.R;
 
-//this activity presents all the informations of a participating event and allows the user to eliminate the event from his list.
+//this activity presents all the informations of a participating event
+//and allows the user to delete it from his own list by clicking on a button
 public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
 
     private String city, titel, definition, type, date, time;
@@ -51,7 +52,7 @@ public class AllInformationsOfAParticipatingEvent extends AppCompatActivity {
         db=new InternDatabase(this);
     }
 
-    //cklicking the button will eliminate the event from the list.
+    //cklicking the button will delete the event from the list.
     private void initOnClickListener() {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
