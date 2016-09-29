@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 
 import com.example.kristine.eventastic.Activities.CalendarActivity;
+import com.example.kristine.eventastic.Activities.ParticipatingEvents;
 import com.example.kristine.eventastic.R;
 
 
@@ -31,15 +32,15 @@ public class AlertReceiver extends BroadcastReceiver{
         PendingIntent piCalendar = PendingIntent.getActivity(context,1,calendarIntent,PendingIntent.FLAG_ONE_SHOT);
         NotificationCompat.Action action1 = new NotificationCompat.Action.Builder(R.drawable.calendar, context.getResources().getString(R.string.calendar), piCalendar).build();
 
-        Intent eventsIntent = new Intent(context, CalendarActivity.class);
+        Intent eventsIntent = new Intent(context, ParticipatingEvents.class);
         PendingIntent piEvents = PendingIntent.getActivity(context,1,eventsIntent,PendingIntent.FLAG_ONE_SHOT);
-        NotificationCompat.Action action2 = new NotificationCompat.Action.Builder(R.drawable.to_all_events, context.getResources().getString(R.string.participating_events), piEvents).build();
+        NotificationCompat.Action action2 = new NotificationCompat.Action.Builder(R.drawable.to_particpating_events, context.getResources().getString(R.string.participating_events), piEvents).build();
 
 
         // setup notification
         android.support.v4.app.NotificationCompat.Builder mBuilder =
                 new android.support.v4.app.NotificationCompat.Builder(context)
-                        .setSmallIcon(R.drawable.fox)
+                        .setSmallIcon(R.drawable.notification_fox)
                         .setContentTitle(context.getResources().getString(R.string.notification_title))
                         .setContentText(context.getResources().getString(R.string.notification_text))
                         .setSound(sound)
