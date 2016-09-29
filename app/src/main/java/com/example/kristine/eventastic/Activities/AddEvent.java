@@ -29,7 +29,7 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 
-//activity to add an event to the list
+// activity to add an event to the database
 public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private AutoCompleteTextView editCities;
@@ -73,7 +73,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         enter = (Button) findViewById(R.id.button_add);
     }
 
-    //with this spinner the user can select  different eventtypes
+    //with this spinner the user can select different eventtypes
     private void initTypeSpinner() {
         Spinner editType = (Spinner) findViewById(R.id.editType);
         ArrayAdapter adapterType = ArrayAdapter.createFromResource(this, R.array.eventtype_array, R.layout.support_simple_spinner_dropdown_item);
@@ -116,6 +116,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
             }
         });
     }
+
     private void showDatePickerDialog(View v) {
         DialogFragment dateFragment = new DatePickerFragment();
         dateFragment.show(getFragmentManager(), getResources().getString(R.string.date_picker));
@@ -171,7 +172,7 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
         }
     }
 
-
+    // method to get the user input of all the editText-Views when button is clicked
     private void initClickListener() {
         enter.setOnClickListener(new View.OnClickListener() {
             @Override

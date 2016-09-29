@@ -37,6 +37,7 @@ public class ParticipatingEvents extends AppCompatActivity {
         updateList();
     }
 
+    // updated and sorted list every time this activity appears
     @Override
     protected void onResume() {
         super.onResume();
@@ -93,13 +94,13 @@ public class ParticipatingEvents extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            //choosing this the user gets to all possible events
+            //Choosing this icon the user gets to all events.
             case R.id.participating_events_to_all_events:
                 Intent intent = new Intent(ParticipatingEvents.this, AllEvents.class);
                 startActivity(intent);
                 return true;
 
-            //choosing this the user gets to CalendarActivity where is shown his next upcomming event
+            //choosing this icon the user gets to CalendarActivity where is shown his next event
             case R.id.participating_events_to_calendar:
                 Intent intent3 = new Intent(ParticipatingEvents.this,CalendarActivity.class);
                 startActivity(intent3);

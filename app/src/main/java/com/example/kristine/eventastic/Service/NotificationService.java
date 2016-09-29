@@ -41,7 +41,7 @@ public class NotificationService extends Service {
         initDB();
         getEvents();
         for (int i=0;i<events.size();i++){
-            //for every event will be a notifications compiled
+            //for every event on the user's list will be a notification compiled
             scheduleNotification(i);
         }
         return START_STICKY;
@@ -65,7 +65,7 @@ public class NotificationService extends Service {
 
 
             Intent intent = new Intent(getApplicationContext(),AlertReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),1,intent,PendingIntent.FLAG_UPDATE_CURRENT);
             AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 alarmManager.setExact(AlarmManager.RTC_WAKEUP,notificationInMillisec,pendingIntent);

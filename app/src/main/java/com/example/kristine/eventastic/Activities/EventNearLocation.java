@@ -61,6 +61,7 @@ public class EventNearLocation extends AppCompatActivity implements LocationUpda
         locationController.start();
     }
 
+    //locationController stops when activity not visible
     @Override
     protected void onPause() {
         super.onPause();
@@ -87,7 +88,6 @@ public class EventNearLocation extends AppCompatActivity implements LocationUpda
         initTextView();
         initButton();
         initListView();
-
     }
 
     private void initAdapter() {
@@ -107,6 +107,7 @@ public class EventNearLocation extends AppCompatActivity implements LocationUpda
 
     }
 
+    //button gets the user to all cities that are in the database
     private void initButton() {
         toAllCities=(Button)findViewById(R.id.from_events_in_neighbourhood_to_all_possible_cities);
         toAllCities.setOnClickListener(new View.OnClickListener() {
@@ -170,13 +171,14 @@ public class EventNearLocation extends AppCompatActivity implements LocationUpda
         }catch (IOException e){
             Log.d("GEO",e.toString());
         }
+
         GetNearestCityAsyncTask nearestCity=new GetNearestCityAsyncTask(location,this);
         nearestCity.execute(allLocations);
+
         try {
             events=nearestCity.get();
             initAdapter();
             nearestEvents.setAdapter(adapter);
-
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

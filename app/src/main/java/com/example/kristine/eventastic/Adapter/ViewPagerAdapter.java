@@ -9,6 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by Teresa on 27.09.2016.
  */
+// adapter for AboutTheApp-Activity
 public class ViewPagerAdapter extends FragmentPagerAdapter{
 
     ArrayList<Fragment> fragments = new ArrayList<>();

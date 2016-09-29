@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <PreferenceCategory
+        android:title="@string/permissions"
+        android:key="@string/permissions">
     <CheckBoxPreference
         android:title="@string/pref_title"
         android:key="@string/pref_key"
@@ -12,6 +14,7 @@
         android:key="@string/pref_key_notifications"
         android:summary="@string/pref_summary_notifications"
         android:defaultValue="@string/pref_noti_default_value"/>
+    </PreferenceCategory>
 
 
 </PreferenceScreen>

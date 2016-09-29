@@ -13,7 +13,7 @@ import com.example.kristine.eventastic.JavaClasses.Event;
 
 import java.util.ArrayList;
 
-//this in the SQlite database which saves all participating events
+//this is the SQlite database which saves all participating events
 public class InternDatabase {
     private static final String DATABASE_NAME="participatingevents";
     private static final int DATABASE_VERSION=1;

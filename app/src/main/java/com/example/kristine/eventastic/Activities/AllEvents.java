@@ -28,7 +28,7 @@ import com.google.firebase.database.DatabaseError;
 import java.util.ArrayList;
 import java.util.Collections;
 
-//this activity presents all events
+//this activity presents all events in all cities in a ListView
 public class AllEvents extends AppCompatActivity {
 
     private ExternDatabase db;
@@ -48,12 +48,14 @@ public class AllEvents extends AppCompatActivity {
 
     }
 
-    //every time the activity has to check the settings and therefore will react to it.
+    //every time the activity appears settings are checked
     @Override
     protected void onResume() {
         super.onResume();
         sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         location=sharedPreferences.getBoolean(getResources().getString(R.string.location),false);
+
+        //if location-permission is not given, user can not go to EventNearLocation, but directly to AllPossibleCities
         if(location==false){
             toAllPossibleCities.setText(getResources().getString(R.string.button_to_all_cities));
             AlertDialog.Builder builder=new AlertDialog.Builder(this);
@@ -93,7 +95,7 @@ public class AllEvents extends AppCompatActivity {
     private void updateList() {
         events.clear();
         //with this Listener the activity gets events from the firebase database
-        //the activity will get only events which will still take place.
+        //the activity will get only future events
         //all events are saved in a static class
         db.mRef.addChildEventListener(new com.google.firebase.database.ChildEventListener() {
             @Override
@@ -163,7 +165,7 @@ public class AllEvents extends AppCompatActivity {
 
     private void initButton() {
         toAllPossibleCities=(Button)findViewById(R.id.to_all_possible_cities);
-        //According to whether the user permits the app to get the location, he gets two different Activities.
+        //According to whether the user permits the app to get the location, he gets to different Activities.
         toAllPossibleCities.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
