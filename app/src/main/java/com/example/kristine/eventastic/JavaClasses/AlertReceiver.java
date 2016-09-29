@@ -43,18 +43,16 @@ public class AlertReceiver extends BroadcastReceiver{
                         .setContentTitle(context.getResources().getString(R.string.notification_title))
                         .setContentText(context.getResources().getString(R.string.notification_text))
                         .setSound(sound)
+                        .setDefaults(Notification.DEFAULT_LIGHTS | Notification.FLAG_AUTO_CANCEL | Notification.DEFAULT_VIBRATE)
                         .setLights(Color.RED, 3000, 3000)
                         .setStyle(new NotificationCompat.BigTextStyle().bigText(context.getResources().getString(R.string.notification_text_large)))
                         .setAutoCancel(true)
                         .addAction(action1)
                         .addAction(action2);
 
-        Notification notification = mBuilder.build();
-        notification.flags = Notification.DEFAULT_LIGHTS | Notification.FLAG_AUTO_CANCEL | Notification.DEFAULT_VIBRATE;
-
         // gets an instance of the NotificationManager service and builds notification for upcomming event
         NotificationManager myNotificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
-        myNotificationManager.notify(1,notification);
+        myNotificationManager.notify(1,mBuilder.build());
 
     }
 }
