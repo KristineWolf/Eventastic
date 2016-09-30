@@ -163,7 +163,7 @@
     <string name="hint_edit_title">Enter the event title</string>
     <string name="hint_edit_date">Select a date</string>
     <string name="hint_edit_time">Select a time</string>
-    <string name="hint_edit_info">Add important Information to the event</string>
+    <string name="hint_edit_info">Add important information to the event</string>
 
     <!-- strings for sharing text/email -->
     <string name="message_share">Hey there! Check out the event %1$s in %2$s on Eventastic!</string>
@@ -209,6 +209,8 @@
     <string name="pref_summary_notifications">App may send notifications.</string>
     <string name="pref_noti_default_value">true</string>
     <string name="permissions">Permissions</string>
+    <string name="toast_added_to_custom_list">You added this event to your list.</string>
+    <string name="toast_fields_missing">Please fill in all fields.</string>
 
 
 </resources>

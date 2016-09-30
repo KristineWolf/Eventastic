@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kristine.eventastic.Databases.InternDatabase;
 import com.example.kristine.eventastic.JavaClasses.ChangeDateFormat;
@@ -62,6 +63,9 @@ public class AllInformationsOfAnEvent extends AppCompatActivity {
                 add.setClickable(false);
                 add.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
                 mediaPlayer.start();
+                String messageAdded = getResources().getString(R.string.toast_added_to_custom_list);
+                Toast toast = Toast.makeText(AllInformationsOfAnEvent.this,messageAdded, Toast.LENGTH_LONG);
+                toast.show();
             }
         });
     }

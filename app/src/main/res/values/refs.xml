@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <drawable name="app_logo.png">@drawable/app_logo.png</drawable>
+    <drawable name="app_logo.png">@drawable/logo</drawable>
 </resources>

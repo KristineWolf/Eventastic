@@ -211,4 +211,6 @@
     <string name="permissions">Berechtigungen</string>
     <string name="notification_text_large">Nicht vergessen: in einer Stunde hast du ein Event. Klicke für mehr Info. Viel Spaß!</string>
     <string name="notification_text">Noch eine Stunde...</string>
+    <string name="toast_added_to_custom_list">Du hast dieses Event zu deiner Liste hinzugefügt.</string>
+    <string name="toast_fields_missing">Bitte alle Felder ausfüllen.</string>
 </resources>

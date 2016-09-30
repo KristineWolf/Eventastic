@@ -167,6 +167,7 @@ public class EventNearLocation extends AppCompatActivity implements LocationUpda
             if(addresses.size()!=0){
                 Address a=addresses.get(0);
                 userLocation.setText(getResources().getString(R.string.your_location)+" "+a.getLocality());
+                userLocation.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
             }
         }catch (IOException e){
             Log.d("GEO",e.toString());

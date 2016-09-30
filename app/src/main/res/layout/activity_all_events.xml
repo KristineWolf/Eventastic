@@ -28,7 +28,6 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/events_city"
-
         android:id="@+id/title_participating_events"
         android:textAlignment="center"
         android:textStyle="bold"

@@ -96,4 +96,6 @@
     <string name="permissions">Permisos</string>
     <string name="notification_text_large">Qué no olvides: tienes un evento en una hora. Haz clic para más información! Qué lo pases bien!</string>
     <string name="notification_text">Una hora más...</string>
+    <string name="toast_added_to_custom_list">Has añadido este evento a ta lista.</string>
+    <string name="toast_fields_missing">Por favor rellene todos los campos.</string>
 </resources>

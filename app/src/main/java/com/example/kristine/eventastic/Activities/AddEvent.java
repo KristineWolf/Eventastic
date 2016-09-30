@@ -185,6 +185,9 @@ public class AddEvent extends AppCompatActivity implements AdapterView.OnItemSel
                 String type = typeEvent.getText().toString();
 
                 if (city.equals("") || date.equals("") || time.equals("") || titel.equals("") || definition.equals("") || type.equals("")) {
+                    String missing = getResources().getString(R.string.toast_fields_missing);
+                    Toast toast = Toast.makeText(AddEvent.this,missing, Toast.LENGTH_LONG);
+                    toast.show();
                     return;
                 } else {
                     editCities.setText("");

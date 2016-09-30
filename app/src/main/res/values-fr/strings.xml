@@ -35,7 +35,7 @@
     <string name="hint_eventType">Entre el type de l\'événement.</string>
     <string name="hint_time">Heure</string>
     <string name="nothing_on_list">Tu n\'as pas encore choisi un évènement. Clique ici.</string>
-    <string name="toast_added">"Tu as ajouté cette événement à la liste."</string>
+    <string name="toast_added">Tu as ajouté cette événement à la liste.</string>
     <string name="toast_deleted">Événent est supprimé de ta liste.</string>
     <string-array name="eventtype_array">
         <item>concert</item>
@@ -95,4 +95,6 @@
     <string name="permissions">Permissions</string>
     <string name="notification_text_large">n\'oubliez pas: dans une heure il y a un événement. Cliquez ici pour plus d´information. J´espère que tu t\'amuse bien!</string>
     <string name="notification_text">Encore une heure...</string>
+    <string name="toast_added_to_custom_list">Tu as ajouté cette événement à ta liste.</string>
+    <string name="toast_fields_missing">Remplissez tous les champs.</string>
 </resources>
