@@ -1,5 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <string-array name="cities_array">
+        <item>Aachen</item>
+        <item>Augsburg</item>
+        <item>Berlin</item>
+        <item>Bielefeld</item>
+        <item>Bochum</item>
+        <item>Bonn</item>
+        <item>Braunschweig</item>
+        <item>Bremen</item>
+        <item>Chemnitz</item>
+        <item>Darmstadt</item>
+        <item>Dortmund</item>
+        <item>Dresden</item>
+        <item>Duisburg</item>
+        <item>Düsseldorf</item>
+        <item>Erfurt</item>
+        <item>Erlangen</item>
+        <item>Essen</item>
+        <item>Frankfurt am Main</item>
+        <item>Freiburg im Breisgau</item>
+        <item>Gelsenkirchen</item>
+        <item>Hagen</item>
+        <item>Halle</item>
+        <item>Hamburg</item>
+        <item>Hamm</item>
+        <item>Hannover</item>
+        <item>Heidelberg</item>
+        <item>Herne</item>
+        <item>Ingolstadt</item>
+        <item>Kassel</item>
+        <item>Kiel</item>
+        <item>Köln</item>
+        <item>Krefeld</item>
+        <item>Leipzig</item>
+        <item>Leverkusen</item>
+        <item>Ludwigshafen</item>
+        <item>Lübeck</item>
+        <item>Magdeburg</item>
+        <item>Mainz</item>
+        <item>Mannheim</item>
+        <item>Mönchengladbach</item>
+        <item>Mülheim an der Ruhr</item>
+        <item>München</item>
+        <item>Neuss</item>
+        <item>Nürnberg</item>
+        <item>Oberhausen</item>
+        <item>Oldenburg</item>
+        <item>Osnabrück</item>
+        <item>Regensburg</item>
+        <item>Rostock</item>
+        <item>Saarbrücken</item>
+        <item>Solingen</item>
+        <item>Stuttgart</item>
+        <item>Trier</item>
+        <item>Ulm</item>
+        <item>Wiesbaden</item>
+        <item>Wolfsburg</item>
+        <item>Wuppertal</item>
+        <item>Würzburg</item>
+    </string-array>
     <string name="app_name">Eventastic</string>
     <string name="about_this_app_help">Cómo apoyar.</string>
     <string name="about_this_app_how">Así funciona.</string>
